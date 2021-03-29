@@ -1,0 +1,15 @@
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\HospitalApp.exe.config
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\HospitalApp.exe
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\HospitalApp.pdb
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.csprojAssemblyReference.cache
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\MainWindow.g.cs
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\App.g.cs
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp_MarkupCompile.cache
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp_MarkupCompile.lref
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\MainWindow.baml
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.g.resources
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Properties.Resources.resources
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.csproj.GenerateResource.cache
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.csproj.CoreCompileInputs.cache
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.exe
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.pdb
