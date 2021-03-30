@@ -7,35 +7,35 @@ using System;
 
 public class MedicalRecord
 {
-   private long id;
-   private DateTime timeOf;
-   private String description;
-   
-   public Anamnesis anamnesis;
-   
-   public Anamnesis Anamnesis
-   {
-      get
-      {
-         return anamnesis;
-      }
-      set
-      {
-         if (this.anamnesis == null || !this.anamnesis.Equals(value))
-         {
-            if (this.anamnesis != null)
-            {
-               Anamnesis oldAnamnesis = this.anamnesis;
-               this.anamnesis = null;
-               oldAnamnesis.RemoveMedicalRecord(this);
-            }
-            if (value != null)
-            {
-               this.anamnesis = value;
-               this.anamnesis.AddMedicalRecord(this);
-            }
-         }
-      }
-   }
+    public long medicalRecordId{ get; set; }
+    public DateTime timeOf{ get; set; }
+    public String description{ get; set; }
+    
+    public Anamnesis anamnesis;
+    
+    public Anamnesis Anamnesis
+    {
+       get
+       {
+          return anamnesis;
+       }
+       set
+       {
+          if (this.anamnesis == null || !this.anamnesis.Equals(value))
+          {
+             if (this.anamnesis != null)
+             {
+                Anamnesis oldAnamnesis = this.anamnesis;
+                this.anamnesis = null;
+                oldAnamnesis.RemoveMedicalRecord(this);
+             }
+             if (value != null)
+             {
+                this.anamnesis = value;
+                this.anamnesis.AddMedicalRecord(this);
+             }
+          }
+       }
+    }
 
 }

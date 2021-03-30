@@ -7,9 +7,9 @@ using System;
 
 public class Question
 {
-   private long id;
-   private string question;
-   private string answer;
-   private DateTime creationDate;
+   public long questionId{ get; set; }
+   public string question{ get; set; }
+   public string answer{ get; set; }
+   public DateTime creationDate{ get; set; }
 
 }

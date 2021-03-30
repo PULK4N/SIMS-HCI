@@ -8,22 +8,23 @@ using System;
 
 public class PatientAccountManager
 {
-   public Boolean CreatePatient(int id, String firstName, String lastName, String dateOfBirth, String address, String phoneNumber, int jmbg, String eMail, enum sex)
+   public bool CreatePatient(int id, String firstName, String lastName, String dateOfBirth, 
+       String address, String phoneNumber, int jmbg, String eMail, Enums.Sex sex)
    {
       throw new NotImplementedException();
    }
    
-   public Boolean ReadPatient(Patient patient)
+   public bool ReadPatient(Patient patient)
    {
       throw new NotImplementedException();
    }
    
-   public Boolean UpdatePatient(Patient patient)
+   public bool UpdatePatient(Patient patient)
    {
       throw new NotImplementedException();
    }
    
-   public Boolean DeletePatient(Patient patient)
+   public bool DeletePatient(Patient patient)
    {
       throw new NotImplementedException();
    }

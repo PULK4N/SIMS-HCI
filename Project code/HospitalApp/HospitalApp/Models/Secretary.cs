@@ -5,11 +5,13 @@
  ***********************************************************************/
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public class Secretary
 {
-   private long id;
+    [Key]
+    public long secretaryId{ get; set; }
    
-   public User user;
+    public User user{ get; set; }
 
 }

@@ -4,13 +4,16 @@
 // Purpose: Definition of Class RegisteredUser
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public class RegisteredUser
 {
-   private String encryptedID;
-   private String username;
-   private String password;
+    [Key]
+    public long regUserId { get; set; }
+   public String encryptedID{ get; set; }
+   public String username{ get; set; }
+   public String password{ get; set; }
    
-   public User user;
+   //public User user{ get; set; }
 
 }

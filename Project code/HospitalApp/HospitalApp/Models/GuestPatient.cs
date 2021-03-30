@@ -4,14 +4,15 @@
 // Purpose: Definition of Class GuestPatient
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public class GuestPatient
 {
-   private int id;
-   private DateTime arrivalDate;
-   private String emergencyInfo;
-   
-   public Appointment appointment;
-   public User user;
+    [Key]
+    public int guestPatientId{ get; set; }
+    public DateTime arrivalDate{ get; set; }
+    public String emergencyInfo{ get; set; }
+    public Appointment appointment{ get; set; }
+    public User user{ get; set; }
 
 }

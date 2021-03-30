@@ -5,9 +5,25 @@
 
 using System;
 using System.Collections.Generic;
+using System;
+using System.Data.Entity;
+using System.Linq;
 
-public class HospitalDB : IHospitalDB
+public class HospitalDB : DbContext, IHospitalDB
 {
+
+    public DbSet<User> users { get; set; }
+    public DbSet<Patient> patients { get; set; }
+    public DbSet<Doctor> doctors { get; set; }
+    public DbSet<Secretary> secretaries { get; set; }
+    public DbSet<Appointment> appointments { get; set; }
+    public DbSet<GuestPatient> guestPatients { get; set; }
+
+    public HospitalDB() : base()
+    {
+        Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
     public bool ChangeAppointmentStatus(long appointMentID, Enums.AppointmentStatus status)
     {
         throw new NotImplementedException();

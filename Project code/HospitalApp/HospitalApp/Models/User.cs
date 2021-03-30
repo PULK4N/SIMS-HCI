@@ -4,19 +4,23 @@
 // Purpose: Definition of Class User
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public class User
 {
-   public int id;
-   public String firstName;
-   public String lastName;
-   public DateTime dateOfBirth;
-   public String address;
-   public String phoneNumber;
-   public int jmbg;
-   public String eMail;
-   public enum Enums.Sex;
-   
-   public RegisteredUser registeredUser;
+    [Key]
+    public long UserId { get; set; }
+
+    public String firstName{ get; set; }
+    public String lastName{ get; set; }
+    public DateTime dateOfBirth{ get; set; }
+    public String address{ get; set; }
+    public String phoneNumber{ get; set; }
+    public int jmbg{ get; set; }
+    public String eMail{ get; set; }
+    public Enums.Sex sex{ get; set; }
+
+
+    public RegisteredUser registeredUser{ get; set; }
 
 }
