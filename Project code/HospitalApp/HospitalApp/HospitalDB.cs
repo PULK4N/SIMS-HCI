@@ -70,7 +70,19 @@ public class HospitalDB : DbContext, IHospitalDB
 
     public bool DeleteAppointment(long doctorID)
     {
-        throw new NotImplementedException();
+        try
+        {
+            using (var ctx = new HospitalDB())
+            {
+                ctx.SaveChanges();
+            }
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
     public bool DeletePatient(Patient patient)
@@ -97,7 +109,7 @@ public class HospitalDB : DbContext, IHospitalDB
         {
             using (var ctx = new HospitalDB())
             {
-//                return ctx.patients.
+                return ctx.patients.ToList();
             }
         }
         catch
