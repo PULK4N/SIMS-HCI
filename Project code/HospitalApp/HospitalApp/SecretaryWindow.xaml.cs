@@ -10,18 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Bolnica
 {
-
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for SecretaryWindow.xaml
+    /// </summary>
+    public partial class SecretaryWindow : Window
     {
-        public MainWindow()
+        public SecretaryWindow()
         {
             InitializeComponent();
+        }
 
+        private void OpenWindow(object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = new MainWindow();
+            this.Visibility = Visibility.Hidden;
+            objMainWindow.Show();
         }
 
         private void OpenPatientWindow(object sender, RoutedEventArgs e)
@@ -29,13 +36,6 @@ namespace Bolnica
             PatientWindow objPatientWindow = new PatientWindow();
             this.Visibility = Visibility.Hidden;
             objPatientWindow.Show();
-        }
-
-        private void OpenSecretaryWindow(object sender, RoutedEventArgs e)
-        {
-            SecretaryWindow objSecretaryWindow = new SecretaryWindow();
-            this.Visibility = Visibility.Hidden;
-            objSecretaryWindow.Show();
         }
     }
 }
