@@ -30,18 +30,22 @@ namespace Bolnica
             //List<Patient> patients = hospitalDB.GetAllPatients();
         }
 
-        private void OpenPatientWindow(object sender, RoutedEventArgs e)
+        private void DoctorButton(object sender, RoutedEventArgs e)
         {
-            PatientWindow objPatientWindow = new PatientWindow();
-            this.Visibility = Visibility.Hidden;
-            objPatientWindow.Show();
+            var s = new Hospital.Pages.Doctor();
+            s.Show();
         }
 
-        private void OpenSecretaryWindow(object sender, RoutedEventArgs e)
+        private void SecretaryButton(object sender, RoutedEventArgs e)
         {
-            SecretaryWindow objSecretaryWindow = new SecretaryWindow();
-            this.Visibility = Visibility.Hidden;
-            objSecretaryWindow.Show();
+            var s = new Hospital.Pages.Secretary();
+            s.Show();
+        }
+
+        private void PatientButton(object sender, RoutedEventArgs e)
+        {
+            var s = new Hospital.Pages.Patient();
+            s.Show();
         }
     }
 }
