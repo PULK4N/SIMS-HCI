@@ -14,10 +14,11 @@ public class Anamnesis
     public long anamnesisId{ get; set; }
     public float lastMesuredHeight{ get; set; }
     public float lastMesuredWeight{ get; set; }
-   
-   public List<MedicalRecord> medicalRecord;
-   
-   public List<MedicalRecord> MedicalRecord
+    public Patient patient;
+    
+    public List<MedicalRecord> medicalRecord;
+    
+    public List<MedicalRecord> MedicalRecord
    {
       get
       {
@@ -35,9 +36,9 @@ public class Anamnesis
          }
       }
    }
-   
-   
-   public void AddMedicalRecord(MedicalRecord newMedicalRecord)
+    
+    
+    public void AddMedicalRecord(MedicalRecord newMedicalRecord)
    {
       if (newMedicalRecord == null)
          return;
@@ -49,9 +50,9 @@ public class Anamnesis
          newMedicalRecord.Anamnesis = this;
       }
    }
-   
-   
-   public void RemoveMedicalRecord(MedicalRecord oldMedicalRecord)
+    
+    
+    public void RemoveMedicalRecord(MedicalRecord oldMedicalRecord)
    {
       if (oldMedicalRecord == null)
          return;
@@ -62,20 +63,19 @@ public class Anamnesis
             oldMedicalRecord.Anamnesis = null;
          }
    }
-   
-   public void RemoveAllMedicalRecord()
-   {
-      if (medicalRecord != null)
-      {
-         ArrayList tmpMedicalRecord = new ArrayList();
-         foreach (MedicalRecord oldMedicalRecord in medicalRecord)
-            tmpMedicalRecord.Add(oldMedicalRecord);
-         medicalRecord.Clear();
-         foreach (MedicalRecord oldMedicalRecord in tmpMedicalRecord)
-            oldMedicalRecord.Anamnesis = null;
-         tmpMedicalRecord.Clear();
-      }
-   }
-   public Patient patient;
-
+    
+    public void RemoveAllMedicalRecord()
+    {
+       if (medicalRecord != null)
+       {
+          ArrayList tmpMedicalRecord = new ArrayList();
+          foreach (MedicalRecord oldMedicalRecord in medicalRecord)
+             tmpMedicalRecord.Add(oldMedicalRecord);
+          medicalRecord.Clear();
+          foreach (MedicalRecord oldMedicalRecord in tmpMedicalRecord)
+             oldMedicalRecord.Anamnesis = null;
+          tmpMedicalRecord.Clear();
+       }
+    }
+    
 }

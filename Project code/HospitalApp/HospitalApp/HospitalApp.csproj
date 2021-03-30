@@ -65,6 +65,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202103301344153_HospitalDB-v1.cs" />
+    <Compile Include="Migrations\202103301344153_HospitalDB-v1.designer.cs">
+      <DependentUpon>202103301344153_HospitalDB-v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SecretaryWindow.xaml.cs">
+      <DependentUpon>SecretaryWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +81,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums.cs" />
+    <Compile Include="Functionalities\AppointmentManager.cs" />
     <Compile Include="Functionalities\AppointmentService.cs" />
     <Compile Include="Functionalities\PatientAccountManager.cs" />
     <Compile Include="HospitalDB.cs" />
@@ -82,12 +90,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PatientWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SecretaryWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202103301101222_hospitalDB-v1.cs" />
-    <Compile Include="Migrations\202103301101222_hospitalDB-v1.designer.cs">
-      <DependentUpon>202103301101222_hospitalDB-v1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Anamnesis.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -106,6 +118,9 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Secretary.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="PatientWindow.xaml.cs">
+      <DependentUpon>PatientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -119,8 +134,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202103301101222_hospitalDB-v1.resx">
-      <DependentUpon>202103301101222_hospitalDB-v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103301344153_HospitalDB-v1.resx">
+      <DependentUpon>202103301344153_HospitalDB-v1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -5,13 +5,12 @@
 
 using System;
 using System.Collections.Generic;
-using System;
 using System.Data.Entity;
 using System.Linq;
 
 public class HospitalDB : DbContext, IHospitalDB
 {
-
+    public DbSet<RegisteredUser> registeredUsers { get; set; }
     public DbSet<User> users { get; set; }
     public DbSet<Patient> patients { get; set; }
     public DbSet<Doctor> doctors { get; set; }
@@ -31,12 +30,42 @@ public class HospitalDB : DbContext, IHospitalDB
 
     public bool CreateAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        try
+        {
+            using (var ctx = new HospitalDB())
+            {
+                ctx.appointments.Add(appointment);
+
+                ctx.SaveChanges();
+            }
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
-    public bool CreatePatient()
+    public bool CreatePatient(Patient patient)
     {
-        throw new NotImplementedException();
+        try
+        {
+            using (var ctx = new HospitalDB())
+            {
+                ctx.registeredUsers.Add(patient.user.registeredUser);
+                ctx.users.Add(patient.user);
+
+                ctx.patients.Add(patient);
+                ctx.SaveChanges();
+            }
+            return true;
+        }
+        catch
+        {
+            
+        }
+        return false;
     }
 
     public bool DeleteAppointment(long doctorID)
@@ -44,14 +73,38 @@ public class HospitalDB : DbContext, IHospitalDB
         throw new NotImplementedException();
     }
 
-    public bool DeletePatient()
+    public bool DeletePatient(Patient patient)
     {
-        throw new NotImplementedException();
+        try
+        {
+            using (var ctx = new HospitalDB())
+            {
+                ctx.patients.Remove(patient);
+                ctx.SaveChanges();
+            }
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
     public List<Patient> GetAllPatients()
     {
-        throw new NotImplementedException();
+        try
+        {
+            using (var ctx = new HospitalDB())
+            {
+//                return ctx.patients.
+            }
+        }
+        catch
+        {
+
+        }
+        return null;
     }
 
     public List<Appointment> GetAppointmentByDateAndPatientID(DateTime date, long patientID)
@@ -84,7 +137,7 @@ public class HospitalDB : DbContext, IHospitalDB
         throw new NotImplementedException();
     }
 
-    public bool UpdatePatient()
+    public bool UpdatePatient(Patient patient)
     {
         throw new NotImplementedException();
     }

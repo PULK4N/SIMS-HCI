@@ -18,4 +18,8 @@ C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\b
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\EntityFramework.xml
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.csproj.CopyComplete
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.hospitalDBv1.resources
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\PatientWindow.g.cs
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\SecretaryWindow.g.cs
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\PatientWindow.baml
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\SecretaryWindow.baml
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.HospitalDBv1.resources
