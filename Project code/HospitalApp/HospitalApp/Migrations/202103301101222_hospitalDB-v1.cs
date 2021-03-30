@@ -12,11 +12,11 @@
                 c => new
                     {
                         appointmentId = c.Long(nullable: false, identity: true),
-                        begining = c.DateTime(nullable: false),
-                        end = c.DateTime(nullable: false),
-                        appointmentType = c.Int(nullable: false),
-                        appointmentStatus = c.Int(nullable: false),
-                        guestPatientId = c.Long(nullable: false),
+                        begining = c.DateTime(nullable: true),
+                        end = c.DateTime(nullable: true),
+                        appointmentType = c.Int(nullable: true),
+                        appointmentStatus = c.Int(nullable: true),
+                        guestPatientId = c.Long(nullable: true),
                         doctor_doctorId = c.Long(),
                         patient_patientId = c.Long(),
                     })
@@ -43,10 +43,10 @@
                 c => new
                     {
                         prescriptionId = c.Long(nullable: false, identity: true),
-                        dosage = c.Int(nullable: false),
+                        dosage = c.Int(nullable: true),
                         usage = c.String(),
                         period = c.String(),
-                        date = c.DateTime(nullable: false),
+                        date = c.DateTime(nullable: true),
                         Doctor_doctorId = c.Long(),
                         Patient_patientId = c.Long(),
                     })
@@ -63,12 +63,12 @@
                         UserId = c.Long(nullable: false, identity: true),
                         firstName = c.String(),
                         lastName = c.String(),
-                        dateOfBirth = c.DateTime(nullable: false),
+                        dateOfBirth = c.DateTime(nullable: true),
                         address = c.String(),
                         phoneNumber = c.String(),
-                        jmbg = c.Int(nullable: false),
+                        jmbg = c.Int(nullable: true),
                         eMail = c.String(),
-                        sex = c.Int(nullable: false),
+                        sex = c.Int(nullable: true),
                         registeredUser_regUserId = c.Long(),
                     })
                 .PrimaryKey(t => t.UserId)
@@ -102,8 +102,8 @@
                 c => new
                     {
                         anamnesisId = c.Long(nullable: false, identity: true),
-                        lastMesuredHeight = c.Single(nullable: false),
-                        lastMesuredWeight = c.Single(nullable: false),
+                        lastMesuredHeight = c.Single(nullable: true),
+                        lastMesuredWeight = c.Single(nullable: true),
                     })
                 .PrimaryKey(t => t.anamnesisId);
             
@@ -112,7 +112,7 @@
                 c => new
                     {
                         medicalRecordId = c.Long(nullable: false, identity: true),
-                        timeOf = c.DateTime(nullable: false),
+                        timeOf = c.DateTime(nullable: true),
                         description = c.String(),
                         Anamnesis_anamnesisId = c.Long(),
                     })
@@ -125,7 +125,7 @@
                 c => new
                     {
                         guestPatientId = c.Int(nullable: false, identity: true),
-                        arrivalDate = c.DateTime(nullable: false),
+                        arrivalDate = c.DateTime(nullable: true),
                         emergencyInfo = c.String(),
                         appointment_appointmentId = c.Long(),
                         user_UserId = c.Long(),
