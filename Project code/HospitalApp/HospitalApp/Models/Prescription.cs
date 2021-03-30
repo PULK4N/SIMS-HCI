@@ -7,10 +7,10 @@ using System;
 
 public class Prescription
 {
-   private long id;
-   private int dosage;
-   private string usage;
-   private string period;
-   private DateTime date;
+   public long prescriptionId{ get; set; }
+   public int dosage{ get; set; }
+   public string usage{ get; set; }
+   public string period{ get; set; }
+   public DateTime date{ get; set; }
 
 }

@@ -7,7 +7,8 @@ using System;
 
 public class Review
 {
-   private int score;
-   private int comment;
+    public long reviewId{ get; set; }
+    public int score{ get; set; }
+    public int comment{ get; set; }
 
 }

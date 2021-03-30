@@ -7,9 +7,10 @@ using System;
 
 public class Reminder
 {
-   private int name;
-   private DateTime beginTime;
-   private DateTime endTime;
-   private String comment;
+    public long reminderId{ get; set; }
+    public int name{ get; set; }
+    public DateTime beginTime{ get; set; }
+    public DateTime endTime{ get; set; }
+    public String comment{ get; set; }
 
 }

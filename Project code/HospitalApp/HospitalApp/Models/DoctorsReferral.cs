@@ -7,7 +7,7 @@ using System;
 
 public class DoctorsReferral
 {
-   private long id;
+   private long doctorReferralId;
    private DateTime date;
    private string type;
 

@@ -7,8 +7,9 @@ using System;
 
 public class HospitalClinic
 {
-   private String name;
-   private String address;
-   private String phoneNumber;
+    public long HospitalClinicId{ get; set; }
+    public String name{ get; set; }
+    public String address{ get; set; }
+    public String phoneNumber{ get; set; }
 
 }

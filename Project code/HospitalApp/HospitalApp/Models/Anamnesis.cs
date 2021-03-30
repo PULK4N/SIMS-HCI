@@ -6,12 +6,14 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
 
 public class Anamnesis
 {
-   private long id;
-   private float lastMesuredHeight;
-   private float lastMesuredWeight;
+    [Key]
+    public long anamnesisId{ get; set; }
+    public float lastMesuredHeight{ get; set; }
+    public float lastMesuredWeight{ get; set; }
    
    public List<MedicalRecord> medicalRecord;
    
