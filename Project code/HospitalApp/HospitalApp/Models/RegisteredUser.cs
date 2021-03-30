@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 public class RegisteredUser
 {
     [Key]
-    public long regUserId { get; set; }
+   public long regUserId { get; set; }
    public String encryptedID{ get; set; }
    public String username{ get; set; }
    public String password{ get; set; }

@@ -22,11 +22,11 @@ public interface IHospitalDB
    
    bool ChangeAppointmentStatus(long appointMentID, Enums.AppointmentStatus status);
    
-   bool CreatePatient();
+   bool CreatePatient(Patient patient);
    
-   bool UpdatePatient();
+   bool UpdatePatient(Patient patient);
    
-   bool DeletePatient();
+   bool DeletePatient(Patient patient);
    
    Patient GetPatientByID(long patientID);
    

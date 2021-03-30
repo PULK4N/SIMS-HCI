@@ -13,8 +13,9 @@ public class Patient
     public long patientId{ get; set; }
 
     public List<Appointment> appointment;
-    public Anamnesis anamnesis{ get; set; }
-    public User user;
+    public Anamnesis anamnesis;//{ get; set; }
+    public User user { get; set; }
+
     public List<Prescription> prescription;
     
     public List<Prescription> Prescription
