@@ -12,7 +12,7 @@ public class Doctor
     [Key]
     public long doctorId { get; set; }
     public String aboutMe{ get; set; }
-    
+     
     public User user{ get; set; }
 
     public List<Prescription> prescription;

@@ -7,9 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Windows;
 
 public class HospitalDB : DbContext, IHospitalDB
 {
+    private static HospitalDB instance = null;
+    private static readonly object padlock = new object();
     public DbSet<RegisteredUser> registeredUsers { get; set; }
     public DbSet<User> users { get; set; }
     public DbSet<Patient> patients { get; set; }
@@ -17,6 +20,20 @@ public class HospitalDB : DbContext, IHospitalDB
     public DbSet<Secretary> secretaries { get; set; }
     public DbSet<Appointment> appointments { get; set; }
     public DbSet<GuestPatient> guestPatients { get; set; }
+    public static HospitalDB Instance
+    {
+        get
+        {
+            lock (padlock)
+            {
+                if (instance == null)
+                {
+                    instance = new HospitalDB();
+                }
+                return instance;
+            }
+        }
+    }
 
     public HospitalDB() : base()
     {
@@ -32,33 +49,29 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            using (var ctx = new HospitalDB())
-            {
-                ctx.appointments.Add(appointment);
-
-                ctx.SaveChanges();
-            }
+            Instance.appointments.Add(appointment);
+            Instance.SaveChanges();
             return true;
         }
         catch
         {
-
+            MessageBox.Show("Error while creating new appointment");
         }
         return false;
+
     }
 
     public bool CreatePatient(Patient patient)
     {
         try
         {
-            using (var ctx = new HospitalDB())
-            {
-                ctx.registeredUsers.Add(patient.user.registeredUser);
-                ctx.users.Add(patient.user);
 
-                ctx.patients.Add(patient);
-                ctx.SaveChanges();
-            }
+            Instance.registeredUsers.Add(patient.user.registeredUser);
+            Instance.users.Add(patient.user);
+
+            Instance.patients.Add(patient);
+            Instance.SaveChanges();
+
             return true;
         }
         catch
@@ -72,10 +85,9 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            using (var ctx = new HospitalDB())
-            {
-                ctx.SaveChanges();
-            }
+
+            Instance.SaveChanges();
+
             return true;
         }
         catch
@@ -89,11 +101,10 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            using (var ctx = new HospitalDB())
-            {
-                ctx.patients.Remove(patient);
-                ctx.SaveChanges();
-            }
+
+            Instance.patients.Remove(patient);
+            Instance.SaveChanges();
+
             return true;
         }
         catch
@@ -107,14 +118,11 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            using (var ctx = new HospitalDB())
-            {
-                return ctx.patients.ToList();
-            }
+            return Instance.patients.ToList();
         }
         catch
         {
-
+            MessageBox.Show("Error while getting patient list, returning null");
         }
         return null;
     }
@@ -126,31 +134,67 @@ public class HospitalDB : DbContext, IHospitalDB
 
     public Appointment GetAppointmentByID(long appointmentID)
     {
-        throw new NotImplementedException();
+        try
+        {
+            //return Instance.appointments.Find(appointmentID);
+            Appointment appointment = (from a in Instance.appointments where a.appointmentId == appointmentID select a).FirstOrDefault<Appointment>();
+            return appointment;
+        }
+        catch
+        {
+            MessageBox.Show("We discovered an error while trying to acquire an appointment by Id");
+        }
+        return null;
     }
 
-    public List<Appointment> GetAppointmentsByPatientID(long patientID)
+    public List<Appointment> GetAppointmentsByPatientID(long patientID)//TO DO: possible error
     {
-        throw new NotImplementedException();
+        try
+        {
+            List<Appointment> appointments = (from a in Instance.appointments where a.patient.patientId == patientID select a).ToList<Appointment>();
+            return appointments;
+        }
+        catch
+        {
+            MessageBox.Show("We discovered an error while trying to acquire an appointment by patientId");
+        }
+        return null;
     }
 
-    public List<Patient> GetPatientByDoctorID(long doctorID)
+    public List<Patient> GetPatientsByDoctorID(long doctorID)
     {
         throw new NotImplementedException();
     }
 
     public Patient GetPatientByID(long patientID)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return Instance.patients.Find(patientID);
+        }
+        catch
+        {
+            MessageBox.Show("We discovered an error while trying to acquire an appointment by Id");
+        }
+        return null;
     }
 
     public bool ReScheduleAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+
+        return false;
     }
 
     public bool UpdatePatient(Patient patient)
     {
-        throw new NotImplementedException();
+        Patient oldPatientInfo = Instance.patients.Find(patient.patientId);
+        if (oldPatientInfo != null)
+        {
+            oldPatientInfo.user.address = patient.user.address;
+            oldPatientInfo.user.eMail = patient.user.eMail;
+            oldPatientInfo.user.phoneNumber = patient.user.phoneNumber;
+            Instance.SaveChanges();
+        }
+        return false;
     }
 }

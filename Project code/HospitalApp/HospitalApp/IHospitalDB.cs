@@ -30,7 +30,7 @@ public interface IHospitalDB
    
    Patient GetPatientByID(long patientID);
    
-   List<Patient> GetPatientByDoctorID(long doctorID);
+   List<Patient> GetPatientsByDoctorID(long doctorID);
    
    List<Patient> GetAllPatients();
 
