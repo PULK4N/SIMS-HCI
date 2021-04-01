@@ -5,8 +5,7 @@
 
 using System;
 
-public class Enums
-{
+namespace Enums{ 
     public enum AppointmentStatus
     {
         PENDING,
