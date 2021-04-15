@@ -66,8 +66,8 @@ public class HospitalDB : DbContext, IHospitalDB
         try
         {
 
-            Instance.registeredUsers.Add(patient.user.registeredUser);
-            Instance.users.Add(patient.user);
+            Instance.registeredUsers.Add(patient.User.RegisteredUser);
+            Instance.users.Add(patient.User);
 
             Instance.patients.Add(patient);
             Instance.SaveChanges();
@@ -151,7 +151,7 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            List<Appointment> appointments = (from a in Instance.appointments where a.patient.patientId == patientID select a).ToList<Appointment>();
+            List<Appointment> appointments = (from a in Instance.appointments where a.Patient.PatientId == patientID select a).ToList<Appointment>();
             return appointments;
         }
         catch
@@ -187,12 +187,12 @@ public class HospitalDB : DbContext, IHospitalDB
 
     public bool UpdatePatient(Patient patient)
     {
-        Patient oldPatientInfo = Instance.patients.Find(patient.patientId);
+        Patient oldPatientInfo = Instance.patients.Find(patient.PatientId);
         if (oldPatientInfo != null)
         {
-            oldPatientInfo.user.address = patient.user.address;
-            oldPatientInfo.user.eMail = patient.user.eMail;
-            oldPatientInfo.user.phoneNumber = patient.user.phoneNumber;
+            oldPatientInfo.User.Address = patient.User.Address;
+            oldPatientInfo.User.EMail = patient.User.EMail;
+            oldPatientInfo.User.PhoneNumber = patient.User.PhoneNumber;
             Instance.SaveChanges();
         }
         return false;
