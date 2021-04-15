@@ -4,12 +4,17 @@
 // Purpose: Definition of Class HospitalClinic
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public class HospitalClinic
 {
+    [Key]
     public long HospitalClinicId{ get; set; }
-    public String name{ get; set; }
-    public String address{ get; set; }
-    public String phoneNumber{ get; set; }
+    [Required]
+    public String Name{ get; set; }
+    [Required]
+    public String Address{ get; set; }
+    [Required]
+    public String PhoneNumber{ get; set; }
 
 }
