@@ -1,23 +1,33 @@
-// File:    Doctor.cs
+// File:    Patient.cs
 // Author:  Nikola
-// Created: Sunday, March 28, 2021 7:46:22 PM
-// Purpose: Definition of Class Doctor
+// Created: Sunday, March 28, 2021 11:00:30 AM
+// Purpose: Definition of Class Patient
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-public class Doctor
+public class Patient
 {
+    public Patient(){}
+    public Patient(GuestPatient patient)
+    {
+        this.User = patient.User;
+    }
+
     [Key]
-    public long doctorId { get; set; }
-    public String aboutMe{ get; set; }
-    
-    public User user{ get; set; }
+    public long PatientId{ get; set; }
+
+    public List<Appointment> appointment;
+    public MedicalRecord MedicalRecord{ get; set; }
+
+    [Required]
+    public User User { get; set; }
 
     public List<Prescription> prescription;
-    public List<Appointment> appointment;
-    
+
+    #region Getters and setters
+
     public List<Prescription> Prescription
     {
        get
@@ -36,32 +46,32 @@ public class Doctor
           }
        }
     }
-
+    
     public void AddPrescription(Prescription newPrescription)
     {
-        if (newPrescription == null)
-            return;
-        if (this.prescription == null)
-            this.prescription = new List<Prescription>();
-        if (!this.prescription.Contains(newPrescription))
-            this.prescription.Add(newPrescription);
+       if (newPrescription == null)
+          return;
+       if (this.prescription == null)
+          this.prescription = new List<Prescription>();
+       if (!this.prescription.Contains(newPrescription))
+          this.prescription.Add(newPrescription);
     }
-
-
+    
     public void RemovePrescription(Prescription oldPrescription)
     {
-        if (oldPrescription == null)
-            return;
-        if (this.prescription != null)
-            if (this.prescription.Contains(oldPrescription))
-                this.prescription.Remove(oldPrescription);
+       if (oldPrescription == null)
+          return;
+       if (this.prescription != null)
+          if (this.prescription.Contains(oldPrescription))
+             this.prescription.Remove(oldPrescription);
     }
 
     public void RemoveAllPrescription()
     {
-        if (prescription != null)
-            prescription.Clear();
+       if (prescription != null)
+          prescription.Clear();
     }
+
     public List<Appointment> Appointment
     {
         get
@@ -106,5 +116,7 @@ public class Doctor
         if (appointment != null)
             appointment.Clear();
     }
+
+    #endregion
 
 }

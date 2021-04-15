@@ -10,8 +10,9 @@ using System.ComponentModel.DataAnnotations;
 public class Secretary
 {
     [Key]
-    public long secretaryId{ get; set; }
-   
+    public long SecretaryId{ get; set; }
+
+    [Required]
     public User user{ get; set; }
 
 }

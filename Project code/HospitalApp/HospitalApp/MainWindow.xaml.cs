@@ -23,10 +23,12 @@ namespace Bolnica
             InitializeComponent();
             HospitalDB hospitalDB = new HospitalDB();
             RegisteredUser tRegisterUser = new RegisteredUser { encryptedID = "a121a",username = "regUsernamae" };
-            //User tUser = new User { firstName = "Nika", lastName = "Pupa", registeredUser = tRegisterUser, dateOfBirth = new DateTime(2015, 12, 25) };
+            User tUser = new User { firstName = "QQQQ", lastName = "PuRRRps", registeredUser = tRegisterUser, dateOfBirth = new DateTime(2015, 12, 25) };
 
-            //Patient patient = new Patient { user = tUser };
-            //hospitalDB.CreatePatient(patient);
+            Patient patient = new Patient() { user = tUser };
+            hospitalDB.CreatePatient(patient);
+
+
             //List<Patient> patients = hospitalDB.GetAllPatients();
         }
 

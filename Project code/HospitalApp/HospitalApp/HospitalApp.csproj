@@ -65,10 +65,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\202103301344153_HospitalDB-v1.cs" />
-    <Compile Include="Migrations\202103301344153_HospitalDB-v1.designer.cs">
-      <DependentUpon>202103301344153_HospitalDB-v1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Anamnesis.cs" />
+    <Compile Include="Models\MedicalRecord.cs" />
     <Compile Include="Pages\CancelPage.xaml.cs">
       <DependentUpon>CancelPage.xaml</DependentUpon>
     </Compile>
@@ -157,13 +155,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Anamnesis.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\DoctorsReferral.cs" />
     <Compile Include="Models\GuestPatient.cs" />
     <Compile Include="Models\HospitalClinic.cs" />
-    <Compile Include="Models\MedicalRecord.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Question.cs" />
@@ -190,9 +186,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202103301344153_HospitalDB-v1.resx">
-      <DependentUpon>202103301344153_HospitalDB-v1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

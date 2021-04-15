@@ -22,7 +22,6 @@ C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\o
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\SecretaryWindow.g.cs
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\PatientWindow.baml
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\SecretaryWindow.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.HospitalDBv1.resources
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\CancelPage.g.cs
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Doctor.g.cs
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Patient.g.cs

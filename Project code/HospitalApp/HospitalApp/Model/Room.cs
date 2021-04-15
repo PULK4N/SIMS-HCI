@@ -6,12 +6,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 public class Room
 {
-    public long roomId{ get; set; }
-    public String name{ get; set; }
-    public String roomType{ get; set; }
+    [Key]
+    public long RoomId{ get; set; }
+    public String Name{ get; set; }
+    public String RoomType{ get; set; }
     public List<Appointment> appointment;
 
     public List<Appointment> Appointment

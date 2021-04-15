@@ -9,11 +9,11 @@ using System.ComponentModel.DataAnnotations;
 public class RegisteredUser
 {
     [Key]
-   public long regUserId { get; set; }
-   public String encryptedID{ get; set; }
-   public String username{ get; set; }
-   public String password{ get; set; }
+    public long RegUserId { get; set; }
+    public String EncryptedID{ get; set; }
+    public String Username{ get; set; }
+    public String Password{ get; set; }
    
-   //public User user{ get; set; }
+    public User User{ get; set; }
 
 }
