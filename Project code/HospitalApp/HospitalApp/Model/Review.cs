@@ -4,11 +4,13 @@
 // Purpose: Definition of Class Review
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public class Review
 {
-    public long reviewId{ get; set; }
-    public int score{ get; set; }
-    public int comment{ get; set; }
+    [Key]
+    public long ReviewId{ get; set; }
+    public int Score{ get; set; }
+    public String Comment{ get; set; }
 
 }

@@ -136,9 +136,9 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            //return Instance.appointments.Find(appointmentID);
-            Appointment appointment = (from a in Instance.appointments where a.appointmentId == appointmentID select a).FirstOrDefault<Appointment>();
-            return appointment;
+            return Instance.appointments.Find(appointmentID);
+            //Appointment appointment = (from a in Instance.appointments where a.appointmentId == appointmentID select a).FirstOrDefault<Appointment>();
+            //return appointment;
         }
         catch
         {
@@ -194,6 +194,21 @@ public class HospitalDB : DbContext, IHospitalDB
             oldPatientInfo.user.eMail = patient.user.eMail;
             oldPatientInfo.user.phoneNumber = patient.user.phoneNumber;
             Instance.SaveChanges();
+        }
+        return false;
+    }
+
+    public bool DeleteGuestPatient(GuestPatient guestPatient)
+    {
+        try
+        {
+            guestPatients.Remove(guestPatient);
+            Instance.SaveChanges();
+            return true;
+        }
+        catch
+        {
+            MessageBox.Show("Error while deleting a guest patient");
         }
         return false;
     }
