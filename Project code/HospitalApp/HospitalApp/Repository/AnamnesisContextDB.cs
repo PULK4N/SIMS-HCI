@@ -9,6 +9,13 @@ using System.Data.Entity;
 
 public class AnamnesisContextDB : DbContext, IAnamnesisRepository
 {
+    public DbSet<Anamnesis> Anamnesis { get; set; }
+
+    public AnamnesisContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
     public bool CreateAnamnesis(Anamnesis anamnesis)
     {
         throw new NotImplementedException();

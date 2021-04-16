@@ -8,11 +8,12 @@ using System.Collections.Generic;
 
 public interface ISecretaryRepository
 {
+    bool CreateSecretary(Secretary secretary);
     List<Secretary> GetAllSecretaries();
 
     Secretary GetById(long secretaryId);
 
-    bool DeleteByID(long secretaryId);
+    bool DeleteById(long secretaryId);
 
     Secretary UpdateSecretary(Secretary secretary);
 

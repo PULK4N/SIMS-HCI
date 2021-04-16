@@ -7,7 +7,7 @@ using System;
 
 public class MedicalRecordService : IMedicalRecordService
 {
-    private IMedicalRecordRepository _medicalRecordRepository;
+    private readonly IMedicalRecordRepository _medicalRecordRepository;
 
     public MedicalRecordService(IMedicalRecordRepository medicalRecordRepository)
     {

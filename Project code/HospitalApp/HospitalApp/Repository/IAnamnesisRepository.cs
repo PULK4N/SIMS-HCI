@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public interface IAnamnesisRepository
 {
+
    bool CreateAnamnesis(Anamnesis anamnesis);
    
    bool UpdateAnamnesis(Anamnesis anamnesis);

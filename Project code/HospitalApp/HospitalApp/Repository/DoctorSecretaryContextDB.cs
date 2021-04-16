@@ -11,6 +11,13 @@ using System.Data.Entity;
 
 public class DoctorSecretaryContextDB : DbContext, IDoctorRepository
 {
+    public DbSet<Doctor> Doctors { get; set; }
+
+    public DoctorSecretaryContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
     public Doctor CreateDoctor(Doctor doctor)
     {
         throw new NotImplementedException();

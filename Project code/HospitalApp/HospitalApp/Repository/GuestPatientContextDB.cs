@@ -9,6 +9,13 @@ using System.Data.Entity;
 
 public class GuestPatientContextDB : DbContext, IGuestPatientRepository
 {
+    public DbSet<GuestPatient> GuestPatient { get; set; }
+
+    public GuestPatientContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
     public bool CreatePatient(Patient patient)
     {
         throw new NotImplementedException();

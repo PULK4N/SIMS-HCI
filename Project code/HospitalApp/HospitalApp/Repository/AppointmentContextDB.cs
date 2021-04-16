@@ -9,6 +9,13 @@ using System.Data.Entity;
 
 public class AppointmentContextDB : DbContext, IAppointmentRepository
 {
+    public DbSet<Appointment> Appointments { get; set; }
+
+    public AppointmentContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
     public bool DoctorCreateAppointment(Appointment appointment)
     {
         throw new NotImplementedException();

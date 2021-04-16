@@ -8,7 +8,14 @@ using System.Data.Entity;
 
 public class MedicalRecordContextDB : DbContext, IMedicalRecordRepository
 {
-    public bool CreateMedicalRecord(MedicalRecord medicalRecord)
+    public DbSet<MedicalRecord> MedicalRecords { get; set; }
+
+    public MedicalRecordContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
+public bool CreateMedicalRecord(MedicalRecord medicalRecord)
     {
         throw new NotImplementedException();
     }

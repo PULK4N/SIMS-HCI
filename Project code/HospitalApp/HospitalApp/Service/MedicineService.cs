@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 public class MedicineService : IMedicineService
 {
-    private IMedicineRepository _medicineRepository;
+    private readonly IMedicineRepository _medicineRepository;
 
     public MedicineService(IMedicineRepository medicineRepository)
     {

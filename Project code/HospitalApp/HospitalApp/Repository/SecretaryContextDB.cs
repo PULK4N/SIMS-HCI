@@ -9,7 +9,19 @@ using System.Data.Entity;
 
 public class SecretaryContextDB : DbContext, ISecretaryRepository
 {
-    public bool DeleteByID(long secretaryId)
+    public DbSet<Secretary> Secretaries { get; set; }
+
+    public SecretaryContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<SecretaryContextDB, HospitalApp.Migrations.Configuration>());
+    }
+
+    public bool CreateSecretary(Secretary secretary)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool DeleteById(long secretaryId)
     {
         throw new NotImplementedException();
     }

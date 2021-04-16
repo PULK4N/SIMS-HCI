@@ -9,7 +9,14 @@ using System.Data.Entity;
 
 public class PatientContextDB : DbContext, IPatientRepository
 {
-    public bool CreatePatient(Patient patient)
+    public DbSet<Patient> Patients { get; set; }
+
+    public PatientContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
+public bool CreatePatient(Patient patient)
     {
         throw new NotImplementedException();
     }

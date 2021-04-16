@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 public class AnamnesisService : IAnamnesisService
 {
-    private IAnamnesisRepository _anamnesisRepository;
+    private readonly IAnamnesisRepository _anamnesisRepository;
 
     public AnamnesisService(IAnamnesisRepository anamnesisRepository)
     {

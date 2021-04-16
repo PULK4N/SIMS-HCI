@@ -9,6 +9,13 @@ using System.Data.Entity;
 
 public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 {
+    public DbSet<Prescription> Prescriptions { get; set; }
+
+    public PrescriptionContextDB() : base()
+    {
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+    }
+
     public bool CreatePrescription(Prescription prescription)
     {
         throw new NotImplementedException();

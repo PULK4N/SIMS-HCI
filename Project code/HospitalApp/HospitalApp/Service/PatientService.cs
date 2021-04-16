@@ -9,7 +9,7 @@ using System;
 
 public class PatientService : IPatientService
 {
-    private IPatientRepository _patientRepository;
+    private readonly IPatientRepository _patientRepository;
     public PatientService(IPatientRepository patientRepository)
     {
         _patientRepository = patientRepository;

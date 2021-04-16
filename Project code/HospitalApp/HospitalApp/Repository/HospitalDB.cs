@@ -13,13 +13,26 @@ public class HospitalDB : DbContext, IHospitalDB
 {
     private static HospitalDB instance = null;
     private static readonly object padlock = new object();
-    public DbSet<RegisteredUser> registeredUsers { get; set; }
-    public DbSet<User> users { get; set; }
-    public DbSet<Patient> patients { get; set; }
-    public DbSet<Doctor> doctors { get; set; }
-    public DbSet<Secretary> secretaries { get; set; }
-    public DbSet<Appointment> appointments { get; set; }
-    public DbSet<GuestPatient> guestPatients { get; set; }
+    public DbSet<Anamnesis> Anamnesis { get; set; }
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
+    public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<GuestPatient> GuestPatients { get; set; }
+    public DbSet<HospitalClinic> HospitalClinics { get; set; }
+    public DbSet<MedicalRecord> MedicalRecords { get; set; }
+    public DbSet<Medicine> Medicines { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
+    public DbSet<Patient> Patients { get; set; }
+    public DbSet<Prescription> Prescriptions { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Referal> Referals { get; set; }
+    public DbSet<RegisteredUser> RegisteredUsers { get; set; }
+    public DbSet<Reminder> Reminders { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Room> Rooms { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Secretary> Secretaries { get; set; }
     public static HospitalDB Instance
     {
         get
@@ -49,7 +62,7 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            Instance.appointments.Add(appointment);
+            Instance.Appointments.Add(appointment);
             Instance.SaveChanges();
             return true;
         }
@@ -66,10 +79,10 @@ public class HospitalDB : DbContext, IHospitalDB
         try
         {
 
-            Instance.registeredUsers.Add(patient.User.RegisteredUser);
-            Instance.users.Add(patient.User);
+            Instance.RegisteredUsers.Add(patient.User.RegisteredUser);
+            Instance.Users.Add(patient.User);
 
-            Instance.patients.Add(patient);
+            Instance.Patients.Add(patient);
             Instance.SaveChanges();
 
             return true;
@@ -102,7 +115,7 @@ public class HospitalDB : DbContext, IHospitalDB
         try
         {
 
-            Instance.patients.Remove(patient);
+            Instance.Patients.Remove(patient);
             Instance.SaveChanges();
 
             return true;
@@ -118,7 +131,7 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            return Instance.patients.ToList();
+            return Instance.Patients.ToList();
         }
         catch
         {
@@ -136,7 +149,7 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            return Instance.appointments.Find(appointmentID);
+            return Instance.Appointments.Find(appointmentID);
             //Appointment appointment = (from a in Instance.appointments where a.appointmentId == appointmentID select a).FirstOrDefault<Appointment>();
             //return appointment;
         }
@@ -151,7 +164,7 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            List<Appointment> appointments = (from a in Instance.appointments where a.Patient.PatientId == patientID select a).ToList<Appointment>();
+            List<Appointment> appointments = (from a in Instance.Appointments where a.Patient.PatientId == patientID select a).ToList<Appointment>();
             return appointments;
         }
         catch
@@ -170,7 +183,7 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            return Instance.patients.Find(patientID);
+            return Instance.Patients.Find(patientID);
         }
         catch
         {
@@ -187,7 +200,7 @@ public class HospitalDB : DbContext, IHospitalDB
 
     public bool UpdatePatient(Patient patient)
     {
-        Patient oldPatientInfo = Instance.patients.Find(patient.PatientId);
+        Patient oldPatientInfo = Instance.Patients.Find(patient.PatientId);
         if (oldPatientInfo != null)
         {
             oldPatientInfo.User.Address = patient.User.Address;
@@ -202,7 +215,7 @@ public class HospitalDB : DbContext, IHospitalDB
     {
         try
         {
-            guestPatients.Remove(guestPatient);
+            GuestPatients.Remove(guestPatient);
             Instance.SaveChanges();
             return true;
         }
