@@ -53,7 +53,7 @@ namespace Enums{
         NONE
     }
 
-    public enum Usertype
+    public enum UserType
     {
         PATIENT,
         DOCTOR,
@@ -68,4 +68,5 @@ namespace Enums{
         SINGLE,
         OTHER
     }
+
 }

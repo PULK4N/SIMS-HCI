@@ -65,8 +65,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Anamnesis.cs" />
-    <Compile Include="Models\MedicalRecord.cs" />
+    <Compile Include="Model\Anamnesis.cs" />
+    <Compile Include="Model\MedicalRecord.cs" />
     <Compile Include="Pages\CancelPage.xaml.cs">
       <DependentUpon>CancelPage.xaml</DependentUpon>
     </Compile>
@@ -106,8 +106,8 @@
     <Compile Include="Functionalities\AppointmentManager.cs" />
     <Compile Include="Functionalities\AppointmentService.cs" />
     <Compile Include="Functionalities\PatientAccountManager.cs" />
-    <Compile Include="HospitalDB.cs" />
-    <Compile Include="IHospitalDB.cs" />
+    <Compile Include="Context\HospitalDB.cs" />
+    <Compile Include="Context\IHospitalDB.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -155,21 +155,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Appointment.cs" />
-    <Compile Include="Models\Doctor.cs" />
-    <Compile Include="Models\DoctorsReferral.cs" />
-    <Compile Include="Models\GuestPatient.cs" />
-    <Compile Include="Models\HospitalClinic.cs" />
-    <Compile Include="Models\Patient.cs" />
-    <Compile Include="Models\Prescription.cs" />
-    <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\Referal.cs" />
-    <Compile Include="Models\RegisteredUser.cs" />
-    <Compile Include="Models\Reminder.cs" />
-    <Compile Include="Models\Review.cs" />
-    <Compile Include="Models\Room.cs" />
-    <Compile Include="Models\Secretary.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\DoctorsReferral.cs" />
+    <Compile Include="Model\GuestPatient.cs" />
+    <Compile Include="Model\HospitalClinic.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Prescription.cs" />
+    <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\Referal.cs" />
+    <Compile Include="Model\RegisteredUser.cs" />
+    <Compile Include="Model\Reminder.cs" />
+    <Compile Include="Model\Review.cs" />
+    <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Secretary.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="PatientWindow.xaml.cs">
       <DependentUpon>PatientWindow.xaml</DependentUpon>
     </Compile>
@@ -198,6 +198,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

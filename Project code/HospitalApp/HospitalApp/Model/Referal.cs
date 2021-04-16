@@ -8,10 +8,10 @@ using System;
 
 public class Referal
 {
-   public long referalId;
-   public String type;
-   public DateTime date;
+    public long ReferalId { get; set; }
+    public String Type { get; set; }
+    public DateTime Date { get; set; }
 
-   public Appointment appointment;
+    public Appointment Appointment { get; set; }
 
 }

@@ -13,6 +13,6 @@ public class Secretary
     public long SecretaryId{ get; set; }
 
     [Required]
-    public User user{ get; set; }
+    public Employee Employee{ get; set; }
 
 }

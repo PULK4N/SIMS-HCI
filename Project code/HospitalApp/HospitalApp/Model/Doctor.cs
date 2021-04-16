@@ -12,8 +12,9 @@ public class Doctor
     [Key]
     public long DoctorId { get; set; }
     public String AboutMe{ get; set; }
-     
-    public User User{ get; set; }
+    public Enums.Specialization Specialization { get; set; }
+
+    public Employee Employee{ get; set; }
     
     public List<Prescription> prescription;
     public List<Appointment> appointment;
