@@ -13,5 +13,4 @@ public class Anamnesis
     public DateTime TimeOf { get; set; }
     public String Description { get; set; }
     public Prescription Prescription { get; set; }
-
 }

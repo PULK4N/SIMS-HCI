@@ -12,5 +12,6 @@ public class Notification
     public long NotificationId { get; set; }
     [StringLength(1000)]
     public String Information { get; set; }
+    public User User { get; set; }
 
 }
