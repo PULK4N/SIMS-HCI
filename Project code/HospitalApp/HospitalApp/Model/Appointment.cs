@@ -17,7 +17,7 @@ public class Appointment
     
     public Patient Patient{ get; set; }
     public Doctor Doctor{ get; set; }
-    public long GuestPatientId{ get; set; }
+    //public GuestPatient GuestPatient { get; set; }
 
     public Room Room{ get; set; }
 

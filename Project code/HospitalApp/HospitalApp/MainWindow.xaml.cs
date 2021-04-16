@@ -21,15 +21,15 @@ namespace Bolnica
         public MainWindow()
         {
             InitializeComponent();
-            //HospitalDB hospitalDB = new HospitalDB();
-            //RegisteredUser tRegisterUser = new RegisteredUser { encryptedID = "a121a",username = "regUsernamae" };
-            //User tUser = new User { firstName = "QQQQ", lastName = "PuRRRps", registeredUser = tRegisterUser, dateOfBirth = new DateTime(2015, 12, 25) };
+            HospitalDB hospitalDB = new HospitalDB();
+            RegisteredUser tRegisterUser = new RegisteredUser { EncryptedID = "a121a", Username = "regUsernamae" };
+            User tUser = new User { FirstName = "QQQQ", LastName = "PuRRRps", RegisteredUser = tRegisterUser, DateOfBirth = new DateTime(2015, 12, 25) };
 
-            //Patient patient = new Patient() { user = tUser };
-            //hospitalDB.CreatePatient(patient);
+            Patient patient = new Patient() { User = tUser };
+            hospitalDB.CreatePatient(patient);
 
 
-            //List<Patient> patients = hospitalDB.GetAllPatients();
+            List<Patient> patients = hospitalDB.GetAllPatients();
         }
 
         private void DoctorButton(object sender, RoutedEventArgs e)

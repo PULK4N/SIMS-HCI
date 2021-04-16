@@ -12,5 +12,5 @@ public class Anamnesis
     public long AnamnesisId { get; set; }
     public DateTime TimeOf { get; set; }
     public String Description { get; set; }
-
+    public Prescription Prescription { get; set; }
 }

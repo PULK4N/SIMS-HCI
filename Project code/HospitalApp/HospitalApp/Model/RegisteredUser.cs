@@ -13,7 +13,8 @@ public class RegisteredUser
     public String EncryptedID{ get; set; }
     public String Username{ get; set; }
     public String Password{ get; set; }
-   
+    public Enums.UserType UserType { get; set; }
+
     public User User{ get; set; }
 
 }

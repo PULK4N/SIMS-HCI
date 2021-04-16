@@ -4,11 +4,13 @@
 // Purpose: Definition of Class DoctorsReferral
 
 using System;
+using System.ComponentModel.DataAnnotations;
 
 public class DoctorsReferral
 {
-    private long DoctorReferralId;
-    private DateTime Date;
-    private string Type;
-    
+    [Key]
+    public long DoctorReferralId { get; set; }
+    public DateTime Date { get; set; }
+    public string Type { get; set; }
+
 }

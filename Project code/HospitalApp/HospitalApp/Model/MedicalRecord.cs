@@ -13,7 +13,6 @@ public class MedicalRecord
     public float LastMesuredHeight { get; set; }
     public float LastMesuredWeight { get; set; }
 
-    public Prescription prescription;
     public System.Collections.Generic.List<Anamnesis> anamnesis;
     
     public System.Collections.Generic.List<Anamnesis> Anamnesis
