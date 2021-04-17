@@ -27,7 +27,7 @@ public class AppointmentService : IAppointmentService
 
     public List<Appointment> DoctorListAppointments(long doctorId)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.DoctorListAppointments(doctorId);
     }
 
     public bool DoctorUpdateAppointment(Appointment appointment)

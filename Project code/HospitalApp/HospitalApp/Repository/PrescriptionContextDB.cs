@@ -11,7 +11,7 @@ public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 {
     public DbSet<Prescription> Prescriptions { get; set; }
 
-    public PrescriptionContextDB() : base()
+    public PrescriptionContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }

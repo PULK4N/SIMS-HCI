@@ -8,9 +8,9 @@ using System;
 
 public class GuestPatientController
 {
-    private readonly GuestPatientService _guestPatientService;
+    private readonly IGuestPatientService _guestPatientService;
 
-    public GuestPatientController(GuestPatientService guestPatientService)
+    public GuestPatientController(IGuestPatientService guestPatientService)
     {
         _guestPatientService = guestPatientService;
     }

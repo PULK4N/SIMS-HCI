@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migrationModel1 : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -33,13 +33,10 @@
                         Period = c.String(),
                         Date = c.DateTime(nullable: false),
                         Doctor_DoctorId = c.Long(),
-                        Patient_PatientId = c.Long(),
                     })
                 .PrimaryKey(t => t.PrescriptionId)
                 .ForeignKey("dbo.Doctors", t => t.Doctor_DoctorId)
-                .ForeignKey("dbo.Patients", t => t.Patient_PatientId)
-                .Index(t => t.Doctor_DoctorId)
-                .Index(t => t.Patient_PatientId);
+                .Index(t => t.Doctor_DoctorId);
             
             CreateTable(
                 "dbo.Medicines",
@@ -82,10 +79,11 @@
                         DoctorId = c.Long(nullable: false, identity: true),
                         AboutMe = c.String(),
                         Specialization = c.Int(nullable: false),
-                        Employee_EmployeeId = c.Long(),
+                        Name = c.String(),
+                        Employee_EmployeeId = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.DoctorId)
-                .ForeignKey("dbo.Employees", t => t.Employee_EmployeeId)
+                .ForeignKey("dbo.Employees", t => t.Employee_EmployeeId, cascadeDelete: true)
                 .Index(t => t.Employee_EmployeeId);
             
             CreateTable(
@@ -96,29 +94,31 @@
                         Salary = c.Single(nullable: false),
                         AnnualLeave = c.Int(nullable: false),
                         SickLeave = c.Int(nullable: false),
-                        User_UserId = c.Long(),
+                        User_UserId = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.EmployeeId)
-                .ForeignKey("dbo.Users", t => t.User_UserId)
+                .ForeignKey("dbo.Users", t => t.User_UserId, cascadeDelete: true)
                 .Index(t => t.User_UserId);
             
             CreateTable(
                 "dbo.Users",
                 c => new
                     {
-                        UserId = c.Long(nullable: false),
+                        UserId = c.Long(nullable: false, identity: true),
                         FirstName = c.String(nullable: false, maxLength: 50),
                         LastName = c.String(nullable: false, maxLength: 50),
                         DateOfBirth = c.DateTime(nullable: false),
                         Address = c.String(nullable: false, maxLength: 50),
                         PhoneNumber = c.String(nullable: false, maxLength: 50),
+                        Jmbg = c.Long(nullable: false),
                         EMail = c.String(nullable: false, maxLength: 50),
                         Sex = c.Int(nullable: false),
                         RelationshipStatus = c.Int(nullable: false),
+                        RegisteredUser_RegUserId = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.UserId)
-                .ForeignKey("dbo.RegisteredUsers", t => t.UserId)
-                .Index(t => t.UserId);
+                .ForeignKey("dbo.RegisteredUsers", t => t.RegisteredUser_RegUserId, cascadeDelete: true)
+                .Index(t => t.RegisteredUser_RegUserId);
             
             CreateTable(
                 "dbo.Notifications",
@@ -138,8 +138,8 @@
                     {
                         RegUserId = c.Long(nullable: false, identity: true),
                         EncryptedID = c.String(),
-                        Username = c.String(),
-                        Password = c.String(),
+                        Username = c.String(nullable: false),
+                        Password = c.String(nullable: false),
                         UserType = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.RegUserId);
@@ -282,14 +282,13 @@
             DropForeignKey("dbo.GuestPatients", "Appointment_AppointmentId", "dbo.Appointments");
             DropForeignKey("dbo.Appointments", "Room_RoomId", "dbo.Rooms");
             DropForeignKey("dbo.Patients", "User_UserId", "dbo.Users");
-            DropForeignKey("dbo.Prescriptions", "Patient_PatientId", "dbo.Patients");
             DropForeignKey("dbo.Patients", "MedicalRecord_MedicalRecordId", "dbo.MedicalRecords");
             DropForeignKey("dbo.Anamnesis", "MedicalRecord_MedicalRecordId", "dbo.MedicalRecords");
             DropForeignKey("dbo.Appointments", "Patient_PatientId", "dbo.Patients");
             DropForeignKey("dbo.Prescriptions", "Doctor_DoctorId", "dbo.Doctors");
             DropForeignKey("dbo.Doctors", "Employee_EmployeeId", "dbo.Employees");
             DropForeignKey("dbo.Employees", "User_UserId", "dbo.Users");
-            DropForeignKey("dbo.Users", "UserId", "dbo.RegisteredUsers");
+            DropForeignKey("dbo.Users", "RegisteredUser_RegUserId", "dbo.RegisteredUsers");
             DropForeignKey("dbo.Notifications", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.Appointments", "Doctor_DoctorId", "dbo.Doctors");
             DropForeignKey("dbo.Anamnesis", "Prescription_PrescriptionId", "dbo.Prescriptions");
@@ -301,14 +300,13 @@
             DropIndex("dbo.Patients", new[] { "User_UserId" });
             DropIndex("dbo.Patients", new[] { "MedicalRecord_MedicalRecordId" });
             DropIndex("dbo.Notifications", new[] { "User_UserId" });
-            DropIndex("dbo.Users", new[] { "UserId" });
+            DropIndex("dbo.Users", new[] { "RegisteredUser_RegUserId" });
             DropIndex("dbo.Employees", new[] { "User_UserId" });
             DropIndex("dbo.Doctors", new[] { "Employee_EmployeeId" });
             DropIndex("dbo.Appointments", new[] { "Room_RoomId" });
             DropIndex("dbo.Appointments", new[] { "Patient_PatientId" });
             DropIndex("dbo.Appointments", new[] { "Doctor_DoctorId" });
             DropIndex("dbo.Medicines", new[] { "Prescription_PrescriptionId" });
-            DropIndex("dbo.Prescriptions", new[] { "Patient_PatientId" });
             DropIndex("dbo.Prescriptions", new[] { "Doctor_DoctorId" });
             DropIndex("dbo.Anamnesis", new[] { "MedicalRecord_MedicalRecordId" });
             DropIndex("dbo.Anamnesis", new[] { "Prescription_PrescriptionId" });

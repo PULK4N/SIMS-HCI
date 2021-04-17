@@ -22,22 +22,6 @@ C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\o
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\SecretaryWindow.g.cs
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\PatientWindow.baml
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\SecretaryWindow.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\CancelPage.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Doctor.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Patient.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\ReschedulePage.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\SchedulePage.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Secretary.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Steward.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\ViewPage.g.cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\CancelPage.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Doctor.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Patient.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\ReschedulePage.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\SchedulePage.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Secretary.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\Steward.baml
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\Pages\ViewPage.baml
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\bin\Debug\HospitalApp.exe.config
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\bin\Debug\HospitalApp.exe
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\bin\Debug\HospitalApp.pdb
@@ -79,4 +63,4 @@ E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\Hospi
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.csproj.CopyComplete
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.exe
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.pdb
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.migrationModel1.resources
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.initial.resources

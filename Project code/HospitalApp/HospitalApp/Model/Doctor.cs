@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class Doctor
 {
@@ -13,7 +14,8 @@ public class Doctor
     public long DoctorId { get; set; }
     public String AboutMe{ get; set; }
     public Enums.Specialization Specialization { get; set; }
-
+    public string Name { get; set; }
+    [Required, Index("uniqueEmpDoc", IsUnique = true)]
     public Employee Employee{ get; set; }
     
     public List<Prescription> prescription;

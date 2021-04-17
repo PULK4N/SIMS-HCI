@@ -5,6 +5,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class GuestPatient
 {
@@ -15,7 +16,7 @@ public class GuestPatient
     public String EmergencyInfo{ get; set; }
     [Required]
     public Appointment Appointment{ get; set; }
-    [Required]
+    [Required, Index("uniqueUserGuestUser", IsUnique = true)]
     public User User{ get; set; }
 
 }

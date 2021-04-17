@@ -7,9 +7,9 @@ using System;
 
 public class MedicalRecordController
 {
-    private readonly MedicalRecordService _medicalRecordService;
+    private readonly IMedicalRecordService _medicalRecordService;
 
-    public MedicalRecordController(MedicalRecordService medicalRecordService)
+    public MedicalRecordController(IMedicalRecordService medicalRecordService)
     {
         _medicalRecordService = medicalRecordService;
     }
