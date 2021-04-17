@@ -8,9 +8,9 @@ using System.Collections.Generic;
 
 public class AppointmentController
 {
-    private readonly AppointmentService _appointmentService;
+    private readonly IAppointmentService _appointmentService;
 
-    public AppointmentController(AppointmentService appointmentService)
+    public AppointmentController(IAppointmentService appointmentService)
     {
         _appointmentService = appointmentService;
     }
@@ -32,7 +32,7 @@ public class AppointmentController
     
     public List<Appointment> DoctorListAppointments(long doctorId)
     {
-       throw new NotImplementedException();
+        return _appointmentService.DoctorListAppointments(doctorId);
     }
     
     public Appointment GetById(long id)

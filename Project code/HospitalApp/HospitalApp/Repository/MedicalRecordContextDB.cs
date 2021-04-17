@@ -10,7 +10,7 @@ public class MedicalRecordContextDB : DbContext, IMedicalRecordRepository
 {
     public DbSet<MedicalRecord> MedicalRecords { get; set; }
 
-    public MedicalRecordContextDB() : base()
+    public MedicalRecordContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }

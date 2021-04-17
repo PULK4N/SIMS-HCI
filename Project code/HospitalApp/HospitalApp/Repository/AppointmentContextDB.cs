@@ -6,63 +6,154 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using System.Windows;
 
 public class AppointmentContextDB : DbContext, IAppointmentRepository
 {
     public DbSet<Appointment> Appointments { get; set; }
 
-    public AppointmentContextDB() : base()
+    public AppointmentContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
 
     public bool DoctorCreateAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Appointments.Add(appointment);
+            SaveChanges();
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
     public bool DoctorDeleteAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Appointments.Remove(Appointments.Find(appointment.AppointmentId));
+            SaveChanges();
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
     public List<Appointment> DoctorListAppointments(long doctorId)
     {
-        throw new NotImplementedException();
+        List<Appointment> appointments = (from app in Appointments where app.Doctor.DoctorId == doctorId select app).ToList();
+        return appointments;
     }
 
     public bool DoctorUpdateAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Appointment oldAppointment = Appointments.Find(appointment.AppointmentId);
+            oldAppointment.Begining = appointment.Begining;
+            oldAppointment.End = appointment.End;
+            SaveChanges();
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
-    public Appointment GetById(long id)
+    public Appointment GetById(long appointmentId)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return Appointments.Find(appointmentId);
+        }
+        catch
+        {
+            MessageBox.Show("We discovered an error while trying to acquire an appointment by Id");
+        }
+        return null;
     }
 
     public List<Appointment> PatentListAppointments(long patientID)
     {
-        throw new NotImplementedException();
+        try
+        {//select appointments with the date, than select the ones of the patient
+            return (from pApp in Appointments where pApp.Patient.PatientId == patientID select pApp).ToList();
+        }
+        catch
+        {
+
+        }
+        return null;
     }
 
     public bool PatientCancelAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        try
+        {//select appointments with the date, than select the ones of the patient
+            Appointments.Remove(Appointments.Find(appointment.AppointmentId));
+            SaveChanges();
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
     public List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment)
     {
-        throw new NotImplementedException();
+        try
+        {//select appointments with the date, than select the ones of the patient
+            return (from pApp in (from a in Appointments where a.Begining.Date == dateOfAppointment.Date select a) where pApp.Patient.PatientId == patientID select pApp).ToList();
+        }
+        catch
+        {
+
+        }
+        return null;
     }
 
     public bool PatientReScheduleAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Appointment oldAppointment = Appointments.Find(appointment.AppointmentId);
+            oldAppointment.Begining = appointment.Begining;
+            oldAppointment.End = appointment.End;
+            SaveChanges();
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 
     public bool PatientScheduleAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Appointments.Add(appointment);
+            SaveChanges();
+            return true;
+        }
+        catch
+        {
+
+        }
+        return false;
     }
 }

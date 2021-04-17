@@ -11,7 +11,7 @@ public class SecretaryContextDB : DbContext, ISecretaryRepository
 {
     public DbSet<Secretary> Secretaries { get; set; }
 
-    public SecretaryContextDB() : base()
+    public SecretaryContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<SecretaryContextDB, HospitalApp.Migrations.Configuration>());
     }

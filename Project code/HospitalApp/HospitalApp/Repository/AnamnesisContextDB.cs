@@ -11,7 +11,7 @@ public class AnamnesisContextDB : DbContext, IAnamnesisRepository
 {
     public DbSet<Anamnesis> Anamnesis { get; set; }
 
-    public AnamnesisContextDB() : base()
+    public AnamnesisContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }

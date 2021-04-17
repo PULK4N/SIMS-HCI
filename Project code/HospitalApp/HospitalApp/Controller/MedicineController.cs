@@ -8,9 +8,9 @@ using System.Collections.Generic;
 
 public class MedicineController
 {
-    private readonly MedicineService _medicineService;
+    private readonly IMedicineService _medicineService;
 
-    public MedicineController(MedicineService medicineService)
+    public MedicineController(IMedicineService medicineService)
     {
         _medicineService = medicineService;
     }

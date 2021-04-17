@@ -7,16 +7,62 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="109*"/>
-        </Grid.ColumnDefinitions>
-        <Button Content="Doctor" HorizontalAlignment="Left" Margin="269,374,0,0" VerticalAlignment="Top" Width="75" Click="DoctorButton"/>
-        <Button Content="Patient" HorizontalAlignment="Left" Margin="4,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.816,-0.013" Grid.Column="1" Click="PatientButton"/>
-        <Button Content="Secretary" HorizontalAlignment="Left" Margin="95,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Click="SecretaryButton"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="160,112,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="160,148,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="160,184,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <ListBox HorizontalAlignment="Left" Height="206" Margin="174,102,0,0" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+        <Canvas x:Name="MainCanvas" Margin="0,0,-0.4,0" Visibility="Hidden">
+            <Button Content="Doctor" HorizontalAlignment="Left" Margin="269,374,0,0" VerticalAlignment="Top" Width="75" Click="DoctorButton" Height="19"/>
+            <Button Content="Patient" HorizontalAlignment="Left" Margin="505,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.816,-0.013" Click="PatientButton" Height="19"/>
+            <Button Content="Secretary" HorizontalAlignment="Left" Margin="377,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="SecretaryButton" Height="19"/>
+        </Canvas>
+
+        <Canvas x:Name="PatientSchedulingCanvas" Visibility="Hidden" IsEnabled="False">
+            <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
+                <Button Content="Schedule Appointment " Margin="20,10,0,0" Click="ScheduleAppointments" />
+                <Button Content="View Scheduled Appointments " Margin="20,10,0,0" Click="ViewScheduledAppointments" />
+            </StackPanel>
+        </Canvas>
+
+        <Canvas x:Name="PatientSchedulingTime"  IsEnabled="False" Visibility="Hidden">
+            <Button Content="Confirm" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Width="94" Click="ConfirmButtonClick" Canvas.Left="135" Canvas.Top="313"/>
+            <Label Content="Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Width="84" Canvas.Left="47" Canvas.Top="150"/>
+            <Label Content="Time:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="47" Canvas.Top="193"/>
+            <TextBox x:Name="TimeInput" HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="28" RenderTransformOrigin="0.473,0.159" Canvas.Left="116" Canvas.Top="193"/>
+            <Label Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="47" Canvas.Top="250"/>
+            <ComboBox Name="DoctorPicker" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="28" Canvas.Left="116" Canvas.Top="250"/>
+            <DatePicker x:Name="DateInput" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="136" Canvas.Top="151"/>
+            <RadioButton Content="Doctor" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="116" Canvas.Top="109"/>
+            <RadioButton Content="Date and Time" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="209" Canvas.Top="112"/>
+            <Label Content="Priority:" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.411,2.059" Canvas.Left="47" Canvas.Top="103"/>
+        </Canvas>
+
+        <Canvas x:Name="PatientListAppointments">
+
+            <DataGrid x:Name="dataGridAppointments" AutoGenerateColumns="False" ItemsSource="{Binding Appointments}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="111" VerticalAlignment="Top" Width="408" Canvas.Left="376" Canvas.Top="52">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"/>
+                    <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}" />
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Begining,StringFormat='dd MMM yyyy hh:mm'}" Width="*" />
+                    <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="buttonDelete" Content="Reschedule selected" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+                  Width="111" Background="White" Foreground="#FF707070" Click="modifyAppointment" Canvas.Left="536" Canvas.Top="183"/>
+            <Button x:Name="buttonModify" Content="Delete selected" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+                  Width="111" Background="White" Foreground="#FF707070" Click="deleteAppointment" Canvas.Left="673" Canvas.Top="183"/>
+
+            <DataGrid x:Name="dataGridReScheduledAppointments" AutoGenerateColumns="False" ItemsSource="{Binding ReSchAppointments}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="111" VerticalAlignment="Top" Width="408" Canvas.Left="376" Canvas.Top="231">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"/>
+                    <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}" />
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Begining,StringFormat='dd MMM yyyy hh:mm'}" Width="*" />
+                    <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="confirmReschedule" Content="Reschedule selected" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+            Width="111" Background="White" Foreground="#FF707070" Click="reScheduleAppointment" Margin="673,354,0,0"/>
+        </Canvas>
+
     </Grid>
 </Window>

@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class Patient
 {
@@ -18,75 +19,28 @@ public class Patient
     [Key]
     public long PatientId{ get; set; }
 
-    public List<Appointment> appointment;
+    public List<Appointment> appointments;
     public MedicalRecord MedicalRecord{ get; set; }
 
-    [Required]
+    [Required, Index("uniqueUserPat", IsUnique = true)]
     public User User { get; set; }
 
-    public List<Prescription> prescription;
 
-    #region Getters and setters
-
-    public List<Prescription> Prescription
-    {
-       get
-       {
-          if (prescription == null)
-             prescription = new List<Prescription>();
-          return prescription;
-       }
-       set
-       {
-          RemoveAllPrescription();
-          if (value != null)
-          {
-             foreach (Prescription oPrescription in value)
-                AddPrescription(oPrescription);
-          }
-       }
-    }
-    
-    public void AddPrescription(Prescription newPrescription)
-    {
-       if (newPrescription == null)
-          return;
-       if (this.prescription == null)
-          this.prescription = new List<Prescription>();
-       if (!this.prescription.Contains(newPrescription))
-          this.prescription.Add(newPrescription);
-    }
-    
-    public void RemovePrescription(Prescription oldPrescription)
-    {
-       if (oldPrescription == null)
-          return;
-       if (this.prescription != null)
-          if (this.prescription.Contains(oldPrescription))
-             this.prescription.Remove(oldPrescription);
-    }
-
-    public void RemoveAllPrescription()
-    {
-       if (prescription != null)
-          prescription.Clear();
-    }
-
-    public List<Appointment> Appointment
+    public List<Appointment> Appointments
     {
         get
         {
-            if (appointment == null)
-                appointment = new List<Appointment>();
-            return appointment;
+            if (appointments == null)
+                appointments = new List<Appointment>();
+            return appointments;
         }
         set
         {
-            RemoveAllAppointment();
+            RemoveAllAppointments();
             if (value != null)
             {
-                foreach (Appointment oAppointment in value)
-                    AddAppointment(oAppointment);
+                foreach (Appointment Appointment in value)
+                    AddAppointment(Appointment);
             }
         }
     }
@@ -95,10 +49,10 @@ public class Patient
     {
         if (newAppointment == null)
             return;
-        if (this.appointment == null)
-            this.appointment = new List<Appointment>();
-        if (!this.appointment.Contains(newAppointment))
-            this.appointment.Add(newAppointment);
+        if (this.appointments == null)
+            this.appointments = new List<Appointment>();
+        if (!this.appointments.Contains(newAppointment))
+            this.appointments.Add(newAppointment);
     }
 
 
@@ -106,17 +60,16 @@ public class Patient
     {
         if (oldAppointment == null)
             return;
-        if (this.appointment != null)
-            if (this.appointment.Contains(oldAppointment))
-                this.appointment.Remove(oldAppointment);
+        if (this.appointments != null)
+            if (this.appointments.Contains(oldAppointment))
+                this.appointments.Remove(oldAppointment);
     }
 
-    public void RemoveAllAppointment()
+    public void RemoveAllAppointments()
     {
-        if (appointment != null)
-            appointment.Clear();
+        if (appointments != null)
+            appointments.Clear();
     }
 
-    #endregion
 
 }

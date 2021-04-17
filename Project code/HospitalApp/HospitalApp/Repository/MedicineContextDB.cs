@@ -11,7 +11,7 @@ public class MedicineContextDB : DbContext, IMedicineRepository
 {
     public DbSet<Medicine> Medicines { get; set; }
 
-    public MedicineContextDB() : base()
+    public MedicineContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }

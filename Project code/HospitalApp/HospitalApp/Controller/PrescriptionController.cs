@@ -8,9 +8,9 @@ using System.Collections.Generic;
 
 public class PrescriptionController
 {
-    private readonly PrescriptionService _prescriptionService;
+    private readonly IPrescriptionService _prescriptionService;
 
-    public PrescriptionController(PrescriptionService prescriptionService)
+    public PrescriptionController(IPrescriptionService prescriptionService)
     {
         _prescriptionService = prescriptionService;
     }

@@ -3,11 +3,15 @@
 // Created: Sunday, March 28, 2021 10:59:52 AM
 // Purpose: Definition of Class User
 
+using Enums;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class User
 {
+
     [Key]
     public long UserId { get; set; }
 
@@ -31,7 +35,7 @@ public class User
     public String PhoneNumber{ get; set; }
 
     [Required]
-    public ulong Jmbg { get; set; }
+    public long Jmbg { get; set; }
 
     [Required]
     [StringLength(50)]
@@ -43,7 +47,7 @@ public class User
     [Required]
     public Enums.RelationshipStatus RelationshipStatus { get; set; }
 
-    [Required]
+    [Required,Index("uniqueRUser", IsUnique = true)]
     public RegisteredUser RegisteredUser{ get; set; }
 
     public System.Collections.Generic.List<Notification> notification;

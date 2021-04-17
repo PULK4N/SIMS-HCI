@@ -8,9 +8,9 @@ using System.Collections.Generic;
 
 public class AnamnesisController
 {
-    private readonly AnamnesisService _anamnesisService;
+    private readonly IAnamnesisService _anamnesisService;
 
-    public AnamnesisController(AnamnesisService anamnesisService)
+    public AnamnesisController(IAnamnesisService anamnesisService)
     {
         _anamnesisService = anamnesisService;
     }

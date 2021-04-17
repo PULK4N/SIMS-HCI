@@ -11,7 +11,7 @@ public class GuestPatientContextDB : DbContext, IGuestPatientRepository
 {
     public DbSet<GuestPatient> GuestPatient { get; set; }
 
-    public GuestPatientContextDB() : base()
+    public GuestPatientContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }

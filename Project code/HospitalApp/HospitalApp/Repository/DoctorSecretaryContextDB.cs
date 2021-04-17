@@ -13,7 +13,7 @@ public class DoctorSecretaryContextDB : DbContext, IDoctorRepository
 {
     public DbSet<Doctor> Doctors { get; set; }
 
-    public DoctorSecretaryContextDB() : base()
+    public DoctorSecretaryContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }

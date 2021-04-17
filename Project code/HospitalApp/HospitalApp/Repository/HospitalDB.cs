@@ -48,9 +48,9 @@ public class HospitalDB : DbContext, IHospitalDB
         }
     }
 
-    public HospitalDB() : base()
+    public HospitalDB() : base("HospitalDB")
     {
-        Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
 
     public bool ChangeAppointmentStatus(long appointMentID, Enums.AppointmentStatus status)
@@ -72,6 +72,12 @@ public class HospitalDB : DbContext, IHospitalDB
         }
         return false;
 
+    }
+
+    public List<Appointment> DoctorListAppointments(long doctorId)
+    {
+        List<Appointment> appointments = (from app in Appointments where app.Doctor.DoctorId == doctorId select app).ToList();
+        return appointments;
     }
 
     public bool CreatePatient(Patient patient)
