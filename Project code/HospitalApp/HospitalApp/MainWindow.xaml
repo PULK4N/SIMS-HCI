@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas x:Name="MainCanvas" Margin="0,0,-0.4,0" Visibility="Hidden">
+        <Canvas x:Name="MainCanvas" Margin="0,0,-0.4,0" >
             <Button Content="Doctor" HorizontalAlignment="Left" Margin="269,374,0,0" VerticalAlignment="Top" Width="75" Click="DoctorButton" Height="19"/>
             <Button Content="Patient" HorizontalAlignment="Left" Margin="505,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.816,-0.013" Click="PatientButton" Height="19"/>
             <Button Content="Secretary" HorizontalAlignment="Left" Margin="377,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="SecretaryButton" Height="19"/>
         </Canvas>
 
-        <Canvas x:Name="PatientSchedulingCanvas" Visibility="Hidden" IsEnabled="False">
+        <Canvas x:Name="PatientSchedulingCanvas" Visibility="Hidden">
             <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
                 <Button Content="Schedule Appointment " Margin="20,10,0,0" Click="ScheduleAppointments" />
                 <Button Content="View Scheduled Appointments " Margin="20,10,0,0" Click="ViewScheduledAppointments" />
             </StackPanel>
         </Canvas>
 
-        <Canvas x:Name="PatientSchedulingTime"  IsEnabled="False" Visibility="Hidden">
+        <Canvas x:Name="PatientSchedulingTime"  Visibility="Hidden">
             <Button Content="Confirm" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Width="94" Click="ConfirmButtonClick" Canvas.Left="135" Canvas.Top="313"/>
             <Label Content="Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Width="84" Canvas.Left="47" Canvas.Top="150"/>
             <Label Content="Time:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="47" Canvas.Top="193"/>
@@ -33,7 +33,7 @@
             <Label Content="Priority:" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.411,2.059" Canvas.Left="47" Canvas.Top="103"/>
         </Canvas>
 
-        <Canvas x:Name="PatientListAppointments">
+        <Canvas x:Name="PatientListAppointments" Visibility="Hidden">
 
             <DataGrid x:Name="dataGridAppointments" AutoGenerateColumns="False" ItemsSource="{Binding Appointments}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 

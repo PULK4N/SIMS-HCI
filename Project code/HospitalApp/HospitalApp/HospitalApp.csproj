@@ -65,8 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ControllerMapper.cs" />
     <Compile Include="Controller\AnamnesisController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
+    <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\GuestPatientController.cs" />
     <Compile Include="Controller\MedicalRecordController.cs" />
     <Compile Include="Controller\MedicineController.cs" />
@@ -76,6 +78,14 @@
     <Compile Include="Migrations\202104172334274_initial.designer.cs">
       <DependentUpon>202104172334274_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104182027363_migration2.cs" />
+    <Compile Include="Migrations\202104182027363_migration2.designer.cs">
+      <DependentUpon>202104182027363_migration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104182030513_migration3.cs" />
+    <Compile Include="Migrations\202104182030513_migration3.designer.cs">
+      <DependentUpon>202104182030513_migration3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
     <Compile Include="Model\Employee.cs" />
@@ -84,7 +94,7 @@
     <Compile Include="Model\Notification.cs" />
     <Compile Include="Repository\AnamnesisContextDB.cs" />
     <Compile Include="Repository\AppointmentContextDB.cs" />
-    <Compile Include="Repository\DoctorSecretaryContextDB.cs" />
+    <Compile Include="Repository\DoctorContextDB.cs" />
     <Compile Include="Repository\GuestPatientContextDB.cs" />
     <Compile Include="Repository\IAnamnesisRepository.cs" />
     <Compile Include="Repository\IAppointmentRepository.cs" />
@@ -100,6 +110,7 @@
     <Compile Include="Repository\PatientContextDB.cs" />
     <Compile Include="Repository\PrescriptionContextDB.cs" />
     <Compile Include="Repository\SecretaryContextDB.cs" />
+    <Compile Include="SchedulingManager.cs" />
     <Compile Include="SecretaryWindow.xaml.cs">
       <DependentUpon>SecretaryWindow.xaml</DependentUpon>
     </Compile>
@@ -181,6 +192,12 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202104172334274_initial.resx">
       <DependentUpon>202104172334274_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104182027363_migration2.resx">
+      <DependentUpon>202104182027363_migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104182030513_migration3.resx">
+      <DependentUpon>202104182030513_migration3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

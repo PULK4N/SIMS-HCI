@@ -13,7 +13,8 @@ public class Employee
     [Key]
     public long EmployeeId { get; set; }
     public float Salary { get; set; }
-    public uint WorkingHours { get; set; }
+    public DateTime BeginWorkingHours { get; set; }
+    public DateTime EndWorkingHours { get; set; }
     public int AnnualLeave { get; set; }
     public int SickLeave { get; set; }
     [Required, Index("uniqueUserEmp", IsUnique = true)]

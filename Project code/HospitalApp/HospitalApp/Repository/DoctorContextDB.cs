@@ -8,14 +8,14 @@ using Enums;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
-public class DoctorSecretaryContextDB : DbContext, IDoctorRepository
+public class DoctorContextDB : DbContext, IDoctorRepository
 {
     public DbSet<Doctor> Doctors { get; set; }
 
-    public DoctorSecretaryContextDB() : base("HospitalDB")
+    public DoctorContextDB() : base("HospitalDB")
     {
-        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
 
     public Doctor CreateDoctor(Doctor doctor)
@@ -33,11 +33,12 @@ public class DoctorSecretaryContextDB : DbContext, IDoctorRepository
         throw new NotImplementedException();
     }
 
-    public List<Doctor> GetAllDoctorsByRole(Specialization specialization)
+    public List<Doctor> GetAllDoctors(Enums.Specialization specialization)
     {
-        throw new NotImplementedException();
+        return (from doctor in Doctors
+                where doctor.Specialization == specialization
+                select doctor).ToList();
     }
-
     public List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment)
     {
         throw new NotImplementedException();
@@ -45,7 +46,7 @@ public class DoctorSecretaryContextDB : DbContext, IDoctorRepository
 
     public Doctor GetDoctorById(long id)
     {
-        throw new NotImplementedException();
+        return Doctors.Find(id);
     }
 
     public Doctor SaveDoctor(Doctor doctor)

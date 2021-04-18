@@ -17,9 +17,9 @@ public interface IDoctorRepository
 
     Doctor GetDoctorById(long id);
 
-    List<Doctor> GetAllDoctorsByRole(Enums.Specialization specialization);
-
     List<Doctor> GetAllDoctors();
+    List<Doctor> GetAllDoctors(Enums.Specialization specialization);
+
 
     List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment);
 

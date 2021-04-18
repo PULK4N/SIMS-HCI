@@ -64,3 +64,5 @@ E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\Hospi
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.exe
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.pdb
 C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.initial.resources
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.migration2.resources
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.migration3.resources

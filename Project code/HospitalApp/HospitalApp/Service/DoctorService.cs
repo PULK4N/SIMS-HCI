@@ -27,9 +27,9 @@ public class DoctorService : IDoctorService
         throw new NotImplementedException();
     }
 
-    public List<Doctor> GetAllDoctorsByRole(Specialization specialization)
+    public List<Doctor> GetAllDoctors(Enums.Specialization specialization)
     {
-        throw new NotImplementedException();
+        return _doctorRepository.GetAllDoctors(specialization);
     }
 
     public List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment)
@@ -39,7 +39,7 @@ public class DoctorService : IDoctorService
 
     public Doctor GetDoctorById(long id)
     {
-        throw new NotImplementedException();
+        return _doctorRepository.GetDoctorById(id);
     }
 
     public Doctor SaveDoctor(Doctor doctor)
