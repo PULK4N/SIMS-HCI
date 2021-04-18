@@ -11,12 +11,11 @@
             <ColumnDefinition Width="89*"/>
             <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Doctor" HorizontalAlignment="Left" Margin="269,374,0,0" VerticalAlignment="Top" Width="75" Click="DoctorButton"/>
-        <Button Content="Patient" HorizontalAlignment="Left" Margin="4,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.816,-0.013" Grid.Column="1" Click="PatientButton"/>
-        <Button Content="Secretary" HorizontalAlignment="Left" Margin="95,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Click="SecretaryButton"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="160,112,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="160,148,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="160,184,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <ListBox HorizontalAlignment="Left" Height="206" Margin="174,102,0,0" VerticalAlignment="Top" Width="322" Grid.ColumnSpan="2"/>
+        <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="2" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
+        <Button x:Name="ScheduledAppointmentsButton" Content="Scheduled Appointments" Grid.Column="1" HorizontalAlignment="Left" Margin="124,57,0,0" VerticalAlignment="Top" Width="209" Height="32" Click="Button_Click"/>
+        <Button x:Name="ScheduledSurgeriesButton" Content="Scheduled Surgeries" Grid.Column="1" HorizontalAlignment="Left" Margin="124,97,0,0" VerticalAlignment="Top" Width="209" Height="32"/>
+        <Button x:Name="CalendarButton" Content="Calendar" Grid.Column="1" HorizontalAlignment="Left" Margin="124,137,0,0" VerticalAlignment="Top" Width="209" Height="32"/>
+        <Button x:Name="MyPatientsButton" Content="My Patients" Grid.Column="1" HorizontalAlignment="Left" Margin="124,177,0,0" VerticalAlignment="Top" Width="209" Height="32"/>
+        <Button x:Name="PerscriptionsButton" Content="Perscriptions" Grid.Column="1" HorizontalAlignment="Left" Margin="124,216,0,0" VerticalAlignment="Top" Width="209" Height="32"/>
     </Grid>
 </Window>

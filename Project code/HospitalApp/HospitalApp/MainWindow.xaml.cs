@@ -21,33 +21,19 @@ namespace Bolnica
         public MainWindow()
         {
             InitializeComponent();
-            HospitalDB hospitalDB = new HospitalDB();
-            RegisteredUser tRegisterUser = new RegisteredUser { EncryptedID = "a121a", Username = "regUsernamae" };
-            User tUser = new User { FirstName = "QQQQ", LastName = "PuRRRps", RegisteredUser = tRegisterUser, DateOfBirth = new DateTime(2015, 12, 25) };
-
-            Patient patient = new Patient() { User = tUser };
-            hospitalDB.CreatePatient(patient);
-
-
-            List<Patient> patients = hospitalDB.GetAllPatients();
         }
 
-        private void DoctorButton(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var s = new Hospital.Pages.Doctor();
-            s.Show();
+            Hospital.Pages.ScheduledAppointments scheduledAppointments = new Hospital.Pages.ScheduledAppointments();
+            MainFrame.Content = scheduledAppointments;
+
         }
 
-        private void SecretaryButton(object sender, RoutedEventArgs e)
+        private void Frame_Navigated(object sender, NavigationEventArgs e)
         {
-            var s = new Hospital.Pages.Secretary();
-            s.Show();
+
         }
 
-        private void PatientButton(object sender, RoutedEventArgs e)
-        {
-            var s = new Hospital.Pages.Patient();
-            s.Show();
-        }
     }
 }
