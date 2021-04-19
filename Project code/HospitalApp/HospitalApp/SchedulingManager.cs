@@ -117,20 +117,13 @@ public static (List<Appointment>,bool) GetAppointments(SchedulingInformation sch
     }
     private static bool isMoreThan2DaysAppart(SchedulingInformation schedulingInformation)
     {//Ako je istog dana
-        if (schedulingInformation.Appointment.Begining.Date == schedulingInformation.TimeIntervalBeginning.Date)
+        if(schedulingInformation.Appointment.Begining.AddDays(2).CompareTo(schedulingInformation.TimeIntervalBeginning) > 0
+            && schedulingInformation.Appointment.Begining.AddDays(-2).CompareTo(schedulingInformation.TimeIntervalBeginning) < 0)
         {
-            if(schedulingInformation.Appointment.Begining.TimeOfDay > schedulingInformation.TimeIntervalBeginning.TimeOfDay)
-                return false;
-        }//Ako je sutradan
-        else if (schedulingInformation.Appointment.Begining.AddDays(1).Date == schedulingInformation.TimeIntervalBeginning.Date)
-        {
-            return false;
-        }//
-        else if (schedulingInformation.Appointment.Begining.AddDays(2).Date == schedulingInformation.TimeIntervalBeginning.Date)
-        {//10:30   11:30
-            if (schedulingInformation.Appointment.End.TimeOfDay < schedulingInformation.TimeIntervalBeginning.TimeOfDay)
+            if(DateTime.Now.AddDays(1).CompareTo(schedulingInformation.TimeIntervalBeginning) < 0 )
                 return false;
         }
+
         return true;
     }
     private static bool startsInLessThan24Hours(SchedulingInformation schedulingInformation)
