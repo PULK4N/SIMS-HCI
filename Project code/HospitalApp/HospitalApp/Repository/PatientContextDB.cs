@@ -101,15 +101,9 @@ public class PatientContextDB : DbContext, IPatientRepository
                                   select pat).Include(patient => patient.User).Include(patient => patient.User.RegisteredUser).First();
             return oldPatient;
         }
-        catch (DbEntityValidationException ex)
+        catch (Exception e)
         {
-            foreach (var entityValidationErrors in ex.EntityValidationErrors)
-            {
-                foreach (var validationError in entityValidationErrors.ValidationErrors)
-                {
-                    MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
-                }
-            }
+
         }
         return null;
     }

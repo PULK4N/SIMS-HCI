@@ -19,8 +19,10 @@ namespace Bolnica
 
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Appointment> Appointments { get; set; }
+        private Appointment appointmentToBeRescheduled { get; set; }
+        public ObservableCollection<Appointment> AppointmentsToSchedule { get; set; }
         public ObservableCollection<Doctor> Doctors { get; set; }
+        public ObservableCollection<Appointment> ScheduledAppointments { get; set; }
         public ObservableCollection<Appointment> ReSchAppointments { get; set; }
         public Patient Patient { get; set; }
         public Room Room { get; set; }
@@ -29,23 +31,13 @@ namespace Bolnica
             InitializeComponent();
             InstantiateLists();
             this.DataContext = this;
-            //HospitalDB hospitalDB = new HospitalDB();
-            //RegisteredUser tRegisterUser = new RegisteredUser { EncryptedID = "a121a", Username = "regUsernamae" };
-            //User tUser = new User { FirstName = "QQQQ", LastName = "PuRRRps", RegisteredUser = tRegisterUser, DateOfBirth = new DateTime(2015, 12, 25,10,0,0), Address = "AA", EMail = "AA@A", Jmbg = 2122999812132, PhoneNumber = "11111111", RelationshipStatus = Enums.RelationshipStatus.DIVORCED, Sex = Enums.Sex.HERMAPHRODITE };
-            //Patient patient = new Patient() { User = tUser };
-            //hospitalDB.CreatePatient(patient);
-            //List<Patient> patients = hospitalDB.GetAllPatients();
-
-            //GetMyAppointments(new SchedulingInformation() { 
-            //    TimeIntervalBeginning = new DateTime(2021,11,10,11,15,00),
-            //    TimeIntervalEnd = new DateTime(2021, 11, 10, 12, 30, 00)
-            //});;
 
         }
 
         private void InstantiateLists()
         {
-            Appointments = new ObservableCollection<Appointment>();
+            AppointmentsToSchedule = new ObservableCollection<Appointment>();
+            ScheduledAppointments = new ObservableCollection<Appointment>();
             ReSchAppointments = new ObservableCollection<Appointment>();
             Doctors = new ObservableCollection<Doctor>();
             Room = ControllerMapper.Instance.RoomController.GetRoom(1);
@@ -88,8 +80,17 @@ namespace Bolnica
         {
             this.PatientSchedulingTime.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Visible;
-            //GetMyAppointments();
+            addPatientScheduledAppointments();
+        }
 
+        private void addPatientScheduledAppointments()
+        {
+            ScheduledAppointments.Clear();
+            List<Appointment> appointments = ControllerMapper.Instance.AppointmentController.PatientListAppointments(Patient);
+            foreach(Appointment appointment in appointments)
+            {
+                ScheduledAppointments.Add(appointment);
+            }
         }
 
         private void ConfirmButtonClick(object sender, RoutedEventArgs e)
@@ -100,45 +101,83 @@ namespace Bolnica
                 TimeIntervalEnd = DateTime.Parse(DateInput.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + ScheduleTo.Text),
                 PatientSchedulingPriority = (bool)radioDoctor.IsChecked ? Enums.PatientSchedulingPriority.DOCTOR : Enums.PatientSchedulingPriority.DATE_TIME,
                 Patient = this.Patient,
-                Room = this.Room
+                Room = this.Room,
+                Doctor = (Doctor)DoctorPicker.SelectedItem
             };
             GetMyAppointments(schedulingInformation);
         }
 
         private void GetMyAppointments(SchedulingInformation schedulingInformation)
         {
-            
-            schedulingInformation.Doctor = ControllerMapper.Instance.DoctorController.GetDoctorById(1);
-
-
             var (appointmentList, priorityUsed) = SchedulingManager.GetAppointments(schedulingInformation);
             foreach (Appointment appointment in appointmentList)
             {
-                Appointments.Add(appointment);
+                AppointmentsToSchedule.Add(appointment);
             }
-
-            this.PatientSchedulingTime.Visibility = Visibility.Hidden;
-            this.PatientListAppointments.Visibility = Visibility.Visible;
         }
 
 
-        //TODO
         private void deleteAppointment(object sender, RoutedEventArgs e)
         {
             
-            Appointment appointment = dataGridAppointments.SelectedItem as Appointment;
-            
-            Appointments.Remove(appointment);
+            Appointment appointment = dataGridScheduledAppointmentsAppointments.SelectedItem as Appointment;
+            ControllerMapper.Instance.AppointmentController.PatientCancelAppointment(appointment);
+            ScheduledAppointments.Remove(appointment);
         }
 
+        private void confirmIntervalReSchedule(object sender, RoutedEventArgs e)
+        {
+            Appointment appointment = ((Appointment)dataGridScheduledAppointmentsAppointments.SelectedItem);
+            if (appointment != null)
+            {
+                SchedulingInformation schedulingInformation = new SchedulingInformation()
+                {
+                    Appointment = appointment,
+                    TimeIntervalBeginning = DateTime.Parse(ReScheduleDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + reScheduleFrom.Text),
+                    TimeIntervalEnd = DateTime.Parse(ReScheduleDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + reScheduleTo.Text),
+                    PatientSchedulingPriority = Enums.PatientSchedulingPriority.DOCTOR,
+                    Patient = this.Patient,
+                    Room = this.Room,
+                    Doctor = appointment.Doctor
+                };
+                GetMyRescheduledAppointments(schedulingInformation);
+                appointmentToBeRescheduled = appointment;
+            }
+        }
+
+        private void GetMyRescheduledAppointments(SchedulingInformation schedulingInformation)
+        {
+            if (SchedulingManager.ReSchedulingInformationValid(schedulingInformation))
+            {
+                //dataGridScheduledAppointmentsAppointments
+                var (appointmentList, priorityUsed) = SchedulingManager.GetAppointmentsToReschedule(schedulingInformation);
+                foreach (Appointment appointment in appointmentList)
+                {
+                    ReSchAppointments.Add(appointment);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error:\nYou can't reschedule an appointment");
+            }
+        }
         private void confirmSchedule(object sender, RoutedEventArgs e)
         {
-            ControllerMapper.Instance.AppointmentController.PatientScheduleAppointment(((Appointment)dataGridAppointments.SelectedItem)); 
+            Appointment appointment = ((Appointment)dataGridAppointments.SelectedItem);
+            ControllerMapper.Instance.AppointmentController.PatientScheduleAppointment(appointment);
+            AppointmentsToSchedule.Clear();
         }
 
         private void reScheduleAppointment(object sender, RoutedEventArgs e)
         {
-            Appointment appointment = dataGridReScheduledAppointments.SelectedItem as Appointment;
+            Appointment appointment = (Appointment)dataGridReScheduledAppointments.SelectedItem;
+            if (appointment != null)
+            {
+                appointment.AppointmentId = appointmentToBeRescheduled.AppointmentId;
+                ControllerMapper.Instance.AppointmentController.PatientReScheduleAppointment(appointment);
+                ReSchAppointments.Clear();
+                addPatientScheduledAppointments();
+            }    
         }
     }
 }

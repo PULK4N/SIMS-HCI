@@ -32,40 +32,55 @@
             <RadioButton GroupName="PriorityRad" x:Name="radioDoctor" Content="Doctor" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="116" Canvas.Top="109" IsChecked="True"/>
             <RadioButton GroupName="PriorityRad" Name="radioTime" Content="Date and Time" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="209" Canvas.Top="112" />
             <Label Content="Priority:" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.411,2.059" Canvas.Left="47" Canvas.Top="103"/>
-        </Canvas>
-
-        <Canvas x:Name="PatientListAppointments" Visibility="Hidden">
-
-            <DataGrid x:Name="dataGridAppointments" AutoGenerateColumns="False" ItemsSource="{Binding Appointments}"
+            <DataGrid x:Name="dataGridAppointments" AutoGenerateColumns="False" ItemsSource="{Binding AppointmentsToSchedule}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
-                  Height="111" VerticalAlignment="Top" Width="408" Canvas.Left="376" Canvas.Top="52">
+                  Height="253" VerticalAlignment="Top" Width="408" Canvas.Left="376" Canvas.Top="52">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"/>
                     <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}" />
-                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Begining, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Begining, StringFormat=dd MMM yyyy hh:mm}" Width="130" />
                     <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor}" Width="*"/>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="buttonSchedule" Click="confirmSchedule" Content="Schedule appointment" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
-                  Width="111" Background="White" Foreground="#FF707070" Canvas.Left="673" Canvas.Top="186"/>
+                  Width="111" Background="White" Foreground="#FF707070" Canvas.Left="673" Canvas.Top="331"/>
+        </Canvas>
 
-            <DataGrid x:Name="dataGridReScheduledAppointments" AutoGenerateColumns="False" ItemsSource="{Binding ReSchAppointments}"
+        <Canvas x:Name="PatientListAppointments" Visibility="Hidden">
+            <DataGrid x:Name="dataGridScheduledAppointmentsAppointments" AutoGenerateColumns="False" ItemsSource="{Binding ScheduledAppointments}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
-                  Height="111" VerticalAlignment="Top" Width="408" Canvas.Left="376" Canvas.Top="231">
+                  Height="253" VerticalAlignment="Top" Width="336" Canvas.Left="10" Canvas.Top="61">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"/>
                     <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}" />
                     <DataGridTextColumn Header="Date and Time" Binding="{Binding Begining, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
                     <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor}" Width="*"/>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="buttonReSchedule" Content="Delete selected" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
-                  Width="111" Background="White" Foreground="#FF707070" Click="deleteAppointment" Canvas.Left="557" Canvas.Top="354"/>
-            <Button x:Name="confirmReschedule" Content="Reschedule selected" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
-            Width="111" Background="White" Foreground="#FF707070" Click="reScheduleAppointment" Margin="673,354,0,0"/>
+            <Button x:Name="showReschedulingAppointmentsPossibilities" Click="confirmIntervalReSchedule" Content="Confirm new interval" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+                  Width="164" Background="White" Foreground="#FF707070" Canvas.Left="182" Canvas.Top="369"/>
+            <xctk:TimePicker x:Name="reScheduleFrom" Canvas.Left="10" Canvas.Top="329" Width="67"/>
+            <xctk:TimePicker x:Name="reScheduleTo" Canvas.Left="107" Canvas.Top="329" Width="67"/>
 
-            <xctk:TimePicker x:Name="reScheduleFrom" Canvas.Left="376" Canvas.Top="363" Width="67"/>
-            <xctk:TimePicker x:Name="reScheduleTo" Canvas.Left="443" Canvas.Top="363" Width="67"/>
+            <Button x:Name="buttonReSchedule" Content="Delete selected" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+                  Width="111" Background="White" Foreground="#FF707070" Click="deleteAppointment" Canvas.Left="235" Canvas.Top="329"/>
+            <DataGrid x:Name="dataGridReScheduledAppointments" AutoGenerateColumns="False" ItemsSource="{Binding ReSchAppointments}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="253" VerticalAlignment="Top" Width="371" Canvas.Left="413" Canvas.Top="61">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"/>
+                    <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}" />
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Begining, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
+                    <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor}" Width="*"/>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="confirmReSchedule" Content="Reschedule selected" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+            Width="111" Background="White" Foreground="#FF707070" Click="reScheduleAppointment" Canvas.Left="673" Canvas.Top="329"/>
+            <DatePicker x:Name="ReScheduleDate" Canvas.Left="10" Canvas.Top="371"/>
+
         </Canvas>
 
     </Grid>

@@ -104,15 +104,21 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
         return null;
     }
 
-    public List<Appointment> PatentListAppointments(long patientID)
+    public List<Appointment> PatientListAppointments(Patient patient)
     {
         try
         {//select appointments with the date, than select the ones of the patient
-            return (from pApp in Appointments where pApp.Patient.PatientId == patientID select pApp).ToList();
+            return (from pApp in Appointments where pApp.Patient.PatientId == patient.PatientId select pApp).Include(App => App.Doctor).ToList();
         }
-        catch
+        catch (DbEntityValidationException ex)
         {
-
+            foreach (var entityValidationErrors in ex.EntityValidationErrors)
+            {
+                foreach (var validationError in entityValidationErrors.ValidationErrors)
+                {
+                    MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                }
+            }
         }
         return null;
     }
@@ -125,9 +131,15 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
             SaveChanges();
             return true;
         }
-        catch
+        catch (DbEntityValidationException ex)
         {
-
+            foreach (var entityValidationErrors in ex.EntityValidationErrors)
+            {
+                foreach (var validationError in entityValidationErrors.ValidationErrors)
+                {
+                    MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                }
+            }
         }
         return false;
     }
@@ -138,9 +150,15 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
         {//select appointments with the date, than select the ones of the patient
             return (from pApp in (from a in Appointments where a.Begining.Date == dateOfAppointment.Date select a) where pApp.Patient.PatientId == patientID select pApp).ToList();
         }
-        catch
+        catch (DbEntityValidationException ex)
         {
-
+            foreach (var entityValidationErrors in ex.EntityValidationErrors)
+            {
+                foreach (var validationError in entityValidationErrors.ValidationErrors)
+                {
+                    MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                }
+            }
         }
         return null;
     }
@@ -155,9 +173,15 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
             SaveChanges();
             return true;
         }
-        catch
+        catch (DbEntityValidationException ex)
         {
-
+            foreach (var entityValidationErrors in ex.EntityValidationErrors)
+            {
+                foreach (var validationError in entityValidationErrors.ValidationErrors)
+                {
+                    MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                }
+            }
         }
         return false;
     }

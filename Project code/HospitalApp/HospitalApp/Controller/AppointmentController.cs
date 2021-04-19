@@ -47,17 +47,17 @@ public class AppointmentController
     
     public bool PatientCancelAppointment(Appointment appointment)
     {
-       throw new NotImplementedException();
+        return _appointmentService.PatientCancelAppointment(appointment);
     }
     
     public bool PatientReScheduleAppointment(Appointment appointment)
     {
-       throw new NotImplementedException();
+        return  _appointmentService.PatientReScheduleAppointment(appointment);
     }
     
-    public List<Appointment> PatentListAppointments(long patientID)
+    public List<Appointment> PatientListAppointments(Patient patient)
     {
-       throw new NotImplementedException();
+        return _appointmentService.PatientListAppointments(patient);
     }
     
     public List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment)
