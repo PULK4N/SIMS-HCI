@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class migration1 : DbMigration
     {
         public override void Up()
         {
@@ -92,6 +92,8 @@
                     {
                         EmployeeId = c.Long(nullable: false, identity: true),
                         Salary = c.Single(nullable: false),
+                        BeginWorkingHours = c.DateTime(nullable: false),
+                        EndWorkingHours = c.DateTime(nullable: false),
                         AnnualLeave = c.Int(nullable: false),
                         SickLeave = c.Int(nullable: false),
                         User_UserId = c.Long(nullable: false),

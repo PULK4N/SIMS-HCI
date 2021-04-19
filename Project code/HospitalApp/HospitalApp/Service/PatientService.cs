@@ -25,9 +25,14 @@ public class PatientService : IPatientService
         throw new NotImplementedException();
     }
 
-    public Patient ReadPatient(Patient patient)
+    public Patient GetPatient(Patient patient)
     {
-        throw new NotImplementedException();
+        return _patientRepository.GetPatient(patient);
+    }
+
+    public Patient GetPatient(long patientId)
+    {
+        return _patientRepository.GetPatient(patientId);
     }
 
     public bool UpdatePatient(Patient patient)

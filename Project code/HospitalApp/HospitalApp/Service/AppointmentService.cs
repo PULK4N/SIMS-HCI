@@ -62,6 +62,6 @@ public class AppointmentService : IAppointmentService
 
     public bool PatientScheduleAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.PatientScheduleAppointment(appointment);
     }
 }

@@ -16,6 +16,15 @@ public class Patient
         this.User = patient.User;
     }
 
+    public Patient(long patientId, List<Appointment> appointments, MedicalRecord medicalRecord, User user, List<Appointment> newAppointments)
+    {
+        PatientId = patientId;
+        Appointments = newAppointments;
+        MedicalRecord = medicalRecord;
+        User = user;
+        Appointments = appointments;
+    }
+
     [Key]
     public long PatientId{ get; set; }
 

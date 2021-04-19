@@ -8,10 +8,12 @@ using System;
 public interface IPatientService
 {
    bool CreatePatient(String firstName, String lastName, String dateOfBirth, String address, String phoneNumber, int jmbg, String eMail, Enums.Sex sex);
-   
-   Patient ReadPatient(Patient patient);
-   
-   bool UpdatePatient(Patient patient);
+
+    Patient GetPatient(Patient patient);
+
+    Patient GetPatient(long patientId);
+
+    bool UpdatePatient(Patient patient);
    
    bool DeletePatient(Patient patient);
 

@@ -10,6 +10,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Employee
 {
+    public Employee()
+    {
+    }
+
+    public Employee(/*long employeeId, */float salary, DateTime beginWorkingHours, DateTime endWorkingHours, int annualLeave, int sickLeave, User user)
+    {
+    //    EmployeeId = employeeId;
+        Salary = salary;
+        BeginWorkingHours = beginWorkingHours;
+        EndWorkingHours = endWorkingHours;
+        AnnualLeave = annualLeave;
+        SickLeave = sickLeave;
+        User = user;
+    }
+
+
+
     [Key]
     public long EmployeeId { get; set; }
     public float Salary { get; set; }

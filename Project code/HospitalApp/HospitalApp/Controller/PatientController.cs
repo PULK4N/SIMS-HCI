@@ -19,12 +19,17 @@ public class PatientController
     {
        throw new NotImplementedException();
     }
-    
-    public Patient ReadPatient(Patient patient)
+
+    public Patient GetPatient(Patient patient)
     {
-       throw new NotImplementedException();
+        return _patientService.GetPatient(patient);
     }
-    
+
+    public Patient GetPatient(long patientId)
+    {
+        return _patientService.GetPatient(patientId);
+    }
+
     public bool UpdatePatient(String username, String password, Enums.UserType userType, String firstName, String lastName, DateTime dateOfBirth, String address, String phoneNumber, ulong jmbg, String eMail, Enums.RelationshipStatus sex, Enums.RelationshipStatus relationshipStatus)
     {
        throw new NotImplementedException();
