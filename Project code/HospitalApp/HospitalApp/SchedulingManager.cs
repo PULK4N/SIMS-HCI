@@ -13,7 +13,7 @@ public static class SchedulingManager
         //generate appointments
         while(firstAppointmentTime < schedulingInformation.TimeIntervalEnd)
         {
-            appointments.Add(new Appointment(firstAppointmentTime, firstAppointmentTime.AddMinutes(15),0, 0, schedulingInformation.Patient, schedulingInformation.Doctor,  null));
+            appointments.Add(new Appointment(firstAppointmentTime, firstAppointmentTime.AddMinutes(15),0, 0, schedulingInformation.Patient, schedulingInformation.Doctor,  schedulingInformation.Room));
             firstAppointmentTime = firstAppointmentTime.AddMinutes(15);
         }
     }
@@ -107,6 +107,63 @@ public static (List<Appointment>,bool) GetAppointments(SchedulingInformation sch
         return (appointmentsToSchedule, priorityApplied);
     }
 
+    public static (List<Appointment>, bool) GetAppointmentsToReschedule(SchedulingInformation schedulingInformation)
+    {
+        bool priorityApplied = false;
+        List<Appointment> alreadyScheduled = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(schedulingInformation.Doctor.DoctorId);
+        List<Appointment> appointmentsToSchedule = new List<Appointment>();
+        GenerateNewAppointments(appointmentsToSchedule, schedulingInformation);
+        return (appointmentsToSchedule,priorityApplied);
+    }
+    private static bool isMoreThan2DaysAppart(SchedulingInformation schedulingInformation)
+    {//Ako je istog dana
+        if (schedulingInformation.Appointment.Begining.Date == schedulingInformation.TimeIntervalBeginning.Date)
+        {
+            if(schedulingInformation.Appointment.Begining.TimeOfDay > schedulingInformation.TimeIntervalBeginning.TimeOfDay)
+                return false;
+        }//Ako je sutradan
+        else if (schedulingInformation.Appointment.Begining.AddDays(1).Date == schedulingInformation.TimeIntervalBeginning.Date)
+        {
+            return false;
+        }//
+        else if (schedulingInformation.Appointment.Begining.AddDays(2).Date == schedulingInformation.TimeIntervalBeginning.Date)
+        {//10:30   11:30
+            if (schedulingInformation.Appointment.End.TimeOfDay < schedulingInformation.TimeIntervalBeginning.TimeOfDay)
+                return false;
+        }
+        return true;
+    }
+    private static bool startsInLessThan24Hours(SchedulingInformation schedulingInformation)
+    {
+        if (DateTime.Now.Date == schedulingInformation.Appointment.Begining.Date)
+        {
+            return true;
+        }else if(DateTime.Now.Date == schedulingInformation.Appointment.Begining.AddDays(1).Date)
+        {//Starts in les than 24 hours if timeOfDay now is bigger than timeOfDay tomorrow appointment
+            if (DateTime.Now.Date.TimeOfDay > schedulingInformation.Appointment.Begining.TimeOfDay)
+                return true;
+        }
+        return false;
+    }
+
+    public static bool canReschedule(SchedulingInformation schedulingInformation)
+    {
+        if (startsInLessThan24Hours(schedulingInformation)) return false;
+        if (isMoreThan2DaysAppart(schedulingInformation)) return false;
+
+        return true;
+    }
+
+
+    public static bool ReSchedulingInformationValid(SchedulingInformation schedulingInformation)
+    {
+        if(canReschedule(schedulingInformation))
+        {
+            return true;
+        }
+        
+        return false;
+    }
 }
 
 public partial class SchedulingInformation
@@ -115,7 +172,8 @@ public partial class SchedulingInformation
     public Patient Patient { get; set; }
     public Doctor Doctor { get; set; }
     public Enums.PatientSchedulingPriority PatientSchedulingPriority { get; set; }
-    public DateTime TimeIntervalBeginning;
-    public DateTime TimeIntervalEnd;
+    public DateTime TimeIntervalBeginning { get; set; }
+    public DateTime TimeIntervalEnd { get; set; }
+    public Appointment Appointment { get; set; }
 }
 

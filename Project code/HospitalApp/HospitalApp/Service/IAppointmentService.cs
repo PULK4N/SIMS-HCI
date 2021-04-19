@@ -23,8 +23,8 @@ public interface IAppointmentService
    bool PatientCancelAppointment(Appointment appointment);
    
    bool PatientReScheduleAppointment(Appointment appointment);
-   
-   List<Appointment> PatentListAppointments(long patientID);
+
+    List<Appointment> PatientListAppointments(Patient patient);
    
    List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment);
 

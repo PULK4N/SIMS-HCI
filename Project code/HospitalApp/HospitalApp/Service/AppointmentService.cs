@@ -40,14 +40,14 @@ public class AppointmentService : IAppointmentService
         throw new NotImplementedException();
     }
 
-    public List<Appointment> PatentListAppointments(long patientID)
+    public List<Appointment> PatientListAppointments(Patient patient)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.PatientListAppointments(patient);
     }
 
     public bool PatientCancelAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.PatientCancelAppointment(appointment);
     }
 
     public List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment)
@@ -57,7 +57,7 @@ public class AppointmentService : IAppointmentService
 
     public bool PatientReScheduleAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.PatientReScheduleAppointment(appointment);
     }
 
     public bool PatientScheduleAppointment(Appointment appointment)

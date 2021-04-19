@@ -24,7 +24,7 @@ public interface IAppointmentRepository
    
    bool PatientReScheduleAppointment(Appointment appointment);
    
-   List<Appointment> PatentListAppointments(long patientID);
+   List<Appointment> PatientListAppointments(Patient patient);
    
    List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment);
 
