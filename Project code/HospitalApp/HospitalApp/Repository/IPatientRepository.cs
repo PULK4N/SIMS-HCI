@@ -8,10 +8,12 @@ using System;
 public interface IPatientRepository
 {
    bool CreatePatient(Patient patient);
-   
-   Patient ReadPatient(Patient patient);
-   
-   bool UpdatePatient(Patient patient);
+
+    Patient GetPatient(Patient patient);
+
+    Patient GetPatient(long patientId);
+
+    bool UpdatePatient(Patient patient);
    
    bool DeletePatient(Patient patient);
 

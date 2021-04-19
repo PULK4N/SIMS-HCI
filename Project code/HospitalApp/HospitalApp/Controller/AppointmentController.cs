@@ -42,7 +42,7 @@ public class AppointmentController
     
     public bool PatientScheduleAppointment(Appointment appointment)
     {
-       throw new NotImplementedException();
+        return _appointmentService.PatientScheduleAppointment(appointment);
     }
     
     public bool PatientCancelAppointment(Appointment appointment)

@@ -13,7 +13,7 @@ public static class SchedulingManager
         //generate appointments
         while(firstAppointmentTime < schedulingInformation.TimeIntervalEnd)
         {
-            appointments.Add(new Appointment() { Begining = firstAppointmentTime, End = firstAppointmentTime.AddMinutes(15),Doctor = schedulingInformation.Doctor, Patient = schedulingInformation.Patient });
+            appointments.Add(new Appointment(firstAppointmentTime, firstAppointmentTime.AddMinutes(15),0, 0, schedulingInformation.Patient, schedulingInformation.Doctor,  null));
             firstAppointmentTime = firstAppointmentTime.AddMinutes(15);
         }
     }
@@ -111,6 +111,7 @@ public static (List<Appointment>,bool) GetAppointments(SchedulingInformation sch
 
 public partial class SchedulingInformation
 {
+    public Room Room { get; set; }
     public Patient Patient { get; set; }
     public Doctor Doctor { get; set; }
     public Enums.PatientSchedulingPriority PatientSchedulingPriority { get; set; }

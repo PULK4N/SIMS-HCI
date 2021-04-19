@@ -63,6 +63,21 @@ E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\Hospi
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.csproj.CopyComplete
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.exe
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.pdb
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.initial.resources
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.migration2.resources
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.migration3.resources
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\HospitalApp.Migrations.migration1.resources

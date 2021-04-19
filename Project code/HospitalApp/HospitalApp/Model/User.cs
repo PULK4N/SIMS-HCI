@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class User
 {
 
+
     [Key]
     public long UserId { get; set; }
 
@@ -50,19 +51,54 @@ public class User
     [Required,Index("uniqueRUser", IsUnique = true)]
     public RegisteredUser RegisteredUser{ get; set; }
 
-    public System.Collections.Generic.List<Notification> notification;
+    public System.Collections.Generic.List<Notification> notifications;
+    //Possible error because of userId, but prefferable not to be set because of DB
+    public User(long userId, string firstName, string lastName, DateTime dateOfBirth, string address, string phoneNumber, long jmbg, string eMail, Sex sex, RelationshipStatus relationshipStatus, RegisteredUser registeredUser, List<Notification> notifications)
+    {
+        //UserId = userId;
+        FirstName = firstName;
+        LastName = lastName;
+        DateOfBirth = dateOfBirth;
+        Address = address;
+        PhoneNumber = phoneNumber;
+        Jmbg = jmbg;
+        EMail = eMail;
+        Sex = sex;
+        RelationshipStatus = relationshipStatus;
+        RegisteredUser = registeredUser;
+        Notifications = notifications;
+    }
 
-    public System.Collections.Generic.List<Notification> Notification
+    public User(User user)
+    {
+        this.FirstName = user.FirstName;
+        this.LastName = user.LastName;
+        this.DateOfBirth = user.DateOfBirth;
+        this.Address = user.Address;
+        this.PhoneNumber = user.PhoneNumber;
+        this.Jmbg = user.Jmbg;     
+        this.EMail = user.EMail;
+        this.Sex = user.Sex;
+        this.RelationshipStatus = user.RelationshipStatus;
+        this.RegisteredUser = user.RegisteredUser;
+        this.Notifications = user.Notifications;
+    }
+
+    public User()
+    {
+    }
+
+    public System.Collections.Generic.List<Notification> Notifications
     {
         get
         {
-            if (notification == null)
-                notification = new System.Collections.Generic.List<Notification>();
-            return notification;
+            if (notifications == null)
+                notifications = new System.Collections.Generic.List<Notification>();
+            return notifications;
         }
         set
         {
-            RemoveAllNotification();
+            RemoveAllNotifications();
             if (value != null)
             {
                 foreach (Notification oNotification in value)
@@ -76,10 +112,10 @@ public class User
     {
         if (newNotification == null)
             return;
-        if (this.notification == null)
-            this.notification = new System.Collections.Generic.List<Notification>();
-        if (!this.notification.Contains(newNotification))
-            this.notification.Add(newNotification);
+        if (this.notifications == null)
+            this.notifications = new System.Collections.Generic.List<Notification>();
+        if (!this.notifications.Contains(newNotification))
+            this.notifications.Add(newNotification);
     }
 
 
@@ -87,14 +123,14 @@ public class User
     {
         if (oldNotification == null)
             return;
-        if (this.notification != null)
-            if (this.notification.Contains(oldNotification))
-                this.notification.Remove(oldNotification);
+        if (this.notifications != null)
+            if (this.notifications.Contains(oldNotification))
+                this.notifications.Remove(oldNotification);
     }
 
-    public void RemoveAllNotification()
+    public void RemoveAllNotifications()
     {
-        if (notification != null)
-            notification.Clear();
+        if (notifications != null)
+            notifications.Clear();
     }
 }

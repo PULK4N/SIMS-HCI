@@ -12,7 +12,26 @@ using System.Linq;
 
 public class DoctorContextDB : DbContext, IDoctorRepository
 {
+    public DbSet<Anamnesis> Anamnesis { get; set; }
+    public DbSet<Appointment> Appointments { get; set; }
     public DbSet<Doctor> Doctors { get; set; }
+    public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<GuestPatient> GuestPatients { get; set; }
+    public DbSet<HospitalClinic> HospitalClinics { get; set; }
+    public DbSet<MedicalRecord> MedicalRecords { get; set; }
+    public DbSet<Medicine> Medicines { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
+    public DbSet<Patient> Patients { get; set; }
+    public DbSet<Prescription> Prescriptions { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Referal> Referals { get; set; }
+    public DbSet<RegisteredUser> RegisteredUsers { get; set; }
+    public DbSet<Reminder> Reminders { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Room> Rooms { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Secretary> Secretaries { get; set; }
 
     public DoctorContextDB() : base("HospitalDB")
     {
@@ -46,7 +65,9 @@ public class DoctorContextDB : DbContext, IDoctorRepository
 
     public Doctor GetDoctorById(long id)
     {
-        return Doctors.Find(id);
+        return (from doctor in Doctors
+                where doctor.DoctorId == id
+                select doctor).Include(doc => doc.Employee).Include(doc => doc.Employee.User).Include(doc => doc.Employee.User.RegisteredUser).First();
     }
 
     public Doctor SaveDoctor(Doctor doctor)

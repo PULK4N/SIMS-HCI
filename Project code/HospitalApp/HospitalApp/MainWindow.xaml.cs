@@ -20,12 +20,14 @@ namespace Bolnica
     public partial class MainWindow : Window
     {
         public ObservableCollection<Appointment> Appointments { get; set; }
+        public ObservableCollection<Doctor> Doctors { get; set; }
         public ObservableCollection<Appointment> ReSchAppointments { get; set; }
+        public Patient Patient { get; set; }
+        public Room Room { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            Appointments = new ObservableCollection<Appointment>();
-            ReSchAppointments = new ObservableCollection<Appointment>();
+            InstantiateLists();
             this.DataContext = this;
             //HospitalDB hospitalDB = new HospitalDB();
             //RegisteredUser tRegisterUser = new RegisteredUser { EncryptedID = "a121a", Username = "regUsernamae" };
@@ -39,6 +41,20 @@ namespace Bolnica
             //    TimeIntervalEnd = new DateTime(2021, 11, 10, 12, 30, 00)
             //});;
 
+        }
+
+        private void InstantiateLists()
+        {
+            Appointments = new ObservableCollection<Appointment>();
+            ReSchAppointments = new ObservableCollection<Appointment>();
+            Doctors = new ObservableCollection<Doctor>();
+            Room = ControllerMapper.Instance.RoomController.GetRoom(1);
+            Patient = ControllerMapper.Instance.PatientController.GetPatient(1);
+
+            foreach (Doctor doctor in ControllerMapper.Instance.DoctorController.GetAllDoctors(Enums.Specialization.NONE))
+            {
+                Doctors.Add(doctor);
+            }
         }
 
         private void DoctorButton(object sender, RoutedEventArgs e)
@@ -80,15 +96,18 @@ namespace Bolnica
         {
             SchedulingInformation schedulingInformation = new SchedulingInformation()
             {
-                TimeIntervalBeginning = DateTime.Parse(DateInput.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + TimeInput.Text),
-                TimeIntervalEnd = DateTime.Parse(DateInput.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + TimeInput.Text).AddHours(2),
-                PatientSchedulingPriority = Enums.PatientSchedulingPriority.DATE_TIME
+                TimeIntervalBeginning = DateTime.Parse(DateInput.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + ScheduleFrom.Text),
+                TimeIntervalEnd = DateTime.Parse(DateInput.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + ScheduleTo.Text),
+                PatientSchedulingPriority = (bool)radioDoctor.IsChecked ? Enums.PatientSchedulingPriority.DOCTOR : Enums.PatientSchedulingPriority.DATE_TIME,
+                Patient = this.Patient,
+                Room = this.Room
             };
             GetMyAppointments(schedulingInformation);
         }
 
         private void GetMyAppointments(SchedulingInformation schedulingInformation)
         {
+            
             schedulingInformation.Doctor = ControllerMapper.Instance.DoctorController.GetDoctorById(1);
 
 
@@ -112,9 +131,9 @@ namespace Bolnica
             Appointments.Remove(appointment);
         }
 
-        private void modifyAppointment(object sender, RoutedEventArgs e)
+        private void confirmSchedule(object sender, RoutedEventArgs e)
         {
-
+            ControllerMapper.Instance.AppointmentController.PatientScheduleAppointment(((Appointment)dataGridAppointments.SelectedItem)); 
         }
 
         private void reScheduleAppointment(object sender, RoutedEventArgs e)

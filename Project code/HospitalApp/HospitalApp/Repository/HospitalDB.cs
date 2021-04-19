@@ -95,7 +95,7 @@ public class HospitalDB : DbContext, IHospitalDB
         }
         catch
         {
-            
+            MessageBox.Show("Error HospitalDB");
         }
         return false;
     }
@@ -111,7 +111,7 @@ public class HospitalDB : DbContext, IHospitalDB
         }
         catch
         {
-
+            MessageBox.Show("Error HospitalDB");
         }
         return false;
     }
@@ -128,7 +128,7 @@ public class HospitalDB : DbContext, IHospitalDB
         }
         catch
         {
-
+            MessageBox.Show("Error HospitalDB");
         }
         return false;
     }

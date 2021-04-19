@@ -7,17 +7,34 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 
 public class PatientContextDB : DbContext, IPatientRepository
 {
+    public DbSet<Anamnesis> Anamnesis { get; set; }
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
+    public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
+    public DbSet<Employee> Employees { get; set; }
+    public DbSet<GuestPatient> GuestPatients { get; set; }
+    public DbSet<HospitalClinic> HospitalClinics { get; set; }
+    public DbSet<MedicalRecord> MedicalRecords { get; set; }
+    public DbSet<Medicine> Medicines { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
     public DbSet<Patient> Patients { get; set; }
+    public DbSet<Prescription> Prescriptions { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Referal> Referals { get; set; }
     public DbSet<RegisteredUser> RegisteredUsers { get; set; }
+    public DbSet<Reminder> Reminders { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Room> Rooms { get; set; }
     public DbSet<User> Users { get; set; }
-//    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Secretary> Secretaries { get; set; }
 
-    public PatientContextDB() : base()
+    public PatientContextDB() : base("HospitalDB")
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
@@ -61,15 +78,38 @@ public class PatientContextDB : DbContext, IPatientRepository
         return false;
     }
 
-    public Patient ReadPatient(Patient patient)
+    public Patient GetPatient(Patient patient)
     {
         try
         {
-            return Patients.Find(patient.PatientId);
+            Patient oldPatient = (from pat in Patients where pat.PatientId == patient.PatientId select pat).FirstOrDefault();
+            return oldPatient;
         }
         catch
         {
             MessageBox.Show("Error");
+        }
+        return null;
+    }
+
+    public Patient GetPatient(long patientId)
+    {
+        try
+        {
+            Patient oldPatient = (from pat in Patients
+                                  where pat.PatientId == patientId
+                                  select pat).Include(patient => patient.User).Include(patient => patient.User.RegisteredUser).First();
+            return oldPatient;
+        }
+        catch (DbEntityValidationException ex)
+        {
+            foreach (var entityValidationErrors in ex.EntityValidationErrors)
+            {
+                foreach (var validationError in entityValidationErrors.ValidationErrors)
+                {
+                    MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                }
+            }
         }
         return null;
     }

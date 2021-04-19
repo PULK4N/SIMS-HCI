@@ -28,6 +28,7 @@ public class ControllerMapper
     public MedicineController MedicineController { get; set; }
     public PatientController PatientController { get; set; }
     public PrescriptionController PrescriptionController { get; set; }
+    public RoomController RoomController { get; set; }
 
     private ControllerMapper() {
         this.AnamnesisController = new AnamnesisController(new AnamnesisService(new AnamnesisContextDB()));
@@ -38,6 +39,7 @@ public class ControllerMapper
         this.MedicineController = new MedicineController(new MedicineService(new MedicineContextDB()));
         this.PatientController = new PatientController(new PatientService(new PatientContextDB()));
         this.PrescriptionController = new PrescriptionController(new PrescriptionService(new PrescriptionContextDB()));
+        this.RoomController = new RoomController(new RoomService(new RoomContextDB()));
     }
 
 }

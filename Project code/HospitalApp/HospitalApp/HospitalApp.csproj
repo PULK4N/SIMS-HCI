@@ -59,6 +59,21 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -74,17 +89,10 @@
     <Compile Include="Controller\MedicineController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PrescriptionController.cs" />
-    <Compile Include="Migrations\202104172334274_initial.cs" />
-    <Compile Include="Migrations\202104172334274_initial.designer.cs">
-      <DependentUpon>202104172334274_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104182027363_migration2.cs" />
-    <Compile Include="Migrations\202104182027363_migration2.designer.cs">
-      <DependentUpon>202104182027363_migration2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202104182030513_migration3.cs" />
-    <Compile Include="Migrations\202104182030513_migration3.designer.cs">
-      <DependentUpon>202104182030513_migration3.cs</DependentUpon>
+    <Compile Include="Controller\RoomController.cs" />
+    <Compile Include="Migrations\202104191128020_migration1.cs" />
+    <Compile Include="Migrations\202104191128020_migration1.designer.cs">
+      <DependentUpon>202104191128020_migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
@@ -104,11 +112,13 @@
     <Compile Include="Repository\IMedicineRepository.cs" />
     <Compile Include="Repository\IPatientRepository.cs" />
     <Compile Include="Repository\IPrescriptionRepository.cs" />
+    <Compile Include="Repository\IRoomRepository.cs" />
     <Compile Include="Repository\ISecretaryRepository.cs" />
     <Compile Include="Repository\MedicalRecordContextDB.cs" />
     <Compile Include="Repository\MedicineContextDB.cs" />
     <Compile Include="Repository\PatientContextDB.cs" />
     <Compile Include="Repository\PrescriptionContextDB.cs" />
+    <Compile Include="Repository\RoomContextDB.cs" />
     <Compile Include="Repository\SecretaryContextDB.cs" />
     <Compile Include="SchedulingManager.cs" />
     <Compile Include="SecretaryWindow.xaml.cs">
@@ -126,11 +136,13 @@
     <Compile Include="Service\IMedicineService.cs" />
     <Compile Include="Service\IPatientService.cs" />
     <Compile Include="Service\IPrescriptionService.cs" />
+    <Compile Include="Service\IRoomService.cs" />
     <Compile Include="Service\ISecretaryService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\MedicineService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
+    <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -190,14 +202,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202104172334274_initial.resx">
-      <DependentUpon>202104172334274_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104182027363_migration2.resx">
-      <DependentUpon>202104182027363_migration2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104182030513_migration3.resx">
-      <DependentUpon>202104182030513_migration3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104191128020_migration1.resx">
+      <DependentUpon>202104191128020_migration1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
