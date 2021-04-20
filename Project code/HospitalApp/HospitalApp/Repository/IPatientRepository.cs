@@ -4,6 +4,7 @@
 // Purpose: Definition of Interface IPatientRepository
 
 using System;
+using System.Collections.Generic;
 
 public interface IPatientRepository
 {
@@ -16,5 +17,7 @@ public interface IPatientRepository
     bool UpdatePatient(Patient patient);
    
    bool DeletePatient(Patient patient);
+
+    List<Patient> GetPatients();
 
 }

@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 public class RoomService : IRoomService
 {
@@ -35,8 +36,15 @@ public class RoomService : IRoomService
         return _roomRepository.GetRoom(room);
     }
 
+    public List<Room> GetRooms()
+    {
+        return _roomRepository.GetRooms();
+    }
+
     public bool UpdateRoom(Room room)
     {
         throw new NotImplementedException();
     }
+
+
 }

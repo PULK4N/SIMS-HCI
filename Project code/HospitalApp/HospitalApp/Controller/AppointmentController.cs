@@ -15,19 +15,19 @@ public class AppointmentController
         _appointmentService = appointmentService;
     }
 
-    public bool DoctorCreateAppointment(DateTime begining, DateTime end, Enums.AppointmentStatus appointmentStatus, Enums.AppointmentType appointmentType)
+    public bool DoctorCreateAppointment(Appointment appointment)
     {
-       throw new NotImplementedException();
+        return _appointmentService.DoctorCreateAppointment(appointment);
     }
     
-    public bool DoctorUpdateAppointment(DateTime begining, DateTime end, Enums.AppointmentStatus appointmentStatus, Enums.AppointmentType appointmentType)
+    public bool DoctorUpdateAppointment(Appointment appointment)
     {
-       throw new NotImplementedException();
+        return _appointmentService.DoctorUpdateAppointment(appointment);
     }
     
     public bool DoctorDeleteAppointment(Appointment appointment)
     {
-       throw new NotImplementedException();
+        return _appointmentService.DoctorDeleteAppointment(appointment);
     }
     
     public List<Appointment> DoctorListAppointments(long doctorId)

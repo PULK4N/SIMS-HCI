@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public class RoomController
 {
@@ -32,6 +33,11 @@ public class RoomController
    public  Room GetRoom(Room room)
     {
         return _roomService.GetRoom(room);
+    }
+
+    public List<Room> GetRooms()
+    {
+        return _roomService.GetRooms();
     }
 
 }

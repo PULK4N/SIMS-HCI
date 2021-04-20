@@ -51,8 +51,8 @@ namespace Bolnica
 
         private void DoctorButton(object sender, RoutedEventArgs e)
         {
-            //var s = new HospitalApp.Pages.Doctor();
-            //s.Show();
+            var s = new DoctorWindow();
+            s.Show();
         }
 
         private void SecretaryButton(object sender, RoutedEventArgs e)
