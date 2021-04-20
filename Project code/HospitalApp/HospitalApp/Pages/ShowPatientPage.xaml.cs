@@ -30,4 +30,10 @@ public partial class ShowPatientPage : Window
         Phone.Text = ScheduledAppointments.patient.User.PhoneNumber;
         JMBG.Text = ScheduledAppointments.patient.User.Jmbg.ToString();
     }
+
+    private void WritePrescriptionButton_Click(object sender, RoutedEventArgs e)
+    {
+        var s = new PrescriptionWindow();
+        s.Show();
+    }
 }

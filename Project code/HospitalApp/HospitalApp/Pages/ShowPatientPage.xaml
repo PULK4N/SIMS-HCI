@@ -14,7 +14,7 @@
         <TextBox x:Name="Email" HorizontalAlignment="Left" Height="23" Margin="10,180,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="249"/>
         <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="10,212,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="249"/>
         <TextBox x:Name="JMBG" HorizontalAlignment="Left" Height="23" Margin="10,240,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="249"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="450,336,0,0" VerticalAlignment="Top" Width="178" Height="40"/>
+        <Button x:Name="WritePrescriptionButton" Content="Prescribe medicine" HorizontalAlignment="Left" Margin="450,336,0,0" VerticalAlignment="Top" Width="178" Height="40" Click="WritePrescriptionButton_Click"/>
         <DataGrid HorizontalAlignment="Left" Height="292" Margin="356,33,0,0" VerticalAlignment="Top" Width="363"/>
     </Grid>
 </Window>
