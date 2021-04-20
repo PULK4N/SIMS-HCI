@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\
+E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\
 HospitalApp
 none
 false
 DEBUG;TRACE
-C:\Users\Nikola\Documents\GitHub\SIMS-HCI\Project code\HospitalApp\HospitalApp\App.xaml
-3-1925286774
+E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\App.xaml
+61895959829
 
-861079235758
-211079143914
-MainWindow.xaml;PatientWindow.xaml;SecretaryWindow.xaml;
+89-301194197
+21-1729152541
+MainWindow.xaml;Pages\DoctorWindow.xaml;Pages\ScheduledAppointments.xaml;Pages\ShowPatientPage.xaml;PatientWindow.xaml;SecretaryWindow.xaml;
 
 False
 

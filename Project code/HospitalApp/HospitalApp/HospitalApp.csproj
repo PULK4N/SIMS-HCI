@@ -90,9 +90,9 @@
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PrescriptionController.cs" />
     <Compile Include="Controller\RoomController.cs" />
-    <Compile Include="Migrations\202104191128020_migration1.cs" />
-    <Compile Include="Migrations\202104191128020_migration1.designer.cs">
-      <DependentUpon>202104191128020_migration1.cs</DependentUpon>
+    <Compile Include="Migrations\202104192008194_Migration1.cs" />
+    <Compile Include="Migrations\202104192008194_Migration1.designer.cs">
+      <DependentUpon>202104192008194_Migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
@@ -100,6 +100,15 @@
     <Compile Include="Model\MedicalRecord.cs" />
     <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\Notification.cs" />
+    <Compile Include="Pages\DoctorWindow.xaml.cs">
+      <DependentUpon>DoctorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ScheduledAppointments.xaml.cs">
+      <DependentUpon>ScheduledAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShowPatientPage.xaml.cs">
+      <DependentUpon>ShowPatientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Repository\AnamnesisContextDB.cs" />
     <Compile Include="Repository\AppointmentContextDB.cs" />
     <Compile Include="Repository\DoctorContextDB.cs" />
@@ -161,6 +170,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\DoctorWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ScheduledAppointments.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ShowPatientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PatientWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -202,8 +223,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202104191128020_migration1.resx">
-      <DependentUpon>202104191128020_migration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104192008194_Migration1.resx">
+      <DependentUpon>202104192008194_Migration1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -218,9 +239,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
