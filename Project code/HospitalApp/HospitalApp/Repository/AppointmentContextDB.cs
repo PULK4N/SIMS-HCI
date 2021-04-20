@@ -42,7 +42,14 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {
-            Appointments.Add(appointment);
+            Appointment newAppointment = new Appointment(appointment.Begining,
+                                                         appointment.End, 
+                                                         appointment.AppointmentType, 
+                                                         appointment.AppointmentStatus, 
+                                                         Patients.Find(appointment.Patient.PatientId), 
+                                                         Doctors.Find(appointment.Doctor.DoctorId), 
+                                                         Rooms.Find(appointment.Room.RoomId));
+            Appointments.Add(newAppointment);
             SaveChanges();
             return true;
         }
@@ -70,7 +77,7 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
 
     public List<Appointment> DoctorListAppointments(long doctorId)
     {
-        List<Appointment> appointments = (from app in Appointments where app.Doctor.DoctorId == doctorId select app).ToList();
+        List<Appointment> appointments = (from app in Appointments where app.Doctor.DoctorId == doctorId select app).Include(a => a.Room).Include(a => a.Patient).ToList();
         return appointments;
     }
 
@@ -81,6 +88,9 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
             Appointment oldAppointment = Appointments.Find(appointment.AppointmentId);
             oldAppointment.Begining = appointment.Begining;
             oldAppointment.End = appointment.End;
+            oldAppointment.AppointmentType = appointment.AppointmentType;
+            oldAppointment.Patient = appointment.Patient;
+            oldAppointment.Room = appointment.Room;
             SaveChanges();
             return true;
         }

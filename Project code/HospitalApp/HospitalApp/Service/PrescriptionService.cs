@@ -17,7 +17,7 @@ public class PrescriptionService : IPrescriptionService
 
     public bool CreatePrescription(Prescription prescription)
     {
-        throw new NotImplementedException();
+        return _prescriptionRepository.CreatePrescription(prescription);
     }
 
     public bool DeletePrescription(Prescription prescription)

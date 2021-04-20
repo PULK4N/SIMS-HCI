@@ -6,6 +6,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Windows;
 
 public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 {
@@ -37,7 +39,28 @@ public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 
     public bool CreatePrescription(Prescription prescription)
     {
-        throw new NotImplementedException();
+        try
+        {
+            Prescription newPrescription = new Prescription(prescription.Dosage,
+                                                            prescription.Usage,
+                                                            prescription.Period,
+                                                            prescription.Date,
+                                                            prescription.medicine);
+            Prescriptions.Add(newPrescription);
+            SaveChanges();
+            return true;
+        }
+        catch (DbEntityValidationException ex)
+        {
+            foreach (var entityValidationErrors in ex.EntityValidationErrors)
+            {
+                foreach (var validationError in entityValidationErrors.ValidationErrors)
+                {
+                    MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                }
+            }
+        }
+        return false;
     }
 
     public bool DeletePrescription(Prescription prescription)

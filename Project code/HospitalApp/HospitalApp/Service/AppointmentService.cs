@@ -17,12 +17,12 @@ public class AppointmentService : IAppointmentService
 
     public bool DoctorCreateAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.DoctorCreateAppointment(appointment);
     }
 
     public bool DoctorDeleteAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.DoctorDeleteAppointment(appointment);
     }
 
     public List<Appointment> DoctorListAppointments(long doctorId)
@@ -32,7 +32,7 @@ public class AppointmentService : IAppointmentService
 
     public bool DoctorUpdateAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.DoctorUpdateAppointment(appointment);
     }
 
     public Appointment GetById(long id)

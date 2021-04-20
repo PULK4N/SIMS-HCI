@@ -4,6 +4,7 @@
 // Purpose: Definition of Class Prescription
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 public class Prescription
@@ -63,4 +64,15 @@ public class Prescription
             medicine.Clear();
     }
 
+    public Prescription() {}
+
+    public Prescription(/*long prescriptionId,*/ int dosage, string usage, string period, DateTime date, List<Medicine> medicine)
+    {
+        //PrescriptionId = prescriptionId;
+        Dosage = dosage;
+        Usage = usage;
+        Period = period;
+        Date = date;
+        Medicine = medicine;
+    }
 }
