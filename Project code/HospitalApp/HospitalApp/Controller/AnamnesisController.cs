@@ -15,26 +15,31 @@ public class AnamnesisController
         _anamnesisService = anamnesisService;
     }
 
-    public bool CreateAnamnesis(DateTime timeOf, String description)
+    public bool CreateAnamnesis(Anamnesis anamnesis)
     {
-       throw new NotImplementedException();
+        return _anamnesisService.CreateAnamnesis(anamnesis);
     }
     
-    public bool UpdateAnamnesis(DateTime timeOf, String description)
+    public bool UpdateAnamnesis(Anamnesis anamnesis)
     {
-       throw new NotImplementedException();
+        return _anamnesisService.UpdateAnamnesis(anamnesis);
     }
     
     public bool DeleteAnamnesis(Anamnesis anamnesis)
     {
-       throw new NotImplementedException();
+        return _anamnesisService.DeleteAnamnesis(anamnesis);
     }
     
     public Anamnesis GetAnamnesis(long anamnesisId)
     {
-       throw new NotImplementedException();
+        return _anamnesisService.GetAnamnesis(anamnesisId);
     }
-    
+
+    public Anamnesis GetAnamnesis(Anamnesis anamnesis)
+    {
+        return _anamnesisService.GetAnamnesis(anamnesis);
+    }
+
     public List<Anamnesis> GetAllPatientAnamnesis(long patientId)
     {
        throw new NotImplementedException();
