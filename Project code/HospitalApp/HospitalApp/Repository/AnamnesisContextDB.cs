@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 public class AnamnesisContextDB : DbContext, IAnamnesisRepository
 {
@@ -48,11 +49,23 @@ public class AnamnesisContextDB : DbContext, IAnamnesisRepository
 
     public Anamnesis GetAnamnesis(long anamnesisId)
     {
-        throw new NotImplementedException();
+        return Anamnesis.Include(a => a.Prescription).Where(a => a.AnamnesisId == anamnesisId).FirstOrDefault();
     }
 
     public bool UpdateAnamnesis(Anamnesis anamnesis)
     {
         throw new NotImplementedException();
+    }
+
+    public List<Anamnesis> GetPatientAnamnesis(Patient patient)
+    {
+        MedicalRecord medicalRecord = (from p in Patients where p.PatientId == patient.PatientId select p.MedicalRecord).FirstOrDefault();
+        return (from m in MedicalRecords where m.MedicalRecordId == medicalRecord.MedicalRecordId select m.Anamnesis) as List<Anamnesis>;
+        
+    }
+
+    public Anamnesis GetAnamnesis(Anamnesis anamnesis)
+    {
+        return Anamnesis.Include(a => a.Prescription).Where(a => a.AnamnesisId == anamnesis.AnamnesisId).FirstOrDefault();
     }
 }

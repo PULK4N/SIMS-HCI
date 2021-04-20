@@ -35,6 +35,11 @@ public class AnamnesisService : IAnamnesisService
         throw new NotImplementedException();
     }
 
+    public Anamnesis GetAnamnesis(Anamnesis anamnesis)
+    {
+        return _anamnesisRepository.GetAnamnesis(anamnesis);
+    }
+
     public bool UpdateAnamnesis(Anamnesis anamnesis)
     {
         throw new NotImplementedException();

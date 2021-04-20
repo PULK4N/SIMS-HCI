@@ -17,7 +17,7 @@ public class AppointmentService : IAppointmentService
 
     public bool DoctorCreateAppointment(Appointment appointment)
     {
-        throw new NotImplementedException();
+        return _appointmentRepository.DoctorCreateAppointment(appointment);
     }
 
     public bool DoctorDeleteAppointment(Appointment appointment)

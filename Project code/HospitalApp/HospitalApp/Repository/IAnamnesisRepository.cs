@@ -16,7 +16,9 @@ public interface IAnamnesisRepository
    bool DeleteAnamnesis(Anamnesis anamnesis);
    
    Anamnesis GetAnamnesis(long anamnesisId);
-   
+    Anamnesis GetAnamnesis(Anamnesis anamnesis);
+
+
    List<Anamnesis> GetAllPatientAnamnesis(long patientId);
 
 }
