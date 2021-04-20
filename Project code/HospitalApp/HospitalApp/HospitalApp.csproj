@@ -116,6 +116,7 @@
     <Compile Include="Repository\ISecretaryRepository.cs" />
     <Compile Include="Repository\MedicalRecordContextDB.cs" />
     <Compile Include="Repository\MedicineContextDB.cs" />
+    <Compile Include="Repository\NotificationManager.cs" />
     <Compile Include="Repository\PatientContextDB.cs" />
     <Compile Include="Repository\PrescriptionContextDB.cs" />
     <Compile Include="Repository\RoomContextDB.cs" />

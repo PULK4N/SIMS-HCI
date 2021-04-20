@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 {
@@ -47,7 +48,17 @@ public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 
     public List<Prescription> GetAllPatientPrescriptions(long patientId)
     {
-        throw new NotImplementedException();
+        Patient patient = (from p in Patients where p.PatientId == patientId select p)
+            .Include(p => p.MedicalRecord).Include(p => p.MedicalRecord.Anamnesis)
+            .Include(p => p.MedicalRecord.Anamnesis)
+            .First();
+        List<Prescription> prescriptions = new List<Prescription>();
+        foreach(Anamnesis a in patient.MedicalRecord.Anamnesis)
+        {
+            Anamnesis a1 = ControllerMapper.Instance.AnamnesisController.GetAnamnesis(a);
+            prescriptions.Add(a1.Prescription);
+        }
+        return prescriptions;
     }
 
     public Prescription GetPrescription(long prescriptionId)

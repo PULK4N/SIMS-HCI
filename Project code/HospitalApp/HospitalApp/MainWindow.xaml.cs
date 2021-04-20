@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,6 +25,8 @@ namespace Bolnica
         public ObservableCollection<Doctor> Doctors { get; set; }
         public ObservableCollection<Appointment> ScheduledAppointments { get; set; }
         public ObservableCollection<Appointment> ReSchAppointments { get; set; }
+        CancellationTokenSource CancellationTokenSource { get; set; }
+        CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
         public Room Room { get; set; }
         public MainWindow()
@@ -31,7 +34,9 @@ namespace Bolnica
             InitializeComponent();
             InstantiateLists();
             this.DataContext = this;
-
+            CancellationTokenSource = new CancellationTokenSource();
+            cancellationToken = CancellationTokenSource.Token;
+            
         }
 
         private void InstantiateLists()
@@ -65,9 +70,18 @@ namespace Bolnica
         {
             MainCanvas.Visibility = Visibility.Hidden;
             PatientSchedulingCanvas.Visibility = Visibility.Visible;
+            
+            
+        }
 
-            //var s = new Hospital.Pages.Patient();
-            //s.Show();
+        private void StartNotifications(object sender, RoutedEventArgs e)
+        {
+            new NotificationManager().StartTimer(cancellationToken);
+        }
+
+        private void EndNotifications(object sender, RoutedEventArgs e)
+        {
+            CancellationTokenSource.Cancel();
         }
 
         private void ScheduleAppointments(object sender, RoutedEventArgs e)
