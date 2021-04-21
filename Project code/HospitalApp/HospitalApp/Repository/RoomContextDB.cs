@@ -5,7 +5,9 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 public class RoomContextDB : DbContext, IRoomRepository
 {
@@ -57,5 +59,10 @@ public class RoomContextDB : DbContext, IRoomRepository
     public bool UpdateRoom(Room room)
     {
         throw new NotImplementedException();
+    }
+
+    public List<Room> GetRooms()
+    {
+        return Rooms.ToList();
     }
 }

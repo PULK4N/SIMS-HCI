@@ -82,7 +82,7 @@ public class PatientContextDB : DbContext, IPatientRepository
     {
         try
         {
-            Patient oldPatient = (from pat in Patients where pat.PatientId == patient.PatientId select pat).FirstOrDefault();
+            Patient oldPatient = (from pat in Patients where pat.PatientId == patient.PatientId select pat).Include(pat => pat.User).Include(pat => pat.User.RegisteredUser).First();
             return oldPatient;
         }
         catch
@@ -149,6 +149,11 @@ public class PatientContextDB : DbContext, IPatientRepository
             MessageBox.Show("Error while getting patient list, returning null");
         }
         return null;
+    }
+
+    public List<Patient> GetPatients()
+    {
+        return Patients.ToList();
     }
     //TO DO: add this one and upper to diagram, implement this
 

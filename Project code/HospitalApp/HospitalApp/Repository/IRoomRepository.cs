@@ -4,6 +4,7 @@
 // Purpose: Definition of Interface IRoomRepository
 
 using System;
+using System.Collections.Generic;
 
 public interface IRoomRepository
 {
@@ -17,4 +18,5 @@ public interface IRoomRepository
    
    Room GetRoom(Room room);
 
+   List<Room> GetRooms();
 }

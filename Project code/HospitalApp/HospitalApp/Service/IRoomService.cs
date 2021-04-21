@@ -4,6 +4,7 @@
 // Purpose: Definition of Interface IRoomService
 
 using System;
+using System.Collections.Generic;
 
 public interface IRoomService
 {
@@ -16,5 +17,7 @@ public interface IRoomService
    Room GetRoom(long roomId);
    
    Room GetRoom(Room room);
+
+   List<Room> GetRooms();
 
 }

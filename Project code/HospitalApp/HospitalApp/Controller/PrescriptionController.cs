@@ -15,9 +15,9 @@ public class PrescriptionController
         _prescriptionService = prescriptionService;
     }
 
-    public bool CreatePrescription(int dosage, String usage, String period, DateTime date)
+    public bool CreatePrescription(Prescription prescription)
     {
-       throw new NotImplementedException();
+        return _prescriptionService.CreatePrescription(prescription);
     }
     
     public bool UpdatePrescription(int dosage, String usage, String period, DateTime date)

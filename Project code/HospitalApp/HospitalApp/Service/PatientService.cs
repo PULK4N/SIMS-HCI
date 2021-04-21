@@ -6,6 +6,7 @@
 
 using Enums;
 using System;
+using System.Collections.Generic;
 
 public class PatientService : IPatientService
 {
@@ -38,5 +39,10 @@ public class PatientService : IPatientService
     public bool UpdatePatient(Patient patient)
     {
         throw new NotImplementedException();
+    }
+
+    public List<Patient> GetPatients()
+    {
+        return _patientRepository.GetPatients();
     }
 }

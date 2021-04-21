@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 public class PatientController
 {
@@ -38,5 +39,10 @@ public class PatientController
     public bool DeletePatient(Patient patient)
     {
        throw new NotImplementedException();
+    }
+
+    public List<Patient> GetPatients()
+    {
+        return _patientService.GetPatients();
     }
 }
