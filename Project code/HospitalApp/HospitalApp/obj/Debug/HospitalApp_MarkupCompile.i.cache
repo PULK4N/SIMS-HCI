@@ -4,17 +4,30 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
+C:\Users\Djole\Desktop\Pupi sims\SIMS-HCI\Project code\HospitalApp\HospitalApp\obj\Debug\
+=======
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\
+>>>>>>> master
 HospitalApp
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
+C:\Users\Djole\Desktop\Pupi sims\SIMS-HCI\Project code\HospitalApp\HospitalApp\App.xaml
+3-1925286774
+
+881589755499
+21-1566029799
+MainWindow.xaml;PatientWindow.xaml;SecretaryWindow.xaml;
+=======
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\App.xaml
 7414459307
 
 912086380723
 21-1729152541
 MainWindow.xaml;Pages\DoctorWindow.xaml;Pages\PrescriptionWindow.xaml;Pages\ScheduledAppointments.xaml;Pages\ShowPatientPage.xaml;PatientWindow.xaml;SecretaryWindow.xaml;
+>>>>>>> master
 
 True
 
