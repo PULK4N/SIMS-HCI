@@ -6,12 +6,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-<<<<<<< HEAD
 using System.Linq;
-=======
 using System.Data.Entity.Validation;
 using System.Windows;
->>>>>>> master
 
 public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 {

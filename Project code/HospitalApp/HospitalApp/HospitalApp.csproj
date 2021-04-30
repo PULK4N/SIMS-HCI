@@ -134,9 +134,6 @@
     <Compile Include="Repository\RoomContextDB.cs" />
     <Compile Include="Repository\SecretaryContextDB.cs" />
     <Compile Include="SchedulingManager.cs" />
-    <Compile Include="SecretaryWindow.xaml.cs">
-      <DependentUpon>SecretaryWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Service\AnamnesisService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DoctorService.cs" />
@@ -190,14 +187,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PatientWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SecretaryWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Appointment.cs" />
@@ -215,9 +204,6 @@
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Secretary.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="PatientWindow.xaml.cs">
-      <DependentUpon>PatientWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
