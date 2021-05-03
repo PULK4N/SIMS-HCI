@@ -4,30 +4,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-public class AnamnesisContextDB : DbContext, IAnamnesisRepository
+public class AnamnesisContextDB : IAnamnesisRepository
 {
-    public DbSet<Anamnesis> Anamnesis { get; set; }
-    public DbSet<Appointment> Appointments { get; set; }
-    public DbSet<Doctor> Doctors { get; set; }
-    public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
-    public DbSet<Employee> Employees { get; set; }
-    public DbSet<GuestPatient> GuestPatients { get; set; }
-    public DbSet<HospitalClinic> HospitalClinics { get; set; }
-    public DbSet<MedicalRecord> MedicalRecords { get; set; }
-    public DbSet<Medicine> Medicines { get; set; }
-    public DbSet<Notification> Notifications { get; set; }
-    public DbSet<Patient> Patients { get; set; }
-    public DbSet<Prescription> Prescriptions { get; set; }
-    public DbSet<Question> Questions { get; set; }
-    public DbSet<Referal> Referals { get; set; }
-    public DbSet<RegisteredUser> RegisteredUsers { get; set; }
-    public DbSet<Reminder> Reminders { get; set; }
-    public DbSet<Review> Reviews { get; set; }
-    public DbSet<Room> Rooms { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Secretary> Secretaries { get; set; }
 
-    public AnamnesisContextDB() : base("HospitalDB")
+    public AnamnesisContextDB()
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
@@ -39,33 +19,43 @@ public class AnamnesisContextDB : DbContext, IAnamnesisRepository
 
     public bool DeleteAnamnesis(Anamnesis anamnesis)
     {
-        throw new NotImplementedException();
-    }
-
-    public List<Anamnesis> GetAllPatientAnamnesis(long patientId)
-    {
-        throw new NotImplementedException();
+        anamnesis.RemoveAllPrescriptions();
+        anamnesis = HospitalDB.Instance.Anamnesis.Remove(anamnesis);
+        return anamnesis != null;//if anamnesis is not found, it's gonna get deleted
     }
 
     public Anamnesis GetAnamnesis(long anamnesisId)
     {
-        return Anamnesis.Include(a => a.Prescription).Where(a => a.AnamnesisId == anamnesisId).FirstOrDefault();
+        return (from a in HospitalDB.Instance.Anamnesis where a.AnamnesisId == anamnesisId select a)
+            .Include(a => a.Prescriptions)
+            .Include(a => a.Prescriptions)
+            .FirstOrDefault();
     }
 
     public bool UpdateAnamnesis(Anamnesis anamnesis)
     {
-        throw new NotImplementedException();
+        Anamnesis oldAnamnesis = HospitalDB.Instance.Anamnesis.Find(anamnesis.AnamnesisId);
+        if(oldAnamnesis != null)
+        {
+            oldAnamnesis.Description = anamnesis.Description;
+            oldAnamnesis.TimeOf = DateTime.Now;
+            return true;
+        }
+        return false;
     }
 
-    public List<Anamnesis> GetPatientAnamnesis(Patient patient)
+    public Anamnesis GetAnamnesisBy(Patient patient)
     {
-        MedicalRecord medicalRecord = (from p in Patients where p.PatientId == patient.PatientId select p.MedicalRecord).FirstOrDefault();
-        return (from m in MedicalRecords where m.MedicalRecordId == medicalRecord.MedicalRecordId select m.Anamnesis) as List<Anamnesis>;
-        
+        return (from p in HospitalDB.Instance.Patients where p.PatientId == patient.PatientId select p.MedicalRecord.Anamnesis)
+            .Include(a => a.Prescriptions)
+            .FirstOrDefault();
     }
 
     public Anamnesis GetAnamnesis(Anamnesis anamnesis)
     {
-        return Anamnesis.Include(a => a.Prescription).Where(a => a.AnamnesisId == anamnesis.AnamnesisId).FirstOrDefault();
+        return (from a in HospitalDB.Instance.Anamnesis where a.AnamnesisId == anamnesis.AnamnesisId select a)
+            .Include(a => a.Prescriptions)
+            .FirstOrDefault();
     }
+
 }

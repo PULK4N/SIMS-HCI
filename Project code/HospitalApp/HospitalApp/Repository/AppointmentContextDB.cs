@@ -10,30 +10,9 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 
-public class AppointmentContextDB : DbContext, IAppointmentRepository
+public class AppointmentContextDB : IAppointmentRepository
 {
-    public DbSet<Anamnesis> Anamnesis { get; set; }
-    public DbSet<Appointment> Appointments { get; set; }
-    public DbSet<Doctor> Doctors { get; set; }
-    public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
-    public DbSet<Employee> Employees { get; set; }
-    public DbSet<GuestPatient> GuestPatients { get; set; }
-    public DbSet<HospitalClinic> HospitalClinics { get; set; }
-    public DbSet<MedicalRecord> MedicalRecords { get; set; }
-    public DbSet<Medicine> Medicines { get; set; }
-    public DbSet<Notification> Notifications { get; set; }
-    public DbSet<Patient> Patients { get; set; }
-    public DbSet<Prescription> Prescriptions { get; set; }
-    public DbSet<Question> Questions { get; set; }
-    public DbSet<Referal> Referals { get; set; }
-    public DbSet<RegisteredUser> RegisteredUsers { get; set; }
-    public DbSet<Reminder> Reminders { get; set; }
-    public DbSet<Review> Reviews { get; set; }
-    public DbSet<Room> Rooms { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Secretary> Secretaries { get; set; }
-
-    public AppointmentContextDB() : base("HospitalDB")
+    public AppointmentContextDB()
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
@@ -42,15 +21,15 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {
-            Appointment newAppointment = new Appointment(appointment.Begining,
+            Appointment newAppointment = new Appointment(appointment.Beginning,
                                                          appointment.End, 
                                                          appointment.AppointmentType, 
-                                                         appointment.AppointmentStatus, 
-                                                         Patients.Find(appointment.Patient.PatientId), 
-                                                         Doctors.Find(appointment.Doctor.DoctorId), 
-                                                         Rooms.Find(appointment.Room.RoomId));
-            Appointments.Add(newAppointment);
-            SaveChanges();
+                                                         appointment.AppointmentStatus,
+                                                         HospitalDB.Instance.Patients.Find(appointment.Patient.PatientId),
+                                                         HospitalDB.Instance.Doctors.Find(appointment.Doctor.DoctorId),
+                                                         HospitalDB.Instance.Rooms.Find(appointment.Room.RoomId));
+            HospitalDB.Instance.Appointments.Add(newAppointment);
+            HospitalDB.Instance.SaveChanges();
             return true;
         }
         catch
@@ -64,8 +43,8 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {
-            Appointments.Remove(Appointments.Find(appointment.AppointmentId));
-            SaveChanges();
+            HospitalDB.Instance.Appointments.Remove(HospitalDB.Instance.Appointments.Find(appointment.AppointmentId));
+            HospitalDB.Instance.SaveChanges();
             return true;
         }
         catch
@@ -77,7 +56,7 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
 
     public List<Appointment> DoctorListAppointments(long doctorId)
     {
-        List<Appointment> appointments = (from app in Appointments where app.Doctor.DoctorId == doctorId select app).Include(a => a.Room).Include(a => a.Patient).ToList();
+        List<Appointment> appointments = (from app in HospitalDB.Instance.Appointments where app.Doctor.DoctorId == doctorId select app).Include(a => a.Room).Include(a => a.Patient).ToList();
         return appointments;
     }
 
@@ -85,13 +64,13 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {
-            Appointment oldAppointment = Appointments.Find(appointment.AppointmentId);
-            oldAppointment.Begining = appointment.Begining;
+            Appointment oldAppointment = HospitalDB.Instance.Appointments.Find(appointment.AppointmentId);
+            oldAppointment.Beginning = appointment.Beginning;
             oldAppointment.End = appointment.End;
             oldAppointment.AppointmentType = appointment.AppointmentType;
             oldAppointment.Patient = appointment.Patient;
             oldAppointment.Room = appointment.Room;
-            SaveChanges();
+            HospitalDB.Instance.SaveChanges();
             return true;
         }
         catch
@@ -105,7 +84,7 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {
-            return Appointments.Find(appointmentId);
+            return HospitalDB.Instance.Appointments.Find(appointmentId);
         }
         catch
         {
@@ -118,7 +97,7 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {//select appointments with the date, than select the ones of the patient
-            return (from pApp in Appointments where pApp.Patient.PatientId == patient.PatientId select pApp).Include(App => App.Doctor).ToList();
+            return (from pApp in HospitalDB.Instance.Appointments where pApp.Patient.PatientId == patient.PatientId select pApp).Include(App => App.Doctor).ToList();
         }
         catch (DbEntityValidationException ex)
         {
@@ -137,8 +116,8 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {//select appointments with the date, than select the ones of the patient
-            Appointments.Remove(Appointments.Find(appointment.AppointmentId));
-            SaveChanges();
+            HospitalDB.Instance.Appointments.Remove(HospitalDB.Instance.Appointments.Find(appointment.AppointmentId));
+            HospitalDB.Instance.SaveChanges();
             return true;
         }
         catch (DbEntityValidationException ex)
@@ -158,7 +137,7 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {//select appointments with the date, than select the ones of the patient
-            return (from pApp in (from a in Appointments where a.Begining.Date == dateOfAppointment.Date select a) where pApp.Patient.PatientId == patientID select pApp).ToList();
+            return (from pApp in (from a in HospitalDB.Instance.Appointments where a.Beginning.Date == dateOfAppointment.Date select a) where pApp.Patient.PatientId == patientID select pApp).ToList();
         }
         catch (DbEntityValidationException ex)
         {
@@ -177,10 +156,10 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {
-            Appointment oldAppointment = Appointments.Find(appointment.AppointmentId);
-            oldAppointment.Begining = appointment.Begining;
+            Appointment oldAppointment = HospitalDB.Instance.Appointments.Find(appointment.AppointmentId);
+            oldAppointment.Beginning = appointment.Beginning;
             oldAppointment.End = appointment.End;
-            SaveChanges();
+            HospitalDB.Instance.SaveChanges();
             return true;
         }
         catch (DbEntityValidationException ex)
@@ -200,13 +179,13 @@ public class AppointmentContextDB : DbContext, IAppointmentRepository
     {
         try
         {//TO DO: EDIT THIS
-            Appointment newAppointment = new Appointment(appointment.Begining, appointment.End, 0, 0,
-                Patients.Find(appointment.Patient.PatientId),Doctors.Find(appointment.Doctor.DoctorId)
-                ,Rooms.Find(appointment.Room.RoomId)) ;
+            Appointment newAppointment = new Appointment(appointment.Beginning, appointment.End, 0, 0,
+                HospitalDB.Instance.Patients.Find(appointment.Patient.PatientId), HospitalDB.Instance.Doctors.Find(appointment.Doctor.DoctorId)
+                , HospitalDB.Instance.Rooms.Find(appointment.Room.RoomId)) ;
             newAppointment.Patient.AddAppointment(newAppointment);
             newAppointment.Doctor.AddAppointment(newAppointment);
-            Appointments.Add(newAppointment);
-            SaveChanges();
+            HospitalDB.Instance.Appointments.Add(newAppointment);
+            HospitalDB.Instance.SaveChanges();
             return true;
         }
         catch (DbEntityValidationException ex)

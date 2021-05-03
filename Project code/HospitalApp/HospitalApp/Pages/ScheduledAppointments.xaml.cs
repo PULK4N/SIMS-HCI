@@ -123,7 +123,7 @@ public partial class ScheduledAppointments : Page
         else
             AppType = Enums.AppointmentType.SURGERY;
         appointment.AppointmentType = AppType;
-        appointment.Begining = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + BeginTime.Text);
+        appointment.Beginning = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + BeginTime.Text);
         appointment.End = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + EndTime.Text);
         appointment.Patient = PatientDropdown.SelectedItem as Patient;
         appointment.Room = RoomDropdown.SelectedItem as Room;

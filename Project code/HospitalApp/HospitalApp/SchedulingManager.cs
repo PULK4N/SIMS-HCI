@@ -27,10 +27,10 @@ public static class SchedulingManager
     private static bool isOverlapping(Appointment appointment, Appointment scheduledAppointment)
     {
         //see if appointments starts after or at the same time as already scheduled one
-        if(appointment.Begining.Date==scheduledAppointment.Begining.Date && 
-            appointment.Begining.TimeOfDay >= scheduledAppointment.Begining.TimeOfDay 
+        if(appointment.Beginning.Date==scheduledAppointment.Beginning.Date && 
+            appointment.Beginning.TimeOfDay >= scheduledAppointment.Beginning.TimeOfDay 
             //and see if it begings before appointment ended
-            && appointment.Begining.TimeOfDay < scheduledAppointment.End.TimeOfDay)
+            && appointment.Beginning.TimeOfDay < scheduledAppointment.End.TimeOfDay)
         {
             return true;
         }
@@ -117,8 +117,8 @@ public static (List<Appointment>,bool) GetAppointments(SchedulingInformation sch
     }
     private static bool isMoreThan2DaysAppart(SchedulingInformation schedulingInformation)
     {//Ako je istog dana
-        if(schedulingInformation.Appointment.Begining.AddDays(2).CompareTo(schedulingInformation.TimeIntervalBeginning) > 0
-            && schedulingInformation.Appointment.Begining.AddDays(-2).CompareTo(schedulingInformation.TimeIntervalBeginning) < 0)
+        if(schedulingInformation.Appointment.Beginning.AddDays(2).CompareTo(schedulingInformation.TimeIntervalBeginning) > 0
+            && schedulingInformation.Appointment.Beginning.AddDays(-2).CompareTo(schedulingInformation.TimeIntervalBeginning) < 0)
         {
             if(DateTime.Now.AddDays(1).CompareTo(schedulingInformation.TimeIntervalBeginning) < 0 )
                 return false;
@@ -128,12 +128,12 @@ public static (List<Appointment>,bool) GetAppointments(SchedulingInformation sch
     }
     private static bool startsInLessThan24Hours(SchedulingInformation schedulingInformation)
     {
-        if (DateTime.Now.Date == schedulingInformation.Appointment.Begining.Date)
+        if (DateTime.Now.Date == schedulingInformation.Appointment.Beginning.Date)
         {
             return true;
-        }else if(DateTime.Now.Date == schedulingInformation.Appointment.Begining.AddDays(1).Date)
+        }else if(DateTime.Now.Date == schedulingInformation.Appointment.Beginning.AddDays(1).Date)
         {//Starts in les than 24 hours if timeOfDay now is bigger than timeOfDay tomorrow appointment
-            if (DateTime.Now.Date.TimeOfDay > schedulingInformation.Appointment.Begining.TimeOfDay)
+            if (DateTime.Now.Date.TimeOfDay > schedulingInformation.Appointment.Beginning.TimeOfDay)
                 return true;
         }
         return false;

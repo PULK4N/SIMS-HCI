@@ -10,30 +10,9 @@ using System.Linq;
 using System.Data.Entity.Validation;
 using System.Windows;
 
-public class PrescriptionContextDB : DbContext, IPrescriptionRepository
+public class PrescriptionContextDB : IPrescriptionRepository
 {
-    public DbSet<Anamnesis> Anamnesis { get; set; }
-    public DbSet<Appointment> Appointments { get; set; }
-    public DbSet<Doctor> Doctors { get; set; }
-    public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
-    public DbSet<Employee> Employees { get; set; }
-    public DbSet<GuestPatient> GuestPatients { get; set; }
-    public DbSet<HospitalClinic> HospitalClinics { get; set; }
-    public DbSet<MedicalRecord> MedicalRecords { get; set; }
-    public DbSet<Medicine> Medicines { get; set; }
-    public DbSet<Notification> Notifications { get; set; }
-    public DbSet<Patient> Patients { get; set; }
-    public DbSet<Prescription> Prescriptions { get; set; }
-    public DbSet<Question> Questions { get; set; }
-    public DbSet<Referal> Referals { get; set; }
-    public DbSet<RegisteredUser> RegisteredUsers { get; set; }
-    public DbSet<Reminder> Reminders { get; set; }
-    public DbSet<Review> Reviews { get; set; }
-    public DbSet<Room> Rooms { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Secretary> Secretaries { get; set; }
-
-    public PrescriptionContextDB() : base("HospitalDB")
+    public PrescriptionContextDB()
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
@@ -42,13 +21,8 @@ public class PrescriptionContextDB : DbContext, IPrescriptionRepository
     {
         try
         {
-            Prescription newPrescription = new Prescription(prescription.Dosage,
-                                                            prescription.Usage,
-                                                            prescription.Period,
-                                                            prescription.Date,
-                                                            prescription.medicine);
-            Prescriptions.Add(newPrescription);
-            SaveChanges();
+            HospitalDB.Instance.Prescriptions.Add(prescription);
+            HospitalDB.Instance.SaveChanges();
             return true;
         }
         catch (DbEntityValidationException ex)
@@ -66,31 +40,56 @@ public class PrescriptionContextDB : DbContext, IPrescriptionRepository
 
     public bool DeletePrescription(Prescription prescription)
     {
-        throw new NotImplementedException();
+        return HospitalDB.Instance.Prescriptions.Remove(prescription) != null;
+        HospitalDB.Instance.SaveChanges();
     }
 
-    public List<Prescription> GetAllPatientPrescriptions(long patientId)
+    public List<Prescription> GetPatientPrescriptions(long patientId)
     {
-        Patient patient = (from p in Patients where p.PatientId == patientId select p)
+        Patient patient = (from p in HospitalDB.Instance.Patients where p.PatientId == patientId select p)
             .Include(p => p.MedicalRecord).Include(p => p.MedicalRecord.Anamnesis)
             .Include(p => p.MedicalRecord.Anamnesis)
-            .First();
-        List<Prescription> prescriptions = new List<Prescription>();
-        foreach(Anamnesis a in patient.MedicalRecord.Anamnesis)
-        {
-            Anamnesis a1 = ControllerMapper.Instance.AnamnesisController.GetAnamnesis(a);
-            prescriptions.Add(a1.Prescription);
-        }
-        return prescriptions;
+            .Include(p => p.MedicalRecord.Anamnesis.Prescriptions.Select(pre => pre.Drug))
+            .FirstOrDefault();
+
+        return patient.MedicalRecord.Anamnesis.Prescriptions;
     }
 
     public Prescription GetPrescription(long prescriptionId)
     {
-        throw new NotImplementedException();
+        return (from p in HospitalDB.Instance.Prescriptions where p.PrescriptionId == prescriptionId select p).FirstOrDefault();
     }
 
     public bool UpdatePrescription(Prescription prescription)
     {
-        throw new NotImplementedException();
+        Prescription prescriptionToEdit = (from p in HospitalDB.Instance.Prescriptions where p.PrescriptionId == prescription.PrescriptionId select p).FirstOrDefault();
+        Drug prescriptionMedicine = (from m in HospitalDB.Instance.Drugs where m.DrugId == prescription.Drug.DrugId select m).FirstOrDefault();
+        if(prescriptionToEdit != null)
+        {
+            prescriptionToEdit.Drug = prescriptionMedicine;
+            prescriptionToEdit.Period = prescription.Period;
+            prescriptionToEdit.Usage = prescription.Usage;
+            HospitalDB.Instance.SaveChanges();
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool RemoveAnamnesisPrescriptions(Anamnesis anamnesis)
+    {
+        try
+        {
+            foreach(Prescription prescription in anamnesis.Prescriptions)
+            {
+                HospitalDB.Instance.Prescriptions.Remove(prescription);
+            }
+            HospitalDB.Instance.SaveChanges();
+        }
+        catch
+        {
+            return false;
+        }
+        return true;
     }
 }

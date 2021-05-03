@@ -35,7 +35,7 @@ public class PrescriptionController
        throw new NotImplementedException();
     }
     
-    public List<Prescription> GetAllPatientPrescriptions(long patientId)
+    public List<Prescription> GetPatientPrescriptions(long patientId)
     {
        throw new NotImplementedException();
     }

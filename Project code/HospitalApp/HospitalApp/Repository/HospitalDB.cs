@@ -3,6 +3,7 @@
 // Created: Monday, March 29, 2021 4:28:07 PM
 // Purpose: Definition of Class HospitalDB
 
+using Enums;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,6 +12,7 @@ using System.Windows;
 
 public class HospitalDB : DbContext, IHospitalDB
 {
+    #region DbSets
     private static HospitalDB instance = null;
     private static readonly object padlock = new object();
     public DbSet<Anamnesis> Anamnesis { get; set; }
@@ -21,7 +23,7 @@ public class HospitalDB : DbContext, IHospitalDB
     public DbSet<GuestPatient> GuestPatients { get; set; }
     public DbSet<HospitalClinic> HospitalClinics { get; set; }
     public DbSet<MedicalRecord> MedicalRecords { get; set; }
-    public DbSet<Medicine> Medicines { get; set; }
+    public DbSet<Drug> Drugs { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<Patient> Patients { get; set; }
     public DbSet<Prescription> Prescriptions { get; set; }
@@ -48,9 +50,11 @@ public class HospitalDB : DbContext, IHospitalDB
         }
     }
 
+    #endregion
+
     public HospitalDB() : base("HospitalDB")
     {
-        //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
+        Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
 
     public bool ChangeAppointmentStatus(long appointMentID, Enums.AppointmentStatus status)
@@ -231,4 +235,5 @@ public class HospitalDB : DbContext, IHospitalDB
         }
         return false;
     }
+
 }

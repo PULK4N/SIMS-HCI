@@ -34,7 +34,7 @@ class NotificationManager
         {
             if (prescription.Date.TimeOfDay.Hours < (DateTime.Now.TimeOfDay.Hours + 5))
             {
-                MessageBox.Show("You are supposed to take " + prescription.medicine.ToString() + "in 5 hours or less");
+                MessageBox.Show("You are supposed to take " + prescription.Drug.ToString() + "in 5 hours or less");
             }
         }
     }

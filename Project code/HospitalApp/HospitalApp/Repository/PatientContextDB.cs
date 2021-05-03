@@ -11,30 +11,9 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 
-public class PatientContextDB : DbContext, IPatientRepository
+public class PatientContextDB : IPatientRepository
 {
-    public DbSet<Anamnesis> Anamnesis { get; set; }
-    public DbSet<Appointment> Appointments { get; set; }
-    public DbSet<Doctor> Doctors { get; set; }
-    public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
-    public DbSet<Employee> Employees { get; set; }
-    public DbSet<GuestPatient> GuestPatients { get; set; }
-    public DbSet<HospitalClinic> HospitalClinics { get; set; }
-    public DbSet<MedicalRecord> MedicalRecords { get; set; }
-    public DbSet<Medicine> Medicines { get; set; }
-    public DbSet<Notification> Notifications { get; set; }
-    public DbSet<Patient> Patients { get; set; }
-    public DbSet<Prescription> Prescriptions { get; set; }
-    public DbSet<Question> Questions { get; set; }
-    public DbSet<Referal> Referals { get; set; }
-    public DbSet<RegisteredUser> RegisteredUsers { get; set; }
-    public DbSet<Reminder> Reminders { get; set; }
-    public DbSet<Review> Reviews { get; set; }
-    public DbSet<Room> Rooms { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Secretary> Secretaries { get; set; }
-
-    public PatientContextDB() : base("HospitalDB")
+    public PatientContextDB()
     {
         //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
     }
@@ -43,12 +22,13 @@ public class PatientContextDB : DbContext, IPatientRepository
     {
         try
         {
-
-            RegisteredUsers.Add(patient.User.RegisteredUser);
-            Users.Add(patient.User);
-
-            Patients.Add(patient);
-            SaveChanges();
+            //order probably mathers
+            HospitalDB.Instance.RegisteredUsers.Add(patient.User.RegisteredUser);
+            HospitalDB.Instance.Users.Add(patient.User);
+            HospitalDB.Instance.Anamnesis.Add(patient.MedicalRecord.Anamnesis);
+            HospitalDB.Instance.MedicalRecords.Add(patient.MedicalRecord);
+            HospitalDB.Instance.Patients.Add(patient);
+            HospitalDB.Instance.SaveChanges();
 
             return true;
         }
@@ -63,11 +43,12 @@ public class PatientContextDB : DbContext, IPatientRepository
     {
         try
         {
-            RegisteredUsers.Remove(patient.User.RegisteredUser);
-            Users.Remove(patient.User);
-            if(patient.Appointments !=null)
-            Patients.Remove(patient);
-            SaveChanges();
+            HospitalDB.Instance.RegisteredUsers.Remove(patient.User.RegisteredUser);
+            HospitalDB.Instance.Users.Remove(patient.User);
+            HospitalDB.Instance.Anamnesis.Remove(patient.MedicalRecord.Anamnesis);
+            HospitalDB.Instance.MedicalRecords.Remove(patient.MedicalRecord);
+            HospitalDB.Instance.Patients.Remove(patient);
+            HospitalDB.Instance.SaveChanges();
 
             return true;
         }
@@ -82,7 +63,13 @@ public class PatientContextDB : DbContext, IPatientRepository
     {
         try
         {
-            Patient oldPatient = (from pat in Patients where pat.PatientId == patient.PatientId select pat).Include(pat => pat.User).Include(pat => pat.User.RegisteredUser).First();
+            Patient oldPatient = (from pat in HospitalDB.Instance.Patients where pat.PatientId == patient.PatientId select pat)
+                .Include(pat => pat.User)
+                .Include(pat => pat.User.RegisteredUser)
+                .Include(pat => pat.MedicalRecord)
+                .Include(pat => pat.MedicalRecord.Anamnesis)
+                .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug))
+                .First();
             return oldPatient;
         }
         catch
@@ -96,14 +83,20 @@ public class PatientContextDB : DbContext, IPatientRepository
     {
         try
         {
-            Patient oldPatient = (from pat in Patients
+            Patient oldPatient = (from pat in HospitalDB.Instance.Patients
                                   where pat.PatientId == patientId
-                                  select pat).Include(patient => patient.User).Include(patient => patient.User.RegisteredUser).First();
+                                  select pat)
+                                  .Include(pat => pat.User)
+                                  .Include(pat => pat.User.RegisteredUser)
+                                  .Include(pat => pat.MedicalRecord)
+                                  .Include(pat => pat.MedicalRecord.Anamnesis)
+                                  .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions)
+                                  .First();
             return oldPatient;
         }
         catch (Exception e)
         {
-
+            MessageBox.Show("error");
         }
         return null;
     }
@@ -112,8 +105,8 @@ public class PatientContextDB : DbContext, IPatientRepository
     {
         try
         {
-            Patient oldPatient = Patients.Find(patient.PatientId);
-            if(patient.PatientId == oldPatient.PatientId && patient.User.UserId == oldPatient.User.UserId && patient.User.RegisteredUser.RegUserId == oldPatient.User.RegisteredUser.RegUserId)
+            Patient oldPatient = HospitalDB.Instance.Patients.Find(patient.PatientId);
+            if (oldPatient != null)
             {
                 patient.User.RegisteredUser.Username = oldPatient.User.RegisteredUser.Username;
                 patient.User.RegisteredUser.Password = oldPatient.User.RegisteredUser.Password;
@@ -127,6 +120,7 @@ public class PatientContextDB : DbContext, IPatientRepository
                 patient.User.PhoneNumber = oldPatient.User.PhoneNumber;
                 patient.User.RelationshipStatus = oldPatient.User.RelationshipStatus;
                 patient.User.Sex = oldPatient.User.Sex;
+                HospitalDB.Instance.SaveChanges();
                 return true;
             }
         }
@@ -138,11 +132,11 @@ public class PatientContextDB : DbContext, IPatientRepository
         return false;
     }
 
-    public List<Patient> GetAllPatients()
+    public List<Patient> GetPatients()
     {
         try
         {
-            return Patients.ToList();
+            return HospitalDB.Instance.Patients.ToList();
         }
         catch
         {
@@ -151,9 +145,9 @@ public class PatientContextDB : DbContext, IPatientRepository
         return null;
     }
 
-    public List<Patient> GetPatients()
+    public List<Patient> GetPatientsBy(Doctor doctor)
     {
-        return Patients.ToList();
+        return HospitalDB.Instance.Patients.ToList();
     }
     //TO DO: add this one and upper to diagram, implement this
 
