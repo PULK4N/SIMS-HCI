@@ -28,9 +28,9 @@ public partial class PrescriptionWindow : Window
     private void CreatePrescriptionButton_Click(object sender, RoutedEventArgs e)
     {
         Prescription newPrescription = new Prescription();
-        Medicine newMedicine = new Medicine();
+        Drug newMedicine = new Drug();
         newMedicine.Name = Medicine.Text;
-        newPrescription.Medicine.Add(newMedicine);
+        newPrescription.Drug = newMedicine;
         newPrescription.Dosage = int.Parse(Dosage.Text);
         newPrescription.Usage = Usage.Text;
         newPrescription.Date = SelectPrescriptionTime.Value.Value;

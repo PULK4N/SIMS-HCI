@@ -25,7 +25,7 @@ public class ControllerMapper
     public DoctorController DoctorController { get; set; }
     public GuestPatientController GuestPatientController { get; set; }
     public MedicalRecordController MedicalRecordController { get; set; }
-    public MedicineController MedicineController { get; set; }
+    public DrugController DrugController { get; set; }
     public PatientController PatientController { get; set; }
     public PrescriptionController PrescriptionController { get; set; }
     public RoomController RoomController { get; set; }
@@ -36,7 +36,7 @@ public class ControllerMapper
         this.DoctorController = new DoctorController(new DoctorService(new DoctorContextDB()));
         this.GuestPatientController = new GuestPatientController(new GuestPatientService(new GuestPatientContextDB()));
         this.MedicalRecordController = new MedicalRecordController(new MedicalRecordService(new MedicalRecordContextDB()));
-        this.MedicineController = new MedicineController(new MedicineService(new MedicineContextDB()));
+        this.DrugController = new DrugController(new DrugService(new DrugRepository()));
         this.PatientController = new PatientController(new PatientService(new PatientContextDB()));
         this.PrescriptionController = new PrescriptionController(new PrescriptionService(new PrescriptionContextDB()));
         this.RoomController = new RoomController(new RoomService(new RoomContextDB()));

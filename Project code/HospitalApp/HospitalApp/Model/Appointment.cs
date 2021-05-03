@@ -16,7 +16,7 @@ public class Appointment
     public Appointment(/*long appointmentId,*/ DateTime begining, DateTime end, AppointmentType appointmentType, AppointmentStatus appointmentStatus, Patient patient, Doctor doctor, Room room)
     {
         //AppointmentId = appointmentId;
-        Begining = begining;
+        Beginning = begining;
         End = end;
         AppointmentType = appointmentType;
         AppointmentStatus = appointmentStatus;
@@ -29,7 +29,7 @@ public class Appointment
 
     [Key]
     public long AppointmentId{ get; set; }
-    public DateTime Begining{ get; set; }
+    public DateTime Beginning{ get; set; }
     public DateTime End{ get; set; }
     public Enums.AppointmentType AppointmentType{ get; set; }
     public Enums.AppointmentStatus AppointmentStatus{ get; set; }

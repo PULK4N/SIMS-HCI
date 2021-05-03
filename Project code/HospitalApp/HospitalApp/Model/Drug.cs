@@ -5,10 +5,10 @@
 
 using System;
 
-public class Medicine
+public class Drug
 {
-    public long MedicineId { get; set; }
+    public long DrugId { get; set; }
     public String Name { get; set; }
     public String Details { get; set; }
-
+    public Enums.DrugStatus DrugStatus { get; set; }
 }

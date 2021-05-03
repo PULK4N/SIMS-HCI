@@ -16,6 +16,6 @@ public interface IPrescriptionService
    
    Prescription GetPrescription(long prescriptionId);
    
-   List<Prescription> GetAllPatientPrescriptions(long patientId);
+   List<Prescription> GetPatientPrescriptions(long patientId);
 
 }

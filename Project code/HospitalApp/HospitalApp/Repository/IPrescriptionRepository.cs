@@ -8,14 +8,16 @@ using System.Collections.Generic;
 
 public interface IPrescriptionRepository
 {
-   bool CreatePrescription(Prescription prescription);
-   
-   bool UpdatePrescription(Prescription prescription);
-   
-   bool DeletePrescription(Prescription prescription);
-   
-   Prescription GetPrescription(long prescriptionId);
-   
-   List<Prescription> GetAllPatientPrescriptions(long patientId);
+    bool CreatePrescription(Prescription prescription);
+    
+    bool UpdatePrescription(Prescription prescription);
+    
+    bool DeletePrescription(Prescription prescription);
+    
+    Prescription GetPrescription(long prescriptionId);
+    
+    List<Prescription> GetPatientPrescriptions(long patientId);
+
+    bool RemoveAnamnesisPrescriptions(Anamnesis anamnesis);
 
 }
