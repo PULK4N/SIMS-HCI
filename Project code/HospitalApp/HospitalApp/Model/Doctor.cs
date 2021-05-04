@@ -14,7 +14,6 @@ public class Doctor
     public long DoctorId { get; set; }
     public String AboutMe{ get; set; }
     public Enums.Specialization Specialization { get; set; }
-    public string Name { get; set; }
     [Required, Index("uniqueEmpDoc", IsUnique = true)]
     public Employee Employee{ get; set; }
     

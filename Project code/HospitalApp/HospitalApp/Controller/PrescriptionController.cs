@@ -37,6 +37,6 @@ public class PrescriptionController
     
     public List<Prescription> GetPatientPrescriptions(long patientId)
     {
-       throw new NotImplementedException();
+        return _prescriptionService.GetPatientPrescriptions(patientId);
     }
 }

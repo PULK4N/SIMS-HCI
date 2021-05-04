@@ -26,11 +26,20 @@ public class MedicalRecordService : IMedicalRecordService
 
     public MedicalRecord GetMedicalRecord(long medicalRecordId)
     {
-        throw new NotImplementedException();
+        return _medicalRecordRepository.GetMedicalRecord(medicalRecordId);
     }
 
     public bool UpdateMedicalRecord(MedicalRecord medicalRecord)
     {
-        throw new NotImplementedException();
+        MedicalRecord editedMedicalRecord = _medicalRecordRepository.GetMedicalRecord(medicalRecord.MedicalRecordId);
+        if (editedMedicalRecord != null)
+        {
+            editedMedicalRecord.LastMesuredHeight = medicalRecord.LastMesuredHeight;
+            editedMedicalRecord.LastMesuredWeight = medicalRecord.LastMesuredWeight;
+            editedMedicalRecord.Anamnesis = medicalRecord.Anamnesis;
+            _medicalRecordRepository.UpdateMedicalRecord(medicalRecord);
+            return true;
+        }
+        return false;
     }
 }

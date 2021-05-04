@@ -16,7 +16,7 @@ public class Prescription
     public string Period{ get; set; }
     public DateTime Date{ get; set; }
 
-    public Drug Drug;
+    public Drug Drug { get; set; }
 
 
     public Prescription() {}

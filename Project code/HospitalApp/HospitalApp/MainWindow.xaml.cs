@@ -109,6 +109,7 @@ namespace Bolnica
 
         private void ConfirmButtonClick(object sender, RoutedEventArgs e)
         {
+            AppointmentsToSchedule.Clear();
             SchedulingInformation schedulingInformation = new SchedulingInformation()
             {
                 TimeIntervalBeginning = DateTime.Parse(DateInput.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + ScheduleFrom.Text),
@@ -118,12 +119,20 @@ namespace Bolnica
                 Room = this.Room,
                 Doctor = (Doctor)DoctorPicker.SelectedItem
             };
-            GetMyAppointments(schedulingInformation);
+            if(DateTime.Now > schedulingInformation.TimeIntervalBeginning)
+            {
+                MessageBox.Show("Can't schedule appointment in the past");
+            }
+            else
+            {
+                GetMyAppointments(schedulingInformation);
+            }
         }
 
         private void GetMyAppointments(SchedulingInformation schedulingInformation)
         {
             var (appointmentList, priorityUsed) = SchedulingManager.GetAppointments(schedulingInformation);
+            if (priorityUsed) MessageBox.Show("Priority was used");
             foreach (Appointment appointment in appointmentList)
             {
                 AppointmentsToSchedule.Add(appointment);
@@ -149,7 +158,7 @@ namespace Bolnica
                     Appointment = appointment,
                     TimeIntervalBeginning = DateTime.Parse(ReScheduleDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + reScheduleFrom.Text),
                     TimeIntervalEnd = DateTime.Parse(ReScheduleDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + reScheduleTo.Text),
-                    PatientSchedulingPriority = Enums.PatientSchedulingPriority.DOCTOR,
+                    PatientSchedulingPriority = (bool)radioDoctor2.IsChecked ? Enums.PatientSchedulingPriority.DOCTOR : Enums.PatientSchedulingPriority.DATE_TIME,
                     Patient = this.Patient,
                     Room = this.Room,
                     Doctor = appointment.Doctor
@@ -164,7 +173,8 @@ namespace Bolnica
             if (SchedulingManager.ReSchedulingInformationValid(schedulingInformation))
             {
                 //dataGridScheduledAppointmentsAppointments
-                var (appointmentList, priorityUsed) = SchedulingManager.GetAppointmentsToReschedule(schedulingInformation);
+                var (appointmentList, priorityUsed) = SchedulingManager.GetAppointments(schedulingInformation);
+                if (priorityUsed) MessageBox.Show("Priority was used");
                 foreach (Appointment appointment in appointmentList)
                 {
                     ReSchAppointments.Add(appointment);
