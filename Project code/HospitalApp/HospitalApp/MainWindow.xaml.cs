@@ -36,7 +36,7 @@ namespace Bolnica
             this.DataContext = this;
             CancellationTokenSource = new CancellationTokenSource();
             cancellationToken = CancellationTokenSource.Token;
-            
+            //ControllerMapper.Instance.PatientController.StartWeeklyAttemptsRestarting(cancellationToken);
         }
 
         private void InstantiateLists()
@@ -71,13 +71,10 @@ namespace Bolnica
             MainCanvas.Visibility = Visibility.Hidden;
             PatientSchedulingCanvas.Visibility = Visibility.Visible;
             
+            new NotificationManager().StartTimer(cancellationToken);
             
         }
 
-        private void StartNotifications(object sender, RoutedEventArgs e)
-        {
-            new NotificationManager().StartTimer(cancellationToken);
-        }
 
         private void EndNotifications(object sender, RoutedEventArgs e)
         {

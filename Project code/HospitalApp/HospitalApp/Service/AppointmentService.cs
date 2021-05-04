@@ -57,11 +57,21 @@ public class AppointmentService : IAppointmentService
 
     public bool PatientReScheduleAppointment(Appointment appointment)
     {
-        return _appointmentRepository.PatientReScheduleAppointment(appointment);
+        if ((new PatientService(new PatientContextDB())).IncrementAttemptCounter(appointment.Patient))
+            return _appointmentRepository.PatientReScheduleAppointment(appointment);
+        else
+        {
+            return false;
+        }
     }
 
     public bool PatientScheduleAppointment(Appointment appointment)
     {
-        return _appointmentRepository.PatientScheduleAppointment(appointment);
+        if ((new PatientService(new PatientContextDB())).IncrementAttemptCounter(appointment.Patient))
+            return _appointmentRepository.PatientScheduleAppointment(appointment);
+        else
+        {
+            return false;
+        }
     }
 }

@@ -18,7 +18,6 @@
             <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
                 <Button Content="Schedule Appointment " Margin="5,10,0,0" Click="ScheduleAppointments" />
                 <Button Content="View Scheduled Appointments " Margin="5,10,0,0" Click="ViewScheduledAppointments" />
-                <Button Content="N " Margin="5,10,0,0" Click="StartNotifications" />
                 <Button Content="E " Margin="5,10,0,0" Click="EndNotifications" />
             </StackPanel>
         </Canvas>

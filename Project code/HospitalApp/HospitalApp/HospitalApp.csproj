@@ -90,9 +90,9 @@
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PrescriptionController.cs" />
     <Compile Include="Controller\RoomController.cs" />
-    <Compile Include="Migrations\202105040731166_migration1.cs" />
-    <Compile Include="Migrations\202105040731166_migration1.designer.cs">
-      <DependentUpon>202105040731166_migration1.cs</DependentUpon>
+    <Compile Include="Migrations\202105041919472_mig1.cs" />
+    <Compile Include="Migrations\202105041919472_mig1.designer.cs">
+      <DependentUpon>202105041919472_mig1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
@@ -217,8 +217,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202105040731166_migration1.resx">
-      <DependentUpon>202105040731166_migration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105041919472_mig1.resx">
+      <DependentUpon>202105041919472_mig1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

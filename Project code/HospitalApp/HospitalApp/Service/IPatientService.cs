@@ -5,6 +5,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 public interface IPatientService
 {
@@ -20,4 +22,6 @@ public interface IPatientService
 
     List<Patient> GetPatients();
 
+    bool IncrementAttemptCounter(Patient patient);
+    Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken);
 }
