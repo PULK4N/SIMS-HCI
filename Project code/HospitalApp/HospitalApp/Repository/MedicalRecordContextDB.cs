@@ -5,6 +5,7 @@
 
 using System;
 using System.Data.Entity;
+using System.Windows;
 
 public class MedicalRecordContextDB : IMedicalRecordRepository
 {
@@ -24,11 +25,20 @@ public bool CreateMedicalRecord(MedicalRecord medicalRecord)
 
     public MedicalRecord GetMedicalRecord(long medicalRecordId)
     {
-        throw new NotImplementedException();
+        return HospitalDB.Instance.MedicalRecords.Find(medicalRecordId);
     }
 
     public bool UpdateMedicalRecord(MedicalRecord medicalRecord)
     {
-        throw new NotImplementedException();
+        try
+        {
+            HospitalDB.Instance.SaveChanges();
+            return true;
+        }
+        catch(Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
+        return false;
     }
 }

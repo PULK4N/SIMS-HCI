@@ -57,7 +57,9 @@ public class PrescriptionContextDB : IPrescriptionRepository
 
     public Prescription GetPrescription(long prescriptionId)
     {
-        return (from p in HospitalDB.Instance.Prescriptions where p.PrescriptionId == prescriptionId select p).FirstOrDefault();
+        return (from p in HospitalDB.Instance.Prescriptions where p.PrescriptionId == prescriptionId select p)
+            .Include(p => p.Drug)
+            .FirstOrDefault();
     }
 
     public bool UpdatePrescription(Prescription prescription)

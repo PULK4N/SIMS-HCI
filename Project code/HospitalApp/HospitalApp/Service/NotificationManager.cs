@@ -18,7 +18,10 @@ class NotificationManager
             while (true)
             {
                 prescriptions.Clear();
-                prescriptions = ControllerMapper.Instance.PrescriptionController.GetAllPatientPrescriptions(1);
+                foreach(Prescription prescription in ControllerMapper.Instance.PrescriptionController.GetPatientPrescriptions(1))
+                {
+                    prescriptions.Add(prescription);
+                } 
                 CheckAndShowPrescriptions(prescriptions);
                 await Task.Delay(60000, cancellationToken);
                 if (cancellationToken.IsCancellationRequested)
@@ -34,7 +37,7 @@ class NotificationManager
         {
             if (prescription.Date.TimeOfDay.Hours < (DateTime.Now.TimeOfDay.Hours + 5))
             {
-                MessageBox.Show("You are supposed to take " + prescription.Drug.ToString() + "in 5 hours or less");
+                MessageBox.Show("You are supposed to take " + prescription.Drug.Name + " in 5 hours or less");
             }
         }
     }

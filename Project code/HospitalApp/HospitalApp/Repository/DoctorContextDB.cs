@@ -30,12 +30,15 @@ public class DoctorContextDB :  IDoctorRepository
     {
         throw new NotImplementedException();
     }
-
+    //doesn't get doctors "RegisterUser" (username and pw information) 
     public List<Doctor> GetAllDoctors(Enums.Specialization specialization)
     {
         return (from doctor in HospitalDB.Instance.Doctors
                 where doctor.Specialization == specialization
-                select doctor).ToList();
+                select doctor)
+                .Include(d => d.Employee)
+                .Include(d => d.Employee.User)
+                .ToList();
     }
     public List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment)
     {
@@ -46,7 +49,9 @@ public class DoctorContextDB :  IDoctorRepository
     {
         return (from doctor in HospitalDB.Instance.Doctors
                 where doctor.DoctorId == id
-                select doctor).Include(doc => doc.Employee).Include(doc => doc.Employee.User).Include(doc => doc.Employee.User.RegisteredUser).First();
+                select doctor).Include(doc => doc.Employee)
+                .Include(doc => doc.Employee.User)
+                .Include(doc => doc.Employee.User.RegisteredUser).FirstOrDefault();
     }
 
     public Doctor SaveDoctor(Doctor doctor)
