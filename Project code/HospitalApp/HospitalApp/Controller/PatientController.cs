@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 public class PatientController
 {
@@ -44,5 +45,15 @@ public class PatientController
     public List<Patient> GetPatients()
     {
         return _patientService.GetPatients();
+    }
+
+    public bool IncrementAttemptCounter(Patient patient)
+    {
+        return _patientService.IncrementAttemptCounter(patient);
+    }
+
+    public void StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)
+    {
+        _patientService.StartWeeklyAttemptsRestarting(cancellationToken);
     }
 }

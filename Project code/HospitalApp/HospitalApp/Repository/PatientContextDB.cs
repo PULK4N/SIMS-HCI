@@ -1,8 +1,3 @@
-/***********************************************************************
- * Module:  PatientAccountManagement.cs
- * Author:  Aleksa
- * Purpose: Definition of the Class PatientAccountManagement
- ***********************************************************************/
 
 using System;
 using System.Collections.Generic;
@@ -90,7 +85,7 @@ public class PatientContextDB : IPatientRepository
                                   .Include(pat => pat.User.RegisteredUser)
                                   .Include(pat => pat.MedicalRecord)
                                   .Include(pat => pat.MedicalRecord.Anamnesis)
-                                  .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions)
+                                  .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug))
                                   .First();
             return oldPatient;
         }
@@ -136,7 +131,13 @@ public class PatientContextDB : IPatientRepository
     {
         try
         {
-            return HospitalDB.Instance.Patients.ToList();
+            return (from pat in HospitalDB.Instance.Patients select pat)
+                .Include(pat => pat.User)
+                .Include(pat => pat.User.RegisteredUser)
+                .Include(pat => pat.MedicalRecord)
+                .Include(pat => pat.MedicalRecord.Anamnesis)
+                .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug))
+                .ToList();
         }
         catch
         {
@@ -147,8 +148,35 @@ public class PatientContextDB : IPatientRepository
 
     public List<Patient> GetPatientsBy(Doctor doctor)
     {
-        return HospitalDB.Instance.Patients.ToList();
+        throw new NotImplementedException();
     }
     //TO DO: add this one and upper to diagram, implement this
 
+    public bool IncrementAttemptCounter(Patient patient)
+    {
+        HospitalDB.Instance.SaveChanges();
+        return patient.SchedulingAttempts >= 10;
+    }
+
+    public void banPatient(Patient patient)
+    {
+        patient.User.RegisteredUser.UserType = Enums.UserType.BANNNED_USER;
+        foreach(Appointment appointment in patient.Appointments)
+        {
+            appointment.AppointmentStatus = Enums.AppointmentStatus.CANCELED;
+        }
+        HospitalDB.Instance.SaveChanges();
+    }
+
+    public List<Patient> GetPatientsWeekActivePatients()
+    {
+        return (from pat in HospitalDB.Instance.Patients where pat.User.RegisteredUser.UserType != Enums.UserType.BANNNED_USER 
+                && pat.SchedulingAttempts != 0 select pat)
+                .Include(pat => pat.User)
+                .Include(pat => pat.User.RegisteredUser)
+                .Include(pat => pat.MedicalRecord)
+                .Include(pat => pat.MedicalRecord.Anamnesis)
+                .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug))
+                .ToList();
+    }
 }

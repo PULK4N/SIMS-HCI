@@ -23,7 +23,7 @@ class NotificationManager
                     prescriptions.Add(prescription);
                 } 
                 CheckAndShowPrescriptions(prescriptions);
-                await Task.Delay(60000, cancellationToken);
+                await Task.Delay(604800000, cancellationToken);
                 if (cancellationToken.IsCancellationRequested)
                     break;
             }

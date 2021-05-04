@@ -7,6 +7,8 @@
 using Enums;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class PatientService : IPatientService
 {
@@ -44,5 +46,37 @@ public class PatientService : IPatientService
     public List<Patient> GetPatients()
     {
         return _patientRepository.GetPatients();
+    }
+
+    public bool IncrementAttemptCounter(Patient patient)
+    {
+        ++patient.SchedulingAttempts;
+        bool IsMalicious = _patientRepository.IncrementAttemptCounter(patient);
+        if (IsMalicious && patient.User.RegisteredUser.UserType != UserType.BANNNED_USER)
+        {
+            _patientRepository.banPatient(patient);
+        }
+        return IsMalicious == false;
+    }
+
+    public async Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)
+    {
+
+        await Task.Run(async () =>
+        {
+            List<Patient> patients = _patientRepository.GetPatientsWeekActivePatients();
+            while (true)
+            {
+                foreach(Patient patient in patients)
+                {
+                    patient.SchedulingAttempts = 0;
+                }
+                HospitalDB.Instance.SaveChanges();
+                await Task.Delay(604800000, cancellationToken);
+                if (cancellationToken.IsCancellationRequested)
+                    break;
+            }
+        });
+
     }
 }
