@@ -10,7 +10,8 @@ namespace Enums{
     {
         PENDING,
         ACTIVE,
-        COMPLETED
+        COMPLETED,
+        CANCELED
     }
     public enum RoomStatus
     {
@@ -57,7 +58,8 @@ namespace Enums{
     {
         PATIENT,
         DOCTOR,
-        SECRETARY
+        SECRETARY,
+        BANNNED_USER
     }
 
     public enum RelationshipStatus
