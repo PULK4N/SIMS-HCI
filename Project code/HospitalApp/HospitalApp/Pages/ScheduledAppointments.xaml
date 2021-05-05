@@ -9,30 +9,40 @@
       Title="ScheduledAppointments">
 
     <Grid>
-        <Button Content="Edit appointment" HorizontalAlignment="Left" Margin="212,228,0,0" VerticalAlignment="Top" Width="193" Click="EditButton_Click" Height="33"/>
-        <Button Content="Create appointment" HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top" Width="194" Click="CreateButton_Click" Height="33"/>
-        <Button Content="Cancel appointment" HorizontalAlignment="Left" Margin="413,228,0,0" VerticalAlignment="Top" Width="194" Click="CancelButton_Click" Height="33"/>
-        <Grid HorizontalAlignment="Left" Height="174" Margin="10,266,0,0" VerticalAlignment="Top" Width="361" DataContext="{Binding SelectedItem, ElementName=dataGridAppointments}">
+        <Button Content="Edit appointment" HorizontalAlignment="Left" Margin="210,193,0,0" VerticalAlignment="Top" Width="195" Click="EditButton_Click" Height="33"/>
+        <Button Content="Create appointment" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="195" Click="CreateButton_Click" Height="33"/>
+        <Button Content="Cancel appointment" HorizontalAlignment="Left" Margin="410,193,0,0" VerticalAlignment="Top" Width="195" Click="CancelButton_Click" Height="33"/>
+        <Grid HorizontalAlignment="Left" Height="174" Margin="10,226,0,0" VerticalAlignment="Top" Width="168" DataContext="{Binding SelectedItem, ElementName=dataGridAppointments}">
             <RadioButton x:Name="Examination" GroupName ="AppointmentType" Content="Examination" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" IsChecked="True"/>
             <RadioButton x:Name="Surgery" GroupName ="AppointmentType" Content="Surgery" HorizontalAlignment="Left" Margin="109,10,0,0" VerticalAlignment="Top"/>
-            <DatePicker x:Name="AppointmentDate" HorizontalAlignment="Left" Margin="184,40,0,0" VerticalAlignment="Top" Width="177"/>
-            <xctk:TimePicker x:Name="BeginTime" HorizontalAlignment="Left" Margin="0,40,0,0" VerticalAlignment="Top" Width="169"/>
-            <xctk:TimePicker x:Name="EndTime" HorizontalAlignment="Left" Margin="0,65,0,0" VerticalAlignment="Top" Width="169"/>
+            <DatePicker x:Name="AppointmentDate" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="177"/>
+            <xctk:TimePicker x:Name="BeginTime" HorizontalAlignment="Left" Margin="0,32,0,0" VerticalAlignment="Top" Width="169"/>
+            <xctk:TimePicker x:Name="EndTime" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" Width="169"/>
         </Grid>
         <DataGrid x:Name="dataGridAppointments" AutoGenerateColumns="False" ItemsSource="{Binding Appointments}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
-                  Height="178" VerticalAlignment="Top" Width="597" Canvas.Left="376" Canvas.Top="52" Margin="10,45,0,0">
+                  Height="178" VerticalAlignment="Top" Width="597" Canvas.Left="376" Canvas.Top="52" Margin="11,10,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Status" Binding="{Binding AppointmentStatus}"/>
                 <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}"/>
-                <DataGridTextColumn Header="Begining" Binding="{Binding Begining, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
+                <DataGridTextColumn Header="Beginning" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
                 <DataGridTextColumn Header="End" Binding="{Binding End, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
                 <DataGridTextColumn Header="Patient" Binding="{Binding Patient}" Width="*"/>
                 <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Show patient" HorizontalAlignment="Left" Margin="413,274,0,0" VerticalAlignment="Top" Width="194" Height="48" Click="ShowPatientButton_Click"/>
-        <ComboBox x:Name="RoomDropdown" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding RoomsView}"/>
-        <ComboBox x:Name="PatientDropdown" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="177" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding PatientsView}"/>
+        <Button Content="Show patient" HorizontalAlignment="Left" Margin="11,392,0,0" VerticalAlignment="Top" Width="167" Height="48" Click="ShowPatientButton_Click"/>
+        <!--Grid HorizontalAlignment="Left" Height="23" Margin="10,364,0,0" VerticalAlignment="Top" Width="168" DataContext="{Binding SelectedItem, ElementName=dataGridStaticItems}"-->
+            <ComboBox x:Name="RoomDropdown" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" ItemsSource="{Binding RoomsView}" SelectionChanged="RoomDropdown_SelectionChanged" Margin="11,365,0,0"/>
+        <!--/Grid-->
+        <ComboBox x:Name="PatientDropdown" HorizontalAlignment="Left" Margin="10,337,0,0" VerticalAlignment="Top" Width="168" ItemsSource="{Binding PatientsView}"/>
+        <DataGrid x:Name="dataGridStaticItems" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top"
+                IsReadOnly="True" AutoGenerateColumns="False" Width="395" ItemsSource="{Binding StaticItemsView}" Margin="210,230,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Page>

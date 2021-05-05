@@ -10,11 +10,8 @@
             <ColumnDefinition Width="89*"/>
             <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
-        <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="2" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
-        <Button x:Name="ScheduledAppointmentsButton" Content="Scheduled Appointments" Grid.Column="1" HorizontalAlignment="Left" Margin="287,107,0,0" VerticalAlignment="Top" Width="139" Height="32" Click="Button_Click"/>
-        <Button x:Name="ScheduledSurgeriesButton" Content="Scheduled Surgeries" Grid.Column="1" HorizontalAlignment="Left" Margin="287,147,0,0" VerticalAlignment="Top" Width="139" Height="32" Click="ScheduledSurgeriesButton_Click"/>
-        <Button x:Name="CalendarButton" Content="Calendar" Grid.Column="1" HorizontalAlignment="Left" Margin="287,187,0,0" VerticalAlignment="Top" Width="139" Height="32" Click="CalendarButton_Click"/>
-        <Button x:Name="MyPatientsButton" Content="My Patients" Grid.Column="1" HorizontalAlignment="Left" Margin="287,227,0,0" VerticalAlignment="Top" Width="139" Height="32"/>
-        <Button x:Name="PerscriptionsButton" Content="Perscriptions" Grid.Column="1" HorizontalAlignment="Left" Margin="287,266,0,0" VerticalAlignment="Top" Width="139" Height="32"/>
+        <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Left" Height="481" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="2" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden" Margin="0,0,0,-62"/>
+        <Button x:Name="ScheduledAppointmentsButton" Content="Scheduled Appointments" Grid.Column="1" HorizontalAlignment="Left" Margin="287,123,0,0" VerticalAlignment="Top" Width="139" Height="37" Click="Button_Click"/>
+        <Button x:Name="DrugValidation" Content="Validate Drugs" Grid.Column="1" HorizontalAlignment="Left" Margin="287,165,0,0" VerticalAlignment="Top" Width="139" Height="37" Click="ValidateDrugs_Click"/>
     </Grid>
 </Window>

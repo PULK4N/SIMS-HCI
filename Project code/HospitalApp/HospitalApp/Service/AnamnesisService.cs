@@ -20,6 +20,11 @@ public class AnamnesisService : IAnamnesisService
         throw new NotImplementedException();
     }
 
+    public bool UpdateAnamnesis(Anamnesis anamnesis)
+    {
+        return _anamnesisRepository.UpdateAnamnesis(anamnesis);
+    }
+
     public bool DeleteAnamnesis(Anamnesis anamnesis)
     {
         throw new NotImplementedException();
@@ -38,11 +43,6 @@ public class AnamnesisService : IAnamnesisService
     public Anamnesis GetAnamnesis(Anamnesis anamnesis)
     {
         return _anamnesisRepository.GetAnamnesis(anamnesis);
-    }
-
-    public bool UpdateAnamnesis(Anamnesis anamnesis)
-    {
-        throw new NotImplementedException();
     }
 
 }

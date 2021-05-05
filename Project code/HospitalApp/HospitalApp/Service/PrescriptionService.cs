@@ -22,21 +22,21 @@ public class PrescriptionService : IPrescriptionService
 
     public bool DeletePrescription(Prescription prescription)
     {
-        throw new NotImplementedException();
+        return _prescriptionRepository.DeletePrescription(prescription);
     }
 
-    public List<Prescription> GetAllPatientPrescriptions(long patientId)
+    public List<Prescription> GetPatientPrescriptions(long patientId)
     {
-        throw new NotImplementedException();
+        return _prescriptionRepository.GetPatientPrescriptions(patientId);
     }
 
     public Prescription GetPrescription(long prescriptionId)
     {
-        throw new NotImplementedException();
+        return _prescriptionRepository.GetPrescription(prescriptionId);
     }
 
     public bool UpdatePrescription(Prescription prescription)
     {
-        throw new NotImplementedException();
+        return _prescriptionRepository.UpdatePrescription(prescription);
     }
 }

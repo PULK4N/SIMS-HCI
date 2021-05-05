@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\App.xaml
-7414459307
+6-1356254641
 
-912086380723
+103-1842357208
 21-1729152541
-MainWindow.xaml;Pages\DoctorWindow.xaml;Pages\PrescriptionWindow.xaml;Pages\ScheduledAppointments.xaml;Pages\ShowPatientPage.xaml;PatientWindow.xaml;SecretaryWindow.xaml;
+MainWindow.xaml;Pages\DoctorWindow.xaml;Pages\DrugValidation.xaml;Pages\PrescriptionWindow.xaml;Pages\ScheduledAppointments.xaml;Pages\ShowPatientPage.xaml;
 
-True
+False
 

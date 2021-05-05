@@ -69,4 +69,11 @@ namespace Enums{
         OTHER
     }
 
+    public enum DrugStatus
+    {
+        APPROVED,
+        REJECTED,
+        PENDING
+    }
+
 }

@@ -22,6 +22,7 @@ using System.Windows.Shapes;
 public partial class ScheduledAppointments : Page
 {
     private AppointmentController _appointmentController;
+    private StaticInventoryController staticInventoryController;
     private int colNum = 0;
     public static Patient patient;
     public static Appointment newAppointment;
@@ -31,12 +32,23 @@ public partial class ScheduledAppointments : Page
 
     public ObservableCollection<Patient> PatientsView { get; set; }
 
+    public ObservableCollection<StaticInventory> StaticItemsView { get; set; }
+
     public void UpdateAppointments()
     {
         List<Appointment> DoctorsAppointments = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(DoctorWindow.doctor.DoctorId);
         Appointments.Clear();
         foreach (Appointment a in DoctorsAppointments)
             Appointments.Add(a);
+    }
+
+    public void UpdateStaticItems(Room room)
+    {
+        StaticItemsView = new ObservableCollection<StaticInventory>();
+        List<StaticInventory> staticItems = ControllerMapper.Instance.StaticInventoryController.GetStaticItemsFromRoom(room);
+        StaticItemsView.Clear();
+        foreach (StaticInventory si in staticItems)
+            StaticItemsView.Add(si);
     }
 
     public ScheduledAppointments()
@@ -80,15 +92,23 @@ public partial class ScheduledAppointments : Page
 
     private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-
+        Room room = RoomDropdown.SelectedItem as Room;
+        UpdateStaticItems(room);
     }
 
     private void ShowPatientButton_Click(object sender, RoutedEventArgs e)
     {
-        patient = (dataGridAppointments.SelectedItem as Appointment).Patient;
-        patient = ControllerMapper.Instance.PatientController.GetPatient(patient);
-        var s = new ShowPatientPage();
-        s.Show();
+        try
+        {
+            patient = (dataGridAppointments.SelectedItem as Appointment).Patient;
+            //patient = ControllerMapper.Instance.PatientController.GetPatient(patient);
+            var s = new ShowPatientPage();
+            s.Show();
+        }
+        catch
+        {
+
+        }
     }
 
     private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -123,12 +143,29 @@ public partial class ScheduledAppointments : Page
         else
             AppType = Enums.AppointmentType.SURGERY;
         appointment.AppointmentType = AppType;
-        appointment.Begining = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + BeginTime.Text);
+        appointment.Beginning = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + BeginTime.Text);
         appointment.End = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + EndTime.Text);
         appointment.Patient = PatientDropdown.SelectedItem as Patient;
         appointment.Room = RoomDropdown.SelectedItem as Room;
         ControllerMapper.Instance.AppointmentController.DoctorUpdateAppointment(appointment);
         UpdateAppointments();
+    }
+
+    private void dataGridAppointments_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
+
+    private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
+
+    private void RoomDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        this.DataContext = this;
+        Room room = RoomDropdown.SelectedItem as Room;
+        UpdateStaticItems(room);
     }
 }
 

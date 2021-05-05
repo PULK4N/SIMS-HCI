@@ -28,15 +28,12 @@ public class RegisteredUser
     {
     }
 
+
     [Key]
-    public long RegUserId { get; set; }
-    public String EncryptedID{ get; set; }
-    [Required]
     public String Username{ get; set; }
     [Required]
     public String Password{ get; set; }
     public Enums.UserType UserType { get; set; }
 
-//    public User User{ get; set; }
 
 }

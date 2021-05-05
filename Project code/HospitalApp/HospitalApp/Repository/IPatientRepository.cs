@@ -20,4 +20,6 @@ public interface IPatientRepository
 
     List<Patient> GetPatients();
 
+    List<Patient> GetPatientsBy(Doctor doctor);
+
 }

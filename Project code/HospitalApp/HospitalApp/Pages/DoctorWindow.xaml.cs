@@ -47,4 +47,10 @@ public partial class DoctorWindow : Window
     {
 
     }
+
+    private void ValidateDrugs_Click(object sender, RoutedEventArgs e)
+    {
+        DrugValidation drugValidation = new DrugValidation();
+        MainFrame.Content = drugValidation;
+    }
 }

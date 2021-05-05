@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,19 @@ public partial class ShowPatientPage : Window
         Email.Text = ScheduledAppointments.patient.User.EMail;
         Phone.Text = ScheduledAppointments.patient.User.PhoneNumber;
         JMBG.Text = ScheduledAppointments.patient.User.Jmbg.ToString();
+        Anamnesis.Text = ScheduledAppointments.patient.MedicalRecord.Anamnesis.Description;
     }
 
     private void WritePrescriptionButton_Click(object sender, RoutedEventArgs e)
     {
         var s = new PrescriptionWindow();
         s.Show();
+    }
+
+    private void UpdateAnamnesisButton_Click(object sender, RoutedEventArgs e)
+    {
+        Anamnesis UpdatedAnamnesis = ScheduledAppointments.patient.MedicalRecord.Anamnesis;
+        UpdatedAnamnesis.Description = Anamnesis.Text;
+        ControllerMapper.Instance.AnamnesisController.UpdateAnamnesis(UpdatedAnamnesis);
     }
 }

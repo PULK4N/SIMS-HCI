@@ -23,10 +23,12 @@ public class Patient
         MedicalRecord = medicalRecord;
         User = user;
         Appointments = appointments;
+        SchedulingAttempts = 0;
     }
 
     [Key]
     public long PatientId{ get; set; }
+    public int SchedulingAttempts { get; set; } 
 
     public List<Appointment> appointments;
     public MedicalRecord MedicalRecord{ get; set; }
