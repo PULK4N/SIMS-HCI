@@ -20,6 +20,11 @@ public class ReviewService : IReviewService
         return _reviewRepository.DeleteReview(review);
     }
 
+    public Review GetClinicReview()
+    {
+        return _reviewRepository.GetClinicReview();
+    }
+
     public Review GetReview(long reviewId)
     {
         return _reviewRepository.GetReview(reviewId);

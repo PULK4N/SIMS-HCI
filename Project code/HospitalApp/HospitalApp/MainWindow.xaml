@@ -18,8 +18,36 @@
             <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
                 <Button Content="Schedule Appointment " Margin="5,10,0,0" Click="ScheduleAppointments" />
                 <Button Content="View Scheduled Appointments " Margin="5,10,0,0" Click="ViewScheduledAppointments" />
-                <Button Content="E " Margin="5,10,0,0" Click="EndNotifications" />
+                <Button Content="E" Margin="5,10,0,0" Click="EndNotifications" />
+                <Button Content="R " Margin="5,10,0,0" Click="OpenReviews" />
             </StackPanel>
+        </Canvas>
+
+        <Canvas x:Name="PatientReviews" RenderTransformOrigin="0.585,-6.326" Visibility="Hidden" >
+
+            <DataGrid x:Name="dataGridCompletedAppointments" AutoGenerateColumns="False" ItemsSource="{Binding CompletedAppointmentsNotReviewed}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="253" VerticalAlignment="Top" Width="329" Canvas.Left="10" Canvas.Top="65">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"/>
+                    <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}" />
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="130" />
+                    <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Employee.User.FirstName}" Width="*"/>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Click="reviewAppointment" Content="Confirm review" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" 
+                  Width="134" Background="White" Foreground="#FF707070" Canvas.Left="205" Canvas.Top="388"/>
+            <ComboBox x:Name="ReviewScore" ItemsSource="{Binding ScoresOS}" Canvas.Left="68" Canvas.Top="388" Width="120" SelectedIndex="0"  Cursor="None"/>
+            <TextBox x:Name="ReviewComment" Height="46" Canvas.Left="10" TextWrapping="Wrap" Text="Comment" Canvas.Top="328" Width="329"/>
+            <Label Content="Score" Canvas.Left="10" Canvas.Top="386" Height="31"/>
+
+            <DataGrid x:Name="dataGridAppointments3" AutoGenerateColumns="False" ItemsSource="{Binding Reviews}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="172" VerticalAlignment="Top" Width="329" Canvas.Left="437" Canvas.Top="146">
+            </DataGrid>
+            <TextBox x:Name="ReviewClinicComment" Height="57" Canvas.Left="437" TextWrapping="Wrap" Text="Clinic review" Canvas.Top="10" Width="329"/>
+            <Button x:Name="ConfirmClinicReview" Click="reviewClinic" Content="Review clinic" Height="26" Canvas.Left="648" Canvas.Top="86" Width="118"/>
         </Canvas>
 
         <Canvas x:Name="PatientSchedulingTime" RenderTransformOrigin="0.585,-6.326" Visibility="Hidden" >

@@ -259,8 +259,12 @@
                         ReviewId = c.Long(nullable: false, identity: true),
                         Score = c.Int(nullable: false),
                         Comment = c.String(),
+                        ReviewType = c.Int(nullable: false),
+                        Appointment_AppointmentId = c.Long(),
                     })
-                .PrimaryKey(t => t.ReviewId);
+                .PrimaryKey(t => t.ReviewId)
+                .ForeignKey("dbo.Appointments", t => t.Appointment_AppointmentId)
+                .Index(t => t.Appointment_AppointmentId);
             
             CreateTable(
                 "dbo.Secretaries",
@@ -278,6 +282,7 @@
         public override void Down()
         {
             DropForeignKey("dbo.Secretaries", "Employee_EmployeeId", "dbo.Employees");
+            DropForeignKey("dbo.Reviews", "Appointment_AppointmentId", "dbo.Appointments");
             DropForeignKey("dbo.Referals", "Appointment_AppointmentId", "dbo.Appointments");
             DropForeignKey("dbo.GuestPatients", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.GuestPatients", "Appointment_AppointmentId", "dbo.Appointments");
@@ -295,6 +300,7 @@
             DropForeignKey("dbo.Prescriptions", "Anamnesis_AnamnesisId", "dbo.Anamnesis");
             DropForeignKey("dbo.Prescriptions", "Drug_DrugId", "dbo.Drugs");
             DropIndex("dbo.Secretaries", new[] { "Employee_EmployeeId" });
+            DropIndex("dbo.Reviews", new[] { "Appointment_AppointmentId" });
             DropIndex("dbo.Referals", new[] { "Appointment_AppointmentId" });
             DropIndex("dbo.GuestPatients", new[] { "User_UserId" });
             DropIndex("dbo.GuestPatients", new[] { "Appointment_AppointmentId" });

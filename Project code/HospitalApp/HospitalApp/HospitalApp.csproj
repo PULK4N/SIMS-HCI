@@ -89,10 +89,11 @@
     <Compile Include="Controller\DrugController.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PrescriptionController.cs" />
+    <Compile Include="Controller\ReviewController.cs" />
     <Compile Include="Controller\RoomController.cs" />
-    <Compile Include="Migrations\202105041919472_mig1.cs" />
-    <Compile Include="Migrations\202105041919472_mig1.designer.cs">
-      <DependentUpon>202105041919472_mig1.cs</DependentUpon>
+    <Compile Include="Migrations\202105050906029_mig1.cs" />
+    <Compile Include="Migrations\202105050906029_mig1.designer.cs">
+      <DependentUpon>202105050906029_mig1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
@@ -124,10 +125,13 @@
     <Compile Include="Repository\IDrugRepository.cs" />
     <Compile Include="Repository\IPatientRepository.cs" />
     <Compile Include="Repository\IPrescriptionRepository.cs" />
+    <Compile Include="Repository\IReviewRepository.cs" />
     <Compile Include="Repository\IRoomRepository.cs" />
     <Compile Include="Repository\ISecretaryRepository.cs" />
     <Compile Include="Repository\MedicalRecordContextDB.cs" />
     <Compile Include="Repository\DrugContextDB.cs" />
+    <Compile Include="Repository\ReviewContextDB.cs" />
+    <Compile Include="Service\IReviewService.cs" />
     <Compile Include="Service\NotificationManager.cs" />
     <Compile Include="Repository\PatientContextDB.cs" />
     <Compile Include="Repository\PrescriptionContextDB.cs" />
@@ -152,6 +156,7 @@
     <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
+    <Compile Include="Service\ReviewService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\SecretaryService.cs" />
     <Page Include="MainWindow.xaml">
@@ -217,8 +222,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202105041919472_mig1.resx">
-      <DependentUpon>202105041919472_mig1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105050906029_mig1.resx">
+      <DependentUpon>202105050906029_mig1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-public abstract class ReviewController
+public class ReviewController
 {
     private readonly IReviewService _reviewService;
 
-    protected ReviewController(IReviewService reviewService)
+    public ReviewController(IReviewService reviewService)
     {
         _reviewService = reviewService;
     }
@@ -43,6 +43,11 @@ public abstract class ReviewController
     public List<Review> GetReviews(Patient patient)
     {
         return _reviewService.GetReviews(patient);
+    }
+
+    public Review GetClinicReview()
+    {
+        return _reviewService.GetClinicReview();
     }
 
 
