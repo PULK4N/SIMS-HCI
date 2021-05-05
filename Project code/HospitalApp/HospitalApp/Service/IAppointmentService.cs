@@ -27,5 +27,5 @@ public interface IAppointmentService
     List<Appointment> PatientListAppointments(Patient patient);
    
    List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment);
-
+    List<Appointment> GetPatientCompletedAppointments(Patient patient);
 }

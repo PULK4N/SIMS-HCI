@@ -74,4 +74,9 @@ public class AppointmentService : IAppointmentService
             return false;
         }
     }
+
+    public List<Appointment> GetPatientCompletedAppointments(Patient patient)
+    {
+        return _appointmentRepository.GetPatientCompletedAppointments(patient);
+    }
 }

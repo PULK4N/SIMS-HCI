@@ -54,7 +54,7 @@ public class PatientService : IPatientService
         bool IsMalicious = _patientRepository.IncrementAttemptCounter(patient);
         if (IsMalicious && patient.User.RegisteredUser.UserType != UserType.BANNNED_USER)
         {
-            _patientRepository.banPatient(patient);
+            BanPatient(patient);
         }
         return IsMalicious == false;
     }
@@ -78,5 +78,10 @@ public class PatientService : IPatientService
             }
         });
 
+    }
+
+    public void BanPatient(Patient patient)
+    {
+        _patientRepository.BanPatient(patient);
     }
 }

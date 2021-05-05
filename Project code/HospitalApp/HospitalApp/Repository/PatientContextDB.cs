@@ -158,7 +158,7 @@ public class PatientContextDB : IPatientRepository
         return patient.SchedulingAttempts >= 10;
     }
 
-    public void banPatient(Patient patient)
+    public void BanPatient(Patient patient)
     {
         patient.User.RegisteredUser.UserType = Enums.UserType.BANNNED_USER;
         foreach(Appointment appointment in patient.Appointments)

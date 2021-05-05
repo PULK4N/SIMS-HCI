@@ -28,16 +28,16 @@ public class Appointment
 
 
     [Key]
-    public long AppointmentId{ get; set; }
-    public DateTime Beginning{ get; set; }
-    public DateTime End{ get; set; }
-    public Enums.AppointmentType AppointmentType{ get; set; }
-    public Enums.AppointmentStatus AppointmentStatus{ get; set; }
-    
-    public Patient Patient{ get; set; }
-    public Doctor Doctor{ get; set; }
+    public long AppointmentId { get; set; }
+    public DateTime Beginning { get; set; }
+    public DateTime End { get; set; }
+    public Enums.AppointmentType AppointmentType { get; set; }
+    public Enums.AppointmentStatus AppointmentStatus { get; set; }
+
+    public Patient Patient { get; set; }
+    public Doctor Doctor { get; set; }
     //public GuestPatient GuestPatient { get; set; }
 
-    public Room Room{ get; set; }
+    public Room Room { get; set; }
 
 }

@@ -78,4 +78,10 @@ namespace Enums{
         PENDING
     }
 
+    public enum ReviewType
+    {
+        DOCTOR,
+        CLINIC
+    }
+
 }
