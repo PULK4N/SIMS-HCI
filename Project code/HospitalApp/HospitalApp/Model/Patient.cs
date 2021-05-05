@@ -82,5 +82,9 @@ public class Patient
             appointments.Clear();
     }
 
+    public override string ToString()
+    {
+        return User.FirstName + " " + User.LastName;
+    }
 
 }

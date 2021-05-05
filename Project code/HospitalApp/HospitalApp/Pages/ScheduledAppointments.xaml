@@ -12,7 +12,7 @@
         <Button Content="Edit appointment" HorizontalAlignment="Left" Margin="210,193,0,0" VerticalAlignment="Top" Width="195" Click="EditButton_Click" Height="33"/>
         <Button Content="Create appointment" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="195" Click="CreateButton_Click" Height="33"/>
         <Button Content="Cancel appointment" HorizontalAlignment="Left" Margin="410,193,0,0" VerticalAlignment="Top" Width="195" Click="CancelButton_Click" Height="33"/>
-        <Grid HorizontalAlignment="Left" Height="174" Margin="10,226,0,0" VerticalAlignment="Top" Width="168" DataContext="{Binding SelectedItem, ElementName=dataGridAppointments}">
+        <Grid HorizontalAlignment="Left" Height="174" Margin="10,226,0,0" VerticalAlignment="Top" Width="178" DataContext="{Binding SelectedItem, ElementName=dataGridAppointments}">
             <RadioButton x:Name="Examination" GroupName ="AppointmentType" Content="Examination" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" IsChecked="True"/>
             <RadioButton x:Name="Surgery" GroupName ="AppointmentType" Content="Surgery" HorizontalAlignment="Left" Margin="109,10,0,0" VerticalAlignment="Top"/>
             <DatePicker x:Name="AppointmentDate" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" Width="177"/>

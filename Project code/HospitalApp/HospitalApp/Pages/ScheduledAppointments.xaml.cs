@@ -51,6 +51,8 @@ public partial class ScheduledAppointments : Page
             StaticItemsView.Add(si);
     }
 
+
+
     public ScheduledAppointments()
     {
         InitializeComponent();

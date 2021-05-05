@@ -61,5 +61,8 @@ public class Room
             appointment.Clear();
     }
 
-
+    public override string ToString()
+    {
+        return Name;
+    }
 }
