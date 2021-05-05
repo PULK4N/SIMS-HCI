@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bolnica"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Bolnica.MainWindow"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -38,13 +39,21 @@
             </DataGrid>
             <Button Click="reviewAppointment" Content="Confirm review" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" 
                   Width="134" Background="White" Foreground="#FF707070" Canvas.Left="205" Canvas.Top="388"/>
-            <ComboBox x:Name="ReviewScore" ItemsSource="{Binding ScoresOS}" Canvas.Left="68" Canvas.Top="388" Width="120" SelectedIndex="0"  Cursor="None"/>
+            <ComboBox x:Name="ReviewScore"  Canvas.Left="68" Canvas.Top="388" Width="120" SelectedIndex="0"  Cursor="None">
+                <sys:Int32>1</sys:Int32>
+                <sys:Int32>2</sys:Int32>
+                <sys:Int32>3</sys:Int32>
+                <sys:Int32>4</sys:Int32>
+                <sys:Int32>5</sys:Int32>
+            </ComboBox>
             <TextBox x:Name="ReviewComment" Height="46" Canvas.Left="10" TextWrapping="Wrap" Text="Comment" Canvas.Top="328" Width="329"/>
             <Label Content="Score" Canvas.Left="10" Canvas.Top="386" Height="31"/>
 
-            <DataGrid x:Name="dataGridAppointments3" AutoGenerateColumns="False" ItemsSource="{Binding Reviews}"
+            <DataGrid x:Name="dataGridAppointments3" ItemsSource="{Binding Reviews}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
-                  Height="172" VerticalAlignment="Top" Width="329" Canvas.Left="437" Canvas.Top="146">
+                  Height="172" AutoGenerateColumns="True" VerticalAlignment="Top" Width="329" Canvas.Left="437" Canvas.Top="146">
+                <!--<DataGridTextColumn Header="Appointment status" Binding="{Binding Comment}"/>
+                <DataGridTextColumn Header="Appointment type" Binding="{Binding Score}" />-->
             </DataGrid>
             <TextBox x:Name="ReviewClinicComment" Height="57" Canvas.Left="437" TextWrapping="Wrap" Text="Clinic review" Canvas.Top="10" Width="329"/>
             <Button x:Name="ConfirmClinicReview" Click="reviewClinic" Content="Review clinic" Height="26" Canvas.Left="648" Canvas.Top="86" Width="118"/>

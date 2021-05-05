@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 
@@ -93,7 +94,8 @@ public class ReviewContextDB : IReviewRepository
         try
         {
             return (from rev in HospitalDB.Instance.Reviews
-                    select rev).ToList();
+                    select rev).Include(rev => rev.Appointment)
+                    .ToList();
         }
         catch
         {
