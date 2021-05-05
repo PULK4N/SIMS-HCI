@@ -16,7 +16,7 @@ namespace Bolnica
         public ObservableCollection<Appointment> ReSchAppointments { get; set; }
         public ObservableCollection<Appointment> CompletedAppointmentsNotReviewed { get; set; }
         public ObservableCollection<Review> Reviews { get; set; }
-        public ObservableCollection<String> ScoresOC { get; set; }
+        public ObservableCollection<string> ScoresOC { get; set; }
         CancellationTokenSource CancellationTokenSource { get; set; }
         CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
@@ -41,7 +41,7 @@ namespace Bolnica
             Doctors = new ObservableCollection<Doctor>();
             Room = ControllerMapper.Instance.RoomController.GetRoom(1);
             Patient = ControllerMapper.Instance.PatientController.GetPatient(1);
-            ScoresOC = new ObservableCollection<String>();
+            ScoresOC = new ObservableCollection<string>();
 
             foreach (Doctor doctor in ControllerMapper.Instance.DoctorController.GetAllDoctors(Enums.Specialization.NONE))
             {
@@ -146,18 +146,25 @@ namespace Bolnica
             var appointment = dataGridCompletedAppointments.SelectedItem as Appointment;
             appointment.AppointmentStatus = Enums.AppointmentStatus.REVIEWED;
             
-            String description = ReviewComment.Text;
+            string description = ReviewComment.Text;
             Review review = new Review((int)ReviewScore.SelectedItem, description,Enums.ReviewType.DOCTOR, appointment);//(int score, string comment, ReviewType reviewType, Appointment appointment)
             ControllerMapper.Instance.ReviewController.CreateReview(review);
+            ShowReviewsAndAppointments();
         }
 
         private void reviewClinic(object sender, RoutedEventArgs e)
         {
             Review review = ControllerMapper.Instance.ReviewController.GetClinicReview();
             if (review == null){
+                review = new Review();
                 review.Comment = ReviewClinicComment.Text;
                 review.ReviewType = Enums.ReviewType.CLINIC;
                 ControllerMapper.Instance.ReviewController.CreateReview(review);
+            }
+            else
+            {
+                review.Comment = ReviewClinicComment.Text;
+                ControllerMapper.Instance.ReviewController.UpdateReview(review);
             }
         }
         #endregion
