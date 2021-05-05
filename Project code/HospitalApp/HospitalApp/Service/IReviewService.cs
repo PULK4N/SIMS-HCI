@@ -12,7 +12,7 @@ public interface IReviewService
     Review GetReview(long reviewId);
 
     List<Review> GetReviews();
-
+    Review GetClinicReview();
     List<Review> GetReviews(Patient patient);
     Review GetReview(Review review);
 }

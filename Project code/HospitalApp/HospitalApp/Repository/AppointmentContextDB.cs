@@ -56,7 +56,14 @@ public class AppointmentContextDB : IAppointmentRepository
 
     public List<Appointment> DoctorListAppointments(long doctorId)
     {
-        List<Appointment> appointments = (from app in HospitalDB.Instance.Appointments where app.Doctor.DoctorId == doctorId select app).Include(a => a.Room).Include(a => a.Patient).ToList();
+        List<Appointment> appointments = (from app in HospitalDB.Instance.Appointments where app.Doctor.DoctorId == doctorId select app)
+            .Include(a => a.Room)
+            .Include(a => a.Patient)
+                .Include(a => a.Patient.User)
+                .Include(a => a.Patient.User.RegisteredUser)
+                .Include(a => a.Patient.MedicalRecord)
+                .Include(a => a.Patient.MedicalRecord.Anamnesis)
+                .Include(a => a.Patient.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug)).ToList();
         return appointments;
     }
 
@@ -97,7 +104,7 @@ public class AppointmentContextDB : IAppointmentRepository
     {
         try
         {//select appointments with the date, than select the ones of the patient
-            return (from pApp in HospitalDB.Instance.Appointments where pApp.Patient.PatientId == patient.PatientId select pApp).Include(App => App.Doctor).ToList();
+            return (from pApp in HospitalDB.Instance.Appointments where pApp.Patient.PatientId == patient.PatientId && pApp.AppointmentStatus == Enums.AppointmentStatus.PENDING select pApp).Include(App => App.Doctor).ToList();
         }
         catch (DbEntityValidationException ex)
         {

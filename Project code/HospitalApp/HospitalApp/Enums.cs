@@ -11,7 +11,8 @@ namespace Enums{
         PENDING,
         ACTIVE,
         COMPLETED,
-        CANCELED
+        CANCELED,
+        REVIEWED
     }
     public enum RoomStatus
     {
