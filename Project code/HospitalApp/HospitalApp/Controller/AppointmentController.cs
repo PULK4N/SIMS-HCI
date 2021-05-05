@@ -65,4 +65,8 @@ public class AppointmentController
        throw new NotImplementedException();
     }
     
+    public List<Appointment> GetPatientCompletedAppointments(Patient patient)
+    {
+        return _appointmentService.GetPatientCompletedAppointments(patient);
+    }
 }

@@ -12,5 +12,6 @@ public class Review
     public long ReviewId{ get; set; }
     public int Score{ get; set; }
     public String Comment{ get; set; }
-
+    public Enums.ReviewType ReviewType { get; set; }
+    public Appointment Appointment { get; set; }
 }
