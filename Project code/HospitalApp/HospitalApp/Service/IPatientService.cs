@@ -21,7 +21,7 @@ public interface IPatientService
    bool DeletePatient(Patient patient);
 
     List<Patient> GetPatients();
-    bool IncrementAttemptCounter(Patient patient);
+    bool IsMalicious(Patient patient);
     void BanPatient(Patient patient);
     Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken);
 }

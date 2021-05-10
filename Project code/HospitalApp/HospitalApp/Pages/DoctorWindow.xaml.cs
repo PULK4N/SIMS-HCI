@@ -23,7 +23,7 @@ public partial class DoctorWindow : Window
     public DoctorWindow()
     {
         InitializeComponent();
-        doctor = ControllerMapper.Instance.DoctorController.GetDoctorById(1);
+        doctor = Map.DoctorController.GetDoctorById(1);
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)

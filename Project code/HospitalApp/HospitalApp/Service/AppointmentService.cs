@@ -57,7 +57,7 @@ public class AppointmentService : IAppointmentService
 
     public bool PatientReScheduleAppointment(Appointment appointment)
     {
-        if ((new PatientService(new PatientContextDB())).IncrementAttemptCounter(appointment.Patient))
+        if ((new PatientService(new PatientContextDB())).IsMalicious(appointment.Patient) == false)
             return _appointmentRepository.PatientReScheduleAppointment(appointment);
         else
         {
@@ -67,7 +67,8 @@ public class AppointmentService : IAppointmentService
 
     public bool PatientScheduleAppointment(Appointment appointment)
     {
-        if ((new PatientService(new PatientContextDB())).IncrementAttemptCounter(appointment.Patient))
+        PatientService patient = (new PatientService(new PatientContextDB()));
+        if (patient.IsMalicious(appointment.Patient) == false)
             return _appointmentRepository.PatientScheduleAppointment(appointment);
         else
         {

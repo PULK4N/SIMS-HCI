@@ -152,7 +152,7 @@ public class PatientContextDB : IPatientRepository
     }
     //TO DO: add this one and upper to diagram, implement this
 
-    public bool IncrementAttemptCounter(Patient patient)
+    public bool IsMalicious(Patient patient)
     {
         HospitalDB.Instance.SaveChanges();
         return patient.SchedulingAttempts >= 10;
@@ -168,7 +168,7 @@ public class PatientContextDB : IPatientRepository
         HospitalDB.Instance.SaveChanges();
     }
 
-    public List<Patient> GetPatientsWeekActivePatients()
+    public List<Patient> GetWeekActivePatients()
     {
         return (from pat in HospitalDB.Instance.Patients where pat.User.RegisteredUser.UserType != Enums.UserType.BANNNED_USER 
                 && pat.SchedulingAttempts != 0 select pat)

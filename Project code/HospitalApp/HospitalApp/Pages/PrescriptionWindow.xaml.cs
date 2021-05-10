@@ -35,6 +35,6 @@ public partial class PrescriptionWindow : Window
         newPrescription.Usage = Usage.Text;
         newPrescription.Date = SelectPrescriptionTime.Value.Value;
         newPrescription.Period = Period.Text;
-        ControllerMapper.Instance.PrescriptionController.CreatePrescription(newPrescription);
+        Map.PrescriptionController.CreatePrescription(newPrescription);
     }
 }

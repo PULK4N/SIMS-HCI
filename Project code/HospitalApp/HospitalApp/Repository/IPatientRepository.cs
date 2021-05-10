@@ -22,7 +22,7 @@ public interface IPatientRepository
 
     List<Patient> GetPatientsBy(Doctor doctor);
 
-    bool IncrementAttemptCounter(Patient patient);
+    bool IsMalicious(Patient patient);
     void BanPatient(Patient patient);
-    List<Patient> GetPatientsWeekActivePatients();
+    List<Patient> GetWeekActivePatients();
 }
