@@ -18,7 +18,7 @@ class NotificationManager
             while (true)
             {
                 prescriptions.Clear();
-                foreach(Prescription prescription in ControllerMapper.Instance.PrescriptionController.GetPatientPrescriptions(1))
+                foreach(Prescription prescription in Map.PrescriptionController.GetPatientPrescriptions(1))
                 {
                     prescriptions.Add(prescription);
                 } 

@@ -9,7 +9,7 @@ public static class SchedulingManager
     public static (List<Appointment>,bool) GetAppointments(SchedulingInformation schedulingInformation)
     {
         bool priorityApplied = false;
-        List<Appointment> alreadyScheduled = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(schedulingInformation.Doctor.DoctorId);
+        List<Appointment> alreadyScheduled = Map.AppointmentController.DoctorListAppointments(schedulingInformation.Doctor.DoctorId);
         List<Appointment> appointmentsToSchedule = new List<Appointment>();
         GenerateNewAppointments(appointmentsToSchedule,schedulingInformation);
         filterUnavilableAppointments(appointmentsToSchedule, alreadyScheduled);
@@ -42,7 +42,7 @@ public static class SchedulingManager
     {
         if (schedulingInformation.PatientSchedulingPriority == Enums.PatientSchedulingPriority.DATE_TIME)
         {
-            List<Doctor> doctors = ControllerMapper.Instance.DoctorController.GetAllDoctors(Enums.Specialization.NONE);
+            List<Doctor> doctors = Map.DoctorController.GetAllDoctors(Enums.Specialization.NONE);
             appointmentsToSchedule = GeneratePriorityScheduledAppointments(appointmentsToSchedule, doctors, schedulingInformation);
         }
         else
@@ -130,7 +130,7 @@ public static class SchedulingManager
     {
         foreach(Doctor doctor in doctors)
         {
-            List<Appointment> alreadyScheduled = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(doctor.DoctorId);
+            List<Appointment> alreadyScheduled = Map.AppointmentController.DoctorListAppointments(doctor.DoctorId);
             schedulingInformation.Doctor = doctor;
             GenerateNewAppointments(appointmentsToSchedule,schedulingInformation);
             filterUnavilableAppointments(appointmentsToSchedule, alreadyScheduled);

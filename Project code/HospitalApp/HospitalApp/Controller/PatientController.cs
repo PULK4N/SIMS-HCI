@@ -1,9 +1,3 @@
-/***********************************************************************
- * Module:  PatientAccountManagement.cs
- * Author:  Aleksa
- * Purpose: Definition of the Class PatientAccountManagement
- ***********************************************************************/
-
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -47,9 +41,9 @@ public class PatientController
         return _patientService.GetPatients();
     }
 
-    public bool IncrementAttemptCounter(Patient patient)
+    public bool IsMalicious(Patient patient)
     {
-        return _patientService.IncrementAttemptCounter(patient);
+        return _patientService.IsMalicious(patient);
     }
 
     public void StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)

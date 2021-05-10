@@ -33,7 +33,7 @@ public partial class ScheduledAppointments : Page
 
     public void UpdateAppointments()
     {
-        List<Appointment> DoctorsAppointments = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(DoctorWindow.doctor.DoctorId);
+        List<Appointment> DoctorsAppointments = Map.AppointmentController.DoctorListAppointments(DoctorWindow.doctor.DoctorId);
         Appointments.Clear();
         foreach (Appointment a in DoctorsAppointments)
             Appointments.Add(a);
@@ -46,12 +46,12 @@ public partial class ScheduledAppointments : Page
         this.DataContext = this;
 
         RoomsView = new ObservableCollection<Room>();
-        List<Room> ListRoomRooms = ControllerMapper.Instance.RoomController.GetRooms();
+        List<Room> ListRoomRooms = Map.RoomController.GetRooms();
         foreach (Room r in ListRoomRooms)
             RoomsView.Add(r);
 
         PatientsView = new ObservableCollection<Patient>();
-        List<Patient> ListPatientPatients = ControllerMapper.Instance.PatientController.GetPatients();
+        List<Patient> ListPatientPatients = Map.PatientController.GetPatients();
         foreach (Patient p in ListPatientPatients)
             PatientsView.Add(p);
 
@@ -69,7 +69,7 @@ public partial class ScheduledAppointments : Page
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
         Appointment appointment = dataGridAppointments.SelectedItem as Appointment;
-        ControllerMapper.Instance.AppointmentController.DoctorDeleteAppointment(appointment);
+        Map.AppointmentController.DoctorDeleteAppointment(appointment);
         Appointments.Remove(appointment);
     }
 
@@ -86,7 +86,7 @@ public partial class ScheduledAppointments : Page
     private void ShowPatientButton_Click(object sender, RoutedEventArgs e)
     {
         patient = (dataGridAppointments.SelectedItem as Appointment).Patient;
-        patient = ControllerMapper.Instance.PatientController.GetPatient(patient);
+        patient = Map.PatientController.GetPatient(patient);
         var s = new ShowPatientPage();
         s.Show();
     }
@@ -108,7 +108,7 @@ public partial class ScheduledAppointments : Page
         DateTime newAppointmentEnd = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + EndTime.Text);
         
         newAppointment = new Appointment(newAppointmentBegin, newAppointmentEnd, AppType, Enums.AppointmentStatus.PENDING, PatientDropdown.SelectedItem as Patient, DoctorWindow.doctor, RoomDropdown.SelectedItem as Room);
-        ControllerMapper.Instance.AppointmentController.DoctorCreateAppointment(newAppointment);
+        Map.AppointmentController.DoctorCreateAppointment(newAppointment);
         Appointments.Add(newAppointment);
 
     }
@@ -127,7 +127,7 @@ public partial class ScheduledAppointments : Page
         appointment.End = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + EndTime.Text);
         appointment.Patient = PatientDropdown.SelectedItem as Patient;
         appointment.Room = RoomDropdown.SelectedItem as Room;
-        ControllerMapper.Instance.AppointmentController.DoctorUpdateAppointment(appointment);
+        Map.AppointmentController.DoctorUpdateAppointment(appointment);
         UpdateAppointments();
     }
 }

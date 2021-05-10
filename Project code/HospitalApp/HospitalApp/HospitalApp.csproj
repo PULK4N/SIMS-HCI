@@ -80,7 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ControllerMapper.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Controller\AnamnesisController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
@@ -91,9 +91,9 @@
     <Compile Include="Controller\PrescriptionController.cs" />
     <Compile Include="Controller\ReviewController.cs" />
     <Compile Include="Controller\RoomController.cs" />
-    <Compile Include="Migrations\202105050906029_mig1.cs" />
-    <Compile Include="Migrations\202105050906029_mig1.designer.cs">
-      <DependentUpon>202105050906029_mig1.cs</DependentUpon>
+    <Compile Include="Migrations\202105051912213_mig1.cs" />
+    <Compile Include="Migrations\202105051912213_mig1.designer.cs">
+      <DependentUpon>202105051912213_mig1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
@@ -222,8 +222,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202105050906029_mig1.resx">
-      <DependentUpon>202105050906029_mig1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105051912213_mig1.resx">
+      <DependentUpon>202105051912213_mig1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

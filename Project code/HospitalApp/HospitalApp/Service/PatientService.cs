@@ -48,23 +48,24 @@ public class PatientService : IPatientService
         return _patientRepository.GetPatients();
     }
 
-    public bool IncrementAttemptCounter(Patient patient)
+    public bool IsMalicious(Patient patient)
     {
         ++patient.SchedulingAttempts;
-        bool IsMalicious = _patientRepository.IncrementAttemptCounter(patient);
-        if (IsMalicious && patient.User.RegisteredUser.UserType != UserType.BANNNED_USER)
+        bool IsMalicious = _patientRepository.IsMalicious(patient);
+        if (IsMalicious && IsNotBanned(patient))
         {
             BanPatient(patient);
         }
-        return IsMalicious == false;
+        return IsMalicious;
     }
+
 
     public async Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)
     {
 
         await Task.Run(async () =>
         {
-            List<Patient> patients = _patientRepository.GetPatientsWeekActivePatients();
+            List<Patient> patients = _patientRepository.GetWeekActivePatients();
             while (true)
             {
                 foreach(Patient patient in patients)
@@ -83,5 +84,9 @@ public class PatientService : IPatientService
     public void BanPatient(Patient patient)
     {
         _patientRepository.BanPatient(patient);
+    }
+    private bool IsNotBanned(Patient patient)
+    {
+        return patient.User.RegisteredUser.UserType != UserType.BANNNED_USER;
     }
 }
