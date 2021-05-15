@@ -68,6 +68,34 @@ namespace Bolnica
             //s.Show();
         }
 
+        private void LoginButton(object sender, RoutedEventArgs e)
+        {
+            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Text);
+            if(registeredUser != null)
+            {
+                switch (registeredUser.UserType)
+                {
+                    case Enums.UserType.PATIENT:
+                        MainCanvas.Visibility = Visibility.Hidden;
+                        LoginGrid.Visibility = Visibility.Hidden;
+                        PatientSchedulingCanvas.Visibility = Visibility.Visible;
+                        new NotificationManager().StartTimer(cancellationToken);
+                        break;
+                    case Enums.UserType.DOCTOR:
+                        var s = new DoctorWindow();
+                        s.Show();
+                        break;
+
+                }
+                LoginGrid.Visibility = Visibility.Hidden;
+                MainCanvas.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                MessageBox.Show("Wrong username or password");
+            }
+
+        }
         private void PatientButton(object sender, RoutedEventArgs e)
         {
             MainCanvas.Visibility = Visibility.Hidden;
