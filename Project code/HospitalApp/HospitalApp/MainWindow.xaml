@@ -19,9 +19,9 @@
                 <Label Content="ACCOUNT LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="15" Width="188" Margin="46,29,46,0" />
                 <Label Content="username" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="12" Width="188" Margin="46,64,46,0" />
 
-                <TextBox Margin="46,90,46,130" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="188"/>
-                <PasswordBox Margin="46,135,46,85"  FontFamily="Champagne &amp; Limousines" FontSize="18" Height="20" Width="188"/>
-                <Button Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="134,0,46,45" Content="LOGIN" Click="PatientButton"/>
+                <TextBox x:Name="LoginUsername" Margin="46,90,46,130" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="188"/>
+                <TextBox x:Name="LoginPassword" Margin="46,135,46,85"  FontFamily="Champagne &amp; Limousines" FontSize="18" Height="20" Width="188"/>
+                <Button Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="134,0,46,45" Content="LOGIN" Click="LoginButton"/>
 
                 <Label Content="password" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="12" Width="188" Margin="46,109,46,0" />
             </Grid>

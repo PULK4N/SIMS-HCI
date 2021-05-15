@@ -80,6 +80,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Service\RegisteredUserService.cs" />
+    <Compile Include="Service\IRegisteredUserService.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Controller\AnamnesisController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Pages\ShowPatientPage.xaml.cs">
       <DependentUpon>ShowPatientPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controller\RegisteredUserController.cs" />
     <Compile Include="Repository\AnamnesisContextDB.cs" />
     <Compile Include="Repository\AppointmentContextDB.cs" />
     <Compile Include="Repository\DoctorContextDB.cs" />
@@ -125,13 +129,17 @@
     <Compile Include="Repository\IDrugRepository.cs" />
     <Compile Include="Repository\IPatientRepository.cs" />
     <Compile Include="Repository\IPrescriptionRepository.cs" />
+    <Compile Include="Repository\IRegisteredUserRepository.cs" />
     <Compile Include="Repository\IReviewRepository.cs" />
     <Compile Include="Repository\IRoomRepository.cs" />
     <Compile Include="Repository\ISecretaryRepository.cs" />
     <Compile Include="Repository\MedicalRecordContextDB.cs" />
     <Compile Include="Repository\DrugContextDB.cs" />
+    <Compile Include="Repository\RegisteredUserRepository.cs" />
     <Compile Include="Repository\ReviewContextDB.cs" />
+    <Compile Include="Service\ILoginService.cs" />
     <Compile Include="Service\IReviewService.cs" />
+    <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\NotificationManager.cs" />
     <Compile Include="Repository\PatientContextDB.cs" />
     <Compile Include="Repository\PrescriptionContextDB.cs" />
