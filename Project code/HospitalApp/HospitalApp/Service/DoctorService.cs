@@ -5,50 +5,50 @@
  ***********************************************************************/
 
 using Enums;
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 
-public class DoctorService : IDoctorService
+namespace HospitalApp.Service
 {
-    private readonly IDoctorRepository _doctorRepository;
-
-    public DoctorService(IDoctorRepository doctorRepository)
+    public class DoctorService : IDoctorService
     {
-        _doctorRepository = doctorRepository;
-    }
+        private readonly IDoctorRepository _doctorRepository;
 
-    public Doctor DeleteDoctor(Doctor doctor)
-    {
-        throw new NotImplementedException();
-    }
+        public DoctorService(IDoctorRepository doctorRepository)
+        {
+            _doctorRepository = doctorRepository;
+        }
 
-    public List<Doctor> GetAllDoctors()
-    {
-        throw new NotImplementedException();
-    }
+        public void Create(Doctor doctor)
+        {
+            _doctorRepository.Create(doctor);
+        }
 
-    public List<Doctor> GetAllDoctors(Enums.Specialization specialization)
-    {
-        return _doctorRepository.GetAllDoctors(specialization);
-    }
+        public void Delete(long doctorId)
+        {
+            _doctorRepository.Delete(doctorId);
+        }
 
-    public List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment)
-    {
-        throw new NotImplementedException();
-    }
+        public List<Doctor> GetAll()
+        {
+            return _doctorRepository.GetAll();
+        }
 
-    public Doctor GetDoctorById(long id)
-    {
-        return _doctorRepository.GetDoctorById(id);
-    }
+        public List<Doctor> GetAllBySpecialization(Specialization specialization)
+        {
+            return _doctorRepository.GetAllBySpecialization(specialization);
+        }
 
-    public Doctor SaveDoctor(Doctor doctor)
-    {
-        throw new NotImplementedException();
-    }
+        public Doctor Get(long id)
+        {
+            return _doctorRepository.Get(id);
+        }
 
-    public Doctor UpdateDoctor(Doctor doctor)
-    {
-        throw new NotImplementedException();
+        public void Update(Doctor doctor)
+        {
+            _doctorRepository.Update(doctor);
+        }
     }
 }

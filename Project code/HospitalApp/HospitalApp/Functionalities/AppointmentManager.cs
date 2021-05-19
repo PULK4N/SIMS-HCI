@@ -3,6 +3,7 @@
 // Created: Monday, March 29, 2021 4:28:07 PM
 // Purpose: Definition of Class AppointmentManager
 
+using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
 

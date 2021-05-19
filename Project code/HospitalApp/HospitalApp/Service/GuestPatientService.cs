@@ -5,34 +5,45 @@
  ***********************************************************************/
 
 using Enums;
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
+using System.Collections.Generic;
 
-public class GuestPatientService : IGuestPatientService
+namespace HospitalApp.Service
 {
-    private readonly IGuestPatientRepository _guestPatientRepository;
-
-    public GuestPatientService(IGuestPatientRepository guestPatientRepository)
+    public class GuestPatientService : IGuestPatientService
     {
-        _guestPatientRepository = guestPatientRepository;
-    }
+        private readonly IGuestPatientRepository _guestPatientRepository;
 
-    public bool CreatePatient(string firstName, string lastName, string dateOfBirth, string address, string phoneNumber, int jmbg, string eMail, Sex sex)
-    {
-        throw new NotImplementedException();
-    }
+        public GuestPatientService(IGuestPatientRepository guestPatientRepository)
+        {
+            _guestPatientRepository = guestPatientRepository;
+        }
 
-    public bool DeletePatient(Patient patient)
-    {
-        throw new NotImplementedException();
-    }
+        public void Create(GuestPatient guestPatient)
+        {
+            _guestPatientRepository.Create(guestPatient);
+        }
 
-    public Patient ReadPatient(Patient patient)
-    {
-        throw new NotImplementedException();
-    }
+        public void Delete(long patientId)
+        {
+            _guestPatientRepository.Delete(patientId);
+        }
 
-    public bool UpdatePatient(Patient patient)
-    {
-        throw new NotImplementedException();
+        public GuestPatient Get(long guestPatientId)
+        {
+            return _guestPatientRepository.Get(guestPatientId);
+        }
+
+        public List<GuestPatient> GetAll()
+        {
+            return _guestPatientRepository.GetAll();
+        }
+
+        public void Update(GuestPatient patient)
+        {
+            _guestPatientRepository.Update(patient);
+        }
     }
 }

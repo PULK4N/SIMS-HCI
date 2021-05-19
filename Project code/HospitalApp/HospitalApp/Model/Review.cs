@@ -7,24 +7,27 @@ using Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class Review
+namespace HospitalApp.Model
 {
-    public Review()
+    public class Review
     {
-    }
+        public Review()
+        {
+        }
 
-    public Review(int score, string comment, ReviewType reviewType, Appointment appointment)
-    {
-        Score = score;
-        Comment = comment;
-        ReviewType = reviewType;
-        Appointment = appointment;
-    }
+        public Review(int score, string comment, ReviewType reviewType, Appointment appointment)
+        {
+            Score = score;
+            Comment = comment;
+            ReviewType = reviewType;
+            Appointment = appointment;
+        }
 
-    [Key]
-    public long ReviewId{ get; set; }
-    public int Score{ get; set; }
-    public String Comment{ get; set; }
-    public Enums.ReviewType ReviewType { get; set; }
-    public Appointment Appointment { get; set; }
+        [Key]
+        public long ReviewId { get; set; }
+        public int Score { get; set; }
+        public string Comment { get; set; }
+        public ReviewType ReviewType { get; set; }
+        public Appointment Appointment { get; set; }
+    }
 }

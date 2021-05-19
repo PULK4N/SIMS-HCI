@@ -3,46 +3,46 @@
 // Created: Thursday, April 15, 2021 3:32:27 PM
 // Purpose: Definition of Class AnamnesisController
 
+using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
 
-public class AnamnesisController
+namespace HospitalApp.Controller
 {
-    private readonly IAnamnesisService _anamnesisService;
+    public class AnamnesisController
+    {
+        private readonly IAnamnesisService _anamnesisService;
 
-    public AnamnesisController(IAnamnesisService anamnesisService)
-    {
-        _anamnesisService = anamnesisService;
-    }
+        public AnamnesisController(IAnamnesisService anamnesisService)
+        {
+            _anamnesisService = anamnesisService;
+        }
 
-    public bool CreateAnamnesis(Anamnesis anamnesis)
-    {
-        return _anamnesisService.CreateAnamnesis(anamnesis);
-    }
-    
-    public bool UpdateAnamnesis(Anamnesis anamnesis)
-    {
-        return _anamnesisService.UpdateAnamnesis(anamnesis);
-    }
-    
-    public bool DeleteAnamnesis(Anamnesis anamnesis)
-    {
-        return _anamnesisService.DeleteAnamnesis(anamnesis);
-    }
-    
-    public Anamnesis GetAnamnesis(long anamnesisId)
-    {
-        return _anamnesisService.GetAnamnesis(anamnesisId);
-    }
+        public void Create(Anamnesis anamnesis)
+        {
+            _anamnesisService.Create(anamnesis);
+        }
 
-    public Anamnesis GetAnamnesis(Anamnesis anamnesis)
-    {
-        return _anamnesisService.GetAnamnesis(anamnesis);
-    }
+        public void Update(Anamnesis anamnesis)
+        {
+            _anamnesisService.Update(anamnesis);
+        }
 
-    public List<Anamnesis> GetAllPatientAnamnesis(long patientId)
-    {
-       throw new NotImplementedException();
+        public void Delete(long anamnesisId)
+        {
+            _anamnesisService.Delete(anamnesisId);
+        }
+
+        public Anamnesis Get(long anamnesisId)
+        {
+            return _anamnesisService.Get(anamnesisId);
+        }
+
+        public Anamnesis GetByPatientId(long patientId)
+        {
+            return _anamnesisService.GetByPatientId(patientId);
+        }
+
     }
-    
 }

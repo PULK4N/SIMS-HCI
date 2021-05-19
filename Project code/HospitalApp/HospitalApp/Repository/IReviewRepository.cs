@@ -1,18 +1,12 @@
+using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
 
-public interface IReviewRepository
+namespace HospitalApp.Repository
 {
-    bool CreateReview(Review review);
-
-    bool UpdateReview(Review review);
-
-    bool DeleteReview(Review review);
-
-    Review GetReview(long reviewId);
-
-    List<Review> GetReviews();
-    Review GetClinicReview();
-    List<Review> GetReviews(Patient patient);
-    Review GetReview(Review review);
+    public interface IReviewRepository : IEntityRepository<Review>
+    {
+        Review GetAllByClinic(long clinicId);
+        List<Review> GetAllByPatient(long patientId);
+    }
 }

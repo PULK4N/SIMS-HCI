@@ -6,12 +6,15 @@
 
 using System;
 
-public class Referal
+namespace HospitalApp.Model
 {
-    public long ReferalId { get; set; }
-    public String Type { get; set; }
-    public DateTime Date { get; set; }
+    public class Referal
+    {
+        public long ReferalId { get; set; }
+        public string Type { get; set; }
+        public DateTime Date { get; set; }
 
-    public Appointment Appointment { get; set; }
+        public Appointment Appointment { get; set; }
 
+    }
 }

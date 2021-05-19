@@ -7,16 +7,19 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class GuestPatient
+namespace HospitalApp.Model
 {
-    [Key]
-    public int GuestPatientId{ get; set; }
-    [Required]
-    public DateTime ArrivalDate{ get; set; }
-    public String EmergencyInfo{ get; set; }
-    [Required]
-    public Appointment Appointment{ get; set; }
-    [Required, Index("uniqueUserGuestUser", IsUnique = true)]
-    public User User{ get; set; }
+    public class GuestPatient
+    {
+        [Key]
+        public int GuestPatientId { get; set; }
+        [Required]
+        public DateTime ArrivalDate { get; set; }
+        public string EmergencyInfo { get; set; }
+        [Required]
+        public Appointment Appointment { get; set; }
+        [Required, Index("uniqueUserGuestUser", IsUnique = true)]
+        public User User { get; set; }
 
+    }
 }

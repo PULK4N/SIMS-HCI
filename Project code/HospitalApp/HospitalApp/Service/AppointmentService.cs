@@ -3,81 +3,83 @@
 // Created: Thursday, April 15, 2021 4:44:59 PM
 // Purpose: Definition of Class AppointmentService
 
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 
-public class AppointmentService : IAppointmentService
+namespace HospitalApp.Service
 {
-    private readonly IAppointmentRepository _appointmentRepository;
-
-    public AppointmentService(IAppointmentRepository appointmentRepository)
+    public class AppointmentService : IAppointmentService
     {
-        _appointmentRepository = appointmentRepository;
-    }
+        private readonly IAppointmentRepository _appointmentRepository;
 
-    public bool DoctorCreateAppointment(Appointment appointment)
-    {
-        return _appointmentRepository.DoctorCreateAppointment(appointment);
-    }
-
-    public bool DoctorDeleteAppointment(Appointment appointment)
-    {
-        return _appointmentRepository.DoctorDeleteAppointment(appointment);
-    }
-
-    public List<Appointment> DoctorListAppointments(long doctorId)
-    {
-        return _appointmentRepository.DoctorListAppointments(doctorId);
-    }
-
-    public bool DoctorUpdateAppointment(Appointment appointment)
-    {
-        return _appointmentRepository.DoctorUpdateAppointment(appointment);
-    }
-
-    public Appointment GetById(long id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<Appointment> PatientListAppointments(Patient patient)
-    {
-        return _appointmentRepository.PatientListAppointments(patient);
-    }
-
-    public bool PatientCancelAppointment(Appointment appointment)
-    {
-        return _appointmentRepository.PatientCancelAppointment(appointment);
-    }
-
-    public List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool PatientReScheduleAppointment(Appointment appointment)
-    {
-        if ((new PatientService(new PatientContextDB())).IsMalicious(appointment.Patient) == false)
-            return _appointmentRepository.PatientReScheduleAppointment(appointment);
-        else
+        public AppointmentService(IAppointmentRepository appointmentRepository)
         {
-            return false;
+            _appointmentRepository = appointmentRepository;
         }
-    }
 
-    public bool PatientScheduleAppointment(Appointment appointment)
-    {
-        PatientService patient = (new PatientService(new PatientContextDB()));
-        if (patient.IsMalicious(appointment.Patient) == false)
-            return _appointmentRepository.PatientScheduleAppointment(appointment);
-        else
+        public void Create(Appointment appointment)
         {
-            return false;
+            _appointmentRepository.Create(appointment);
         }
-    }
 
-    public List<Appointment> GetPatientCompletedAppointments(Patient patient)
-    {
-        return _appointmentRepository.GetPatientCompletedAppointments(patient);
+        public void Delete(long appointmentId)//TO DO: change to id
+        {
+            _appointmentRepository.Delete(appointmentId);
+        }
+
+        public List<Appointment> GetAllByDoctorId(long doctorId)
+        {
+            return _appointmentRepository.GetAllByDoctor(doctorId);
+        }
+
+        public void Update(Appointment appointment)
+        {
+            _appointmentRepository.Update(appointment);
+        }
+
+        public Appointment Get(long id)
+        {
+            return _appointmentRepository.Get(id);
+        }
+
+        public List<Appointment> GetAllByPatientId(long patientId)
+        {
+            return _appointmentRepository.GetAllByPatient(patientId);
+        }
+
+        public bool PatientReScheduleAppointment(Appointment appointment)
+        {
+            if (new PatientService(new PatientRepository()).IsMalicious(appointment.Patient) == false)
+                _appointmentRepository.Update(appointment);//TO DO: edit this function, change the location maybe
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool PatientScheduleAppointment(Appointment appointment)
+        {
+            PatientService patient = new PatientService(new PatientRepository());
+            if (patient.IsMalicious(appointment.Patient) == false)
+                _appointmentRepository.Create(appointment);
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public List<Appointment> GetAllCompletedByPatientId(Patient patient)
+        {
+            return _appointmentRepository.GetAllCompletedByPatient(patient);
+        }
+
+        public List<Appointment> GetAll()
+        {
+            return _appointmentRepository.GetAll();
+        }
     }
 }

@@ -80,6 +80,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\IEntityController.cs" />
+    <Compile Include="Service\ISchedulingService.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Controller\AnamnesisController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
@@ -113,31 +115,31 @@
     <Compile Include="Pages\ShowPatientPage.xaml.cs">
       <DependentUpon>ShowPatientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Repository\AnamnesisContextDB.cs" />
-    <Compile Include="Repository\AppointmentContextDB.cs" />
-    <Compile Include="Repository\DoctorContextDB.cs" />
-    <Compile Include="Repository\GuestPatientContextDB.cs" />
+    <Compile Include="Repository\AnamnesisRepository.cs" />
+    <Compile Include="Repository\AppointmentRepository.cs" />
+    <Compile Include="Repository\DoctorRepository.cs" />
+    <Compile Include="Repository\GuestPatientRepository.cs" />
     <Compile Include="Repository\IAnamnesisRepository.cs" />
     <Compile Include="Repository\IAppointmentRepository.cs" />
     <Compile Include="Repository\IDoctorRepository.cs" />
     <Compile Include="Repository\IGuestPatientRepository.cs" />
     <Compile Include="Repository\IMedicalRecordRepository.cs" />
     <Compile Include="Repository\IDrugRepository.cs" />
+    <Compile Include="Repository\IEntityRepository.cs" />
     <Compile Include="Repository\IPatientRepository.cs" />
     <Compile Include="Repository\IPrescriptionRepository.cs" />
     <Compile Include="Repository\IReviewRepository.cs" />
     <Compile Include="Repository\IRoomRepository.cs" />
-    <Compile Include="Repository\ISecretaryRepository.cs" />
-    <Compile Include="Repository\MedicalRecordContextDB.cs" />
-    <Compile Include="Repository\DrugContextDB.cs" />
-    <Compile Include="Repository\ReviewContextDB.cs" />
+    <Compile Include="Repository\MedicalRecordRepository.cs" />
+    <Compile Include="Repository\DrugRepository.cs" />
+    <Compile Include="Repository\ReviewRepository.cs" />
     <Compile Include="Service\IReviewService.cs" />
-    <Compile Include="Service\NotificationManager.cs" />
-    <Compile Include="Repository\PatientContextDB.cs" />
-    <Compile Include="Repository\PrescriptionContextDB.cs" />
-    <Compile Include="Repository\RoomContextDB.cs" />
-    <Compile Include="Repository\SecretaryContextDB.cs" />
-    <Compile Include="SchedulingManager.cs" />
+    <Compile Include="Service\IEntityService.cs" />
+    <Compile Include="Service\NotificationService.cs" />
+    <Compile Include="Repository\PatientRepository.cs" />
+    <Compile Include="Repository\PrescriptionRepository.cs" />
+    <Compile Include="Repository\RoomRepository.cs" />
+    <Compile Include="Service\SchedulingService.cs" />
     <Compile Include="Service\AnamnesisService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DoctorService.cs" />
@@ -151,14 +153,12 @@
     <Compile Include="Service\IPatientService.cs" />
     <Compile Include="Service\IPrescriptionService.cs" />
     <Compile Include="Service\IRoomService.cs" />
-    <Compile Include="Service\ISecretaryService.cs" />
     <Compile Include="Service\MedicalRecordService.cs" />
     <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
     <Compile Include="Service\ReviewService.cs" />
     <Compile Include="Service\RoomService.cs" />
-    <Compile Include="Service\SecretaryService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

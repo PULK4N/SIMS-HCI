@@ -3,45 +3,49 @@
 // Created: Thursday, April 15, 2021 4:44:59 PM
 // Purpose: Definition of Class MedicineService
 
-using System;
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System.Collections.Generic;
 
-public class DrugService : IDrugService
+namespace HospitalApp.Service
 {
-    private readonly IDrugRepository _drugRepository;
-
-    public DrugService(IDrugRepository drugRepository)
+    public class DrugService : IDrugService
     {
-        _drugRepository = drugRepository;
-    }
+        private readonly IDrugRepository _drugRepository;
 
-    public bool CreateDrug(Drug drug)
-    {
-        return _drugRepository.CreateDrug(drug);
-    }
+        public DrugService(IDrugRepository drugRepository)
+        {
+            _drugRepository = drugRepository;
+        }
 
-    public bool DeleteDrug(Drug drug)
-    {
-        return _drugRepository.DeleteDrug(drug);
-    }
+        public void Create(Drug drug)
+        {
+            _drugRepository.Create(drug);
+        }
 
-    public Drug GetDrug(Drug drug)
-    {
-        return _drugRepository.GetDrug(drug);
-    }
+        public void Delete(long drugId)
+        {
+            _drugRepository.Delete(drugId);
+        }
 
-    public List<Drug> GetDrugs()
-    {
-        return _drugRepository.GetDrugs();
-    }
+        public Drug Get(long drugId)
+        {
+            return _drugRepository.Get(drugId);
+        }
 
-    public List<Drug> GetPatientDrugs(Patient patient)
-    {
-        return _drugRepository.GetPatientDrugs(patient);
-    }
+        public List<Drug> GetAll()
+        {
+            return _drugRepository.GetAll();
+        }
 
-    public bool UpdateDrug(Drug drug)
-    {
-        return _drugRepository.UpdateDrug(drug);
+        public List<Drug> GetAllByPatient(Patient patient)
+        {
+            return _drugRepository.GetAllByPatient(patient);
+        }
+
+        public void Update(Drug drug)
+        {
+            _drugRepository.Update(drug);
+        }
     }
 }

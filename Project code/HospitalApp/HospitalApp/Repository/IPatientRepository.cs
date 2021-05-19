@@ -3,26 +3,19 @@
 // Created: Friday, April 16, 2021 9:36:32 AM
 // Purpose: Definition of Interface IPatientRepository
 
+using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
 
-public interface IPatientRepository
+namespace HospitalApp.Repository
 {
-   bool CreatePatient(Patient patient);
+    public interface IPatientRepository : IEntityRepository<Patient>
+    {
 
-    Patient GetPatient(Patient patient);
+        List<Patient> GetAllByDoctor(Doctor doctor);
 
-    Patient GetPatient(long patientId);
-
-    bool UpdatePatient(Patient patient);
-   
-   bool DeletePatient(Patient patient);
-
-    List<Patient> GetPatients();
-
-    List<Patient> GetPatientsBy(Doctor doctor);
-
-    bool IsMalicious(Patient patient);
-    void BanPatient(Patient patient);
-    List<Patient> GetWeekActivePatients();
+        bool IsMalicious(Patient patient);
+        void BanPatient(Patient patient);
+        List<Patient> GetWeekActivePatients();
+    }
 }

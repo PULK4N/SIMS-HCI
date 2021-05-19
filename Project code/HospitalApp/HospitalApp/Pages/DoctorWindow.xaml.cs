@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -23,7 +24,7 @@ public partial class DoctorWindow : Window
     public DoctorWindow()
     {
         InitializeComponent();
-        doctor = Map.DoctorController.GetDoctorById(1);
+        doctor = Map.DoctorController.Get(1);
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)

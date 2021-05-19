@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HospitalApp.Controller;
+using HospitalApp.Repository;
+using HospitalApp.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +37,7 @@ public static class Map
     public static IPrescriptionService PrescriptionService { get; set; }
     public static IRoomService RoomService { get; set; }
     public static IReviewService ReviewService { get; set; }
+    public static ISchedulingService SchedulingService { get; private set; }
 
     #endregion
 
@@ -53,16 +57,16 @@ public static class Map
     #endregion
     public static void Instantiate()
     {
-        AnamnesisRepository = new AnamnesisContextDB();
-        AppointmentRepository = new AppointmentContextDB();
-        DoctorRepository = new DoctorContextDB();
-        GuestPatientRepository = new GuestPatientContextDB();
-        MedicalRecordRepository = new MedicalRecordContextDB();
+        AnamnesisRepository = new AnamnesisRepository();
+        AppointmentRepository = new AppointmentRepository();
+        DoctorRepository = new DoctorRepository();
+        GuestPatientRepository = new GuestPatientRepository();
+        MedicalRecordRepository = new MedicalRecordRepository();
         DrugRepository = new DrugRepository();
-        PatientRepository = new PatientContextDB();
-        PrescriptionRepository = new PrescriptionContextDB();
-        RoomRepository = new RoomContextDB();
-        ReviewRepository = new ReviewContextDB();
+        PatientRepository = new PatientRepository();
+        PrescriptionRepository = new PrescriptionRepository();
+        RoomRepository = new RoomRepository();
+        ReviewRepository = new ReviewRepository();
 
         AnamnesisService = new AnamnesisService(AnamnesisRepository);
         AppointmentService = new AppointmentService(AppointmentRepository);
@@ -74,6 +78,7 @@ public static class Map
         PrescriptionService = new PrescriptionService(PrescriptionRepository);
         RoomService = new RoomService(RoomRepository);
         ReviewService = new ReviewService(ReviewRepository);
+        SchedulingService = new SchedulingService();
 
         AnamnesisController = new AnamnesisController(AnamnesisService);
         AppointmentController = new AppointmentController(AppointmentService);

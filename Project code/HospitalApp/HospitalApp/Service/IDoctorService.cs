@@ -4,20 +4,13 @@
  * Purpose: Definition of the Class DoctorService
  ***********************************************************************/
 
+using HospitalApp.Model;
 using System.Collections.Generic;
 
-public interface IDoctorService
+namespace HospitalApp.Service
 {
-    Doctor SaveDoctor(Doctor doctor);
-
-    Doctor UpdateDoctor(Doctor doctor);
-
-    Doctor DeleteDoctor(Doctor doctor);
-
-    Doctor GetDoctorById(long id);
-   
-    List<Doctor> GetAllDoctors();
-    List<Doctor> GetAllDoctors(Enums.Specialization specialization);
-
-    List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment);
+    public interface IDoctorService : IEntityService<Doctor>
+    {
+        List<Doctor> GetAllBySpecialization(Enums.Specialization specialization);
+    }
 }

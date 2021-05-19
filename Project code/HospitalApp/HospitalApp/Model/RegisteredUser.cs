@@ -8,32 +8,35 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class RegisteredUser
+namespace HospitalApp.Model
 {
-    public RegisteredUser(RegisteredUser registeredUser)
+    public class RegisteredUser
     {
-        this.Username = registeredUser.Username;
-        this.Password = registeredUser.Password;
-        this.UserType = registeredUser.UserType;
+        public RegisteredUser(RegisteredUser registeredUser)
+        {
+            Username = registeredUser.Username;
+            Password = registeredUser.Password;
+            UserType = registeredUser.UserType;
+        }
+
+        public RegisteredUser(string username, string password, UserType userType)
+        {
+            Username = username;
+            Password = password;
+            UserType = userType;
+        }
+
+        public RegisteredUser()
+        {
+        }
+
+
+        [Key]
+        public string Username { get; set; }
+        [Required]
+        public string Password { get; set; }
+        public UserType UserType { get; set; }
+
+
     }
-
-    public RegisteredUser(string username, string password, UserType userType)
-    {
-        Username = username;
-        Password = password;
-        UserType = userType;
-    }
-
-    public RegisteredUser()
-    {
-    }
-
-
-    [Key]
-    public String Username{ get; set; }
-    [Required]
-    public String Password{ get; set; }
-    public Enums.UserType UserType { get; set; }
-
-
 }

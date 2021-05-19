@@ -4,34 +4,45 @@
  * Purpose: Definition of the Class PatientAccountManagement
  ***********************************************************************/
 
+using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
+using System.Collections.Generic;
 
-public class GuestPatientController
+namespace HospitalApp.Controller
 {
-    private readonly IGuestPatientService _guestPatientService;
+    public class GuestPatientController : IEntityController<GuestPatient>
+    {
+        private readonly IGuestPatientService _guestPatientService;
 
-    public GuestPatientController(IGuestPatientService guestPatientService)
-    {
-        _guestPatientService = guestPatientService;
-    }
+        public GuestPatientController(IGuestPatientService guestPatientService)
+        {
+            _guestPatientService = guestPatientService;
+        }
 
-    public bool CreateGuestPatient(String username, String password, Enums.UserType userType, String firstName, String lastName, DateTime dateofBirth, String address, String phoneNumber, ulong jmbg, String eMail, Enums.RelationshipStatus sex, Enums.RelationshipStatus relationshipStatus, DateTime arrivalDate, String emergencyInfo)
-    {
-       throw new NotImplementedException();
-    }
-    
-    public Patient ReadGuestPatient(Patient patient)
-    {
-       throw new NotImplementedException();
-    }
-    
-    public bool UpdateGuestPatient(String username, String password, Enums.UserType userType, String firstName, String lastName, DateTime dateofBirth, String address, String phoneNumber, ulong jmbg, String eMail, Enums.RelationshipStatus sex, Enums.RelationshipStatus relationshipStatus, DateTime arrivalDate, String emergencyInfo)
-    {
-       throw new NotImplementedException();
-    }
-    
-    public bool DeleteGuestPatient(Patient patient)
-    {
-       throw new NotImplementedException();
+        public void Create(GuestPatient guestPatient)
+        {
+            _guestPatientService.Create(guestPatient);
+        }
+
+        public GuestPatient Get(long guestPatientId)
+        {
+            return _guestPatientService.Get(guestPatientId);
+        }
+
+        public void Update(GuestPatient guestPatient)
+        {
+            _guestPatientService.Update(guestPatient);
+        }
+
+        public void Delete(long guestPatientId)
+        {
+            _guestPatientService.Delete(guestPatientId);
+        }
+
+        public List<GuestPatient> GetAll()
+        {
+            return _guestPatientService.GetAll();
+        }
     }
 }
