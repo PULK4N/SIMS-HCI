@@ -4,47 +4,48 @@
  * Purpose: Definition of the Class PatientAccountManagement
  ***********************************************************************/
 
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 
-public class RoomService : IRoomService
+namespace HospitalApp.Service
 {
-    private IRoomRepository _roomRepository;
-
-    public RoomService(IRoomRepository roomRepository)
+    public class RoomService : IRoomService
     {
-        _roomRepository = roomRepository;
+        private IRoomRepository _roomRepository;
+
+        public RoomService(IRoomRepository roomRepository)
+        {
+            _roomRepository = roomRepository;
+        }
+
+        public void Create(Room room)
+        {
+            _roomRepository.Create(room);
+        }
+
+        public void Delete(long roomId)
+        {
+            _roomRepository.Delete(roomId);
+        }
+
+        public Room Get(long roomId)
+        {
+            return _roomRepository.Get(roomId);
+        }
+
+
+        public List<Room> GetAll()
+        {
+            return _roomRepository.GetAll();
+        }
+
+        public void Update(Room room)
+        {
+            _roomRepository.Update(room);
+        }
+
+
     }
-
-    public bool CreateRoom(Room room)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool DeleteRoom(Room room)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Room GetRoom(long roomId)
-    {
-        return _roomRepository.GetRoom(roomId);
-    }
-
-    public Room GetRoom(Room room)
-    {
-        return _roomRepository.GetRoom(room);
-    }
-
-    public List<Room> GetRooms()
-    {
-        return _roomRepository.GetRooms();
-    }
-
-    public bool UpdateRoom(Room room)
-    {
-        throw new NotImplementedException();
-    }
-
-
 }

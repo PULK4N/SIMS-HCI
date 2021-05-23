@@ -4,52 +4,53 @@
  * Purpose: Definition of the Class DoctorService
  ***********************************************************************/
 
+using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
 
-public class DoctorController
+namespace HospitalApp.Controller
 {
-   private IDoctorService _doctorService;
-
-    public DoctorController(IDoctorService doctorService)
+    public class DoctorController : IEntityController<Doctor>
     {
-        _doctorService = doctorService;
+        private IDoctorService _doctorService;
+
+        public DoctorController(IDoctorService doctorService)
+        {
+            _doctorService = doctorService;
+        }
+
+        public void Create(Doctor doctor)
+        {
+            _doctorService.Create(doctor);
+        }
+
+        public void Update(Doctor doctor)
+        {
+            _doctorService.Update(doctor);
+        }
+
+        public void Delete(long doctorId)
+        {
+            _doctorService.Delete(doctorId);
+        }
+
+        public Doctor Get(long id)
+        {
+            return _doctorService.Get(id);
+        }
+
+
+        public List<Doctor> GetAll()
+        {
+            return _doctorService.GetAll();
+        }
+
+        public List<Doctor> GetAllBySpecialization(Enums.Specialization specialization)
+        {
+            return _doctorService.GetAllBySpecialization(specialization);
+        }
+
+
     }
-
-    public Doctor SaveDoctor(Doctor doctor)
-   {
-      throw new NotImplementedException();
-   }
-   
-   public Doctor UpdateDoctor(String username, String password, Enums.UserType userType, String firstName, String lastName, DateTime dateOfBirth, String address, String phoneNumber, ulong jmbg, String eMail, Enums.RelationshipStatus sex, Enums.RelationshipStatus relationshpStatus, float salary, uint workingHours, int vacationTime, int sickLeave, String aboutMe, Enums.Specialization specialization)
-   {
-      throw new NotImplementedException();
-   }
-   
-   public Doctor DeleteDoctor(Doctor doctor)
-   {
-      throw new NotImplementedException();
-   }
-   
-   public Doctor GetDoctorById(long id)
-   {
-        return _doctorService.GetDoctorById(id);
-   }
-   
-   
-   public List<Doctor> GetAllDoctors()
-   {
-      throw new NotImplementedException();
-   }
-
-    public List<Doctor> GetAllDoctors(Enums.Specialization specialization)
-    {
-        return _doctorService.GetAllDoctors(specialization);
-    }
-
-    public List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment)
-   {
-      throw new NotImplementedException();
-   }
-
 }

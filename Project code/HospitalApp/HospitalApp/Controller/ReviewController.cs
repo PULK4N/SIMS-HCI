@@ -1,54 +1,54 @@
+using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
 
-public class ReviewController
+namespace HospitalApp.Controller
 {
-    private readonly IReviewService _reviewService;
-
-    public ReviewController(IReviewService reviewService)
+    public class ReviewController
     {
-        _reviewService = reviewService;
+        private readonly IReviewService _reviewService;
+
+        public ReviewController(IReviewService reviewService)
+        {
+            _reviewService = reviewService;
+        }
+
+        public void Create(Review review)
+        {
+            _reviewService.Create(review);
+        }
+
+        public void Update(Review review)
+        {
+            _reviewService.Update(review);
+        }
+
+        public void Delete(long reviewId)
+        {
+            _reviewService.Delete(reviewId);
+        }
+
+        public Review Get(long reviewId)
+        {
+            return _reviewService.Get(reviewId);
+        }
+
+        public List<Review> GetAll()
+        {
+            return _reviewService.GetAll();
+        }
+
+        public List<Review> GetAllByPatientId(long patientId)
+        {
+            return _reviewService.GetAllByPatientId(patientId);
+        }
+
+        public Review GetAllByClinicId(long clinicId)
+        {
+            return _reviewService.GetAllByClinicId(clinicId);
+        }
+
+
     }
-
-    public bool CreateReview(Review review)
-    {
-        return _reviewService.CreateReview(review);
-    }
-
-    public bool UpdateReview(Review review)
-    {
-        return _reviewService.UpdateReview(review);
-    }
-
-    public bool DeleteReview(Review review)
-    {
-        return _reviewService.DeleteReview(review);
-    }
-
-    public Review GetReview(long reviewId)
-    {
-        return _reviewService.GetReview(reviewId);
-    }
-
-    public Review GetReview(Review review)
-    {
-        return _reviewService.GetReview(review);
-    }
-
-    public List<Review> GetReviews()
-    {
-        return _reviewService.GetReviews();
-    }
-
-    public List<Review> GetReviews(Patient patient)
-    {
-        return _reviewService.GetReviews(patient);
-    }
-
-    public Review GetClinicReview()
-    {
-        return _reviewService.GetClinicReview();
-    }
-
-
 }

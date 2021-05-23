@@ -3,46 +3,51 @@
 // Created: Thursday, April 15, 2021 4:30:55 PM
 // Purpose: Definition of Class MedicineController
 
+using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
 
-public class DrugController
+namespace HospitalApp.Controller
 {
-    private readonly IDrugService _drugService;
+    public class DrugController : IEntityController<Drug>
+    {
+        private readonly IDrugService _drugService;
 
-    public DrugController(IDrugService drugService)
-    {
-        _drugService = drugService;
-    }
+        public DrugController(IDrugService drugService)
+        {
+            _drugService = drugService;
+        }
 
-    public bool CreateDrug(Drug drug)
-    {
-        return _drugService.CreateDrug(drug);
-    }
-    
-    public bool UpdateDrug(Drug drug)
-    {
-        return _drugService.UpdateDrug(drug);
-    }
-    
-    public bool DeleteMedicine(Drug drug)
-    {
-        return _drugService.DeleteDrug(drug);
-    }
-    
-    public Drug GetDrug(Drug drug)
-    {
-        return _drugService.GetDrug(drug);
-    }
-    
-    public List<Drug> GetPatientDrugs(Patient patient)
-    {
-        return _drugService.GetPatientDrugs(patient);
-    }
+        public void Create(Drug drug)
+        {
+            _drugService.Create(drug);
+        }
 
-    public List<Drug> GetDrugs()
-    {
-        return _drugService.GetDrugs();
+        public void Update(Drug drug)
+        {
+            _drugService.Update(drug);
+        }
+
+        public void Delete(long drugId)
+        {
+            _drugService.Delete(drugId);
+        }
+
+        public Drug Get(long drugId)
+        {
+            return _drugService.Get(drugId);
+        }
+
+        public List<Drug> GetAllByPatient(Patient patient)
+        {
+            return _drugService.GetAllByPatient(patient);
+        }
+
+        public List<Drug> GetAll()
+        {
+            return _drugService.GetAll();
+        }
+
     }
-    
 }

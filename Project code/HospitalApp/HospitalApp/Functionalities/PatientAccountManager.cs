@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class PatientAccountManagement
  ***********************************************************************/
 
+using HospitalApp.Model;
 using System;
 
 public class PatientAccountManager

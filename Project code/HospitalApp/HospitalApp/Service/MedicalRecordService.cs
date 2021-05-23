@@ -3,43 +3,52 @@
 // Created: Thursday, April 15, 2021 4:44:59 PM
 // Purpose: Definition of Class MedicalRecordService
 
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
+using System.Collections.Generic;
 
-public class MedicalRecordService : IMedicalRecordService
+namespace HospitalApp.Service
 {
-    private readonly IMedicalRecordRepository _medicalRecordRepository;
-
-    public MedicalRecordService(IMedicalRecordRepository medicalRecordRepository)
+    public class MedicalRecordService : IMedicalRecordService
     {
-        _medicalRecordRepository = medicalRecordRepository;
-    }
+        private readonly IMedicalRecordRepository _medicalRecordRepository;
 
-    public bool CreateMedicalRecord(MedicalRecord medicalRecord)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool DeleteMedicalRecord(MedicalRecord medicalRecord)
-    {
-        throw new NotImplementedException();
-    }
-
-    public MedicalRecord GetMedicalRecord(long medicalRecordId)
-    {
-        return _medicalRecordRepository.GetMedicalRecord(medicalRecordId);
-    }
-
-    public bool UpdateMedicalRecord(MedicalRecord medicalRecord)
-    {
-        MedicalRecord editedMedicalRecord = _medicalRecordRepository.GetMedicalRecord(medicalRecord.MedicalRecordId);
-        if (editedMedicalRecord != null)
+        public MedicalRecordService(IMedicalRecordRepository medicalRecordRepository)
         {
-            editedMedicalRecord.LastMesuredHeight = medicalRecord.LastMesuredHeight;
-            editedMedicalRecord.LastMesuredWeight = medicalRecord.LastMesuredWeight;
-            editedMedicalRecord.Anamnesis = medicalRecord.Anamnesis;
-            _medicalRecordRepository.UpdateMedicalRecord(medicalRecord);
-            return true;
+            _medicalRecordRepository = medicalRecordRepository;
         }
-        return false;
+
+        public void Create(MedicalRecord medicalRecord)
+        {
+            _medicalRecordRepository.Create(medicalRecord);
+        }
+
+        public void Delete(long medicalRecordId)
+        {
+            _medicalRecordRepository.Delete(medicalRecordId);
+        }
+
+        public MedicalRecord Get(long medicalRecordId)
+        {
+            return _medicalRecordRepository.Get(medicalRecordId);
+        }
+
+        public List<MedicalRecord> GetAll()
+        {
+            return _medicalRecordRepository.GetAll();
+        }
+
+        public void Update(MedicalRecord medicalRecord)
+        {
+            MedicalRecord editedMedicalRecord = _medicalRecordRepository.Get(medicalRecord.MedicalRecordId);
+            if (editedMedicalRecord != null)
+            {
+                editedMedicalRecord.LastMesuredHeight = medicalRecord.LastMesuredHeight;
+                editedMedicalRecord.LastMesuredWeight = medicalRecord.LastMesuredWeight;
+                editedMedicalRecord.Anamnesis = medicalRecord.Anamnesis;
+                _medicalRecordRepository.Update(medicalRecord);
+            }
+        }
     }
 }

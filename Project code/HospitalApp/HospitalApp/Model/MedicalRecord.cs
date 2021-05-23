@@ -6,13 +6,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class MedicalRecord
+namespace HospitalApp.Model
 {
-    [Key]
-    public long MedicalRecordId { get; set; }
-    public float LastMesuredHeight { get; set; }
-    public float LastMesuredWeight { get; set; }
+    public class MedicalRecord
+    {
+        [Key]
+        public long MedicalRecordId { get; set; }
+        public float LastMesuredHeight { get; set; }
+        public float LastMesuredWeight { get; set; }
 
-    public Anamnesis Anamnesis { get; set; }
-    
+        public Anamnesis Anamnesis { get; set; }
+
+    }
 }

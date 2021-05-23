@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HospitalApp.Controller;
+using HospitalApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +37,6 @@ public partial class PrescriptionWindow : Window
         newPrescription.Usage = Usage.Text;
         newPrescription.Date = SelectPrescriptionTime.Value.Value;
         newPrescription.Period = Period.Text;
-        Map.PrescriptionController.CreatePrescription(newPrescription);
+        Map.PrescriptionController.Create(newPrescription);
     }
 }

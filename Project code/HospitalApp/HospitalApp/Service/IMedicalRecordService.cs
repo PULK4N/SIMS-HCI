@@ -3,16 +3,13 @@
 // Created: Friday, April 16, 2021 9:25:51 AM
 // Purpose: Definition of Interface IMedicalRecordService
 
+using HospitalApp.Model;
 using System;
 
-public interface IMedicalRecordService
+namespace HospitalApp.Service
 {
-   bool CreateMedicalRecord(MedicalRecord medicalRecord);
-   
-   bool UpdateMedicalRecord(MedicalRecord medicalRecord);
-   
-   bool DeleteMedicalRecord(MedicalRecord medicalRecord);
-   
-   MedicalRecord GetMedicalRecord(long medicalRecordId);
+    public interface IMedicalRecordService : IEntityService<MedicalRecord>
+    { 
 
+    }
 }

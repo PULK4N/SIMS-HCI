@@ -1,52 +1,52 @@
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 
-public class ReviewService : IReviewService
+namespace HospitalApp.Service
 {
-   private readonly IReviewRepository _reviewRepository;
-
-    public ReviewService(IReviewRepository reviewRepository)
+    public class ReviewService : IReviewService
     {
-        _reviewRepository = reviewRepository;
-    }
+        private readonly IReviewRepository _reviewRepository;
 
-    public bool CreateReview(Review review)
-    {
-        return _reviewRepository.CreateReview(review);
-    }
+        public ReviewService(IReviewRepository reviewRepository)
+        {
+            _reviewRepository = reviewRepository;
+        }
 
-    public bool DeleteReview(Review review)
-    {
-        return _reviewRepository.DeleteReview(review);
-    }
+        public void Create(Review review)
+        {
+            _reviewRepository.Create(review);
+        }
 
-    public Review GetClinicReview()
-    {
-        return _reviewRepository.GetClinicReview();
-    }
+        public void Delete(long reviewId)
+        {
+            _reviewRepository.Delete(reviewId);
+        }
 
-    public Review GetReview(long reviewId)
-    {
-        return _reviewRepository.GetReview(reviewId);
-    }
+        public Review GetAllByClinicId(long clinicId)
+        {
+            return _reviewRepository.GetAllByClinic(clinicId);
+        }
 
-    public Review GetReview(Review review)
-    {
-        return _reviewRepository.GetReview(review);
-    }
+        public Review Get(long reviewId)
+        {
+            return _reviewRepository.Get(reviewId);
+        }
 
-    public List<Review> GetReviews()
-    {
-        return _reviewRepository.GetReviews();
-    }
+        public List<Review> GetAll()
+        {
+            return _reviewRepository.GetAll();
+        }
 
-    public List<Review> GetReviews(Patient patient)
-    {
-        return _reviewRepository.GetReviews(patient);
-    }
+        public List<Review> GetAllByPatientId(long patientId)
+        {
+            return _reviewRepository.GetAllByPatient(patientId);
+        }
 
-    public bool UpdateReview(Review review)
-    {
-        return _reviewRepository.UpdateReview(review);
+        public void Update(Review review)
+        {
+            _reviewRepository.Update(review);
+        }
     }
 }

@@ -8,58 +8,61 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-public class Room
+namespace HospitalApp.Model
 {
-    [Key]
-    public long RoomId{ get; set; }
-    public String Name{ get; set; }
-    public String RoomType{ get; set; }
-    public List<Appointment> appointment;
-
-    public List<Appointment> Appointment
+    public class Room
     {
-        get
+        [Key]
+        public long RoomId { get; set; }
+        public string Name { get; set; }
+        public string RoomType { get; set; }
+        public List<Appointment> appointment;
+
+        public List<Appointment> Appointment
         {
-            if (appointment == null)
-                appointment = new List<Appointment>();
-            return appointment;
-        }
-        set
-        {
-            RemoveAllAppointment();
-            if (value != null)
+            get
             {
-                foreach (Appointment oAppointment in value)
-                    AddAppointment(oAppointment);
+                if (appointment == null)
+                    appointment = new List<Appointment>();
+                return appointment;
+            }
+            set
+            {
+                RemoveAllAppointment();
+                if (value != null)
+                {
+                    foreach (Appointment oAppointment in value)
+                        AddAppointment(oAppointment);
+                }
             }
         }
+
+        public void AddAppointment(Appointment newAppointment)
+        {
+            if (newAppointment == null)
+                return;
+            if (appointment == null)
+                appointment = new List<Appointment>();
+            if (!appointment.Contains(newAppointment))
+                appointment.Add(newAppointment);
+        }
+
+
+        public void RemoveAppointment(Appointment oldAppointment)
+        {
+            if (oldAppointment == null)
+                return;
+            if (appointment != null)
+                if (appointment.Contains(oldAppointment))
+                    appointment.Remove(oldAppointment);
+        }
+
+        public void RemoveAllAppointment()
+        {
+            if (appointment != null)
+                appointment.Clear();
+        }
+
+
     }
-
-    public void AddAppointment(Appointment newAppointment)
-    {
-        if (newAppointment == null)
-            return;
-        if (this.appointment == null)
-            this.appointment = new List<Appointment>();
-        if (!this.appointment.Contains(newAppointment))
-            this.appointment.Add(newAppointment);
-    }
-
-
-    public void RemoveAppointment(Appointment oldAppointment)
-    {
-        if (oldAppointment == null)
-            return;
-        if (this.appointment != null)
-            if (this.appointment.Contains(oldAppointment))
-                this.appointment.Remove(oldAppointment);
-    }
-
-    public void RemoveAllAppointment()
-    {
-        if (appointment != null)
-            appointment.Clear();
-    }
-
-
 }

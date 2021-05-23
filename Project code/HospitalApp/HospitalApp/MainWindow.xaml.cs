@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HospitalApp.Model;
+using HospitalApp.Service;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -41,11 +43,11 @@ namespace Bolnica
             CompletedAppointmentsNotReviewed = new ObservableCollection<Appointment>();
             ReSchAppointments = new ObservableCollection<Appointment>();
             Doctors = new ObservableCollection<Doctor>();
-            Room = Map.RoomController.GetRoom(1);
-            Patient = Map.PatientController.GetPatient(1);
+            Room = Map.RoomController.Get(1);
+            Patient = Map.PatientController.Get(1);
             ScoresOC = new ObservableCollection<string>();
 
-            foreach (Doctor doctor in Map.DoctorController.GetAllDoctors(Enums.Specialization.NONE))
+            foreach (Doctor doctor in Map.DoctorController.GetAllBySpecialization(Enums.Specialization.NONE))
             {
                 Doctors.Add(doctor);
             }
@@ -102,7 +104,7 @@ namespace Bolnica
             this.LoginGrid.Visibility = Visibility.Hidden;
             PatientSchedulingCanvas.Visibility = Visibility.Visible;
             
-            new NotificationManager().StartTimer(cancellationToken);
+            new NotificationService().StartTimer(cancellationToken);
             
         }
         #endregion
@@ -130,7 +132,7 @@ namespace Bolnica
         private void addPatientScheduledAppointments()
         {
             ScheduledAppointments.Clear();
-            List<Appointment> appointments = Map.AppointmentController.PatientListAppointments(Patient);
+            List<Appointment> appointments = Map.AppointmentController.GetAllByPatientId(Patient.PatientId);
             foreach(Appointment appointment in appointments)
             {
                 ScheduledAppointments.Add(appointment);
@@ -151,8 +153,8 @@ namespace Bolnica
 
         private void ShowReviewsAndAppointments()
         {
-            List<Appointment> appointments = Map.AppointmentController.GetPatientCompletedAppointments(Patient);
-            List<Review> reviews = Map.ReviewController.GetReviews(Patient);
+            List<Appointment> appointments = Map.AppointmentController.GetAllCompletedByPatientId(1);
+            List<Review> reviews = Map.ReviewController.GetAllByPatientId(1);
 
             CompletedAppointmentsNotReviewed.Clear();
             foreach (Appointment appointment in appointments)
@@ -165,9 +167,9 @@ namespace Bolnica
             {
                 Reviews.Add(review);
             }
-            if(Map.ReviewController.GetClinicReview() != null)
+            if(Map.ReviewController.GetAllByClinicId(1) != null)
             {
-                ReviewClinicComment.Text = Map.ReviewController.GetClinicReview().Comment;
+                ReviewClinicComment.Text = Map.ReviewController.GetAllByClinicId(1).Comment;
             }
 
         }
@@ -179,23 +181,23 @@ namespace Bolnica
             
             string description = ReviewComment.Text;
             Review review = new Review((int)ReviewScore.SelectedItem, description,Enums.ReviewType.DOCTOR, appointment);//(int score, string comment, ReviewType reviewType, Appointment appointment)
-            Map.ReviewController.CreateReview(review);
+            Map.ReviewController.Create(review);
             ShowReviewsAndAppointments();
         }
 
         private void reviewClinic(object sender, RoutedEventArgs e)
         {
-            Review review = Map.ReviewController.GetClinicReview();
+            Review review = Map.ReviewController.GetAllByClinicId(1);
             if (review == null){
                 review = new Review();
                 review.Comment = ReviewClinicComment.Text;
                 review.ReviewType = Enums.ReviewType.CLINIC;
-                Map.ReviewController.CreateReview(review);
+                Map.ReviewController.Create(review);
             }
             else
             {
                 review.Comment = ReviewClinicComment.Text;
-                Map.ReviewController.UpdateReview(review);
+                Map.ReviewController.Update(review);
             }
         }
         #endregion
@@ -225,7 +227,7 @@ namespace Bolnica
 
         private void GetMyAppointments(SchedulingInformation schedulingInformation)
         {
-            var (appointmentList, priorityUsed) = SchedulingManager.GetAppointments(schedulingInformation);
+            var (appointmentList, priorityUsed) = Map.SchedulingService.GetAppointments(schedulingInformation);
             if (priorityUsed) MessageBox.Show("Priority was used");
             foreach (Appointment appointment in appointmentList)
             {
@@ -245,7 +247,7 @@ namespace Bolnica
         {
             
             Appointment appointment = dataGridScheduledAppointmentsAppointments.SelectedItem as Appointment;
-            Map.AppointmentController.PatientCancelAppointment(appointment);
+            Map.AppointmentController.Delete(appointment.AppointmentId);
             ScheduledAppointments.Remove(appointment);
         }
 
@@ -271,10 +273,10 @@ namespace Bolnica
 
         private void GetMyRescheduledAppointments(SchedulingInformation schedulingInformation)
         {
-            if (SchedulingManager.ReSchedulingInformationValid(schedulingInformation))
+            if (Map.SchedulingService.ReSchedulingInformationValid(schedulingInformation))
             {
                 //dataGridScheduledAppointmentsAppointments
-                var (appointmentList, priorityUsed) = SchedulingManager.GetAppointments(schedulingInformation);
+                var (appointmentList, priorityUsed) = Map.SchedulingService.GetAppointments(schedulingInformation);
                 if (priorityUsed) MessageBox.Show("Priority was used");
                 foreach (Appointment appointment in appointmentList)
                 {

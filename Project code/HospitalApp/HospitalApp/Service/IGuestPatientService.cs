@@ -3,16 +3,13 @@
 // Created: Friday, April 16, 2021 9:26:09 AM
 // Purpose: Definition of Interface IGuestPatientService
 
+using HospitalApp.Model;
 using System;
 
-public interface IGuestPatientService
+namespace HospitalApp.Service
 {
-   bool CreatePatient(String firstName, String lastName, String dateOfBirth, String address, String phoneNumber, int jmbg, String eMail, Enums.Sex sex);
-   
-   Patient ReadPatient(Patient patient);
-   
-   bool UpdatePatient(Patient patient);
-   
-   bool DeletePatient(Patient patient);
+    public interface IGuestPatientService : IEntityService<GuestPatient>
+    {
 
+    }
 }

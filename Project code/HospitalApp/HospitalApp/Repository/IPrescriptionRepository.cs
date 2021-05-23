@@ -3,21 +3,18 @@
 // Created: Friday, April 16, 2021 9:35:17 AM
 // Purpose: Definition of Interface IPrescriptionRepository
 
+using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
 
-public interface IPrescriptionRepository
+namespace HospitalApp.Repository
 {
-    bool CreatePrescription(Prescription prescription);
-    
-    bool UpdatePrescription(Prescription prescription);
-    
-    bool DeletePrescription(Prescription prescription);
-    
-    Prescription GetPrescription(long prescriptionId);
-    
-    List<Prescription> GetPatientPrescriptions(long patientId);
+    public interface IPrescriptionRepository : IEntityRepository<Prescription>
+    {
 
-    bool RemoveAnamnesisPrescriptions(Anamnesis anamnesis);
+        List<Prescription> GetAllByPatient(long patientId);
 
+        void DeleteAllByAnamnesis(Anamnesis anamnesis);
+
+    }
 }

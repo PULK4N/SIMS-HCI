@@ -3,16 +3,14 @@
 // Created: Friday, April 16, 2021 9:35:17 AM
 // Purpose: Definition of Interface IMedicalRecordRepository
 
+using HospitalApp.Model;
 using System;
+using System.Collections.Generic;
 
-public interface IMedicalRecordRepository
+namespace HospitalApp.Repository
 {
-   bool CreateMedicalRecord(MedicalRecord medicalRecord);
-   
-   bool UpdateMedicalRecord(MedicalRecord medicalRecord);
-   
-   bool DeleteMedicalRecord(MedicalRecord medicalRecord);
-   
-   MedicalRecord GetMedicalRecord(long medicalRecordId);
+    public interface IMedicalRecordRepository : IEntityRepository<MedicalRecord>
+    {
 
+    }
 }

@@ -5,88 +5,87 @@
  ***********************************************************************/
 
 using Enums;
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-public class PatientService : IPatientService
+namespace HospitalApp.Service
 {
-    private readonly IPatientRepository _patientRepository;
-    public PatientService(IPatientRepository patientRepository)
+    public class PatientService : IPatientService
     {
-        _patientRepository = patientRepository;
-    }
-
-    public bool CreatePatient(string firstName, string lastName, string dateOfBirth, string address, string phoneNumber, int jmbg, string eMail, Sex sex)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool DeletePatient(Patient patient)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Patient GetPatient(Patient patient)
-    {
-        return _patientRepository.GetPatient(patient);
-    }
-
-    public Patient GetPatient(long patientId)
-    {
-        return _patientRepository.GetPatient(patientId);
-    }
-
-    public bool UpdatePatient(Patient patient)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<Patient> GetPatients()
-    {
-        return _patientRepository.GetPatients();
-    }
-
-    public bool IsMalicious(Patient patient)
-    {
-        ++patient.SchedulingAttempts;
-        bool IsMalicious = _patientRepository.IsMalicious(patient);
-        if (IsMalicious && IsNotBanned(patient))
+        private readonly IPatientRepository _patientRepository;
+        public PatientService(IPatientRepository patientRepository)
         {
-            BanPatient(patient);
+            _patientRepository = patientRepository;
         }
-        return IsMalicious;
-    }
 
+        public void Create(Patient patient){
+            _patientRepository.Create(patient);
+        }
 
-    public async Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)
-    {
-
-        await Task.Run(async () =>
+        public void Delete(long patientId)
         {
-            List<Patient> patients = _patientRepository.GetWeekActivePatients();
-            while (true)
+            _patientRepository.Delete(patientId);
+        }
+
+        public Patient Get(long patientId)
+        {
+            return _patientRepository.Get(patientId);
+        }
+
+        public void Update(Patient patient)
+        {
+            _patientRepository.Update(patient);
+        }
+
+        public List<Patient> GetAll()
+        {
+            return _patientRepository.GetAll();
+        }
+
+        public bool IsMalicious(Patient patient)
+        {
+            ++patient.SchedulingAttempts;
+            bool IsMalicious = _patientRepository.IsMalicious(patient);
+            if (IsMalicious && IsNotBanned(patient))
             {
-                foreach(Patient patient in patients)
-                {
-                    patient.SchedulingAttempts = 0;
-                }
-                HospitalDB.Instance.SaveChanges();
-                await Task.Delay(604800000, cancellationToken);
-                if (cancellationToken.IsCancellationRequested)
-                    break;
+                BanPatient(patient);
             }
-        });
+            return IsMalicious;
+        }
 
-    }
 
-    public void BanPatient(Patient patient)
-    {
-        _patientRepository.BanPatient(patient);
-    }
-    private bool IsNotBanned(Patient patient)
-    {
-        return patient.User.RegisteredUser.UserType != UserType.BANNNED_USER;
+        public async Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)
+        {
+
+            await Task.Run(async () =>
+            {
+                List<Patient> patients = _patientRepository.GetWeekActivePatients();
+                while (true)
+                {
+                    foreach (Patient patient in patients)
+                    {
+                        patient.SchedulingAttempts = 0;
+                    }
+                    HospitalDB.Instance.SaveChanges();
+                    await Task.Delay(604800000, cancellationToken);
+                    if (cancellationToken.IsCancellationRequested)
+                        break;
+                }
+            });
+
+        }
+
+        public void BanPatient(Patient patient)
+        {
+            _patientRepository.BanPatient(patient);
+        }
+        private bool IsNotBanned(Patient patient)
+        {
+            return patient.User.RegisteredUser.UserType != UserType.BANNNED_USER;
+        }
     }
 }
