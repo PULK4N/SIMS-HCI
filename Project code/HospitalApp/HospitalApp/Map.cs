@@ -22,6 +22,8 @@ public static class Map
     public static PrescriptionController PrescriptionController { get; set; }
     public static RoomController RoomController { get; set; }
     public static ReviewController ReviewController { get; set; }
+    public static RegisteredUserController RegisteredUserController { get; set; }
+    public static LoginController LoginController { get; set; }
 
     #endregion
 
@@ -38,6 +40,9 @@ public static class Map
     public static IRoomService RoomService { get; set; }
     public static IReviewService ReviewService { get; set; }
     public static ISchedulingService SchedulingService { get; private set; }
+    public static IRegisteredUserService RegisteredUserService { get; set; }
+    public static ILoginService LoginService { get; set; }
+
 
     #endregion
 
@@ -53,6 +58,7 @@ public static class Map
     public static IPrescriptionRepository PrescriptionRepository { get; set; }
     public static IRoomRepository RoomRepository { get; set; }
     public static IReviewRepository ReviewRepository { get; set; }
+    public static IRegisteredUserRepository RegisteredUserRepository { get; set; }
 
     #endregion
     public static void Instantiate()
@@ -63,10 +69,11 @@ public static class Map
         GuestPatientRepository = new GuestPatientRepository();
         MedicalRecordRepository = new MedicalRecordRepository();
         DrugRepository = new DrugRepository();
-        PatientRepository = new PatientRepository();
-        PrescriptionRepository = new PrescriptionRepository();
-        RoomRepository = new RoomRepository();
-        ReviewRepository = new ReviewRepository();
+        PatientRepository = new PatientContextDB();
+        PrescriptionRepository = new PrescriptionContextDB();
+        RoomRepository = new RoomContextDB();
+        ReviewRepository = new ReviewContextDB();
+        RegisteredUserRepository = new RegisteredUserRepository();
 
         AnamnesisService = new AnamnesisService(AnamnesisRepository);
         AppointmentService = new AppointmentService(AppointmentRepository);
@@ -79,6 +86,8 @@ public static class Map
         RoomService = new RoomService(RoomRepository);
         ReviewService = new ReviewService(ReviewRepository);
         SchedulingService = new SchedulingService();
+        RegisteredUserService = new RegisteredUserService(RegisteredUserRepository);
+        LoginService = new LoginService();
 
         AnamnesisController = new AnamnesisController(AnamnesisService);
         AppointmentController = new AppointmentController(AppointmentService);
@@ -90,6 +99,9 @@ public static class Map
         PrescriptionController = new PrescriptionController(PrescriptionService);
         RoomController = new RoomController(RoomService);
         ReviewController = new ReviewController(ReviewService);
+        RegisteredUserController = new RegisteredUserController(RegisteredUserService);
+        LoginController = new LoginController(LoginService);
+
     }
 
 }

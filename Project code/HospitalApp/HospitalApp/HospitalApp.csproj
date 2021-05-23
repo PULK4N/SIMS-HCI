@@ -82,6 +82,10 @@
     </ApplicationDefinition>
     <Compile Include="Controller\IEntityController.cs" />
     <Compile Include="Service\ISchedulingService.cs" />
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Service\RegisteredUserService.cs" />
+    <Compile Include="Service\IRegisteredUserService.cs" />
+
     <Compile Include="Map.cs" />
     <Compile Include="Controller\AnamnesisController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
@@ -119,6 +123,8 @@
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\GuestPatientRepository.cs" />
+    <Compile Include="Controller\RegisteredUserController.cs" />
+    <Compile Include="Repository\GuestPatientContextDB.cs" />
     <Compile Include="Repository\IAnamnesisRepository.cs" />
     <Compile Include="Repository\IAppointmentRepository.cs" />
     <Compile Include="Repository\IDoctorRepository.cs" />
@@ -128,6 +134,7 @@
     <Compile Include="Repository\IEntityRepository.cs" />
     <Compile Include="Repository\IPatientRepository.cs" />
     <Compile Include="Repository\IPrescriptionRepository.cs" />
+    <Compile Include="Repository\IRegisteredUserRepository.cs" />
     <Compile Include="Repository\IReviewRepository.cs" />
     <Compile Include="Repository\IRoomRepository.cs" />
     <Compile Include="Repository\MedicalRecordRepository.cs" />
@@ -140,6 +147,10 @@
     <Compile Include="Repository\PrescriptionRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Service\SchedulingService.cs" />
+    <Compile Include="Repository\ISecretaryRepository.cs" />
+    <Compile Include="Repository\RegisteredUserRepository.cs" />
+    <Compile Include="Service\ILoginService.cs" />
+    <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\AnamnesisService.cs" />
     <Compile Include="Service\AppointmentService.cs" />
     <Compile Include="Service\DoctorService.cs" />
