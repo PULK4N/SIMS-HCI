@@ -17,6 +17,6 @@ namespace HospitalApp.Repository
         List<Appointment> GetAllByPatient(long patientId);
 
         List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment);
-        List<Appointment> GetAllCompletedByPatient(Patient patient);
+        List<Appointment> GetAllCompletedByPatient(long patientId);
     }
 }

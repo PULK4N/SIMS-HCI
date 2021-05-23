@@ -60,9 +60,9 @@ namespace HospitalApp.Controller
             return _appointmentService.GetAllByPatientId(patientId);
         }
 
-        public List<Appointment> GetAllCompletedByPatientId(Patient patient)
+        public List<Appointment> GetAllCompletedByPatientId(long patientId)
         {
-            return _appointmentService.GetAllCompletedByPatientId(patient);
+            return _appointmentService.GetAllCompletedByPatientId(patientId);
         }
 
         public List<Appointment> GetAll()

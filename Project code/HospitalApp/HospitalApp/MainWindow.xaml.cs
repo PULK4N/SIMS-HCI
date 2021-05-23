@@ -70,6 +70,7 @@ namespace Bolnica
             //s.Show();
         }
 
+
         private void PatientButton(object sender, RoutedEventArgs e)
         {
             MainCanvas.Visibility = Visibility.Hidden;
@@ -125,8 +126,8 @@ namespace Bolnica
 
         private void ShowReviewsAndAppointments()
         {
-            List<Appointment> appointments = Map.AppointmentController.GetAllCompletedByPatientId(Patient);
-            List<Review> reviews = Map.ReviewController.GetAllByPatientId(Patient);
+            List<Appointment> appointments = Map.AppointmentController.GetAllCompletedByPatientId(1);
+            List<Review> reviews = Map.ReviewController.GetAllByPatientId(1);
 
             CompletedAppointmentsNotReviewed.Clear();
             foreach (Appointment appointment in appointments)
@@ -139,9 +140,9 @@ namespace Bolnica
             {
                 Reviews.Add(review);
             }
-            if(Map.ReviewController.GetAllByClinicId() != null)
+            if(Map.ReviewController.GetAllByClinicId(1) != null)
             {
-                ReviewClinicComment.Text = Map.ReviewController.GetAllByClinicId().Comment;
+                ReviewClinicComment.Text = Map.ReviewController.GetAllByClinicId(1).Comment;
             }
 
         }
@@ -159,7 +160,7 @@ namespace Bolnica
 
         private void reviewClinic(object sender, RoutedEventArgs e)
         {
-            Review review = Map.ReviewController.GetAllByClinicId();
+            Review review = Map.ReviewController.GetAllByClinicId(1);
             if (review == null){
                 review = new Review();
                 review.Comment = ReviewClinicComment.Text;

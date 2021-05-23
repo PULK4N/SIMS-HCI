@@ -12,7 +12,7 @@ namespace HospitalApp.Service
     public interface IDrugService : IEntityService<Drug>
     {
 
-        List<Drug> GetAllByPatientId(long patientId);
+        List<Drug> GetAllByPatient(Patient patient);
 
     }
 }

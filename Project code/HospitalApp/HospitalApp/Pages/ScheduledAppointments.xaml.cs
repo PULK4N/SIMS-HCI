@@ -71,7 +71,7 @@ public partial class ScheduledAppointments : Page
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
         Appointment appointment = dataGridAppointments.SelectedItem as Appointment;
-        Map.AppointmentController.Delete(appointment);
+        Map.AppointmentController.Delete(appointment.AppointmentId);
         Appointments.Remove(appointment);
     }
 
@@ -88,7 +88,7 @@ public partial class ScheduledAppointments : Page
     private void ShowPatientButton_Click(object sender, RoutedEventArgs e)
     {
         patient = (dataGridAppointments.SelectedItem as Appointment).Patient;
-        patient = Map.PatientController.Get(patient);
+        patient = Map.PatientController.Get(patient.PatientId);
         var s = new ShowPatientPage();
         s.Show();
     }

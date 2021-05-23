@@ -39,9 +39,9 @@ namespace HospitalApp.Controller
             return _drugService.Get(drugId);
         }
 
-        public List<Drug> GetAllByPatientId(long patientId)
+        public List<Drug> GetAllByPatient(Patient patient)
         {
-            return _drugService.GetAllByPatientId(patientId);
+            return _drugService.GetAllByPatient(patient);
         }
 
         public List<Drug> GetAll()

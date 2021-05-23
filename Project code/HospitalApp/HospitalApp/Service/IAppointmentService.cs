@@ -19,6 +19,6 @@ namespace HospitalApp.Service
 
         List<Appointment> GetAllByPatientId(long patientId);
 
-        List<Appointment> GetAllCompletedByPatientId(Patient patient);
+        List<Appointment> GetAllCompletedByPatientId(long patientId);
     }
 }

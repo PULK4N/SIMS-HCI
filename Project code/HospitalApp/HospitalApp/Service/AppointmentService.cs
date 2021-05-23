@@ -72,9 +72,9 @@ namespace HospitalApp.Service
             return true;
         }
 
-        public List<Appointment> GetAllCompletedByPatientId(Patient patient)
+        public List<Appointment> GetAllCompletedByPatientId(long patientId)
         {
-            return _appointmentRepository.GetAllCompletedByPatient(patient);
+            return _appointmentRepository.GetAllCompletedByPatient(patientId);
         }
 
         public List<Appointment> GetAll()

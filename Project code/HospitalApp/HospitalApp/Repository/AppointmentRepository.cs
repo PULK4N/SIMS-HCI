@@ -153,12 +153,12 @@ namespace HospitalApp.Repository
         }
 
        
-        public List<Appointment> GetAllCompletedByPatient(Patient patient)
+        public List<Appointment> GetAllCompletedByPatient(long patientId)
         {
             try
             {//select appointments with the date, than select the ones of the patient
                 return (from pApp in HospitalDB.Instance.Appointments
-                        where pApp.Patient.PatientId == patient.PatientId
+                        where pApp.Patient.PatientId == patientId
                         && pApp.AppointmentStatus == Enums.AppointmentStatus.COMPLETED
                         select pApp)
                         .Include(App => App.Doctor)
