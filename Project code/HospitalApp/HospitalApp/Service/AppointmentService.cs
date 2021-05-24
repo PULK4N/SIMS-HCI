@@ -81,5 +81,10 @@ namespace HospitalApp.Service
         {
             return _appointmentRepository.GetAll();
         }
+
+        public List<Appointment> GetAllByPatientRefered(long patientId)
+        {
+            return _appointmentRepository.GetAllByPatientRefered(patientId);
+        }
     }
 }

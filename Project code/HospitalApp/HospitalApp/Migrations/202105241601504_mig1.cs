@@ -228,17 +228,18 @@
                 .PrimaryKey(t => t.QuestionId);
             
             CreateTable(
-                "dbo.Referals",
+                "dbo.Referrals",
                 c => new
                     {
-                        ReferalId = c.Long(nullable: false, identity: true),
+                        ReferralId = c.Long(nullable: false, identity: true),
                         Type = c.String(),
                         Date = c.DateTime(nullable: false),
-                        Appointment_AppointmentId = c.Long(),
+                        Description = c.String(),
+                        Patient_PatientId = c.Long(),
                     })
-                .PrimaryKey(t => t.ReferalId)
-                .ForeignKey("dbo.Appointments", t => t.Appointment_AppointmentId)
-                .Index(t => t.Appointment_AppointmentId);
+                .PrimaryKey(t => t.ReferralId)
+                .ForeignKey("dbo.Patients", t => t.Patient_PatientId)
+                .Index(t => t.Patient_PatientId);
             
             CreateTable(
                 "dbo.Reminders",
@@ -287,7 +288,7 @@
             DropForeignKey("dbo.Secretaries", "Employee_EmployeeId", "dbo.Employees");
             DropForeignKey("dbo.Reviews", "Appointment_AppointmentId", "dbo.Appointments");
             DropForeignKey("dbo.Reminders", "Patient_PatientId", "dbo.Patients");
-            DropForeignKey("dbo.Referals", "Appointment_AppointmentId", "dbo.Appointments");
+            DropForeignKey("dbo.Referrals", "Patient_PatientId", "dbo.Patients");
             DropForeignKey("dbo.GuestPatients", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.GuestPatients", "Appointment_AppointmentId", "dbo.Appointments");
             DropForeignKey("dbo.Appointments", "Room_RoomId", "dbo.Rooms");
@@ -306,7 +307,7 @@
             DropIndex("dbo.Secretaries", new[] { "Employee_EmployeeId" });
             DropIndex("dbo.Reviews", new[] { "Appointment_AppointmentId" });
             DropIndex("dbo.Reminders", new[] { "Patient_PatientId" });
-            DropIndex("dbo.Referals", new[] { "Appointment_AppointmentId" });
+            DropIndex("dbo.Referrals", new[] { "Patient_PatientId" });
             DropIndex("dbo.GuestPatients", new[] { "User_UserId" });
             DropIndex("dbo.GuestPatients", new[] { "Appointment_AppointmentId" });
             DropIndex("dbo.MedicalRecords", new[] { "Anamnesis_AnamnesisId" });
@@ -325,7 +326,7 @@
             DropTable("dbo.Secretaries");
             DropTable("dbo.Reviews");
             DropTable("dbo.Reminders");
-            DropTable("dbo.Referals");
+            DropTable("dbo.Referrals");
             DropTable("dbo.Questions");
             DropTable("dbo.HospitalClinics");
             DropTable("dbo.GuestPatients");

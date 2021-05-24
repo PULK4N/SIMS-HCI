@@ -8,14 +8,14 @@ using System;
 
 namespace HospitalApp.Model
 {
-    public class Referal
+    public class Referral
     {
-        public long ReferalId { get; set; }
+        public long ReferralId { get; set; }
         public string Type { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
 
-        public Appointment Appointment { get; set; }
+        public Patient Patient{ get; set; }
 
     }
 }

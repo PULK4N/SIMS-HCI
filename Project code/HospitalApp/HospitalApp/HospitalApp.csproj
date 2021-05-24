@@ -86,18 +86,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\IEntityController.cs" />
+    <Compile Include="Controller\ReferralController.cs" />
     <Compile Include="Controller\ReminderController.cs" />
-    <Compile Include="Migrations\202105241210057_mig1.cs" />
-    <Compile Include="Migrations\202105241210057_mig1.designer.cs">
-      <DependentUpon>202105241210057_mig1.cs</DependentUpon>
+    <Compile Include="Migrations\202105241601504_mig1.cs" />
+    <Compile Include="Migrations\202105241601504_mig1.designer.cs">
+      <DependentUpon>202105241601504_mig1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\MedicalTreatment.cs" />
+    <Compile Include="Repository\IReferralRepository.cs" />
     <Compile Include="Repository\IReminderRepository.cs" />
+    <Compile Include="Repository\ReferralRepository.cs" />
     <Compile Include="Repository\ReminderRepository.cs" />
+    <Compile Include="Service\IReferralService.cs" />
     <Compile Include="Service\IReminderSchedulingService.cs" />
     <Compile Include="Service\IReminderService.cs" />
     <Compile Include="Service\ISchedulingService.cs" />
     <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Service\ReferralService.cs" />
     <Compile Include="Service\RegisteredUserService.cs" />
     <Compile Include="Service\IRegisteredUserService.cs" />
     <Compile Include="Map.cs" />
@@ -223,7 +228,7 @@
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Prescription.cs" />
     <Compile Include="Model\Question.cs" />
-    <Compile Include="Model\Referal.cs" />
+    <Compile Include="Model\Referral.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
     <Compile Include="Model\Reminder.cs" />
     <Compile Include="Model\Review.cs" />
@@ -243,8 +248,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202105241210057_mig1.resx">
-      <DependentUpon>202105241210057_mig1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105241601504_mig1.resx">
+      <DependentUpon>202105241601504_mig1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

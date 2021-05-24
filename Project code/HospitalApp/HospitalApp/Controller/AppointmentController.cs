@@ -69,5 +69,10 @@ namespace HospitalApp.Controller
         {
             return _appointmentService.GetAll();
         }
+
+        internal List<Appointment> GetAllByPatientRefered(long patientId)
+        {
+            return _appointmentService.GetAllByPatientRefered(patientId);
+        }
     }
 }

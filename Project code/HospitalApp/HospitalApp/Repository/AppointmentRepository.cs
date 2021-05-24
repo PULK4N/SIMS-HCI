@@ -133,6 +133,25 @@ namespace HospitalApp.Repository
             return null;
         }
 
+        public List<Appointment> GetAllByPatientRefered(long patientId)
+        {
+            try
+            {//select appointments with the date, than select the ones of the patient
+                return (from pApp in HospitalDB.Instance.Appointments where pApp.Doctor.Specialization != Specialization.NONE && pApp.Patient.PatientId == patientId && pApp.AppointmentStatus == Enums.AppointmentStatus.PENDING select pApp).Include(App => App.Doctor).ToList();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
+            return null;
+        }
+
         public List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment)
         {
             try

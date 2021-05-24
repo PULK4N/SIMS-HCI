@@ -21,6 +21,9 @@ namespace Bolnica
         public ObservableCollection<Review> Reviews { get; set; }
         public ObservableCollection<string> ScoresOC { get; set; }
         public ObservableCollection<Reminder> Reminders { get; set; }
+        public ObservableCollection<Prescription> Prescriptions { get; set; }
+        public ObservableCollection<Appointment> SpecialAppointments { get; set; }
+        public ObservableCollection<Referral> Referrals { get; set; }
         CancellationTokenSource CancellationTokenSource { get; set; }
         CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
@@ -46,6 +49,9 @@ namespace Bolnica
             CompletedAppointmentsNotReviewed = new ObservableCollection<Appointment>();
             ReSchAppointments = new ObservableCollection<Appointment>();
             Doctors = new ObservableCollection<Doctor>();
+            Prescriptions = new ObservableCollection<Prescription>();
+            Referrals = new ObservableCollection<Referral>();
+            SpecialAppointments = new ObservableCollection<Appointment>();
             Room = Map.RoomController.Get(1);
             //Patient = Map.PatientController.Get(1);
             ScoresOC = new ObservableCollection<string>();
@@ -63,6 +69,32 @@ namespace Bolnica
 
         #region MedicalRecordReg
 
+        private void addMedicalRecordData()
+        {
+            Prescriptions.Clear();
+            Referrals.Clear();
+            SpecialAppointments.Clear();
+
+            CurrentPatientAnamensis.Text = Patient.MedicalRecord.Anamnesis.Description;
+            PatientsSex.Text = Patient.User.Sex.ToString();
+            PatientsMaritalStatus.Text = Patient.User.MaritalStatus.ToString();
+
+
+            foreach (Appointment appointment in Map.AppointmentController.GetAllByPatientRefered(Patient.PatientId))
+            {
+                SpecialAppointments.Add(appointment);
+            }
+
+            foreach(Prescription prescription in Map.PrescriptionController.GetAllByPatientId(Patient.PatientId))
+            {
+                Prescriptions.Add(prescription);
+            }
+
+            foreach(Referral referal in Map.ReferralController.GetAllByPatientId(Patient.PatientId))
+            {
+                Referrals.Add(referal);
+            }
+        }
 
         #endregion
 
@@ -114,6 +146,7 @@ namespace Bolnica
 
         private void ScheduleAppointments(object sender, RoutedEventArgs e)
         {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
             this.PatientSchedulingTime.Visibility = Visibility.Visible;
             this.PatientReviews.Visibility = Visibility.Hidden;
             this.RemindersGrid.Visibility = Visibility.Hidden;
@@ -122,6 +155,7 @@ namespace Bolnica
 
         private void ViewScheduledAppointments(object sender, RoutedEventArgs e)
         {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
             this.PatientSchedulingTime.Visibility = Visibility.Hidden;
             this.PatientReviews.Visibility = Visibility.Hidden;
             this.RemindersGrid.Visibility = Visibility.Hidden;
@@ -140,6 +174,7 @@ namespace Bolnica
 
         private void OpenReviews(object sender, RoutedEventArgs e)
         {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
             this.PatientSchedulingTime.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Hidden;
             this.RemindersGrid.Visibility = Visibility.Hidden;
@@ -149,6 +184,7 @@ namespace Bolnica
         }
         private void ViewReminders(object sender, RoutedEventArgs e)
         {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
             this.PatientSchedulingTime.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Hidden;
             this.PatientReviews.Visibility = Visibility.Hidden;
@@ -156,6 +192,18 @@ namespace Bolnica
 
             ListReminders();
         }
+
+        private void OpenMedicalRecords(object sender, RoutedEventArgs e)
+        {
+            this.PatientSchedulingTime.Visibility = Visibility.Hidden;
+            this.PatientListAppointments.Visibility = Visibility.Hidden;
+            this.PatientReviews.Visibility = Visibility.Hidden;
+            this.RemindersGrid.Visibility = Visibility.Hidden;
+            this.MedicalRecordView.Visibility = Visibility.Visible;
+            
+            addMedicalRecordData();
+        }
+
         #endregion
 
         #region ReviewRegion
