@@ -73,7 +73,7 @@ namespace HospitalApp.Repository
                     doctor.Employee.User.Jmbg = oldDoctor.Employee.User.Jmbg;
                     doctor.Employee.User.LastName = oldDoctor.Employee.User.LastName;
                     doctor.Employee.User.PhoneNumber = oldDoctor.Employee.User.PhoneNumber;
-                    doctor.Employee.User.RelationshipStatus = oldDoctor.Employee.User.RelationshipStatus;
+                    doctor.Employee.User.MaritalStatus = oldDoctor.Employee.User.MaritalStatus;
                     doctor.Employee.User.Sex = oldDoctor.Employee.User.Sex;
                     HospitalDB.Instance.SaveChanges();
                 }

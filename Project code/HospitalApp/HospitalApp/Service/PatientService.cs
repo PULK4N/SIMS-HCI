@@ -87,5 +87,10 @@ namespace HospitalApp.Service
         {
             return patient.User.RegisteredUser.UserType != UserType.BANNNED_USER;
         }
+
+        public Patient GetPatientByUsername(string username)
+        {
+            return _patientRepository.GetPatientByUsername(username);
+        }
     }
 }

@@ -48,14 +48,14 @@ namespace HospitalApp.Model
         public Sex Sex { get; set; }
 
         [Required]
-        public RelationshipStatus RelationshipStatus { get; set; }
+        public MaritalStatus MaritalStatus { get; set; }
 
         [Required, Index("uniqueRUser", IsUnique = true)]
         public RegisteredUser RegisteredUser { get; set; }
 
         public List<Notification> notifications;
         //Possible error because of userId, but prefferable not to be set because of DB
-        public User(long userId, string firstName, string lastName, DateTime dateOfBirth, string address, string phoneNumber, long jmbg, string eMail, Sex sex, RelationshipStatus relationshipStatus, RegisteredUser registeredUser, List<Notification> notifications)
+        public User(long userId, string firstName, string lastName, DateTime dateOfBirth, string address, string phoneNumber, long jmbg, string eMail, Sex sex, MaritalStatus maritalStatus, RegisteredUser registeredUser, List<Notification> notifications)
         {
             //UserId = userId;
             FirstName = firstName;
@@ -66,7 +66,7 @@ namespace HospitalApp.Model
             Jmbg = jmbg;
             EMail = eMail;
             Sex = sex;
-            RelationshipStatus = relationshipStatus;
+            MaritalStatus = maritalStatus;
             RegisteredUser = registeredUser;
             Notifications = notifications;
         }
@@ -81,7 +81,7 @@ namespace HospitalApp.Model
             Jmbg = user.Jmbg;
             EMail = user.EMail;
             Sex = user.Sex;
-            RelationshipStatus = user.RelationshipStatus;
+            MaritalStatus = user.MaritalStatus;
             RegisteredUser = user.RegisteredUser;
             Notifications = user.Notifications;
         }

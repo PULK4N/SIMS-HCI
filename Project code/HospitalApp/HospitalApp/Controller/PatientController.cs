@@ -54,5 +54,10 @@ namespace HospitalApp.Controller
         {
             return _patientService.GetAll();
         }
+
+        public Patient GetPatientByUsername(string username)
+        {
+            return _patientService.GetPatientByUsername(username);
+        }
     }
 }

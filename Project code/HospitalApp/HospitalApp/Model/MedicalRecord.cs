@@ -5,6 +5,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using Enums;
 
 namespace HospitalApp.Model
 {
