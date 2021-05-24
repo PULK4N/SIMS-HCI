@@ -15,10 +15,6 @@ namespace HospitalApp.Repository
 {
     public class PrescriptionRepository : IPrescriptionRepository
     {
-        public PrescriptionRepository()
-        {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
-        }
 
         public void Create(Prescription prescription)
         {

@@ -31,7 +31,7 @@ namespace HospitalApp.Repository
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<Question> Questions { get; set; }
-        public DbSet<Referal> Referals { get; set; }
+        public DbSet<Referral> Referrals { get; set; }
         public DbSet<RegisteredUser> RegisteredUsers { get; set; }
         public DbSet<Reminder> Reminders { get; set; }
         public DbSet<Review> Reviews { get; set; }

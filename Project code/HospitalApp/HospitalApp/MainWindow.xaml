@@ -46,17 +46,19 @@
             <Button Content="Delete" HorizontalAlignment="Left" Height="25" Margin="40,385,0,0" VerticalAlignment="Top" Width="147" Click="DeleteReminder"/>
         </Grid>
 
-        <Grid x:Name="MedicalRecordView" Visibility="Visible">
-            <DataGrid x:Name="list" AutoGenerateColumns="False" ItemsSource="{Binding Referals}"
+        <Grid x:Name="MedicalRecordView" Visibility="Hidden">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Referals}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
-                  Height="131" VerticalAlignment="Top"  Canvas.Left="376" Canvas.Top="52" Margin="40,87,0,0" Width="320">
+                  Height="131" VerticalAlignment="Top"  Canvas.Left="376" Canvas.Top="52" Margin="40,87,0,0" Width="320" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="50"/>
                     <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd MMM yyyy}" />
                     <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="60" Margin="417,87,0,0" TextWrapping="Wrap" Text="Anamnesis" VerticalAlignment="Top" Width="329"/>
+            <TextBox x:Name="CurrentPatientAnamensis" IsReadOnly="True" HorizontalAlignment="Left" Height="60" Margin="417,87,0,0" TextWrapping="Wrap" Text="anamnesis" VerticalAlignment="Top" Width="329"/>
+            <TextBox x:Name="PatientsSex" IsReadOnly="True" HorizontalAlignment="Left" Height="20" Margin="417,152,0,0" TextWrapping="Wrap" Text="Sex" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="PatientsMaritalStatus" IsReadOnly="True" HorizontalAlignment="Left" Height="20" Margin="417,177,0,0" TextWrapping="Wrap" Text="Marital Status" VerticalAlignment="Top" Width="120"/>
             <DataGrid x:Name="list_Copy" AutoGenerateColumns="False" ItemsSource="{Binding Prescriptions}"
                 SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
                 Height="113" VerticalAlignment="Top" Margin="417,266,0,0" Width="329">
@@ -67,7 +69,7 @@
                     <DataGridTextColumn Header="Period" Binding="{Binding Description}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="specialistAppointments" AutoGenerateColumns="False" ItemsSource="{Binding SpeciaistAppointments}"
+            <DataGrid x:Name="specialistAppointments" AutoGenerateColumns="False" ItemsSource="{Binding SpecialAppointments}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
                   Height="113" VerticalAlignment="Top" Width="320" Canvas.Left="376" Canvas.Top="52" Margin="40,266,0,0">
                 <DataGrid.Columns>
@@ -87,7 +89,8 @@
                 <Button Content="View Scheduled" Margin="5,10,0,-0.4" Click="ViewScheduledAppointments" Width="89" />
                 <Button Content="Reminders" Margin="5,10,0,-0.4" Click="ViewReminders" Width="64" />
                 <Button Content="E" Margin="5,10,0,0" Click="EndNotifications" />
-                <Button Content="R " Margin="5,10,0,0" Click="OpenReviews" />
+                <Button Content="R" Margin="5,10,0,0" Click="OpenReviews" />
+                <Button Content="M" Margin="5,10,0,0" Click="OpenMedicalRecords" />
             </StackPanel>
         </Canvas>
 
@@ -192,8 +195,6 @@
             <DatePicker x:Name="ReScheduleDate" Canvas.Left="10" Canvas.Top="371"/>
 
         </Canvas>
-        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="20" Margin="417,152,0,0" TextWrapping="Wrap" Text="Sex" VerticalAlignment="Top" Width="120"/>
-        <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="20" Margin="417,177,0,0" TextWrapping="Wrap" Text="Marital Status" VerticalAlignment="Top" Width="120"/>
-
+        
     </Grid>
 </Window>

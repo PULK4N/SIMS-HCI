@@ -26,6 +26,7 @@ public static class Map
     public static RegisteredUserController RegisteredUserController { get; set; }
     public static LoginController LoginController { get; set; }
     public static ReminderController ReminderController { get; set; }
+    public static ReferralController ReferralController { get; set; }
 
 
     #endregion
@@ -48,6 +49,7 @@ public static class Map
     public static IReminderService ReminderService { get; set; }
     public static IReminderSchedulingService ReminderSchedulingService { get; set; }
     public static TaskService TaskService { get; set; }
+    public static IReferralService ReferralService { get; set; }
     #endregion
 
     #region Repositories
@@ -64,6 +66,7 @@ public static class Map
     public static IReviewRepository ReviewRepository { get; set; }
     public static IRegisteredUserRepository RegisteredUserRepository { get; set; }
     public static IReminderRepository ReminderRepository { get; set; }
+    public static IReferralRepository ReferralRepository { get; set; }
     
 
     #endregion
@@ -81,6 +84,7 @@ public static class Map
         ReviewRepository = new ReviewRepository();
         RegisteredUserRepository = new RegisteredUserRepository();
         ReminderRepository = new ReminderRepository();
+        ReferralRepository = new ReferralRepository();
 
         AnamnesisService = new AnamnesisService(AnamnesisRepository);
         AppointmentService = new AppointmentService(AppointmentRepository);
@@ -98,6 +102,7 @@ public static class Map
         ReminderService = new ReminderService(ReminderRepository);
         ReminderSchedulingService = new ReminderSchedulingService();
         TaskService = new TaskService();
+        ReferralService = new ReferralService(ReferralRepository);
 
         AnamnesisController = new AnamnesisController(AnamnesisService);
         AppointmentController = new AppointmentController(AppointmentService);
@@ -112,6 +117,7 @@ public static class Map
         RegisteredUserController = new RegisteredUserController(RegisteredUserService);
         LoginController = new LoginController(LoginService);
         ReminderController = new ReminderController(ReminderService);
+        ReferralController = new ReferralController(ReferralService);
 
     }
 
