@@ -112,7 +112,7 @@
                         Jmbg = c.Long(nullable: false),
                         EMail = c.String(nullable: false, maxLength: 50),
                         Sex = c.Int(nullable: false),
-                        RelationshipStatus = c.Int(nullable: false),
+                        MaritalStatus = c.Int(nullable: false),
                         RegisteredUser_Username = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.UserId)
@@ -245,12 +245,15 @@
                 c => new
                     {
                         ReminderId = c.Long(nullable: false, identity: true),
-                        Name = c.Int(nullable: false),
-                        BeginTime = c.DateTime(nullable: false),
-                        EndTime = c.DateTime(nullable: false),
-                        Comment = c.String(),
+                        Name = c.String(),
+                        StartTime = c.DateTime(nullable: false),
+                        Period = c.Short(nullable: false),
+                        Description = c.String(),
+                        Patient_PatientId = c.Long(),
                     })
-                .PrimaryKey(t => t.ReminderId);
+                .PrimaryKey(t => t.ReminderId)
+                .ForeignKey("dbo.Patients", t => t.Patient_PatientId)
+                .Index(t => t.Patient_PatientId);
             
             CreateTable(
                 "dbo.Reviews",
@@ -283,6 +286,7 @@
         {
             DropForeignKey("dbo.Secretaries", "Employee_EmployeeId", "dbo.Employees");
             DropForeignKey("dbo.Reviews", "Appointment_AppointmentId", "dbo.Appointments");
+            DropForeignKey("dbo.Reminders", "Patient_PatientId", "dbo.Patients");
             DropForeignKey("dbo.Referals", "Appointment_AppointmentId", "dbo.Appointments");
             DropForeignKey("dbo.GuestPatients", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.GuestPatients", "Appointment_AppointmentId", "dbo.Appointments");
@@ -301,6 +305,7 @@
             DropForeignKey("dbo.Prescriptions", "Drug_DrugId", "dbo.Drugs");
             DropIndex("dbo.Secretaries", new[] { "Employee_EmployeeId" });
             DropIndex("dbo.Reviews", new[] { "Appointment_AppointmentId" });
+            DropIndex("dbo.Reminders", new[] { "Patient_PatientId" });
             DropIndex("dbo.Referals", new[] { "Appointment_AppointmentId" });
             DropIndex("dbo.GuestPatients", new[] { "User_UserId" });
             DropIndex("dbo.GuestPatients", new[] { "Appointment_AppointmentId" });

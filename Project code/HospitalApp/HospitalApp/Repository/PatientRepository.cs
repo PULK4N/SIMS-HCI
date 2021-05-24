@@ -73,7 +73,7 @@ namespace HospitalApp.Repository
                     patient.User.Jmbg = oldPatient.User.Jmbg;
                     patient.User.LastName = oldPatient.User.LastName;
                     patient.User.PhoneNumber = oldPatient.User.PhoneNumber;
-                    patient.User.RelationshipStatus = oldPatient.User.RelationshipStatus;
+                    patient.User.MaritalStatus = oldPatient.User.MaritalStatus;
                     patient.User.Sex = oldPatient.User.Sex;
                     HospitalDB.Instance.SaveChanges();
                 }
@@ -95,6 +95,25 @@ namespace HospitalApp.Repository
                     .Include(pat => pat.MedicalRecord.Anamnesis)
                     .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug))
                     .ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Error while getting patient list, returning null");
+            }
+            return null;
+        }
+
+        public Patient GetPatientByUsername(string username)
+        {
+            try
+            {
+                return (from pat in HospitalDB.Instance.Patients where pat.User.RegisteredUser.Username == username select pat)
+                    .Include(pat => pat.User)
+                    .Include(pat => pat.User.RegisteredUser)
+                    .Include(pat => pat.MedicalRecord)
+                    .Include(pat => pat.MedicalRecord.Anamnesis)
+                    .Include(pat => pat.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug))
+                    .FirstOrDefault();
             }
             catch
             {

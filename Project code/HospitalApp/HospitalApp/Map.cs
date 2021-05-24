@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32.TaskScheduler;
 
 
 public static class Map
@@ -24,6 +25,8 @@ public static class Map
     public static ReviewController ReviewController { get; set; }
     public static RegisteredUserController RegisteredUserController { get; set; }
     public static LoginController LoginController { get; set; }
+    public static ReminderController ReminderController { get; set; }
+
 
     #endregion
 
@@ -42,8 +45,9 @@ public static class Map
     public static ISchedulingService SchedulingService { get; private set; }
     public static IRegisteredUserService RegisteredUserService { get; set; }
     public static ILoginService LoginService { get; set; }
-
-
+    public static IReminderService ReminderService { get; set; }
+    public static IReminderSchedulingService ReminderSchedulingService { get; set; }
+    public static TaskService TaskService { get; set; }
     #endregion
 
     #region Repositories
@@ -59,6 +63,8 @@ public static class Map
     public static IRoomRepository RoomRepository { get; set; }
     public static IReviewRepository ReviewRepository { get; set; }
     public static IRegisteredUserRepository RegisteredUserRepository { get; set; }
+    public static IReminderRepository ReminderRepository { get; set; }
+    
 
     #endregion
     public static void Instantiate()
@@ -69,11 +75,12 @@ public static class Map
         GuestPatientRepository = new GuestPatientRepository();
         MedicalRecordRepository = new MedicalRecordRepository();
         DrugRepository = new DrugRepository();
-        PatientRepository = new PatientContextDB();
-        PrescriptionRepository = new PrescriptionContextDB();
-        RoomRepository = new RoomContextDB();
-        ReviewRepository = new ReviewContextDB();
+        PatientRepository = new PatientRepository();
+        PrescriptionRepository = new PrescriptionRepository();
+        RoomRepository = new RoomRepository();
+        ReviewRepository = new ReviewRepository();
         RegisteredUserRepository = new RegisteredUserRepository();
+        ReminderRepository = new ReminderRepository();
 
         AnamnesisService = new AnamnesisService(AnamnesisRepository);
         AppointmentService = new AppointmentService(AppointmentRepository);
@@ -88,6 +95,9 @@ public static class Map
         SchedulingService = new SchedulingService();
         RegisteredUserService = new RegisteredUserService(RegisteredUserRepository);
         LoginService = new LoginService();
+        ReminderService = new ReminderService(ReminderRepository);
+        ReminderSchedulingService = new ReminderSchedulingService();
+        TaskService = new TaskService();
 
         AnamnesisController = new AnamnesisController(AnamnesisService);
         AppointmentController = new AppointmentController(AppointmentService);
@@ -101,6 +111,7 @@ public static class Map
         ReviewController = new ReviewController(ReviewService);
         RegisteredUserController = new RegisteredUserController(RegisteredUserService);
         LoginController = new LoginController(LoginService);
+        ReminderController = new ReminderController(ReminderService);
 
     }
 
