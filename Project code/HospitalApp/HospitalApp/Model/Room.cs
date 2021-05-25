@@ -46,6 +46,7 @@ public class Room
     }
 
 
+<<<<<<< Updated upstream
     public void RemoveAppointment(Appointment oldAppointment)
     {
         if (oldAppointment == null)
@@ -64,5 +65,11 @@ public class Room
     public override string ToString()
     {
         return Name;
+=======
+        public override string ToString()
+        {
+            return Name;
+        }
+>>>>>>> Stashed changes
     }
 }

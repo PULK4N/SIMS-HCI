@@ -82,6 +82,14 @@ public class Doctor
                     AddAppointment(oAppointment);
             }
         }
+<<<<<<< Updated upstream
+=======
+
+        public override string ToString()
+        {
+            return Employee.User.FirstName + ' ' + Employee.User.LastName;
+        }
+>>>>>>> Stashed changes
     }
     
     public void AddAppointment(Appointment newAppointment)

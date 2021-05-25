@@ -1,4 +1,11 @@
+<<<<<<< Updated upstream
 ﻿using System;
+=======
+﻿using Bolnica;
+using HospitalApp.Controller;
+using HospitalApp.Model;
+using System;
+>>>>>>> Stashed changes
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -34,9 +41,17 @@ public partial class ScheduledAppointments : Page
 
     public ObservableCollection<StaticInventory> StaticItemsView { get; set; }
 
+<<<<<<< Updated upstream
     public void UpdateAppointments()
     {
         List<Appointment> DoctorsAppointments = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(DoctorWindow.doctor.DoctorId);
+=======
+    public Doctor activeDoctor { get; set; }
+
+    public void UpdateAppointments()
+    {
+        List<Appointment> DoctorsAppointments = Map.AppointmentController.GetAllByDoctorId(activeDoctor.DoctorId);
+>>>>>>> Stashed changes
         Appointments.Clear();
         foreach (Appointment a in DoctorsAppointments)
             Appointments.Add(a);
@@ -44,8 +59,13 @@ public partial class ScheduledAppointments : Page
 
     public void UpdateStaticItems(Room room)
     {
+<<<<<<< Updated upstream
         StaticItemsView = new ObservableCollection<StaticInventory>();
         List<StaticInventory> staticItems = ControllerMapper.Instance.StaticInventoryController.GetStaticItemsFromRoom(room);
+=======
+
+        List<StaticInventory> staticItems = Map.StaticInventoryController.GetStaticItemsFromRoom(room);
+>>>>>>> Stashed changes
         StaticItemsView.Clear();
         foreach (StaticInventory si in staticItems)
             StaticItemsView.Add(si);
@@ -53,11 +73,19 @@ public partial class ScheduledAppointments : Page
 
 
 
+<<<<<<< Updated upstream
     public ScheduledAppointments()
+=======
+    public ScheduledAppointments(Doctor doctor)
+>>>>>>> Stashed changes
     {
         InitializeComponent();
 
+        activeDoctor = Map.DoctorController.Get(doctor.DoctorId);
+
         this.DataContext = this;
+
+        StaticItemsView = new ObservableCollection<StaticInventory>();
 
         RoomsView = new ObservableCollection<Room>();
         List<Room> ListRoomRooms = ControllerMapper.Instance.RoomController.GetRooms();
@@ -104,7 +132,11 @@ public partial class ScheduledAppointments : Page
         {
             patient = (dataGridAppointments.SelectedItem as Appointment).Patient;
             //patient = ControllerMapper.Instance.PatientController.GetPatient(patient);
+<<<<<<< Updated upstream
             var s = new ShowPatientPage();
+=======
+            var s = new ShowPatientPage(patient);
+>>>>>>> Stashed changes
             s.Show();
         }
         catch
@@ -128,7 +160,7 @@ public partial class ScheduledAppointments : Page
             AppType = Enums.AppointmentType.SURGERY;
         DateTime newAppointmentBegin = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + BeginTime.Text);
         DateTime newAppointmentEnd = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + EndTime.Text);
-        
+
         newAppointment = new Appointment(newAppointmentBegin, newAppointmentEnd, AppType, Enums.AppointmentStatus.PENDING, PatientDropdown.SelectedItem as Patient, DoctorWindow.doctor, RoomDropdown.SelectedItem as Room);
         ControllerMapper.Instance.AppointmentController.DoctorCreateAppointment(newAppointment);
         Appointments.Add(newAppointment);

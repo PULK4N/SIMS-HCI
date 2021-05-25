@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public interface IDoctorRepository
 {
+<<<<<<< Updated upstream
     Doctor CreateDoctor(Doctor doctor);
     Doctor SaveDoctor(Doctor doctor);
 
@@ -25,3 +26,11 @@ public interface IDoctorRepository
 
 }
 
+=======
+    public interface IDoctorRepository : IEntityRepository<Doctor>
+    {
+        List<Doctor> GetAllBySpecialization(Enums.Specialization specialization);
+        Doctor GetByUsername(string username);
+    }
+}
+>>>>>>> Stashed changes

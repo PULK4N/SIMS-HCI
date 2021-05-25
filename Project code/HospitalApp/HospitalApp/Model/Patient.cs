@@ -13,6 +13,7 @@ public class Patient
     public Patient(){}
     public Patient(GuestPatient patient)
     {
+<<<<<<< Updated upstream
         this.User = patient.User;
     }
 
@@ -25,6 +26,31 @@ public class Patient
         Appointments = appointments;
         SchedulingAttempts = 0;
     }
+=======
+        public Patient() { }
+        public Patient(GuestPatient patient)
+        {
+            User = patient.User;
+            alergies = "Paracetamol";
+        }
+
+        public Patient(long patientId, List<Appointment> appointments, MedicalRecord medicalRecord, User user, List<Appointment> newAppointments)
+        {
+            PatientId = patientId;
+            Appointments = newAppointments;
+            MedicalRecord = medicalRecord;
+            User = user;
+            Appointments = appointments;
+            SchedulingAttempts = 0;
+            alergies = "Paracetamol";
+        }
+
+        [Key]
+        public long PatientId { get; set; }
+
+        public int SchedulingAttempts { get; set; }
+        public string alergies { get; set; }
+>>>>>>> Stashed changes
 
     [Key]
     public long PatientId{ get; set; }
@@ -66,6 +92,7 @@ public class Patient
             this.appointments.Add(newAppointment);
     }
 
+<<<<<<< Updated upstream
 
     public void RemoveAppointment(Appointment oldAppointment)
     {
@@ -80,6 +107,12 @@ public class Patient
     {
         if (appointments != null)
             appointments.Clear();
+=======
+        public override string ToString()
+        {
+            return User.FirstName + " " + User.LastName;
+        }
+>>>>>>> Stashed changes
     }
 
     public override string ToString()

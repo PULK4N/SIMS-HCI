@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public interface IDrugService
 {
+<<<<<<< Updated upstream
     bool CreateDrug(Drug drug);
     
     bool UpdateDrug(Drug drug);
@@ -25,4 +26,13 @@ public interface IDrugService
     bool ApproveDrug(Drug drug);
 
     bool RejectDrug(Drug drug);
+=======
+    public interface IDrugService : IEntityService<Drug>
+    {
+        List<Drug> GetAllByPatient(Patient patient);
+        List<Drug> GetDrugsForApproval();
+        bool ApproveDrug(Drug drug);
+        bool RejectDrug(Drug drug);
+    }
+>>>>>>> Stashed changes
 }

@@ -9,9 +9,16 @@
       Title="DrugValidation">
 
     <Grid>
+<<<<<<< Updated upstream
         <DataGrid x:Name="dataGridValidateDrugs" HorizontalAlignment="Left" AutoGenerateColumns="False" Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="289" ItemsSource="{Binding Drugs}" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Drug name" Binding="{Binding Name}" Width="*"/>
+=======
+        <DataGrid x:Name="dataGridValidateDrugs" IsReadOnly="True"  HorizontalAlignment="Left" AutoGenerateColumns="False" Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="289" ItemsSource="{Binding Drugs}" SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Drug name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Details" Binding="{Binding Details}" Width="*"/>
+>>>>>>> Stashed changes
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="ApproveDrugButton" Content="Approve" HorizontalAlignment="Left" Margin="348,311,0,0" VerticalAlignment="Top" Width="169" Height="39" Click="ApproveDrug_Click"/>

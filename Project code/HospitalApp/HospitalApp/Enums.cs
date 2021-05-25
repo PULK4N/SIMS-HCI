@@ -31,6 +31,12 @@ namespace Enums{
         DATE_TIME
     }
 
+    public enum ReferalSchedulingPriority
+    {
+        SPECIFIC_DOCTOR,
+        SPECIALIST
+    }
+
     public enum Sex
     {
         MAN,

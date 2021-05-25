@@ -8,8 +8,29 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+<<<<<<< Updated upstream
         <Canvas x:Name="MainCanvas" Margin="0,0,-0.4,0" Visibility="Visible">
             <Button Content="Doctor" HorizontalAlignment="Left" Margin="269,374,0,0" VerticalAlignment="Top" Width="75" Click="DoctorButton" Height="19"/>
+=======
+        <Grid x:Name="LoginGrid">
+            <Grid VerticalAlignment="Center" Height="240" HorizontalAlignment="Center"  >
+                <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" RadiusY="10" RadiusX="0" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Label Content="ACCOUNT LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="15" Width="188" Margin="46,29,46,0" />
+                <Label Content="username" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="12" Width="188" Margin="46,64,46,0" />
+
+                <TextBox x:Name="LoginUsername" Margin="46,90,46,130" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="188"/>
+                <TextBox x:Name="LoginPassword" Margin="46,135,46,85"  FontFamily="Champagne &amp; Limousines" FontSize="18" Height="20" Width="188"/>
+                <Button Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="134,0,46,45" Content="LOGIN" Click="LoginButton"/>
+
+                <Label Content="password" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="12" Width="188" Margin="46,109,46,0" />
+            </Grid>
+        </Grid>
+        <Canvas x:Name="MainCanvas" Margin="0,0,-0.4,0" Visibility="Hidden" IsEnabled="False">
+>>>>>>> Stashed changes
             <Button Content="Patient" HorizontalAlignment="Left" Margin="505,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.816,-0.013" Click="PatientButton" Height="19"/>
             <Button Content="Secretary" HorizontalAlignment="Left" Margin="377,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="SecretaryButton" Height="19"/>
         </Canvas>

@@ -3,15 +3,11 @@
     using System;
     using System.Data.Entity.Migrations;
     
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream:Project code/HospitalApp/HospitalApp/Migrations/202105050741344_mig3.cs
     public partial class mig3 : DbMigration
 =======
     public partial class alergies_expansion_V2 : DbMigration
 >>>>>>> Stashed changes:Project code/HospitalApp/HospitalApp/Migrations/202105241841415_alergies_expansion_V2.cs
-=======
-    public partial class mig3 : DbMigration
->>>>>>> Stashed changes
     {
         public override void Up()
         {
@@ -156,10 +152,7 @@
                     {
                         PatientId = c.Long(nullable: false, identity: true),
                         SchedulingAttempts = c.Int(nullable: false),
-<<<<<<< Updated upstream
                         alergies = c.String(),
-=======
->>>>>>> Stashed changes
                         MedicalRecord_MedicalRecordId = c.Long(),
                         User_UserId = c.Long(nullable: false),
                     })

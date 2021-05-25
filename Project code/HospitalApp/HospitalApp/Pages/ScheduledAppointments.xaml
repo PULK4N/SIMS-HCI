@@ -9,9 +9,15 @@
       Title="ScheduledAppointments">
 
     <Grid>
+<<<<<<< Updated upstream
         <Button Content="Edit appointment" HorizontalAlignment="Left" Margin="210,193,0,0" VerticalAlignment="Top" Width="195" Click="EditButton_Click" Height="33"/>
         <Button Content="Create appointment" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="195" Click="CreateButton_Click" Height="33"/>
         <Button Content="Cancel appointment" HorizontalAlignment="Left" Margin="410,193,0,0" VerticalAlignment="Top" Width="195" Click="CancelButton_Click" Height="33"/>
+=======
+        <Button Content="Edit appointment" HorizontalAlignment="Left" Margin="215,193,0,0" VerticalAlignment="Top" Width="199" Click="EditButton_Click" Height="33"/>
+        <Button Content="Create appointment" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="200" Click="CreateButton_Click" Height="33"/>
+        <Button Content="Cancel appointment" HorizontalAlignment="Left" Margin="419,193,0,0" VerticalAlignment="Top" Width="200" Click="CancelButton_Click" Height="33"/>
+>>>>>>> Stashed changes
         <Grid HorizontalAlignment="Left" Height="174" Margin="10,226,0,0" VerticalAlignment="Top" Width="178" DataContext="{Binding SelectedItem, ElementName=dataGridAppointments}">
             <RadioButton x:Name="Examination" GroupName ="AppointmentType" Content="Examination" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked" IsChecked="True"/>
             <RadioButton x:Name="Surgery" GroupName ="AppointmentType" Content="Surgery" HorizontalAlignment="Left" Margin="109,10,0,0" VerticalAlignment="Top"/>
@@ -21,7 +27,11 @@
         </Grid>
         <DataGrid x:Name="dataGridAppointments" AutoGenerateColumns="False" ItemsSource="{Binding Appointments}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+<<<<<<< Updated upstream
                   Height="178" VerticalAlignment="Top" Width="597" Canvas.Left="376" Canvas.Top="52" Margin="11,10,0,0">
+=======
+                  Height="178" VerticalAlignment="Top" Width="611" Canvas.Left="376" Canvas.Top="52" Margin="11,10,0,0">
+>>>>>>> Stashed changes
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Status" Binding="{Binding AppointmentStatus}"/>
                 <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}"/>
@@ -33,11 +43,19 @@
         </DataGrid>
         <Button Content="Show patient" HorizontalAlignment="Left" Margin="11,392,0,0" VerticalAlignment="Top" Width="167" Height="48" Click="ShowPatientButton_Click"/>
         <!--Grid HorizontalAlignment="Left" Height="23" Margin="10,364,0,0" VerticalAlignment="Top" Width="168" DataContext="{Binding SelectedItem, ElementName=dataGridStaticItems}"-->
+<<<<<<< Updated upstream
             <ComboBox x:Name="RoomDropdown" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" ItemsSource="{Binding RoomsView}" SelectionChanged="RoomDropdown_SelectionChanged" Margin="11,365,0,0"/>
         <!--/Grid-->
         <ComboBox x:Name="PatientDropdown" HorizontalAlignment="Left" Margin="10,337,0,0" VerticalAlignment="Top" Width="168" ItemsSource="{Binding PatientsView}"/>
         <DataGrid x:Name="dataGridStaticItems" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top"
                 IsReadOnly="True" AutoGenerateColumns="False" Width="395" ItemsSource="{Binding StaticItemsView}" Margin="210,230,0,0">
+=======
+        <ComboBox x:Name="RoomDropdown" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167" ItemsSource="{Binding RoomsView}" SelectionChanged="RoomDropdown_SelectionChanged" Margin="11,365,0,0"/>
+        <!--/Grid-->
+        <ComboBox x:Name="PatientDropdown" HorizontalAlignment="Left" Margin="10,337,0,0" VerticalAlignment="Top" SelectionChanged="RoomDropdown_SelectionChanged" Width="168" ItemsSource="{Binding PatientsView}"/>
+        <DataGrid x:Name="dataGridStaticItems" HorizontalAlignment="Left" Height="209" VerticalAlignment="Top"
+                IsReadOnly="True" AutoGenerateColumns="False" Width="404" ItemsSource="{Binding StaticItemsView}" Margin="215,230,0,0">
+>>>>>>> Stashed changes
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                 <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>

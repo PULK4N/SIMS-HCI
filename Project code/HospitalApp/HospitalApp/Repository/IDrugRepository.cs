@@ -18,8 +18,13 @@ public interface IDrugRepository
     
     List<Drug> GetDrugsForApproval();
 
+<<<<<<< Updated upstream
     List<Drug> GetPatientDrugs(Patient patient);
 
     bool ApproveDrug(Drug drug);
     bool RejectDrug(Drug drug);
+=======
+        List<Drug> GetAllByPatient(Patient patient);
+    }
+>>>>>>> Stashed changes
 }

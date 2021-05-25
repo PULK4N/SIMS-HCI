@@ -1,4 +1,10 @@
+<<<<<<< Updated upstream
 ﻿using System;
+=======
+﻿using HospitalApp.Model;
+using HospitalApp.Pages;
+using System;
+>>>>>>> Stashed changes
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,15 +26,19 @@ public partial class DoctorWindow : Window
 {
 
     public static Doctor doctor;
-    public DoctorWindow()
+    public DoctorWindow(long docId)
     {
         InitializeComponent();
+<<<<<<< Updated upstream
         doctor = ControllerMapper.Instance.DoctorController.GetDoctorById(1);
+=======
+        doctor = Map.DoctorController.Get(docId);
+>>>>>>> Stashed changes
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-        ScheduledAppointments scheduledAppointments = new ScheduledAppointments();
+        ScheduledAppointments scheduledAppointments = new ScheduledAppointments(doctor);
         MainFrame.Content = scheduledAppointments;
 
     }
@@ -53,4 +63,13 @@ public partial class DoctorWindow : Window
         DrugValidation drugValidation = new DrugValidation();
         MainFrame.Content = drugValidation;
     }
+<<<<<<< Updated upstream
+=======
+
+    private void ReferalScheduling_Click(object sender, RoutedEventArgs e)
+    {
+        ReferalScheduling referalScheduling = new ReferalScheduling();
+        MainFrame.Content = referalScheduling;
+    }
+>>>>>>> Stashed changes
 }

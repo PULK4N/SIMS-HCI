@@ -47,9 +47,17 @@ public class DoctorController
         return _doctorService.GetAllDoctors(specialization);
     }
 
+<<<<<<< Updated upstream
     public List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment)
    {
       throw new NotImplementedException();
    }
 
+=======
+        public Doctor GetByUsername(string username)
+        {
+            return _doctorService.GetByUsername(username);
+        }
+    }
+>>>>>>> Stashed changes
 }

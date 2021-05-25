@@ -13,5 +13,9 @@
         <Frame x:Name="MainFrame" Content="Frame" HorizontalAlignment="Left" Height="481" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="2" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden" Margin="0,0,0,-62"/>
         <Button x:Name="ScheduledAppointmentsButton" Content="Scheduled Appointments" Grid.Column="1" HorizontalAlignment="Left" Margin="287,123,0,0" VerticalAlignment="Top" Width="139" Height="37" Click="Button_Click"/>
         <Button x:Name="DrugValidation" Content="Validate Drugs" Grid.Column="1" HorizontalAlignment="Left" Margin="287,165,0,0" VerticalAlignment="Top" Width="139" Height="37" Click="ValidateDrugs_Click"/>
+<<<<<<< Updated upstream
+=======
+        <Button Content="Logout" Grid.Column="1" HorizontalAlignment="Left" Margin="337,10,0,0" VerticalAlignment="Top" Width="89" Height="31"/>
+>>>>>>> Stashed changes
     </Grid>
 </Window>

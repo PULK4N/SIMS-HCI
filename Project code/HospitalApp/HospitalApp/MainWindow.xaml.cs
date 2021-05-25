@@ -29,6 +29,7 @@ namespace Bolnica
         CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
         public Room Room { get; set; }
+        public Doctor ActiveDoctor { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -53,12 +54,16 @@ namespace Bolnica
                 Doctors.Add(doctor);
             }
         }
+<<<<<<< Updated upstream
 
         private void DoctorButton(object sender, RoutedEventArgs e)
         {
             var s = new DoctorWindow();
             s.Show();
         }
+=======
+        #region MainCanvasReg
+>>>>>>> Stashed changes
 
         private void SecretaryButton(object sender, RoutedEventArgs e)
         {
@@ -66,6 +71,39 @@ namespace Bolnica
             //s.Show();
         }
 
+<<<<<<< Updated upstream
+=======
+        private void LoginButton(object sender, RoutedEventArgs e)
+        {
+            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Text);
+            if(registeredUser != null)
+            {
+                switch (registeredUser.UserType)
+                {
+                    case Enums.UserType.PATIENT:
+                        MainCanvas.Visibility = Visibility.Hidden;
+                        LoginGrid.Visibility = Visibility.Hidden;
+                        PatientSchedulingCanvas.Visibility = Visibility.Visible;
+                        new NotificationService().StartTimer(cancellationToken);
+                        break;
+                    case Enums.UserType.DOCTOR:
+                        ActiveDoctor = Map.DoctorController.GetByUsername(registeredUser.Username);
+                        long docId = ActiveDoctor.DoctorId;
+                        var s = new DoctorWindow(docId);
+                        s.Show();
+                        break;
+
+                }
+                LoginGrid.Visibility = Visibility.Hidden;
+                MainCanvas.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                MessageBox.Show("Wrong username or password");
+            }
+
+        }
+>>>>>>> Stashed changes
         private void PatientButton(object sender, RoutedEventArgs e)
         {
             MainCanvas.Visibility = Visibility.Hidden;

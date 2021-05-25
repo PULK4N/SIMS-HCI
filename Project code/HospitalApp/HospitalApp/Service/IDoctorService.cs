@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public interface IDoctorService
 {
+<<<<<<< Updated upstream
     Doctor SaveDoctor(Doctor doctor);
 
     Doctor UpdateDoctor(Doctor doctor);
@@ -20,4 +21,11 @@ public interface IDoctorService
     List<Doctor> GetAllDoctors(Enums.Specialization specialization);
 
     List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment);
+=======
+    public interface IDoctorService : IEntityService<Doctor>
+    {
+        List<Doctor> GetAllBySpecialization(Enums.Specialization specialization);
+        Doctor GetByUsername(string Username);
+    }
+>>>>>>> Stashed changes
 }

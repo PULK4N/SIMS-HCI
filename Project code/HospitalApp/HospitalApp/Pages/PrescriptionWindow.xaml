@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="PrescriptionWindow" Height="450" Width="800">
     <Grid x:Name="PrescribeMedicineButton">
-        <TextBox x:Name="Medicine" HorizontalAlignment="Left" Height="23" Margin="47,19,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="275"/>
-        <TextBox x:Name="Dosage" HorizontalAlignment="Left" Height="23" Margin="47,47,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="275"/>
-        <TextBox x:Name="Usage" HorizontalAlignment="Left" Height="177" Margin="47,128,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="275"/>
+        <TextBox x:Name="Medicine" HorizontalAlignment="Left" Height="23" Margin="47,19,0,0" TextWrapping="Wrap" Text="Medicine" VerticalAlignment="Top" Width="275"/>
+        <TextBox x:Name="Dosage" HorizontalAlignment="Left" Height="23" Margin="47,47,0,0" TextWrapping="Wrap" Text="Dosage" VerticalAlignment="Top" Width="275"/>
+        <TextBox x:Name="Usage" HorizontalAlignment="Left" Height="177" Margin="47,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="275"/>
         <Button x:Name="CreatePrescriptionButton" Content="Prescribe medicine" HorizontalAlignment="Left" Margin="430,256,0,0" VerticalAlignment="Top" Width="117" Height="50" Click="CreatePrescriptionButton_Click"/>
-        <TextBox x:Name="Period" HorizontalAlignment="Left" Height="23" Margin="47,75,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="275"/>
+        <TextBox x:Name="Period" HorizontalAlignment="Left" Height="23" Margin="47,75,0,0" TextWrapping="Wrap" Text="Usage period" VerticalAlignment="Top" Width="275"/>
 
         <xctk:DateTimePicker x:Name="SelectPrescriptionTime" HorizontalAlignment="Left" Margin="47,103,0,0" VerticalAlignment="Top" Width="275"/>
 

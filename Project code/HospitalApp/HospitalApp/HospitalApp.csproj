@@ -80,7 +80,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< Updated upstream
     <Compile Include="ControllerMapper.cs" />
+=======
+    <Compile Include="Controller\IEntityController.cs" />
+    <Compile Include="Controller\StaticInventoryController.cs" />
+    <Compile Include="Migrations\202105241841415_alergies_expansion_V2.cs" />
+    <Compile Include="Migrations\202105241841415_alergies_expansion_V2.designer.cs">
+      <DependentUpon>202105241841415_alergies_expansion_V2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\StaticInventory.cs" />
+    <Compile Include="Pages\DrugValidation.xaml.cs">
+      <DependentUpon>DrugValidation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReferalScheduling.xaml.cs">
+      <DependentUpon>ReferalScheduling.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReferalSchedulingWindow.xaml.cs">
+      <DependentUpon>ReferalSchedulingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\IStaticInventoryRepository.cs" />
+    <Compile Include="Repository\StaticInventoryRepository.cs" />
+    <Compile Include="Service\ISchedulingService.cs" />
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Service\IStaticInventoryService.cs" />
+    <Compile Include="Service\RegisteredUserService.cs" />
+    <Compile Include="Service\IRegisteredUserService.cs" />
+    <Compile Include="Map.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Controller\AnamnesisController.cs" />
     <Compile Include="Controller\AppointmentController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
@@ -91,11 +118,14 @@
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PrescriptionController.cs" />
     <Compile Include="Controller\RoomController.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Controller\StaticInventoryController.cs" />
     <Compile Include="Migrations\202105050741344_mig3.cs" />
     <Compile Include="Migrations\202105050741344_mig3.designer.cs">
       <DependentUpon>202105050741344_mig3.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> Stashed changes
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
     <Compile Include="Model\Drug.cs" />
@@ -167,7 +197,10 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
     <Compile Include="Service\RoomService.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Service\SecretaryService.cs" />
+=======
+>>>>>>> Stashed changes
     <Compile Include="Service\StaticInventoryService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -191,10 +224,23 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\DrugValidation.xaml">
+<<<<<<< Updated upstream
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+=======
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+>>>>>>> Stashed changes
+    </Page>
+    <Page Include="Pages\PrescriptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PrescriptionWindow.xaml">
+    <Page Include="Pages\ReferalScheduling.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReferalSchedulingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,8 +282,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+<<<<<<< Updated upstream
     <EmbeddedResource Include="Migrations\202105050741344_mig3.resx">
       <DependentUpon>202105050741344_mig3.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\202105241841415_alergies_expansion_V2.resx">
+      <DependentUpon>202105241841415_alergies_expansion_V2.cs</DependentUpon>
+>>>>>>> Stashed changes
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
