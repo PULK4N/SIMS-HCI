@@ -63,10 +63,10 @@
                 SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
                 Height="113" VerticalAlignment="Top" Margin="417,266,0,0" Width="329">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Drug name" Binding="{Binding Name}" Width="70"/>
-                    <DataGridTextColumn Header="Dosage" Binding="{Binding StartTime, StringFormat=hh:mm}" />
+                    <DataGridTextColumn Header="Drug name" Binding="{Binding Drug.Name}" Width="70"/>
+                    <DataGridTextColumn Header="Dosage" Binding="{Binding Date, StringFormat=hh:mm}" />
                     <DataGridTextColumn Header="Usage" Binding="{Binding Period}" />
-                    <DataGridTextColumn Header="Period" Binding="{Binding Description}" Width="*"/>
+                    <DataGridTextColumn Header="Period" Binding="{Binding Usage}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             <DataGrid x:Name="specialistAppointments" AutoGenerateColumns="False" ItemsSource="{Binding SpecialAppointments}"

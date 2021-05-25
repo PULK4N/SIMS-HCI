@@ -51,6 +51,9 @@ namespace HospitalApp.Controller
             return _doctorService.GetAllBySpecialization(specialization);
         }
 
-
+        public Doctor GetByUsername(string username)
+        {
+            return _doctorService.GetByUsername(username);
+        }
     }
 }

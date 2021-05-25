@@ -115,6 +115,7 @@ namespace Bolnica
                         ScheduleReminders();
                         break;
                     case Enums.UserType.DOCTOR:
+                        var d = Map.DoctorController.GetByUsername(registeredUser.Username);
                         var s = new DoctorWindow();
                         s.Show();
                         break;
