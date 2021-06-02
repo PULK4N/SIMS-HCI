@@ -6,13 +6,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class Reminder
+namespace HospitalApp.Model
 {
-    [Key]
-    public long ReminderId{ get; set; }
-    public int Name{ get; set; }
-    public DateTime BeginTime{ get; set; }
-    public DateTime EndTime{ get; set; }
-    public String Comment{ get; set; }
+    public class Reminder
+    {
+        [Key]
+        public long ReminderId { get; set; }
+        public int Name { get; set; }
+        public DateTime BeginTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string Comment { get; set; }
 
+    }
 }

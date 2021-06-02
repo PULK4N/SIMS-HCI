@@ -14,16 +14,10 @@
         <TextBox x:Name="Email" HorizontalAlignment="Left" Height="23" Margin="10,180,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="249"/>
         <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="10,212,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="249"/>
         <TextBox x:Name="JMBG" HorizontalAlignment="Left" Height="23" Margin="10,240,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="249"/>
-<<<<<<< Updated upstream
-        <Button x:Name="WritePrescriptionButton" Content="Prescribe medicine" HorizontalAlignment="Left" Margin="46,342,0,0" VerticalAlignment="Top" Width="178" Height="40" Click="WritePrescriptionButton_Click"/>
-        <TextBox x:Name="Anamnesis" HorizontalAlignment="Left" Height="308" Margin="370,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="323"/>
-        <Button x:Name="UpdateAnamnesisButton" Content="Update anamnesis" HorizontalAlignment="Left" Margin="434,342,0,0" VerticalAlignment="Top" Width="178" Height="40" Click="UpdateAnamnesisButton_Click"/>
-=======
         <Button x:Name="WritePrescriptionButton" Content="Prescribe medicine" HorizontalAlignment="Left" Margin="46,342,0,0" VerticalAlignment="Top" Width="163" Height="40" Click="WritePrescriptionButton_Click"/>
         <TextBox x:Name="Anamnesis" HorizontalAlignment="Left" Height="308" Margin="370,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="323"/>
         <Button x:Name="UpdateAnamnesisButton" Content="Update anamnesis" HorizontalAlignment="Left" Margin="402,342,0,0" VerticalAlignment="Top" Width="163" Height="40" Click="UpdateAnamnesisButton_Click"/>
-        <Button Content="Hospital treatment" HorizontalAlignment="Left" Margin="226,342,0,0" VerticalAlignment="Top" Width="163" Height="40"/>
+        <Button Content="Hospital treatment" HorizontalAlignment="Left" Margin="226,342,0,0" VerticalAlignment="Top" Width="163" Height="40" Click="HospitalTreatment_Click"/>
         <Button Content="Referal based scheduling" HorizontalAlignment="Left" Margin="580,342,0,0" VerticalAlignment="Top" Width="163" Height="37" Click="ReferalScheduling_Click"/>
->>>>>>> Stashed changes
     </Grid>
 </Window>

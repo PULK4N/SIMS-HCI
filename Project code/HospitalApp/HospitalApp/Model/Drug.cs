@@ -5,10 +5,13 @@
 
 using System;
 
-public class Drug
+namespace HospitalApp.Model
 {
-    public long DrugId { get; set; }
-    public String Name { get; set; }
-    public String Details { get; set; }
-    public Enums.DrugStatus DrugStatus { get; set; }
+    public class Drug
+    {
+        public long DrugId { get; set; }
+        public string Name { get; set; }
+        public string Details { get; set; }
+        public Enums.DrugStatus DrugStatus { get; set; }
+    }
 }

@@ -5,44 +5,87 @@
  ***********************************************************************/
 
 using Enums;
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
-public class PatientService : IPatientService
+namespace HospitalApp.Service
 {
-    private readonly IPatientRepository _patientRepository;
-    public PatientService(IPatientRepository patientRepository)
+    public class PatientService : IPatientService
     {
-        _patientRepository = patientRepository;
-    }
+        private readonly IPatientRepository _patientRepository;
+        public PatientService(IPatientRepository patientRepository)
+        {
+            _patientRepository = patientRepository;
+        }
 
-    public bool CreatePatient(string firstName, string lastName, string dateOfBirth, string address, string phoneNumber, int jmbg, string eMail, Sex sex)
-    {
-        throw new NotImplementedException();
-    }
+        public void Create(Patient patient){
+            _patientRepository.Create(patient);
+        }
 
-    public bool DeletePatient(Patient patient)
-    {
-        throw new NotImplementedException();
-    }
+        public void Delete(long patientId)
+        {
+            _patientRepository.Delete(patientId);
+        }
 
-    public Patient GetPatient(Patient patient)
-    {
-        return _patientRepository.GetPatient(patient);
-    }
+        public Patient Get(long patientId)
+        {
+            return _patientRepository.Get(patientId);
+        }
 
-    public Patient GetPatient(long patientId)
-    {
-        return _patientRepository.GetPatient(patientId);
-    }
+        public void Update(Patient patient)
+        {
+            _patientRepository.Update(patient);
+        }
 
-    public bool UpdatePatient(Patient patient)
-    {
-        throw new NotImplementedException();
-    }
+        public List<Patient> GetAll()
+        {
+            return _patientRepository.GetAll();
+        }
 
-    public List<Patient> GetPatients()
-    {
-        return _patientRepository.GetPatients();
+        public bool IsMalicious(Patient patient)
+        {
+            ++patient.SchedulingAttempts;
+            bool IsMalicious = _patientRepository.IsMalicious(patient);
+            if (IsMalicious && IsNotBanned(patient))
+            {
+                BanPatient(patient);
+            }
+            return IsMalicious;
+        }
+
+
+        public async Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)
+        {
+
+            await Task.Run(async () =>
+            {
+                List<Patient> patients = _patientRepository.GetWeekActivePatients();
+                while (true)
+                {
+                    foreach (Patient patient in patients)
+                    {
+                        patient.SchedulingAttempts = 0;
+                    }
+                    HospitalDB.Instance.SaveChanges();
+                    await Task.Delay(604800000, cancellationToken);
+                    if (cancellationToken.IsCancellationRequested)
+                        break;
+                }
+            });
+
+        }
+
+        public void BanPatient(Patient patient)
+        {
+            _patientRepository.BanPatient(patient);
+        }
+        private bool IsNotBanned(Patient patient)
+        {
+            return patient.User.RegisteredUser.UserType != UserType.BANNNED_USER;
+        }
     }
 }

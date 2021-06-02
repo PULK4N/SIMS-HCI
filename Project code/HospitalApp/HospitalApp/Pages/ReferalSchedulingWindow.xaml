@@ -24,14 +24,14 @@
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
                   Height="253" VerticalAlignment="Top" Width="408" Canvas.Left="294" Canvas.Top="57">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"/>
-                    <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}" />
-                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="130" />
+                    <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"  Width="*"/>
+                    <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}"  Width="*"/>
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="*"/>
                     <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Employee.User.FirstName}" Width="*"/>
                     <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="buttonSchedule" Click="confirmSchedule" Content="Schedule appointment" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+            <Button x:Name="buttonSchedule" Click="ConfirmSchedule" Content="Schedule appointment" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
                   Width="111" Background="White" Foreground="#FF707070" Canvas.Left="591" Canvas.Top="331"/>
         </Canvas>
     </Grid>

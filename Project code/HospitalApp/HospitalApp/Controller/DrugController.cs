@@ -3,63 +3,52 @@
 // Created: Thursday, April 15, 2021 4:30:55 PM
 // Purpose: Definition of Class MedicineController
 
+using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
 
-public class DrugController
+namespace HospitalApp.Controller
 {
-    private readonly IDrugService _drugService;
-
-    public DrugController(IDrugService drugService)
+    public class DrugController : IEntityController<Drug>
     {
-        _drugService = drugService;
-    }
+        private readonly IDrugService _drugService;
 
-    public bool CreateDrug(Drug drug)
-    {
-        return _drugService.CreateDrug(drug);
-    }
+        public DrugController(IDrugService drugService)
+        {
+            _drugService = drugService;
+        }
 
-    public bool UpdateDrug(Drug drug)
-    {
-        return _drugService.UpdateDrug(drug);
-    }
+        public void Create(Drug drug)
+        {
+            _drugService.Create(drug);
+        }
 
-    public bool DeleteMedicine(Drug drug)
-    {
-        return _drugService.DeleteDrug(drug);
-    }
+        public void Update(Drug drug)
+        {
+            _drugService.Update(drug);
+        }
 
-    public Drug GetDrug(Drug drug)
-    {
-        return _drugService.GetDrug(drug);
-    }
+        public void Delete(long drugId)
+        {
+            _drugService.Delete(drugId);
+        }
 
-    public List<Drug> GetPatientDrugs(Patient patient)
-    {
-        return _drugService.GetPatientDrugs(patient);
-    }
+        public Drug Get(long drugId)
+        {
+            return _drugService.Get(drugId);
+        }
 
-    public List<Drug> GetDrugs()
-    {
-        return _drugService.GetDrugs();
-    }
+        public List<Drug> GetAllByPatient(Patient patient)
+        {
+            return _drugService.GetAllByPatient(patient);
+        }
 
-    public List<Drug> GetDrugsForApproval()
-    {
-        return _drugService.GetDrugsForApproval();
-    }
+        public List<Drug> GetAll()
+        {
+            return _drugService.GetAll();
+        }
 
-    public bool ApproveDrug(Drug drug)
-    {
-        return _drugService.ApproveDrug(drug);
-    }
-
-<<<<<<< Updated upstream
-    public bool RejectDrug(Drug drug)
-    {
-        return _drugService.RejectDrug(drug);
-=======
         public List<Drug> GetDrugsForApproval()
         {
             return _drugService.GetDrugsForApproval();
@@ -74,7 +63,5 @@ public class DrugController
         {
             return _drugService.RejectDrug(drug);
         }
->>>>>>> Stashed changes
     }
-
 }

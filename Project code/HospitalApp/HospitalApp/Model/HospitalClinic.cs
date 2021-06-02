@@ -6,15 +6,18 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class HospitalClinic
+namespace HospitalApp.Model
 {
-    [Key]
-    public long HospitalClinicId{ get; set; }
-    [Required]
-    public String Name{ get; set; }
-    [Required]
-    public String Address{ get; set; }
-    [Required]
-    public String PhoneNumber{ get; set; }
+    public class HospitalClinic
+    {
+        [Key]
+        public long HospitalClinicId { get; set; }
+        [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Address { get; set; }
+        [Required]
+        public string PhoneNumber { get; set; }
 
+    }
 }

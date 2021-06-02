@@ -4,14 +4,10 @@
  * Purpose: Definition of the Class PatientAccountManagement
  ***********************************************************************/
 
-<<<<<<< Updated upstream
-using System;
-=======
 using HospitalApp.Model;
 using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
->>>>>>> Stashed changes
 using System.Data.Entity;
 
 public class GuestPatientContextDB : IGuestPatientRepository
@@ -39,8 +35,6 @@ public class GuestPatientContextDB : IGuestPatientRepository
     {
         throw new NotImplementedException();
     }
-<<<<<<< Updated upstream
-=======
 
     void IEntityRepository<GuestPatient>.Create(GuestPatient tObject)
     {
@@ -66,5 +60,4 @@ public class GuestPatientContextDB : IGuestPatientRepository
     {
         throw new NotImplementedException();
     }
->>>>>>> Stashed changes
 }

@@ -1,11 +1,7 @@
-<<<<<<< Updated upstream
-﻿using System;
-=======
 ﻿using Bolnica;
 using HospitalApp.Controller;
 using HospitalApp.Model;
 using System;
->>>>>>> Stashed changes
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -41,17 +37,13 @@ public partial class ScheduledAppointments : Page
 
     public ObservableCollection<StaticInventory> StaticItemsView { get; set; }
 
-<<<<<<< Updated upstream
-    public void UpdateAppointments()
-    {
-        List<Appointment> DoctorsAppointments = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(DoctorWindow.doctor.DoctorId);
-=======
-    public Doctor activeDoctor { get; set; }
+    public long activeDoctorId { get; set; }
+
+    public Doctor doctor { get; set; }
 
     public void UpdateAppointments()
     {
-        List<Appointment> DoctorsAppointments = Map.AppointmentController.GetAllByDoctorId(activeDoctor.DoctorId);
->>>>>>> Stashed changes
+        List<Appointment> DoctorsAppointments = Map.AppointmentController.GetAllByDoctorId(activeDoctorId);
         Appointments.Clear();
         foreach (Appointment a in DoctorsAppointments)
             Appointments.Add(a);
@@ -59,13 +51,8 @@ public partial class ScheduledAppointments : Page
 
     public void UpdateStaticItems(Room room)
     {
-<<<<<<< Updated upstream
-        StaticItemsView = new ObservableCollection<StaticInventory>();
-        List<StaticInventory> staticItems = ControllerMapper.Instance.StaticInventoryController.GetStaticItemsFromRoom(room);
-=======
 
         List<StaticInventory> staticItems = Map.StaticInventoryController.GetStaticItemsFromRoom(room);
->>>>>>> Stashed changes
         StaticItemsView.Clear();
         foreach (StaticInventory si in staticItems)
             StaticItemsView.Add(si);
@@ -73,27 +60,25 @@ public partial class ScheduledAppointments : Page
 
 
 
-<<<<<<< Updated upstream
-    public ScheduledAppointments()
-=======
-    public ScheduledAppointments(Doctor doctor)
->>>>>>> Stashed changes
+    public ScheduledAppointments(long doctorId)
     {
         InitializeComponent();
 
-        activeDoctor = Map.DoctorController.Get(doctor.DoctorId);
+        activeDoctorId = doctorId;
+
+        doctor = Map.DoctorController.Get(doctorId);
 
         this.DataContext = this;
 
         StaticItemsView = new ObservableCollection<StaticInventory>();
 
         RoomsView = new ObservableCollection<Room>();
-        List<Room> ListRoomRooms = ControllerMapper.Instance.RoomController.GetRooms();
+        List<Room> ListRoomRooms = Map.RoomController.GetAll();
         foreach (Room r in ListRoomRooms)
             RoomsView.Add(r);
 
         PatientsView = new ObservableCollection<Patient>();
-        List<Patient> ListPatientPatients = ControllerMapper.Instance.PatientController.GetPatients();
+        List<Patient> ListPatientPatients = Map.PatientController.GetPatients();
         foreach (Patient p in ListPatientPatients)
             PatientsView.Add(p);
 
@@ -111,7 +96,7 @@ public partial class ScheduledAppointments : Page
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
         Appointment appointment = dataGridAppointments.SelectedItem as Appointment;
-        ControllerMapper.Instance.AppointmentController.DoctorDeleteAppointment(appointment);
+        Map.AppointmentController.Delete(appointment.AppointmentId);
         Appointments.Remove(appointment);
     }
 
@@ -131,17 +116,12 @@ public partial class ScheduledAppointments : Page
         try
         {
             patient = (dataGridAppointments.SelectedItem as Appointment).Patient;
-            //patient = ControllerMapper.Instance.PatientController.GetPatient(patient);
-<<<<<<< Updated upstream
-            var s = new ShowPatientPage();
-=======
             var s = new ShowPatientPage(patient);
->>>>>>> Stashed changes
             s.Show();
         }
         catch
         {
-
+            MessageBox.Show("Patient not selected");
         }
     }
 
@@ -161,8 +141,8 @@ public partial class ScheduledAppointments : Page
         DateTime newAppointmentBegin = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + BeginTime.Text);
         DateTime newAppointmentEnd = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + EndTime.Text);
 
-        newAppointment = new Appointment(newAppointmentBegin, newAppointmentEnd, AppType, Enums.AppointmentStatus.PENDING, PatientDropdown.SelectedItem as Patient, DoctorWindow.doctor, RoomDropdown.SelectedItem as Room);
-        ControllerMapper.Instance.AppointmentController.DoctorCreateAppointment(newAppointment);
+        newAppointment = new Appointment(newAppointmentBegin, newAppointmentEnd, AppType, Enums.AppointmentStatus.PENDING, PatientDropdown.SelectedItem as Patient, doctor, RoomDropdown.SelectedItem as Room);
+        Map.AppointmentController.Create(newAppointment);
         Appointments.Add(newAppointment);
 
     }
@@ -181,7 +161,7 @@ public partial class ScheduledAppointments : Page
         appointment.End = DateTime.Parse(AppointmentDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + EndTime.Text);
         appointment.Patient = PatientDropdown.SelectedItem as Patient;
         appointment.Room = RoomDropdown.SelectedItem as Room;
-        ControllerMapper.Instance.AppointmentController.DoctorUpdateAppointment(appointment);
+        Map.AppointmentController.Update(appointment);
         UpdateAppointments();
     }
 

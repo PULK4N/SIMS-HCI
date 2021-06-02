@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HospitalApp.Controller;
+using HospitalApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,17 +30,6 @@ public partial class PrescriptionWindow : Window
 
     private void CreatePrescriptionButton_Click(object sender, RoutedEventArgs e)
     {
-<<<<<<< Updated upstream
-        Prescription newPrescription = new Prescription();
-        Drug newMedicine = new Drug();
-        newMedicine.Name = Medicine.Text;
-        newPrescription.Drug = newMedicine;
-        newPrescription.Dosage = int.Parse(Dosage.Text);
-        newPrescription.Usage = Usage.Text;
-        newPrescription.Date = SelectPrescriptionTime.Value.Value;
-        newPrescription.Period = Period.Text;
-        ControllerMapper.Instance.PrescriptionController.CreatePrescription(newPrescription);
-=======
         if (isAlergicTo(Medicine.Text))
         {
             MessageBox.Show("This drug is not safe for the patient");
@@ -53,6 +44,7 @@ public partial class PrescriptionWindow : Window
             newPrescription.Usage = Usage.Text;
             newPrescription.Date = SelectPrescriptionTime.Value.Value;
             newPrescription.Period = Period.Text;
+            thisPatient.MedicalRecord.Anamnesis.AddPrescription(newPrescription);
             Map.PrescriptionController.Create(newPrescription);
         }
     }
@@ -62,6 +54,5 @@ public partial class PrescriptionWindow : Window
         if (thisPatient.alergies.Equals(drug))
             return true;
         return false;
->>>>>>> Stashed changes
     }
 }

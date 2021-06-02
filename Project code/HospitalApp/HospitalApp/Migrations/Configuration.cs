@@ -1,5 +1,6 @@
 ﻿namespace HospitalApp.Migrations
 {
+    using HospitalApp.Repository;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

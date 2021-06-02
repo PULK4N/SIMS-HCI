@@ -5,53 +5,13 @@
  ***********************************************************************/
 
 using Enums;
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 
-public class DoctorService : IDoctorService
+namespace HospitalApp.Service
 {
-<<<<<<< Updated upstream
-    private readonly IDoctorRepository _doctorRepository;
-
-    public DoctorService(IDoctorRepository doctorRepository)
-    {
-        _doctorRepository = doctorRepository;
-    }
-
-    public Doctor DeleteDoctor(Doctor doctor)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<Doctor> GetAllDoctors()
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<Doctor> GetAllDoctors(Enums.Specialization specialization)
-    {
-        return _doctorRepository.GetAllDoctors(specialization);
-    }
-
-    public List<Doctor> GetAvailableDoctorsForTimeSpan(Appointment appointment)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Doctor GetDoctorById(long id)
-    {
-        return _doctorRepository.GetDoctorById(id);
-    }
-
-    public Doctor SaveDoctor(Doctor doctor)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Doctor UpdateDoctor(Doctor doctor)
-    {
-        throw new NotImplementedException();
-=======
     public class DoctorService : IDoctorService
     {
         private readonly IDoctorRepository _doctorRepository;
@@ -95,6 +55,5 @@ public class DoctorService : IDoctorService
         {
             return _doctorRepository.GetByUsername(username);
         }
->>>>>>> Stashed changes
     }
 }

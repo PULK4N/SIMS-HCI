@@ -34,10 +34,7 @@ public partial class ShowPatientPage : Window
         Phone.Text = ScheduledAppointments.patient.User.PhoneNumber;
         JMBG.Text = ScheduledAppointments.patient.User.Jmbg.ToString();
         Anamnesis.Text = ScheduledAppointments.patient.MedicalRecord.Anamnesis.Description;
-<<<<<<< Updated upstream
-=======
         thisPatient = patient;
->>>>>>> Stashed changes
     }
 
     private void WritePrescriptionButton_Click(object sender, RoutedEventArgs e)
@@ -70,10 +67,9 @@ public partial class ShowPatientPage : Window
         s.Show();
     }
 
-    private void UpdateAnamnesisButton_Click(object sender, RoutedEventArgs e)
+    private void HospitalTreatment_Click(object sender, RoutedEventArgs e)
     {
-        Anamnesis UpdatedAnamnesis = ScheduledAppointments.patient.MedicalRecord.Anamnesis;
-        UpdatedAnamnesis.Description = Anamnesis.Text;
-        ControllerMapper.Instance.AnamnesisController.UpdateAnamnesis(UpdatedAnamnesis);
+        var s = new HospitalTreatmentWindow(thisPatient);
+        s.Show();
     }
 }

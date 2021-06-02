@@ -10,7 +10,9 @@ namespace Enums{
     {
         PENDING,
         ACTIVE,
-        COMPLETED
+        COMPLETED,
+        CANCELED,
+        REVIEWED
     }
     public enum RoomStatus
     {
@@ -63,7 +65,8 @@ namespace Enums{
     {
         PATIENT,
         DOCTOR,
-        SECRETARY
+        SECRETARY,
+        BANNNED_USER
     }
 
     public enum RelationshipStatus
@@ -80,6 +83,12 @@ namespace Enums{
         APPROVED,
         REJECTED,
         PENDING
+    }
+
+    public enum ReviewType
+    {
+        DOCTOR,
+        CLINIC
     }
 
 }

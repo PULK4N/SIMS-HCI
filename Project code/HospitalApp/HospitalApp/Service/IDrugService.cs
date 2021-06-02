@@ -3,30 +3,12 @@
 // Created: Friday, April 16, 2021 9:25:41 AM
 // Purpose: Definition of Interface IMedicineService
 
+using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
 
-public interface IDrugService
+namespace HospitalApp.Service
 {
-<<<<<<< Updated upstream
-    bool CreateDrug(Drug drug);
-    
-    bool UpdateDrug(Drug drug);
-    
-    bool DeleteDrug(Drug drug);
-    
-    Drug GetDrug(Drug drug);
-    
-    List<Drug> GetDrugs();
-
-    List<Drug> GetPatientDrugs(Patient patient);
-
-    List<Drug> GetDrugsForApproval();
-
-    bool ApproveDrug(Drug drug);
-
-    bool RejectDrug(Drug drug);
-=======
     public interface IDrugService : IEntityService<Drug>
     {
         List<Drug> GetAllByPatient(Patient patient);
@@ -34,5 +16,4 @@ public interface IDrugService
         bool ApproveDrug(Drug drug);
         bool RejectDrug(Drug drug);
     }
->>>>>>> Stashed changes
 }

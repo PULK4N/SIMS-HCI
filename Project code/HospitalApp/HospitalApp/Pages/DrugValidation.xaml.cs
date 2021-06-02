@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-﻿using System;
-=======
 ﻿using HospitalApp.Controller;
 using HospitalApp.Model;
 using System;
->>>>>>> Stashed changes
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -30,11 +26,7 @@ public partial class DrugValidation : Page
 
     public void UpdateDrugs()
     {
-<<<<<<< Updated upstream
-        List<Drug> DrugsForApproval = ControllerMapper.Instance.DrugController.GetDrugsForApproval();
-=======
         List<Drug> DrugsForApproval = Map.DrugController.GetDrugsForApproval();
->>>>>>> Stashed changes
         Drugs.Clear();
         foreach (Drug d in DrugsForApproval)
             Drugs.Add(d);
@@ -47,11 +39,7 @@ public partial class DrugValidation : Page
         this.DataContext = this;
 
         Drugs = new ObservableCollection<Drug>();
-<<<<<<< Updated upstream
-        List<Drug> DrugDrugs = ControllerMapper.Instance.DrugController.GetDrugs();
-=======
         List<Drug> DrugDrugs = Map.DrugController.GetAll();
->>>>>>> Stashed changes
         foreach (Drug d in DrugDrugs)
         {
             if (d.DrugStatus.Equals(Enums.DrugStatus.PENDING))
@@ -67,22 +55,13 @@ public partial class DrugValidation : Page
     private void ApproveDrug_Click(object sender, RoutedEventArgs e)
     {
         Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
-<<<<<<< Updated upstream
-        ControllerMapper.Instance.DrugController.ApproveDrug(drug);
-=======
         Map.DrugController.ApproveDrug(drug);
->>>>>>> Stashed changes
         UpdateDrugs();
     }
 
     private void RejectDrug_Click(object sender, RoutedEventArgs e)
     {
         Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
-<<<<<<< Updated upstream
-        ControllerMapper.Instance.DrugController.RejectDrug(drug);
-        UpdateDrugs();
-    }
-=======
         Map.DrugController.RejectDrug(drug);
         UpdateDrugs();
     }
@@ -91,5 +70,4 @@ public partial class DrugValidation : Page
     {
 
     }
->>>>>>> Stashed changes
 }

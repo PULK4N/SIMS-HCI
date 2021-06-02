@@ -6,11 +6,14 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class DoctorsReferral
+namespace HospitalApp.Model
 {
-    [Key]
-    public long DoctorReferralId { get; set; }
-    public DateTime Date { get; set; }
-    public string Type { get; set; }
+    public class DoctorsReferral
+    {
+        [Key]
+        public long DoctorReferralId { get; set; }
+        public DateTime Date { get; set; }
+        public string Type { get; set; }
 
+    }
 }

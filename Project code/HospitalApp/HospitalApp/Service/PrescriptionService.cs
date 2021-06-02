@@ -3,40 +3,50 @@
 // Created: Thursday, April 15, 2021 4:44:59 PM
 // Purpose: Definition of Class PrescriptionService
 
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 
-public class PrescriptionService : IPrescriptionService
+namespace HospitalApp.Service
 {
-    private readonly IPrescriptionRepository _prescriptionRepository;
-
-    public PrescriptionService(IPrescriptionRepository prescriptionRepository)
+    public class PrescriptionService : IPrescriptionService
     {
-        _prescriptionRepository = prescriptionRepository;
-    }
+        private readonly IPrescriptionRepository _prescriptionRepository;
 
-    public bool CreatePrescription(Prescription prescription)
-    {
-        return _prescriptionRepository.CreatePrescription(prescription);
-    }
+        public PrescriptionService(IPrescriptionRepository prescriptionRepository)
+        {
+            _prescriptionRepository = prescriptionRepository;
+        }
 
-    public bool DeletePrescription(Prescription prescription)
-    {
-        return _prescriptionRepository.DeletePrescription(prescription);
-    }
+        public void Create(Prescription prescription)
+        {
+            _prescriptionRepository.Create(prescription);
+        }
 
-    public List<Prescription> GetPatientPrescriptions(long patientId)
-    {
-        return _prescriptionRepository.GetPatientPrescriptions(patientId);
-    }
+        public void Delete(long prescriptionId)
+        {
+            _prescriptionRepository.Delete(prescriptionId);
+        }
 
-    public Prescription GetPrescription(long prescriptionId)
-    {
-        return _prescriptionRepository.GetPrescription(prescriptionId);
-    }
+        public List<Prescription> GetAllByPatientId(long patientId)
+        {
+            return _prescriptionRepository.GetAllByPatient(patientId);
+        }
 
-    public bool UpdatePrescription(Prescription prescription)
-    {
-        return _prescriptionRepository.UpdatePrescription(prescription);
+        public Prescription Get(long prescriptionId)
+        {
+            return _prescriptionRepository.Get(prescriptionId);
+        }
+
+        public void Update(Prescription prescription)
+        {
+            _prescriptionRepository.Update(prescription);
+        }
+
+        public List<Prescription> GetAll()
+        {
+            return _prescriptionRepository.GetAll();
+        }
     }
 }

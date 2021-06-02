@@ -8,30 +8,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class Patient
+namespace HospitalApp.Model
 {
-    public Patient(){}
-    public Patient(GuestPatient patient)
+    public class Patient
     {
-<<<<<<< Updated upstream
-        this.User = patient.User;
-    }
-
-    public Patient(long patientId, List<Appointment> appointments, MedicalRecord medicalRecord, User user, List<Appointment> newAppointments)
-    {
-        PatientId = patientId;
-        Appointments = newAppointments;
-        MedicalRecord = medicalRecord;
-        User = user;
-        Appointments = appointments;
-        SchedulingAttempts = 0;
-    }
-=======
         public Patient() { }
         public Patient(GuestPatient patient)
         {
             User = patient.User;
-            alergies = "Paracetamol";
         }
 
         public Patient(long patientId, List<Appointment> appointments, MedicalRecord medicalRecord, User user, List<Appointment> newAppointments)
@@ -42,7 +26,6 @@ public class Patient
             User = user;
             Appointments = appointments;
             SchedulingAttempts = 0;
-            alergies = "Paracetamol";
         }
 
         [Key]
@@ -50,74 +33,62 @@ public class Patient
 
         public int SchedulingAttempts { get; set; }
         public string alergies { get; set; }
->>>>>>> Stashed changes
 
-    [Key]
-    public long PatientId{ get; set; }
-    public int SchedulingAttempts { get; set; } 
+        public List<Appointment> appointments;
+        public MedicalRecord MedicalRecord { get; set; }
 
-    public List<Appointment> appointments;
-    public MedicalRecord MedicalRecord{ get; set; }
-
-    [Required, Index("uniqueUserPat", IsUnique = true)]
-    public User User { get; set; }
+        [Required, Index("uniqueUserPat", IsUnique = true)]
+        public User User { get; set; }
 
 
-    public List<Appointment> Appointments
-    {
-        get
+        public List<Appointment> Appointments
         {
-            if (appointments == null)
-                appointments = new List<Appointment>();
-            return appointments;
-        }
-        set
-        {
-            RemoveAllAppointments();
-            if (value != null)
+            get
             {
-                foreach (Appointment Appointment in value)
-                    AddAppointment(Appointment);
+                if (appointments == null)
+                    appointments = new List<Appointment>();
+                return appointments;
+            }
+            set
+            {
+                RemoveAllAppointments();
+                if (value != null)
+                {
+                    foreach (Appointment Appointment in value)
+                        AddAppointment(Appointment);
+                }
             }
         }
-    }
 
-    public void AddAppointment(Appointment newAppointment)
-    {
-        if (newAppointment == null)
-            return;
-        if (this.appointments == null)
-            this.appointments = new List<Appointment>();
-        if (!this.appointments.Contains(newAppointment))
-            this.appointments.Add(newAppointment);
-    }
+        public void AddAppointment(Appointment newAppointment)
+        {
+            if (newAppointment == null)
+                return;
+            if (appointments == null)
+                appointments = new List<Appointment>();
+            if (!appointments.Contains(newAppointment))
+                appointments.Add(newAppointment);
+        }
 
-<<<<<<< Updated upstream
 
-    public void RemoveAppointment(Appointment oldAppointment)
-    {
-        if (oldAppointment == null)
-            return;
-        if (this.appointments != null)
-            if (this.appointments.Contains(oldAppointment))
-                this.appointments.Remove(oldAppointment);
-    }
+        public void RemoveAppointment(Appointment oldAppointment)
+        {
+            if (oldAppointment == null)
+                return;
+            if (appointments != null)
+                if (appointments.Contains(oldAppointment))
+                    appointments.Remove(oldAppointment);
+        }
 
-    public void RemoveAllAppointments()
-    {
-        if (appointments != null)
-            appointments.Clear();
-=======
+        public void RemoveAllAppointments()
+        {
+            if (appointments != null)
+                appointments.Clear();
+        }
+
         public override string ToString()
         {
             return User.FirstName + " " + User.LastName;
         }
->>>>>>> Stashed changes
     }
-
-    public override string ToString()
-    {
-        return User.FirstName + " " + User.LastName;
-    }
-
 }

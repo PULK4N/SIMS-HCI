@@ -3,46 +3,50 @@
 // Created: Thursday, April 15, 2021 4:44:59 PM
 // Purpose: Definition of Class AnamnesisService
 
+using HospitalApp.Model;
+using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
 
-public class AnamnesisService : IAnamnesisService
+namespace HospitalApp.Service
 {
-    private readonly IAnamnesisRepository _anamnesisRepository;
-
-    public AnamnesisService(IAnamnesisRepository anamnesisRepository)
+    public class AnamnesisService : IAnamnesisService
     {
-        _anamnesisRepository = anamnesisRepository;
-    }
+        private readonly IAnamnesisRepository _anamnesisRepository;
 
-    public bool CreateAnamnesis(Anamnesis anamnesis)
-    {
-        throw new NotImplementedException();
-    }
+        public AnamnesisService(IAnamnesisRepository anamnesisRepository)
+        {
+            _anamnesisRepository = anamnesisRepository;
+        }
 
-    public bool UpdateAnamnesis(Anamnesis anamnesis)
-    {
-        return _anamnesisRepository.UpdateAnamnesis(anamnesis);
-    }
+        public void Create(Anamnesis anamnesis)
+        {
+            _anamnesisRepository.Create(anamnesis);
+        }
 
-    public bool DeleteAnamnesis(Anamnesis anamnesis)
-    {
-        throw new NotImplementedException();
-    }
+        public void Delete(long anamnesisId)
+        {
+            _anamnesisRepository.Delete(anamnesisId);
+        }
 
-    public List<Anamnesis> GetAllPatientAnamnesis(long patientId)
-    {
-        throw new NotImplementedException();
-    }
+        public Anamnesis GetByPatientId(long patientId)
+        {
+            return _anamnesisRepository.GetByPatient(patientId);
+        }
 
-    public Anamnesis GetAnamnesis(long anamnesisId)
-    {
-        throw new NotImplementedException();
-    }
+        public Anamnesis Get(long anamnesisId)
+        {
+            return _anamnesisRepository.Get(anamnesisId);
+        }
 
-    public Anamnesis GetAnamnesis(Anamnesis anamnesis)
-    {
-        return _anamnesisRepository.GetAnamnesis(anamnesis);
-    }
+        public void Update(Anamnesis anamnesis)
+        {
+            _anamnesisRepository.Update(anamnesis);
+        }
 
+        public List<Anamnesis> GetAll()
+        {
+            return _anamnesisRepository.GetAll();
+        }
+    }
 }

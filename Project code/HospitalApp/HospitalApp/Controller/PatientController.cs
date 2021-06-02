@@ -1,48 +1,58 @@
-/***********************************************************************
- * Module:  PatientAccountManagement.cs
- * Author:  Aleksa
- * Purpose: Definition of the Class PatientAccountManagement
- ***********************************************************************/
-
+using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
-public class PatientController
+namespace HospitalApp.Controller
 {
-    private readonly IPatientService _patientService;
+    public class PatientController : IEntityController<Patient>
+    {
+        private readonly IPatientService _patientService;
 
-    public PatientController(IPatientService patientService)
-    {
-        _patientService = patientService;
-    }
+        public PatientController(IPatientService patientService)
+        {
+            _patientService = patientService;
+        }
 
-    public bool CreatePatient(String username, String password, Enums.UserType userType, String firstName, String lastName, DateTime dateOfBirth, String address, String phoneNumber, ulong jmbg, String eMail, Enums.RelationshipStatus sex, Enums.RelationshipStatus relationshipStatus)
-    {
-       throw new NotImplementedException();
-    }
+        public void Create(Patient patient)
+        {
+            _patientService.Create(patient);
+        }
 
-    public Patient GetPatient(Patient patient)
-    {
-        return _patientService.GetPatient(patient);
-    }
+        public Patient Get(long patientId)
+        {
+            return _patientService.Get(patientId);
+        }
 
-    public Patient GetPatient(long patientId)
-    {
-        return _patientService.GetPatient(patientId);
-    }
+        public void Update(Patient patient)
+        {
+            _patientService.Update(patient);
+        }
 
-    public bool UpdatePatient(String username, String password, Enums.UserType userType, String firstName, String lastName, DateTime dateOfBirth, String address, String phoneNumber, ulong jmbg, String eMail, Enums.RelationshipStatus sex, Enums.RelationshipStatus relationshipStatus)
-    {
-       throw new NotImplementedException();
-    }
-    
-    public bool DeletePatient(Patient patient)
-    {
-       throw new NotImplementedException();
-    }
+        public void Delete(long patientId)
+        {
+            _patientService.Delete(patientId);
+        }
 
-    public List<Patient> GetPatients()
-    {
-        return _patientService.GetPatients();
+        public List<Patient> GetPatients()
+        {
+            return _patientService.GetAll();
+        }
+
+        public bool IsMalicious(Patient patient)
+        {
+            return _patientService.IsMalicious(patient);
+        }
+
+        public void StartWeeklyAttemptsRestarting(CancellationToken cancellationToken)
+        {
+            _patientService.StartWeeklyAttemptsRestarting(cancellationToken);
+        }
+
+        public List<Patient> GetAll()
+        {
+            return _patientService.GetAll();
+        }
     }
 }

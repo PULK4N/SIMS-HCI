@@ -6,70 +6,62 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class Anamnesis
+namespace HospitalApp.Model
 {
-    [Key]
-    public long AnamnesisId { get; set; }
-    public DateTime TimeOf { get; set; }
-    public String Description { get; set; }
-
-    public System.Collections.Generic.List<Prescription> prescriptions;
-
-    public Anamnesis()
+    public class Anamnesis
     {
-    }
+        [Key]
+        public long AnamnesisId { get; set; }
+        public DateTime TimeOf { get; set; }
+        public string Description { get; set; }
 
-    public Anamnesis(String description)
-    {
-        TimeOf = DateTime.Now;
-        Description = description;
-    }
+        public System.Collections.Generic.List<Prescription> prescriptions;
 
-    public System.Collections.Generic.List<Prescription> Prescriptions
-    {
-        get
+
+        public System.Collections.Generic.List<Prescription> Prescriptions
         {
+            get
+            {
+                if (prescriptions == null)
+                    prescriptions = new System.Collections.Generic.List<Prescription>();
+                return prescriptions;
+            }
+            set
+            {
+                RemoveAllPrescriptions();
+                if (value != null)
+                {
+                    foreach (Prescription oPrescription in value)
+                        AddPrescription(oPrescription);
+                }
+            }
+        }
+
+        public void AddPrescription(Prescription newPrescription)
+        {
+            if (newPrescription == null)
+                return;
             if (prescriptions == null)
                 prescriptions = new System.Collections.Generic.List<Prescription>();
-            return prescriptions;
+            if (!prescriptions.Contains(newPrescription))
+                prescriptions.Add(newPrescription);
         }
-        set
+
+        public void RemovePrescription(Prescription oldPrescription)
         {
-            RemoveAllPrescriptions();
-            if (value != null)
+            if (oldPrescription == null)
+                return;
+            if (prescriptions != null)
+                if (prescriptions.Contains(oldPrescription))
+                    prescriptions.Remove(oldPrescription);
+        }
+
+        public void RemoveAllPrescriptions()
+        {
+            if (prescriptions != null)
             {
-                foreach (Prescription oPrescription in value)
-                    AddPrescription(oPrescription);
+                prescriptions.Clear();
             }
         }
     }
-
-
-    public void AddPrescription(Prescription newPrescription)
-    {
-        if (newPrescription == null)
-            return;
-        if (this.prescriptions == null)
-            this.prescriptions = new System.Collections.Generic.List<Prescription>();
-        if (!this.prescriptions.Contains(newPrescription))
-            this.prescriptions.Add(newPrescription);
-    }
-
-    public void RemovePrescription(Prescription oldPrescription)
-    {
-        if (oldPrescription == null)
-            return;
-        if (this.prescriptions != null)
-            if (this.prescriptions.Contains(oldPrescription))
-                this.prescriptions.Remove(oldPrescription);
-    }
-
-    public void RemoveAllPrescriptions()
-    {
-        if (prescriptions != null)
-        {
-            prescriptions.Clear();
-        }
-    }
-
 }

@@ -1,19 +1,11 @@
-﻿using System;
+﻿using HospitalApp.Model;
+using HospitalApp.Service;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Bolnica
 {
@@ -25,6 +17,9 @@ namespace Bolnica
         public ObservableCollection<Doctor> Doctors { get; set; }
         public ObservableCollection<Appointment> ScheduledAppointments { get; set; }
         public ObservableCollection<Appointment> ReSchAppointments { get; set; }
+        public ObservableCollection<Appointment> CompletedAppointmentsNotReviewed { get; set; }
+        public ObservableCollection<Review> Reviews { get; set; }
+        public ObservableCollection<string> ScoresOC { get; set; }
         CancellationTokenSource CancellationTokenSource { get; set; }
         CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
@@ -33,37 +28,37 @@ namespace Bolnica
         public MainWindow()
         {
             InitializeComponent();
+            Map.Instantiate();
             InstantiateLists();
             this.DataContext = this;
             CancellationTokenSource = new CancellationTokenSource();
             cancellationToken = CancellationTokenSource.Token;
-            
+            Map.PatientController.StartWeeklyAttemptsRestarting(cancellationToken);
         }
 
         private void InstantiateLists()
         {
             AppointmentsToSchedule = new ObservableCollection<Appointment>();
             ScheduledAppointments = new ObservableCollection<Appointment>();
+            Reviews = new ObservableCollection<Review>();
+            CompletedAppointmentsNotReviewed = new ObservableCollection<Appointment>();
             ReSchAppointments = new ObservableCollection<Appointment>();
             Doctors = new ObservableCollection<Doctor>();
-            Room = ControllerMapper.Instance.RoomController.GetRoom(1);
-            Patient = ControllerMapper.Instance.PatientController.GetPatient(1);
+            Room = Map.RoomController.Get(1);
+            Patient = Map.PatientController.Get(1);
+            ScoresOC = new ObservableCollection<string>();
 
-            foreach (Doctor doctor in ControllerMapper.Instance.DoctorController.GetAllDoctors(Enums.Specialization.NONE))
+            foreach (Doctor doctor in Map.DoctorController.GetAllBySpecialization(Enums.Specialization.NONE))
             {
                 Doctors.Add(doctor);
             }
-        }
-<<<<<<< Updated upstream
 
-        private void DoctorButton(object sender, RoutedEventArgs e)
-        {
-            var s = new DoctorWindow();
-            s.Show();
+            for(int i=1; i <= 5; i++)
+            {
+                ScoresOC.Add(i.ToString());
+            }
         }
-=======
         #region MainCanvasReg
->>>>>>> Stashed changes
 
         private void SecretaryButton(object sender, RoutedEventArgs e)
         {
@@ -71,8 +66,6 @@ namespace Bolnica
             //s.Show();
         }
 
-<<<<<<< Updated upstream
-=======
         private void LoginButton(object sender, RoutedEventArgs e)
         {
             RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Text);
@@ -91,6 +84,7 @@ namespace Bolnica
                         long docId = ActiveDoctor.DoctorId;
                         var s = new DoctorWindow(docId);
                         s.Show();
+                        this.Close();
                         break;
 
                 }
@@ -103,20 +97,18 @@ namespace Bolnica
             }
 
         }
->>>>>>> Stashed changes
         private void PatientButton(object sender, RoutedEventArgs e)
         {
             MainCanvas.Visibility = Visibility.Hidden;
+            this.LoginGrid.Visibility = Visibility.Hidden;
             PatientSchedulingCanvas.Visibility = Visibility.Visible;
             
+            new NotificationService().StartTimer(cancellationToken);
             
         }
+        #endregion
 
-        private void StartNotifications(object sender, RoutedEventArgs e)
-        {
-            new NotificationManager().StartTimer(cancellationToken);
-        }
-
+        #region PatientSchedulingCanvasReg
         private void EndNotifications(object sender, RoutedEventArgs e)
         {
             CancellationTokenSource.Cancel();
@@ -125,28 +117,94 @@ namespace Bolnica
         private void ScheduleAppointments(object sender, RoutedEventArgs e)
         {
             this.PatientSchedulingTime.Visibility = Visibility.Visible;
+            this.PatientReviews.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Hidden;
         }
 
         private void ViewScheduledAppointments(object sender, RoutedEventArgs e)
         {
             this.PatientSchedulingTime.Visibility = Visibility.Hidden;
+            this.PatientReviews.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Visible;
             addPatientScheduledAppointments();
         }
-
         private void addPatientScheduledAppointments()
         {
             ScheduledAppointments.Clear();
-            List<Appointment> appointments = ControllerMapper.Instance.AppointmentController.PatientListAppointments(Patient);
+            List<Appointment> appointments = Map.AppointmentController.GetAllByPatientId(Patient.PatientId);
             foreach(Appointment appointment in appointments)
             {
                 ScheduledAppointments.Add(appointment);
             }
         }
 
+        private void OpenReviews(object sender, RoutedEventArgs e)
+        {
+            this.PatientSchedulingTime.Visibility = Visibility.Hidden;
+            this.PatientListAppointments.Visibility = Visibility.Hidden;
+            this.PatientReviews.Visibility = Visibility.Visible;
+            ShowReviewsAndAppointments();
+
+        }
+        #endregion
+
+        #region ReviewRegion
+
+        private void ShowReviewsAndAppointments()
+        {
+            List<Appointment> appointments = Map.AppointmentController.GetAllCompletedByPatientId(1);
+            List<Review> reviews = Map.ReviewController.GetAllByPatientId(1);
+
+            CompletedAppointmentsNotReviewed.Clear();
+            foreach (Appointment appointment in appointments)
+            {
+                CompletedAppointmentsNotReviewed.Add(appointment);
+            }
+
+            Reviews.Clear();
+            foreach(Review review in reviews)
+            {
+                Reviews.Add(review);
+            }
+            if(Map.ReviewController.GetAllByClinicId(1) != null)
+            {
+                ReviewClinicComment.Text = Map.ReviewController.GetAllByClinicId(1).Comment;
+            }
+
+        }
+
+        private void reviewAppointment(object sender, RoutedEventArgs e)
+        {
+            var appointment = dataGridCompletedAppointments.SelectedItem as Appointment;
+            appointment.AppointmentStatus = Enums.AppointmentStatus.REVIEWED;
+            
+            string description = ReviewComment.Text;
+            Review review = new Review((int)ReviewScore.SelectedItem, description,Enums.ReviewType.DOCTOR, appointment);//(int score, string comment, ReviewType reviewType, Appointment appointment)
+            Map.ReviewController.Create(review);
+            ShowReviewsAndAppointments();
+        }
+
+        private void reviewClinic(object sender, RoutedEventArgs e)
+        {
+            Review review = Map.ReviewController.GetAllByClinicId(1);
+            if (review == null){
+                review = new Review();
+                review.Comment = ReviewClinicComment.Text;
+                review.ReviewType = Enums.ReviewType.CLINIC;
+                Map.ReviewController.Create(review);
+            }
+            else
+            {
+                review.Comment = ReviewClinicComment.Text;
+                Map.ReviewController.Update(review);
+            }
+        }
+        #endregion
+
+        #region ScheduleAppointmentReg
         private void ConfirmButtonClick(object sender, RoutedEventArgs e)
         {
+            AppointmentsToSchedule.Clear();
             SchedulingInformation schedulingInformation = new SchedulingInformation()
             {
                 TimeIntervalBeginning = DateTime.Parse(DateInput.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + ScheduleFrom.Text),
@@ -156,24 +214,39 @@ namespace Bolnica
                 Room = this.Room,
                 Doctor = (Doctor)DoctorPicker.SelectedItem
             };
-            GetMyAppointments(schedulingInformation);
+            if(DateTime.Now > schedulingInformation.TimeIntervalBeginning)
+            {
+                MessageBox.Show("Can't schedule appointment in the past");
+            }
+            else
+            {
+                GetMyAppointments(schedulingInformation);
+            }
         }
 
         private void GetMyAppointments(SchedulingInformation schedulingInformation)
         {
-            var (appointmentList, priorityUsed) = SchedulingManager.GetAppointments(schedulingInformation);
+            var (appointmentList, priorityUsed) = Map.SchedulingService.GetAppointments(schedulingInformation);
+            if (priorityUsed) MessageBox.Show("Priority was used");
             foreach (Appointment appointment in appointmentList)
             {
                 AppointmentsToSchedule.Add(appointment);
             }
         }
+        private void confirmSchedule(object sender, RoutedEventArgs e)
+        {
+            Appointment appointment = ((Appointment)dataGridAppointments.SelectedItem);
+            Map.AppointmentController.PatientScheduleAppointment(appointment);
+            AppointmentsToSchedule.Clear();
+        }
+        #endregion
 
-
+        #region RescheduleAppointmentReg
         private void deleteAppointment(object sender, RoutedEventArgs e)
         {
             
             Appointment appointment = dataGridScheduledAppointmentsAppointments.SelectedItem as Appointment;
-            ControllerMapper.Instance.AppointmentController.PatientCancelAppointment(appointment);
+            Map.AppointmentController.Delete(appointment.AppointmentId);
             ScheduledAppointments.Remove(appointment);
         }
 
@@ -187,7 +260,7 @@ namespace Bolnica
                     Appointment = appointment,
                     TimeIntervalBeginning = DateTime.Parse(ReScheduleDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + reScheduleFrom.Text),
                     TimeIntervalEnd = DateTime.Parse(ReScheduleDate.SelectedDate.Value.Date.ToString().Split(' ')[0] + " " + reScheduleTo.Text),
-                    PatientSchedulingPriority = Enums.PatientSchedulingPriority.DOCTOR,
+                    PatientSchedulingPriority = (bool)radioDoctor2.IsChecked ? Enums.PatientSchedulingPriority.DOCTOR : Enums.PatientSchedulingPriority.DATE_TIME,
                     Patient = this.Patient,
                     Room = this.Room,
                     Doctor = appointment.Doctor
@@ -199,10 +272,11 @@ namespace Bolnica
 
         private void GetMyRescheduledAppointments(SchedulingInformation schedulingInformation)
         {
-            if (SchedulingManager.ReSchedulingInformationValid(schedulingInformation))
+            if (Map.SchedulingService.ReSchedulingInformationValid(schedulingInformation))
             {
                 //dataGridScheduledAppointmentsAppointments
-                var (appointmentList, priorityUsed) = SchedulingManager.GetAppointmentsToReschedule(schedulingInformation);
+                var (appointmentList, priorityUsed) = Map.SchedulingService.GetAppointments(schedulingInformation);
+                if (priorityUsed) MessageBox.Show("Priority was used");
                 foreach (Appointment appointment in appointmentList)
                 {
                     ReSchAppointments.Add(appointment);
@@ -213,12 +287,6 @@ namespace Bolnica
                 MessageBox.Show("Error:\nYou can't reschedule an appointment");
             }
         }
-        private void confirmSchedule(object sender, RoutedEventArgs e)
-        {
-            Appointment appointment = ((Appointment)dataGridAppointments.SelectedItem);
-            ControllerMapper.Instance.AppointmentController.PatientScheduleAppointment(appointment);
-            AppointmentsToSchedule.Clear();
-        }
 
         private void reScheduleAppointment(object sender, RoutedEventArgs e)
         {
@@ -226,10 +294,11 @@ namespace Bolnica
             if (appointment != null)
             {
                 appointment.AppointmentId = appointmentToBeRescheduled.AppointmentId;
-                ControllerMapper.Instance.AppointmentController.PatientReScheduleAppointment(appointment);
+                Map.AppointmentController.PatientReScheduleAppointment(appointment);
                 ReSchAppointments.Clear();
                 addPatientScheduledAppointments();
             }    
         }
+        #endregion
     }
 }

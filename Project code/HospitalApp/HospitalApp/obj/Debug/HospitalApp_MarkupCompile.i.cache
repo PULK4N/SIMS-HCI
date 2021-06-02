@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\obj\Debug\
+E:\Faks 6\SIMS-HCI projekat - Copy (master)\Project code\HospitalApp\HospitalApp\obj\Debug\
 HospitalApp
 none
 false
 DEBUG;TRACE
-E:\Faks 6\SIMS-HCI projekat\Project code\HospitalApp\HospitalApp\App.xaml
-6-1356254641
+E:\Faks 6\SIMS-HCI projekat - Copy (master)\Project code\HospitalApp\HospitalApp\App.xaml
+8-1884064594
 
-103-1842357208
-21-1729152541
-MainWindow.xaml;Pages\DoctorWindow.xaml;Pages\DrugValidation.xaml;Pages\PrescriptionWindow.xaml;Pages\ScheduledAppointments.xaml;Pages\ShowPatientPage.xaml;
+120-1392755895
+21-1702763175
+MainWindow.xaml;Pages\DoctorWindow.xaml;Pages\DrugValidation.xaml;Pages\HospitalTreatmentWindow.xaml;Pages\PrescriptionWindow.xaml;Pages\ReferalSchedulingWindow.xaml;Pages\ScheduledAppointments.xaml;Pages\ShowPatientPage.xaml;
 
 False
 

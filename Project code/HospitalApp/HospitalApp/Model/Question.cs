@@ -6,12 +6,15 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class Question
+namespace HospitalApp.Model
 {
-    [Key]
-    public long QuestionId{ get; set; }
-    public string QuestionInformation{ get; set; }
-    public string Answer{ get; set; }
-    public DateTime CreationDate{ get; set; }
+    public class Question
+    {
+        [Key]
+        public long QuestionId { get; set; }
+        public string QuestionInformation { get; set; }
+        public string Answer { get; set; }
+        public DateTime CreationDate { get; set; }
 
+    }
 }

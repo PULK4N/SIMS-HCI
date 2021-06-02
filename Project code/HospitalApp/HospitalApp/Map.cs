@@ -25,6 +25,7 @@ public static class Map
     public static RegisteredUserController RegisteredUserController { get; set; }
     public static StaticInventoryController StaticInventoryController { get; set; }
     public static LoginController LoginController { get; set; }
+    public static HospitalTreatmentController HospitalTreatmentController { get; set; }
 
     #endregion
 
@@ -44,6 +45,7 @@ public static class Map
     public static IRegisteredUserService RegisteredUserService { get; set; }
     public static IStaticInventoryService StaticInventoryService { get; set; }
     public static ILoginService LoginService { get; set; }
+    public static IHospitalTreatmentService HospitalTreatmentService { get; set; }
 
 
     #endregion
@@ -62,6 +64,7 @@ public static class Map
     public static IReviewRepository ReviewRepository { get; set; }
     public static IRegisteredUserRepository RegisteredUserRepository { get; set; }
     public static IStaticInventoryRepository StaticInventoryRepository { get; set; }
+    public static IHospitalTreatmentRepository HospitalTreatmentRepository { get; set; }
 
     #endregion
     public static void Instantiate()
@@ -78,6 +81,7 @@ public static class Map
         ReviewRepository = new ReviewRepository();
         RegisteredUserRepository = new RegisteredUserRepository();
         StaticInventoryRepository = new StaticInventoryRepository();
+        HospitalTreatmentRepository = new HospitalTreatmentRepository();
 
         AnamnesisService = new AnamnesisService(AnamnesisRepository);
         AppointmentService = new AppointmentService(AppointmentRepository);
@@ -93,6 +97,7 @@ public static class Map
         RegisteredUserService = new RegisteredUserService(RegisteredUserRepository);
         StaticInventoryService = new StaticInventoryService(StaticInventoryRepository);
         LoginService = new LoginService();
+        HospitalTreatmentService = new HospitalTreatmentService(HospitalTreatmentRepository);
 
 
         AnamnesisController = new AnamnesisController(AnamnesisService);
@@ -108,6 +113,7 @@ public static class Map
         RegisteredUserController = new RegisteredUserController(RegisteredUserService);
         StaticInventoryController = new StaticInventoryController(StaticInventoryService);
         LoginController = new LoginController(LoginService);
+        HospitalTreatmentController = new HospitalTreatmentController(HospitalTreatmentService);
 
     }
 

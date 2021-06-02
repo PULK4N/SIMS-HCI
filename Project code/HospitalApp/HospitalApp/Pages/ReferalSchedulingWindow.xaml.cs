@@ -67,7 +67,6 @@ namespace HospitalApp.Pages
         {
             var (appointmentList, priorityUsed) = Map.SchedulingService.GetAppointments(schedulingInformation);
             if (priorityUsed) MessageBox.Show("Priority was used");
-
             foreach (Appointment appointment in appointmentList)
             {
                 AppointmentsToSchedule.Add(appointment);
@@ -90,7 +89,7 @@ namespace HospitalApp.Pages
                 Specializations.Add(spec);
             }
         }
-        private void confirmSchedule(object sender, RoutedEventArgs e)
+        private void ConfirmSchedule(object sender, RoutedEventArgs e)
         {
             Appointment appointment = ((Appointment)dataGridAppointments.SelectedItem);
             Map.AppointmentController.PatientScheduleAppointment(appointment);

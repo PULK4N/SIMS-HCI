@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-﻿using System;
-=======
 ﻿ using HospitalApp.Model;
 using System;
->>>>>>> Stashed changes
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;

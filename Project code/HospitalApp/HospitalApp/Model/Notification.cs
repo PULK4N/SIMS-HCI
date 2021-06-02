@@ -6,12 +6,15 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-public class Notification
+namespace HospitalApp.Model
 {
-    [Key]
-    public long NotificationId { get; set; }
-    [StringLength(1000)]
-    public String Information { get; set; }
-    public User User { get; set; }
+    public class Notification
+    {
+        [Key]
+        public long NotificationId { get; set; }
+        [StringLength(1000)]
+        public string Information { get; set; }
+        public User User { get; set; }
 
+    }
 }
