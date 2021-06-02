@@ -1,0 +1,38 @@
+﻿<Window x:Class="HospitalApp.Pages.ReferalSchedulingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HospitalApp.Pages" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="ReferalSchedulingWindow" Height="450" Width="800">
+    <Grid>
+        <Canvas x:Name="PatientSchedulingTime" RenderTransformOrigin="0.585,-6.326" >
+            <Button Content="Confirm" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Width="94" Click="ConfirmButtonClick" Canvas.Left="116" Canvas.Top="321"/>
+            <Label Content="Date:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Width="84" Canvas.Left="44" Canvas.Top="157"/>
+            <xctk:TimePicker x:Name="ScheduleTo" Width="183" Canvas.Left="54" Canvas.Top="215" Height="19" RenderTransformOrigin="0.791,0.428"/>
+            <xctk:TimePicker x:Name="ScheduleFrom"  Width="183" Canvas.Left="54" Canvas.Top="189" Height="19" RenderTransformOrigin="0.49,0.484"/>
+            <Label Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="44" Canvas.Top="240"/>
+            <ComboBox ItemsSource="{Binding Doctors}" x:Name="DoctorPicker" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="28" Canvas.Left="97" Canvas.Top="241" SelectedIndex="1"/>
+            <Label Content="Specialist:" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="31" Canvas.Top="274"/>
+            <ComboBox ItemsSource="{Binding Specializations}" Canvas.Left="97" Canvas.Top="274" Width="140" Height="28"/>
+            <DatePicker x:Name="DateInput" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="121" Canvas.Top="158" Width="116"/>
+            <RadioButton GroupName="PriorityRad" x:Name="radioDoctor" Content="Doctor" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="113" Canvas.Top="107" IsChecked="True"/>
+            <RadioButton GroupName="PriorityRad" Name="radioTime" Content="Specialist" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="113" Canvas.Top="127" />
+            <Label Content="Priority:" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.411,2.059" Canvas.Left="44" Canvas.Top="110"/>
+            <DataGrid x:Name="dataGridAppointments" AutoGenerateColumns="False" ItemsSource="{Binding AppointmentsToSchedule}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="253" VerticalAlignment="Top" Width="408" Canvas.Left="294" Canvas.Top="57">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Appointment status" Binding="{Binding AppointmentStatus}"  Width="*"/>
+                    <DataGridTextColumn Header="Appointment type" Binding="{Binding AppointmentType}"  Width="*"/>
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="*"/>
+                    <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Employee.User.FirstName}" Width="*"/>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="buttonSchedule" Click="ConfirmSchedule" Content="Schedule appointment" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" 
+                  Width="111" Background="White" Foreground="#FF707070" Canvas.Left="591" Canvas.Top="331"/>
+        </Canvas>
+    </Grid>
+</Window>

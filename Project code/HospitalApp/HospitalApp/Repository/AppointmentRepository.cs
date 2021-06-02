@@ -52,19 +52,11 @@ namespace HospitalApp.Repository
         {
             try
             {
-                Appointment oldAppointment = HospitalDB.Instance.Appointments.Find(appointment.AppointmentId);
-                oldAppointment.Beginning = appointment.Beginning;
-                oldAppointment.End = appointment.End;
-                oldAppointment.AppointmentType = appointment.AppointmentType;
-                oldAppointment.AppointmentStatus = appointment.AppointmentStatus;
-                oldAppointment.Doctor = appointment.Doctor;
-                oldAppointment.Patient = appointment.Patient;
-                oldAppointment.Room = appointment.Room;
                 HospitalDB.Instance.SaveChanges();
             }
-            catch
+            catch(Exception e)
             {
-
+                MessageBox.Show(e.ToString());
             }
         }
 

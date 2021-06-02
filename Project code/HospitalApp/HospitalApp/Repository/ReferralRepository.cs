@@ -56,7 +56,7 @@ namespace HospitalApp.Repository
 
         public void Update(Referral referral)
         {
-            throw new NotImplementedException();
+            HospitalDB.Instance.SaveChanges();
         }
     }
 }

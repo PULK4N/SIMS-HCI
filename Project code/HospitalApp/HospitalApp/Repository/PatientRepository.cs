@@ -51,7 +51,7 @@ namespace HospitalApp.Repository
             }
             catch (Exception e)
             {
-                MessageBox.Show("error");
+                MessageBox.Show("error: ",e.ToString());
             }
             return null;
         }
@@ -60,25 +60,9 @@ namespace HospitalApp.Repository
         {
             try
             {
-                Patient oldPatient = HospitalDB.Instance.Patients.Find(patient.PatientId);
-                if (oldPatient != null)
-                {
-                    patient.User.RegisteredUser.Username = oldPatient.User.RegisteredUser.Username;
-                    patient.User.RegisteredUser.Password = oldPatient.User.RegisteredUser.Password;
-
-                    patient.User.Address = oldPatient.User.Address;
-                    patient.User.DateOfBirth = oldPatient.User.DateOfBirth;
-                    patient.User.EMail = oldPatient.User.EMail;
-                    patient.User.FirstName = oldPatient.User.FirstName;
-                    patient.User.Jmbg = oldPatient.User.Jmbg;
-                    patient.User.LastName = oldPatient.User.LastName;
-                    patient.User.PhoneNumber = oldPatient.User.PhoneNumber;
-                    patient.User.MaritalStatus = oldPatient.User.MaritalStatus;
-                    patient.User.Sex = oldPatient.User.Sex;
-                    HospitalDB.Instance.SaveChanges();
-                }
+                HospitalDB.Instance.SaveChanges();
             }
-            catch
+            catch(Exception)
             {
                 MessageBox.Show("patient repository update Error");
             }
@@ -147,8 +131,8 @@ namespace HospitalApp.Repository
         public List<Patient> GetWeekActivePatients()
         {
             return (from pat in HospitalDB.Instance.Patients
-                    where pat.User.RegisteredUser.UserType != Enums.UserType.BANNNED_USER
-&& pat.SchedulingAttempts != 0
+                    where pat.User.RegisteredUser.UserType != Enums.UserType.BANNNED_USER 
+                    && pat.SchedulingAttempts != 0
                     select pat)
                     .Include(pat => pat.User)
                     .Include(pat => pat.User.RegisteredUser)

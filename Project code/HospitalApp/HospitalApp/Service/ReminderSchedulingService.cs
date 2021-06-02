@@ -22,9 +22,7 @@ namespace HospitalApp.Service
         public void ScheduleReminder(Reminder reminder)
         {
             GenerateTaskByReminder(reminder);
-            
         }
-
 
         public void ReScheduleReminder(Reminder reminder)
         {
@@ -45,7 +43,7 @@ namespace HospitalApp.Service
             task.RegistrationInfo.Description = reminder.Description;
             TimeTrigger timeTrigger = new TimeTrigger(reminder.StartTime);
             timeTrigger.Repetition.Duration = TimeSpan.Zero;
-            timeTrigger.Repetition.Interval = TimeSpan.FromDays(reminder.Period);
+            timeTrigger.Repetition.Interval = TimeSpan.FromDays(reminder.TimeInterval);
             task.Triggers.Add(timeTrigger);
             ShowMessageAction msg = new ShowMessageAction(reminder.Description, "Notification");
             task.Actions.Clear();

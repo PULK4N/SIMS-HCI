@@ -15,16 +15,18 @@ namespace HospitalApp.Model
         public long ReminderId { get; set; }
         public string Name { get; set; }
         public DateTime StartTime { get; set; }
-        public short Period { get; set; }
+        public short TimeInterval { get; set; }
+        public DateTime Period { get; set; }
         public string Description { get; set; }
         public Patient Patient { get; set; }
         private TaskDefinition Task;
 
-        public Reminder(string name, DateTime startTime, short period, string description, Patient patient)
+        public Reminder(string name, DateTime startTime, short interval, DateTime period, string description, Patient patient)
         {
+            Period = period;
             Name = name;
             StartTime = startTime;
-            Period = period;
+            TimeInterval = interval;
             Description = description;
             Patient = patient;
         }

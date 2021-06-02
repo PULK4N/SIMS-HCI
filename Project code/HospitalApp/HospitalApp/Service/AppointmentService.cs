@@ -36,6 +36,15 @@ namespace HospitalApp.Service
 
         public void Update(Appointment appointment)
         {
+            Appointment oldAppointmentData = Get(appointment.AppointmentId);
+            if (oldAppointmentData != null)
+            {
+                oldAppointmentData.AppointmentStatus = appointment.AppointmentStatus;
+                oldAppointmentData.AppointmentType = appointment.AppointmentType;
+                oldAppointmentData.Beginning = appointment.Beginning;
+                oldAppointmentData.End = appointment.End;
+                oldAppointmentData.Room = appointment.Room;
+            }
             _appointmentRepository.Update(appointment);
         }
 

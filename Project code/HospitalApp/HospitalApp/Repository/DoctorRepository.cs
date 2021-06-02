@@ -60,25 +60,9 @@ namespace HospitalApp.Repository
         {
             try
             {
-                Doctor oldDoctor = HospitalDB.Instance.Doctors.Find(doctor.DoctorId);
-                if (oldDoctor != null)
-                {
-                    doctor.Employee.User.RegisteredUser.Username = oldDoctor.Employee.User.RegisteredUser.Username;
-                    doctor.Employee.User.RegisteredUser.Password = oldDoctor.Employee.User.RegisteredUser.Password;
-
-                    doctor.Employee.User.Address = oldDoctor.Employee.User.Address;
-                    doctor.Employee.User.DateOfBirth = oldDoctor.Employee.User.DateOfBirth;
-                    doctor.Employee.User.EMail = oldDoctor.Employee.User.EMail;
-                    doctor.Employee.User.FirstName = oldDoctor.Employee.User.FirstName;
-                    doctor.Employee.User.Jmbg = oldDoctor.Employee.User.Jmbg;
-                    doctor.Employee.User.LastName = oldDoctor.Employee.User.LastName;
-                    doctor.Employee.User.PhoneNumber = oldDoctor.Employee.User.PhoneNumber;
-                    doctor.Employee.User.MaritalStatus = oldDoctor.Employee.User.MaritalStatus;
-                    doctor.Employee.User.Sex = oldDoctor.Employee.User.Sex;
-                    HospitalDB.Instance.SaveChanges();
-                }
+                HospitalDB.Instance.SaveChanges();
             }
-            catch
+            catch(Exception)
             {
                 MessageBox.Show("Doctor repository updating error");
             }

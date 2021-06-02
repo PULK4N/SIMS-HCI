@@ -24,7 +24,7 @@ namespace HospitalApp.Service
                     {
                         prescriptions.Add(prescription);
                     }
-                    CheckAndShowPrescriptions(prescriptions);
+                    GenerateNotifications(prescriptions);
                     await Task.Delay(604800000, cancellationToken);
                     if (cancellationToken.IsCancellationRequested)
                         break;
@@ -33,7 +33,7 @@ namespace HospitalApp.Service
 
         }
 
-        private void CheckAndShowPrescriptions(List<Prescription> prescriptions)
+        private void GenerateNotifications(List<Prescription> prescriptions)
         {
             foreach (Prescription prescription in prescriptions)
             {

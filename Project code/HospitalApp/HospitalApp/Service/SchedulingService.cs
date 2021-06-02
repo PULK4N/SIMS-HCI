@@ -25,21 +25,21 @@ namespace HospitalApp.Service
         }
 
 
-        //public  (List<Appointment>, bool) GetAppointmentsToReschedule(SchedulingInformation schedulingInformation)
-        //{
-        //    bool priorityApplied = false;
-        //    List<Appointment> alreadyScheduled = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(schedulingInformation.Doctor.DoctorId);
-        //    List<Appointment> appointmentsToSchedule = new List<Appointment>();
-        //    GenerateNewAppointments(appointmentsToSchedule, schedulingInformation);
-        //    filterUnavilableAppointments(appointmentsToSchedule, alreadyScheduled);
-        //    if (noAppointmentsAvailable(appointmentsToSchedule))
-        //    {
-        //        applyPriority(appointmentsToSchedule, alreadyScheduled, schedulingInformation);
-        //        priorityApplied = true;
+        /*public  (List<Appointment>, bool) GetAppointmentsToReschedule(SchedulingInformation schedulingInformation)
+        {
+            bool priorityApplied = false;
+            List<Appointment> alreadyScheduled = ControllerMapper.Instance.AppointmentController.DoctorListAppointments(schedulingInformation.Doctor.DoctorId);
+            List<Appointment> appointmentsToSchedule = new List<Appointment>();
+            GenerateNewAppointments(appointmentsToSchedule, schedulingInformation);
+            filterUnavilableAppointments(appointmentsToSchedule, alreadyScheduled);
+            if (noAppointmentsAvailable(appointmentsToSchedule))
+            {
+                applyPriority(appointmentsToSchedule, alreadyScheduled, schedulingInformation);
+                priorityApplied = true;
 
-        //    }
-        //    return (appointmentsToSchedule,priorityApplied);
-        //}
+            }
+            return (appointmentsToSchedule,priorityApplied);
+        }*/
         private  void applyPriority(List<Appointment> appointmentsToSchedule, List<Appointment> alreadyScheduled, SchedulingInformation schedulingInformation)
         {
             if (schedulingInformation.PatientSchedulingPriority == Enums.PatientSchedulingPriority.DATE_TIME)
