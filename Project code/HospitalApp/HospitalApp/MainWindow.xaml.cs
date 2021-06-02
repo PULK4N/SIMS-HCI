@@ -1,5 +1,6 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Service;
+using HospitalApp.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,6 +42,10 @@ namespace Bolnica
 
         private void InstantiateLists()
         {
+            //PatientWindow patientWindow = new PatientWindow();
+            //patientWindow.Show();
+
+
             LoginGrid.Visibility = Visibility.Visible;
             AppointmentsToSchedule = new ObservableCollection<Appointment>();
             ScheduledAppointments = new ObservableCollection<Appointment>();
@@ -53,7 +58,6 @@ namespace Bolnica
             Referrals = new ObservableCollection<Referral>();
             SpecialAppointments = new ObservableCollection<Appointment>();
             Room = Map.RoomController.Get(1);
-            //Patient = Map.PatientController.Get(1);
             ScoresOC = new ObservableCollection<string>();
 
             foreach (Doctor doctor in Map.DoctorController.GetAllBySpecialization(Enums.Specialization.NONE))
@@ -111,6 +115,8 @@ namespace Bolnica
                         Patient = Map.PatientController.GetPatientByUsername(registeredUser.Username);
                         LoginGrid.Visibility = Visibility.Hidden;
                         PatientSchedulingCanvas.Visibility = Visibility.Visible;
+                        //PatientWindow patientWindow = new PatientWindow();
+                        //patientWindow.Show();
                         new NotificationService().StartTimer(cancellationToken);
                         ScheduleReminders();
                         break;
@@ -267,7 +273,7 @@ namespace Bolnica
             if(RemindersList.SelectedItem == null)
             {
                 var RemindersTime = DateTime.Parse(DateTime.Now.Date.ToString().Split(' ')[0] + " " + ReminderTimePicker.Text);
-                Map.ReminderController.Create(new Reminder(ReminderName.Text, RemindersTime, Int16.Parse(ReminderPeriod.Text), ReminderDescription.Text,Patient));
+                Map.ReminderController.Create(new Reminder(ReminderName.Text, RemindersTime, Int16.Parse(ReminderInterval.Text), ReminderPeriod.SelectedDate.Value, ReminderDescription.Text,Patient));
             }
             else
             {
@@ -275,7 +281,7 @@ namespace Bolnica
                 var RemindersTime = DateTime.Parse(DateTime.Now.Date.ToString().Split(' ')[0] + " " + ReminderTimePicker.Text);
                 reminder.Name = ReminderName.Text;
                 reminder.StartTime = RemindersTime;
-                reminder.Period = Int16.Parse(ReminderPeriod.Text);
+                reminder.TimeInterval = Int16.Parse(ReminderInterval.Text);
                 reminder.Description = ReminderDescription.Text;
                 Map.ReminderController.Update(reminder);
 

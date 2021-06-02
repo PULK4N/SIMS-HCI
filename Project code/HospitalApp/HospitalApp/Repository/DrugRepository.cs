@@ -64,12 +64,13 @@ namespace HospitalApp.Repository
 
         public void Update(Drug drug)
         {
-            var editedDrug = HospitalDB.Instance.Drugs.Find(drug.DrugId);
-            if (editedDrug != null)
+            try
             {
-                editedDrug.Details = drug.Details;
-                editedDrug.Name = drug.Name;
-                editedDrug.DrugStatus = drug.DrugStatus;
+                HospitalDB.Instance.SaveChanges();
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

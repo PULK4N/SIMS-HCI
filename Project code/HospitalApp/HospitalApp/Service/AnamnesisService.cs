@@ -41,6 +41,12 @@ namespace HospitalApp.Service
 
         public void Update(Anamnesis anamnesis)
         {
+            Anamnesis oldAnamnesis = Get(anamnesis.AnamnesisId);
+            if (oldAnamnesis != null)
+            {
+                oldAnamnesis.Description = anamnesis.Description;
+                oldAnamnesis.TimeOf = DateTime.Now;
+            }
             _anamnesisRepository.Update(anamnesis);
         }
 

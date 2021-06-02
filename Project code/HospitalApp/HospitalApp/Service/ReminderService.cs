@@ -1,5 +1,6 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Repository;
+using System;
 using System.Collections.Generic;
 
 namespace HospitalApp.Service
@@ -16,7 +17,8 @@ namespace HospitalApp.Service
         public void Create(Reminder reminder)
         {
             _reminderRepository.Create(reminder);
-            Map.ReminderSchedulingService.ScheduleReminder(reminder);
+            if (reminder.Period.CompareTo(DateTime.Now) < 0)
+                Map.ReminderSchedulingService.ScheduleReminder(reminder);
         }
 
         public void Delete(long reminderId)
@@ -45,11 +47,18 @@ namespace HospitalApp.Service
             Reminder oldReminder = _reminderRepository.Get(reminder.ReminderId);
             oldReminder.Name = reminder.Name;
             oldReminder.Patient = reminder.Patient;
-            oldReminder.Period = reminder.Period;
+            oldReminder.TimeInterval = reminder.TimeInterval;
             oldReminder.StartTime = reminder.StartTime;
             oldReminder.Description = reminder.Description;
             _reminderRepository.Update(reminder);
-            Map.ReminderSchedulingService.ReScheduleReminder(reminder);
+            if (reminder.Period.CompareTo(DateTime.Now) < 0)
+            {
+                Map.ReminderSchedulingService.ReScheduleReminder(reminder);
+            }
+            else
+            {
+                Map.ReminderSchedulingService.UnScheduleReminder(oldReminder);
+            }
         }
     }
 }

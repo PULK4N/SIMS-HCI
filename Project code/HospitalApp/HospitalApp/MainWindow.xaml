@@ -27,7 +27,7 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="RemindersGrid" Visibility="Hidden">
+        <Grid x:Name="RemindersGrid" Visibility="Visible">
             <DataGrid x:Name="RemindersList" AutoGenerateColumns="False" ItemsSource="{Binding Reminders}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
                   Height="234" VerticalAlignment="Top"  Canvas.Left="376" Canvas.Top="52" Margin="40,59,0,0" Width="310">
@@ -39,11 +39,12 @@
                 </DataGrid.Columns>
             </DataGrid>
             <xctk:TimePicker x:Name="ReminderTimePicker" HorizontalAlignment="Left" Margin="238,312,443.6,88" Height="20" VerticalAlignment="Top" Width="112"/>
-            <TextBox x:Name="ReminderName" HorizontalAlignment="Left" Height="20" Margin="42,312,0,0"  Text="Name of a reminder" VerticalAlignment="Top" Width="112" />
-            <TextBox x:Name="ReminderPeriod" HorizontalAlignment="Left" Height="20" Margin="168,312,0,0" TextWrapping="Wrap" Text="Period" VerticalAlignment="Top" Width="65"/>
+            <TextBox x:Name="ReminderName" HorizontalAlignment="Left" Height="20" Margin="42,312,0,0"  Text="Name of a reminder" VerticalAlignment="Top" Width="38" />
+            <TextBox x:Name="ReminderInterval" HorizontalAlignment="Left" Height="20" Margin="168,312,0,0" TextWrapping="Wrap" Text="Period" VerticalAlignment="Top" Width="65"/>
             <TextBox x:Name="ReminderDescription" HorizontalAlignment="Left" Height="45" Margin="42,337,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="308"/>
             <Button Content="Submit" HorizontalAlignment="Left" Height="25" Margin="203,385,0,0" VerticalAlignment="Top" Width="147" Click="SubmitReminder"/>
             <Button Content="Delete" HorizontalAlignment="Left" Height="25" Margin="40,385,0,0" VerticalAlignment="Top" Width="147" Click="DeleteReminder"/>
+            <DatePicker x:Name="ReminderPeriod" HorizontalAlignment="Left" Margin="85,312,0,0" VerticalAlignment="Top" Width="78" Height="20"/>
         </Grid>
 
         <Grid x:Name="MedicalRecordView" Visibility="Hidden">
@@ -195,6 +196,6 @@
             <DatePicker x:Name="ReScheduleDate" Canvas.Left="10" Canvas.Top="371"/>
 
         </Canvas>
-        
+
     </Grid>
 </Window>

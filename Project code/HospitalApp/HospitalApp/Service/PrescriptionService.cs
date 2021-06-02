@@ -41,6 +41,14 @@ namespace HospitalApp.Service
 
         public void Update(Prescription prescription)
         {
+            Prescription prescriptionToEdit = _prescriptionRepository.Get(prescription.PrescriptionId);
+            if (prescriptionToEdit != null)
+            {
+                prescriptionToEdit.Drug = prescription.Drug;
+                prescriptionToEdit.Period = prescription.Period;
+                prescriptionToEdit.Usage = prescription.Usage;
+                prescriptionToEdit.Date = prescription.Date;//Was leftout, maybe there is an issue with it, TO DO check
+            }
             _prescriptionRepository.Update(prescription);
         }
 
