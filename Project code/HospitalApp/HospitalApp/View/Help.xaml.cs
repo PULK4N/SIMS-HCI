@@ -20,7 +20,7 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Help : Page
     {
-        public Help(Frame load_frame)
+        public Help()
         {
             InitializeComponent();
         }

@@ -42,10 +42,6 @@ namespace Bolnica
 
         private void InstantiateLists()
         {
-            //PatientWindow patientWindow = new PatientWindow();
-            //patientWindow.Show();
-
-
             LoginGrid.Visibility = Visibility.Visible;
             AppointmentsToSchedule = new ObservableCollection<Appointment>();
             ScheduledAppointments = new ObservableCollection<Appointment>();
@@ -115,8 +111,8 @@ namespace Bolnica
                         Patient = Map.PatientController.GetPatientByUsername(registeredUser.Username);
                         LoginGrid.Visibility = Visibility.Hidden;
                         PatientSchedulingCanvas.Visibility = Visibility.Visible;
-                        //PatientWindow patientWindow = new PatientWindow();
-                        //patientWindow.Show();
+                        PatientWindow patientWindow = new PatientWindow();
+                        patientWindow.Show();
                         new NotificationService().StartTimer(cancellationToken);
                         ScheduleReminders();
                         break;

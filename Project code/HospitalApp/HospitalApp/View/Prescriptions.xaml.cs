@@ -20,7 +20,7 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Prescriptions : Page
     {
-        public Prescriptions(Frame load_frame)
+        public Prescriptions()
         {
             InitializeComponent();
         }

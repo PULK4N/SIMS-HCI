@@ -20,7 +20,7 @@ namespace HospitalApp.View
     /// </summary>
     public partial class ScheduleAppointment : Page
     {
-        public ScheduleAppointment(Frame load_frame)
+        public ScheduleAppointment()
         {
             InitializeComponent();
         }

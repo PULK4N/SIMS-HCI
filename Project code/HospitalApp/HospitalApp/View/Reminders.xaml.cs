@@ -20,9 +20,11 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Reminders : Page
     {
-        public Reminders(Frame load_frame)
+        private Frame mainFrame;
+        public Reminders()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.Reminders();
         }
     }
 }

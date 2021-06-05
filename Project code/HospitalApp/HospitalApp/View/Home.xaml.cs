@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 
 
@@ -9,16 +12,23 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Home : Page
     {
-        private Frame mainFrame;
-        public Home(Frame frame)
+        public Home()
         {
-            mainFrame = frame;
             InitializeComponent();
+            this.DataContext = new ViewModel.Home();
         }
 
-        private void AnamnesisClick(object sender, RoutedEventArgs e)
+        public void Language_selectionChanged(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = PatientWindow.Home;
+
+            if (TranslationSource.Instance.CurrentCulture.Name.Equals("sr-Latn"))
+            {
+                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            }
+            else
+            {
+                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("sr-LATN");
+            }
         }
     }
 }

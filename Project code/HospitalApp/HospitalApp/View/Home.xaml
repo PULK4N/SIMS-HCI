@@ -3,29 +3,41 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:p="clr-namespace:HospitalApp.Properties"
       xmlns:local="clr-namespace:HospitalApp.View"
-      mc:Ignorable="d" 
+      xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+      mc:Ignorable="d"
+      xmlns:loc="clr-namespace:HospitalApp"
       Title="Home" Height="720" Width="1280">
-    <Grid Background="Blue">
+    <Grid>
         <Grid Margin="200,0,200,540" Background="#f7f7f7">
-            <Image x:Name="HeaderImage" VerticalAlignment="Top" Height="112" Margin="0,0,0,0"></Image>
-
-            <Menu Background="#D3D3D3" VerticalAlignment="Bottom" Height="40">
+            <Menu x:Name="MenuBar" Background="#D3D3D3" VerticalAlignment="Bottom" Height="32">
                 <Menu.ItemsPanel>
                     <ItemsPanelTemplate>
                         <DockPanel HorizontalAlignment="Stretch"></DockPanel>
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
-                <MenuItem Header="Home"></MenuItem>
-                <MenuItem Header="Anamesis" Click="AnamnesisClick"></MenuItem>
-                <MenuItem Header="Appointments and therapy"></MenuItem>
-                <MenuItem Header="Prescriptions"></MenuItem>
-                <MenuItem Header="Reminders"></MenuItem>
-                <MenuItem Header="Medical clinics"></MenuItem>
-                <MenuItem Header="Doctors"></MenuItem>
-                <MenuItem Header="Help" HorizontalAlignment="Left"></MenuItem>
+                <MenuItem Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc AnamnesisMenu}" Command="{Binding Path=ChangeToAnamnesisCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc RemindersMenu}" Command="{Binding Path=ChangeToRemindersCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc DoctorsMenu}" Command="{Binding Path=ChangeToDoctorsCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc MedicalClinicsMenu}" Command="{Binding Path=ChangeToMedicalClinicsCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc HelpMenu}" Command="{Binding Path=ChangeToHelpCommand}" HorizontalAlignment="Left"></MenuItem>
             </Menu>
-            <Button Content="Schedule appointment" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,2,2" Width="143" Height="36"/>
+            <Image x:Name="HeaderImage" VerticalAlignment="Top" Height="148" Margin="0,0,0,0"></Image>
+
+            <Button Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
+            <ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="644,0,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="22" Background="DimGray">
+                <ComboBoxItem>
+                    English
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Srpski
+                </ComboBoxItem>
+            </ComboBox>
+            <Button Content="{loc:Loc LogoutButton}" Background="DimGray" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
         </Grid>
     </Grid>
 </Page>

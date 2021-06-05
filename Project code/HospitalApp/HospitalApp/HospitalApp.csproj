@@ -38,20 +38,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="HandyControl, Version=3.1.0.0, Culture=neutral, PublicKeyToken=45be8712787a1e5b, processorArchitecture=MSIL">
+      <HintPath>..\packages\HandyControl.3.1.0\lib\net472\HandyControl.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.2.4.5\lib\net47\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.9.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
       <HintPath>..\packages\TaskScheduler.2.9.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +80,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="XAMLMarkupExtensions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c726e0262981a1eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAMLMarkupExtensions.2.0.0\lib\net472\XAMLMarkupExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock, Version=4.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.4.0.2\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -86,36 +105,47 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\IEntityController.cs" />
-    <Compile Include="Controller\ReferralController.cs" />
-    <Compile Include="Controller\ReminderController.cs" />
+    <Compile Include="Controller\Impl\ReferralController.cs" />
+    <Compile Include="Controller\Impl\ReminderController.cs" />
     <Compile Include="Migrations\202106021613107_mig2.cs" />
     <Compile Include="Migrations\202106021613107_mig2.designer.cs">
       <DependentUpon>202106021613107_mig2.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\MedicalTreatment.cs" />
+    <Compile Include="Properties\Resources.en-US.Designer.cs">
+      <DependentUpon>Resources.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.sr-LATN.Designer.cs">
+      <DependentUpon>Resources.sr-LATN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="Repository\IReferralRepository.cs" />
     <Compile Include="Repository\IReminderRepository.cs" />
-    <Compile Include="Repository\ReferralRepository.cs" />
-    <Compile Include="Repository\ReminderRepository.cs" />
+    <Compile Include="Repository\Impl\ReferralRepository.cs" />
+    <Compile Include="Repository\Impl\ReminderRepository.cs" />
     <Compile Include="Service\IReferralService.cs" />
     <Compile Include="Service\IReminderSchedulingService.cs" />
     <Compile Include="Service\IReminderService.cs" />
     <Compile Include="Service\ISchedulingService.cs" />
-    <Compile Include="Controller\LoginController.cs" />
-    <Compile Include="Service\ReferralService.cs" />
-    <Compile Include="Service\RegisteredUserService.cs" />
+    <Compile Include="Controller\Impl\LoginController.cs" />
+    <Compile Include="Service\Impl\ReferralService.cs" />
+    <Compile Include="Service\Impl\RegisteredUserService.cs" />
     <Compile Include="Service\IRegisteredUserService.cs" />
     <Compile Include="Map.cs" />
-    <Compile Include="Controller\AnamnesisController.cs" />
-    <Compile Include="Controller\AppointmentController.cs" />
-    <Compile Include="Controller\DoctorController.cs" />
-    <Compile Include="Controller\GuestPatientController.cs" />
-    <Compile Include="Controller\MedicalRecordController.cs" />
-    <Compile Include="Controller\DrugController.cs" />
-    <Compile Include="Controller\PatientController.cs" />
-    <Compile Include="Controller\PrescriptionController.cs" />
-    <Compile Include="Controller\ReviewController.cs" />
-    <Compile Include="Controller\RoomController.cs" />
+    <Compile Include="Controller\Impl\AnamnesisController.cs" />
+    <Compile Include="Controller\Impl\AppointmentController.cs" />
+    <Compile Include="Controller\Impl\DoctorController.cs" />
+    <Compile Include="Controller\Impl\GuestPatientController.cs" />
+    <Compile Include="Controller\Impl\MedicalRecordController.cs" />
+    <Compile Include="Controller\Impl\DrugController.cs" />
+    <Compile Include="Controller\Impl\PatientController.cs" />
+    <Compile Include="Controller\Impl\PrescriptionController.cs" />
+    <Compile Include="Controller\Impl\ReviewController.cs" />
+    <Compile Include="Controller\Impl\RoomController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
     <Compile Include="Model\Employee.cs" />
@@ -134,11 +164,11 @@
     <Compile Include="Pages\ShowPatientPage.xaml.cs">
       <DependentUpon>ShowPatientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Repository\AnamnesisRepository.cs" />
-    <Compile Include="Repository\AppointmentRepository.cs" />
-    <Compile Include="Repository\DoctorRepository.cs" />
-    <Compile Include="Repository\GuestPatientRepository.cs" />
-    <Compile Include="Controller\RegisteredUserController.cs" />
+    <Compile Include="Repository\Impl\AnamnesisRepository.cs" />
+    <Compile Include="Repository\Impl\AppointmentRepository.cs" />
+    <Compile Include="Repository\Impl\DoctorRepository.cs" />
+    <Compile Include="Repository\Impl\GuestPatientRepository.cs" />
+    <Compile Include="Controller\Impl\RegisteredUserController.cs" />
     <Compile Include="Repository\IAnamnesisRepository.cs" />
     <Compile Include="Repository\IAppointmentRepository.cs" />
     <Compile Include="Repository\IDoctorRepository.cs" />
@@ -151,25 +181,25 @@
     <Compile Include="Repository\IRegisteredUserRepository.cs" />
     <Compile Include="Repository\IReviewRepository.cs" />
     <Compile Include="Repository\IRoomRepository.cs" />
-    <Compile Include="Repository\MedicalRecordRepository.cs" />
-    <Compile Include="Repository\DrugRepository.cs" />
-    <Compile Include="Repository\ReviewRepository.cs" />
+    <Compile Include="Repository\Impl\MedicalRecordRepository.cs" />
+    <Compile Include="Repository\Impl\DrugRepository.cs" />
+    <Compile Include="Repository\Impl\ReviewRepository.cs" />
     <Compile Include="Service\IReviewService.cs" />
     <Compile Include="Service\IEntityService.cs" />
-    <Compile Include="Service\NotificationService.cs" />
-    <Compile Include="Repository\PatientRepository.cs" />
-    <Compile Include="Repository\PrescriptionRepository.cs" />
-    <Compile Include="Repository\RoomRepository.cs" />
-    <Compile Include="Service\ReminderSchedulingService.cs" />
-    <Compile Include="Service\ReminderService.cs" />
-    <Compile Include="Service\SchedulingService.cs" />
-    <Compile Include="Repository\RegisteredUserRepository.cs" />
+    <Compile Include="Service\Impl\NotificationService.cs" />
+    <Compile Include="Repository\Impl\PatientRepository.cs" />
+    <Compile Include="Repository\Impl\PrescriptionRepository.cs" />
+    <Compile Include="Repository\Impl\RoomRepository.cs" />
+    <Compile Include="Service\Impl\ReminderSchedulingService.cs" />
+    <Compile Include="Service\Impl\ReminderService.cs" />
+    <Compile Include="Service\Impl\SchedulingService.cs" />
+    <Compile Include="Repository\Impl\RegisteredUserRepository.cs" />
     <Compile Include="Service\ILoginService.cs" />
-    <Compile Include="Service\LoginService.cs" />
-    <Compile Include="Service\AnamnesisService.cs" />
-    <Compile Include="Service\AppointmentService.cs" />
-    <Compile Include="Service\DoctorService.cs" />
-    <Compile Include="Service\GuestPatientService.cs" />
+    <Compile Include="Service\Impl\LoginService.cs" />
+    <Compile Include="Service\Impl\AnamnesisService.cs" />
+    <Compile Include="Service\Impl\AppointmentService.cs" />
+    <Compile Include="Service\Impl\DoctorService.cs" />
+    <Compile Include="Service\Impl\GuestPatientService.cs" />
     <Compile Include="Service\IAnamnesisService.cs" />
     <Compile Include="Service\IAppointmentService.cs" />
     <Compile Include="Service\IDoctorService.cs" />
@@ -179,12 +209,24 @@
     <Compile Include="Service\IPatientService.cs" />
     <Compile Include="Service\IPrescriptionService.cs" />
     <Compile Include="Service\IRoomService.cs" />
-    <Compile Include="Service\MedicalRecordService.cs" />
-    <Compile Include="Service\DrugService.cs" />
-    <Compile Include="Service\PatientService.cs" />
-    <Compile Include="Service\PrescriptionService.cs" />
-    <Compile Include="Service\ReviewService.cs" />
-    <Compile Include="Service\RoomService.cs" />
+    <Compile Include="Service\Impl\MedicalRecordService.cs" />
+    <Compile Include="Service\Impl\DrugService.cs" />
+    <Compile Include="Service\Impl\PatientService.cs" />
+    <Compile Include="Service\Impl\PrescriptionService.cs" />
+    <Compile Include="Service\Impl\ReviewService.cs" />
+    <Compile Include="Service\Impl\RoomService.cs" />
+    <Compile Include="TranslationSource.cs" />
+    <Compile Include="ViewModel\Anamnesis.cs" />
+    <Compile Include="ViewModel\AppointmentsAndTherapy.cs" />
+    <Compile Include="ViewModel\Doctors.cs" />
+    <Compile Include="ViewModel\Help.cs" />
+    <Compile Include="ViewModel\Home.cs" />
+    <Compile Include="ViewModel\MedicalClinics.cs" />
+    <Compile Include="ViewModel\Prescriptions.cs" />
+    <Compile Include="ViewModel\Reminders.cs" />
+    <Compile Include="ViewModel\ScheduleAppointment.cs" />
+    <Compile Include="ViewModel\Settings.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\Anamnesis.xaml.cs">
       <DependentUpon>Anamnesis.xaml</DependentUpon>
     </Compile>
@@ -203,6 +245,7 @@
     <Compile Include="View\MedicalClinics.xaml.cs">
       <DependentUpon>MedicalClinics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CurrentPage.cs" />
     <Compile Include="View\PatientWindow.xaml.cs">
       <DependentUpon>PatientWindow.xaml</DependentUpon>
     </Compile>
@@ -227,7 +270,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums.cs" />
-    <Compile Include="Repository\HospitalDB.cs" />
+    <Compile Include="Repository\Impl\HospitalDB.cs" />
     <Compile Include="Repository\IHospitalDB.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -326,6 +369,14 @@
     <EmbeddedResource Include="Migrations\202106021613107_mig2.resx">
       <DependentUpon>202106021613107_mig2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.sr-LATN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.sr-LATN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -340,12 +391,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\No_Image_Available.jpg" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

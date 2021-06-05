@@ -118,33 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AnamnesisMenu" xml:space="preserve">
-    <value>Anamnesis</value>
+    <value>Anamneze</value>
   </data>
   <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
-    <value>Appointments and therapy</value>
+    <value>Pregledi i terapije</value>
   </data>
   <data name="DoctorsMenu" xml:space="preserve">
-    <value>Doctors</value>
+    <value>Doktori</value>
   </data>
   <data name="HelpMenu" xml:space="preserve">
-    <value>Help</value>
+    <value>Pomoć</value>
   </data>
   <data name="HomeMenu" xml:space="preserve">
-    <value>Home</value>
+    <value>Početna</value>
   </data>
   <data name="LogoutButton" xml:space="preserve">
-    <value>Logout</value>
+    <value>Odjavi se</value>
   </data>
   <data name="MedicalClinicsMenu" xml:space="preserve">
-    <value>Clinics</value>
+    <value>Klinike</value>
   </data>
   <data name="PrescriptionsMenu" xml:space="preserve">
-    <value>Prescriptions</value>
+    <value>Recepti</value>
   </data>
   <data name="RemindersMenu" xml:space="preserve">
-    <value>Reminders</value>
+    <value>Podsetnik</value>
   </data>
   <data name="ScheduleAppointmentButton" xml:space="preserve">
-    <value>Schedule appointment</value>
+    <value>Zakaži pregled</value>
   </data>
 </root>

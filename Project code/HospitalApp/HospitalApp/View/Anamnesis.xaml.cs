@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HospitalApp.View
 {
-    /// <summary>
-    /// Interaction logic for Anamnesis.xaml
-    /// </summary>
+
     public partial class Anamnesis : Page
     {
-        public Anamnesis(Frame load_frame)
+        private ViewModel.Anamnesis AnamnesisViewModel;
+        public Anamnesis()
         {
             InitializeComponent();
+            AnamnesisViewModel = new ViewModel.Anamnesis();
+            this.DataContext = AnamnesisViewModel;
         }
     }
 }

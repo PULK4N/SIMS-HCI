@@ -58,7 +58,7 @@ namespace HospitalApp.Repository
         }
 
         public void Update(Reminder reminder)
-        { 
+        {
             HospitalDB.Instance.SaveChanges();
         }
     }
