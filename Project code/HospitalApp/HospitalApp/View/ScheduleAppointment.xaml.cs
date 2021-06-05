@@ -23,6 +23,7 @@ namespace HospitalApp.View
         public ScheduleAppointment()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.ScheduleAppointment();
         }
     }
 }

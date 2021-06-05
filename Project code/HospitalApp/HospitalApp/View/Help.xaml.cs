@@ -23,6 +23,8 @@ namespace HospitalApp.View
         public Help()
         {
             InitializeComponent();
+            ViewModel.Help help = new ViewModel.Help();
+            this.DataContext = help;
         }
     }
 }

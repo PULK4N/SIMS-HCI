@@ -23,6 +23,7 @@ namespace HospitalApp.View
         public Prescriptions()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.Prescriptions();
         }
     }
 }

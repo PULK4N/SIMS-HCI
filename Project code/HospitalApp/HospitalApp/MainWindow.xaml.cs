@@ -1,6 +1,7 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Service;
 using HospitalApp.View;
+using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ using System.Windows;
 namespace Bolnica
 {
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         private Appointment appointmentToBeRescheduled { get; set; }
         public ObservableCollection<Appointment> AppointmentsToSchedule { get; set; }

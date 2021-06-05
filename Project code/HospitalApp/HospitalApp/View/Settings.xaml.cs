@@ -23,6 +23,7 @@ namespace HospitalApp.View
         public Settings()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.Settings();
         }
     }
 }

@@ -20,12 +20,11 @@ namespace HospitalApp.View
     /// </summary>
     public partial class AppointmentsAndTherapy : Page
     {
-        private Frame mainFrame;
-        private ViewModel.AppointmentsAndTherapy AppointmentsAndTherapyViewModel;
         public AppointmentsAndTherapy()
         {
             InitializeComponent();
-            AppointmentsAndTherapyViewModel = new ViewModel.AppointmentsAndTherapy();
+            ViewModel.AppointmentsAndTherapy AppointmentsAndTherapyViewModel = new ViewModel.AppointmentsAndTherapy();
+            this.DataContext = AppointmentsAndTherapyViewModel;
         }
     }
 }

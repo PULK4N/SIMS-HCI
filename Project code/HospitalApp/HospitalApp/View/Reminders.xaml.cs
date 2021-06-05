@@ -20,7 +20,6 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Reminders : Page
     {
-        private Frame mainFrame;
         public Reminders()
         {
             InitializeComponent();

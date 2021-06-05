@@ -23,6 +23,8 @@ namespace HospitalApp.View
         public Doctors()
         {
             InitializeComponent();
+            ViewModel.Doctors doctors = new ViewModel.Doctors();
+            this.DataContext = doctors;
         }
     }
 }

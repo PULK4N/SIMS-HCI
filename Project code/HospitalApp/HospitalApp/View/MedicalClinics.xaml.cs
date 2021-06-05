@@ -23,6 +23,9 @@ namespace HospitalApp.View
         public MedicalClinics()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.MedicalClinics();
         }
+
+
     }
 }

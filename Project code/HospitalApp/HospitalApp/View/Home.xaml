@@ -3,21 +3,18 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:p="clr-namespace:HospitalApp.Properties"
-      xmlns:local="clr-namespace:HospitalApp.View"
-      xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
       mc:Ignorable="d"
       xmlns:loc="clr-namespace:HospitalApp"
       Title="Home" Height="720" Width="1280">
     <Grid>
         <Grid Margin="200,0,200,540" Background="#f7f7f7">
-            <Menu x:Name="MenuBar" Background="#D3D3D3" VerticalAlignment="Bottom" Height="32">
+            <Menu x:Name="MenuBar" VerticalAlignment="Bottom" Height="32">
                 <Menu.ItemsPanel>
                     <ItemsPanelTemplate>
                         <DockPanel HorizontalAlignment="Stretch"></DockPanel>
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
-                <MenuItem Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
+                <MenuItem Background="Gray" Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc AnamnesisMenu}" Command="{Binding Path=ChangeToAnamnesisCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>
@@ -26,10 +23,10 @@
                 <MenuItem Header="{loc:Loc MedicalClinicsMenu}" Command="{Binding Path=ChangeToMedicalClinicsCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc HelpMenu}" Command="{Binding Path=ChangeToHelpCommand}" HorizontalAlignment="Left"></MenuItem>
             </Menu>
-            <Image x:Name="HeaderImage" VerticalAlignment="Top" Height="148" Margin="0,0,0,0"></Image>
+            <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
 
-            <Button Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
-            <ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="644,0,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="22" Background="DimGray">
+            <Button  Command="{Binding Path=ChangeToScheduleAppointmentCommand}" Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
+            <ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
                 <ComboBoxItem>
                     English
                 </ComboBoxItem>
@@ -37,7 +34,35 @@
                     Srpski
                 </ComboBoxItem>
             </ComboBox>
-            <Button Content="{loc:Loc LogoutButton}" Background="DimGray" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+            <Button Command="{Binding Path=LogoutCommand}" Content="{loc:Loc LogoutButton}" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+            <Button Command="{Binding Path=ChangeToSettingsCommand}" HorizontalAlignment="Left" Background="DimGray" Margin="730,0,0,0" VerticalAlignment="Top" Width="23" Height="26">
+                <Image Source="/Images/settingsIcon.png" />
+
+            </Button>
+            <Button Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
+        </Grid>
+        <Grid Margin="200,180,200,0">
+            <Grid Margin="0,350,0,0">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="220" />
+                    <ColumnDefinition Width="220" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    
+                </Grid>
+                <Grid Grid.Column="1">
+
+                </Grid>
+                <Grid Grid.Column="2">
+
+                </Grid>
+                <Grid Grid.Column="3">
+
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
