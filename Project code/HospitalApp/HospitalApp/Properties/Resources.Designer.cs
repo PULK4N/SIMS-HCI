@@ -79,11 +79,56 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Completed appointments.
+        /// </summary>
+        internal static string CompletedAppointments {
+            get {
+                return ResourceManager.GetString("CompletedAppointments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doctor.
+        /// </summary>
+        internal static string Doctor {
+            get {
+                return ResourceManager.GetString("Doctor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Doctors.
         /// </summary>
         internal static string DoctorsMenu {
             get {
                 return ResourceManager.GetString("DoctorsMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dosage.
+        /// </summary>
+        internal static string Dosage {
+            get {
+                return ResourceManager.GetString("Dosage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drug.
+        /// </summary>
+        internal static string Drug {
+            get {
+                return ResourceManager.GetString("Drug", resourceCulture);
             }
         }
         
@@ -106,6 +151,15 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
         internal static string LogoutButton {
@@ -124,11 +178,38 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        internal static string Notes {
+            get {
+                return ResourceManager.GetString("Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prescriptions.
+        /// </summary>
+        internal static string Prescriptions {
+            get {
+                return ResourceManager.GetString("Prescriptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prescriptions.
         /// </summary>
         internal static string PrescriptionsMenu {
             get {
                 return ResourceManager.GetString("PrescriptionsMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate.
+        /// </summary>
+        internal static string RateDoctor {
+            get {
+                return ResourceManager.GetString("RateDoctor", resourceCulture);
             }
         }
         
@@ -142,11 +223,56 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Schedule appointment.
         /// </summary>
         internal static string ScheduleAppointmentButton {
             get {
                 return ResourceManager.GetString("ScheduleAppointmentButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scheduled appointments.
+        /// </summary>
+        internal static string ScheduledAppointments {
+            get {
+                return ResourceManager.GetString("ScheduledAppointments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        internal static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage.
+        /// </summary>
+        internal static string Usage {
+            get {
+                return ResourceManager.GetString("Usage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More details.
+        /// </summary>
+        internal static string ViewDetailsButton {
+            get {
+                return ResourceManager.GetString("ViewDetailsButton", resourceCulture);
             }
         }
     }

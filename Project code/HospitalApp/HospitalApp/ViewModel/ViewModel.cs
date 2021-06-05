@@ -3,7 +3,7 @@ using HospitalApp.View;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace HospitalApp.ViewModel
 {
@@ -76,8 +76,8 @@ namespace HospitalApp.ViewModel
         protected RelayCommand changeStyleCommand;
         public RelayCommand ChangeStyleCommand { get => changeStyleCommand; set => changeStyleCommand = value; }
 
-        private RelayCommand changeLanguageCommand;
-        protected RelayCommand ChangeLanguageCommand { get => changeLanguageCommand; set => changeLanguageCommand = value; }
+        protected RelayCommand changeLanguageCommand;
+        public RelayCommand ChangeLanguageCommand { get => changeLanguageCommand; set => changeLanguageCommand = value; }
 
 
         #endregion

@@ -123,8 +123,23 @@
   <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
     <value>Pregledi i terapije</value>
   </data>
+  <data name="CompletedAppointments" xml:space="preserve">
+    <value>Istorija pregleda</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doktor</value>
+  </data>
   <data name="DoctorsMenu" xml:space="preserve">
     <value>Doktori</value>
+  </data>
+  <data name="Dosage" xml:space="preserve">
+    <value>Doza</value>
+  </data>
+  <data name="Drug" xml:space="preserve">
+    <value>Lek</value>
   </data>
   <data name="HelpMenu" xml:space="preserve">
     <value>Pomoć</value>
@@ -132,19 +147,46 @@
   <data name="HomeMenu" xml:space="preserve">
     <value>Početna</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Srpski</value>
+  </data>
   <data name="LogoutButton" xml:space="preserve">
     <value>Odjavi se</value>
   </data>
   <data name="MedicalClinicsMenu" xml:space="preserve">
     <value>Klinike</value>
   </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Beleške</value>
+  </data>
+  <data name="Prescriptions" xml:space="preserve">
+    <value>Recepti</value>
+  </data>
   <data name="PrescriptionsMenu" xml:space="preserve">
     <value>Recepti</value>
+  </data>
+  <data name="RateDoctor" xml:space="preserve">
+    <value>Oceni</value>
   </data>
   <data name="RemindersMenu" xml:space="preserve">
     <value>Podsetnik</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sačuvaj</value>
+  </data>
   <data name="ScheduleAppointmentButton" xml:space="preserve">
     <value>Zakaži pregled</value>
+  </data>
+  <data name="ScheduledAppointments" xml:space="preserve">
+    <value>Zakazani pregledi</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Vreme</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="ViewDetailsButton" xml:space="preserve">
+    <value>Više detalja</value>
   </data>
 </root>

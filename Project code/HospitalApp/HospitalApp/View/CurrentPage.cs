@@ -13,6 +13,7 @@ namespace HospitalApp.View
         private static Frame frame;
         public static Frame Frame
         {
+            get { return frame; }
             set
             {
                 if (frame == null)

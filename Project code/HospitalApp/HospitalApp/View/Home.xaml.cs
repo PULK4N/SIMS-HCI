@@ -18,17 +18,5 @@ namespace HospitalApp.View
             this.DataContext = new ViewModel.Home();
         }
 
-        public void Language_selectionChanged(object sender, RoutedEventArgs e)
-        {
-
-            if (TranslationSource.Instance.CurrentCulture.Name.Equals("sr-Latn"))
-            {
-                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            }
-            else
-            {
-                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("sr-LATN");
-            }
-        }
     }
 }

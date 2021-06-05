@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using HospitalApp.Model;
+using MahApps.Metro.Controls;
 
 namespace HospitalApp.View
 {
@@ -7,9 +8,11 @@ namespace HospitalApp.View
     /// </summary>
     public partial class PatientWindow : MetroWindow
     {
-        public PatientWindow()
+        public static Patient Patient;
+        public PatientWindow(Patient patient)
         {
             InitializeComponent();
+            Patient = patient;
             CurrentPage.Frame = load_frame;
         }
 

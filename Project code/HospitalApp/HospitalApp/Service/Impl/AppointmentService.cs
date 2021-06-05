@@ -55,7 +55,7 @@ namespace HospitalApp.Service
 
         public List<Appointment> GetAllByPatientId(long patientId)
         {
-            return _appointmentRepository.GetAllByPatient(patientId);
+            return _appointmentRepository.GetAllByPatientId(patientId);
         }
 
         public bool PatientReScheduleAppointment(Appointment appointment)
@@ -94,6 +94,11 @@ namespace HospitalApp.Service
         public List<Appointment> GetAllByPatientRefered(long patientId)
         {
             return _appointmentRepository.GetAllByPatientRefered(patientId);
+        }
+
+        public List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId)
+        {
+            return _appointmentRepository.GetAllCompletedOrReviewedByPatient(patientId);
         }
     }
 }

@@ -112,7 +112,7 @@ namespace Bolnica
                         Patient = Map.PatientController.GetPatientByUsername(registeredUser.Username);
                         LoginGrid.Visibility = Visibility.Hidden;
                         PatientSchedulingCanvas.Visibility = Visibility.Visible;
-                        PatientWindow patientWindow = new PatientWindow();
+                        PatientWindow patientWindow = new PatientWindow(Patient);
                         patientWindow.Show();
                         new NotificationService().StartTimer(cancellationToken);
                         ScheduleReminders();

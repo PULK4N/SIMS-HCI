@@ -85,7 +85,7 @@
             </DataGrid>
         </Grid>
 
-        <Canvas x:Name="PatientSchedulingCanvas" Visibility="Hidden">
+        <Canvas x:Name="PatientSchedulingCanvas" Visibility="Visible">
             <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
                 <Button Content="Schedule Appointment " Margin="5,10,0,-0.4" Click="ScheduleAppointments" Width="125" />
                 <Button Content="View Scheduled" Margin="5,10,0,-0.4" Click="ViewScheduledAppointments" Width="89" />

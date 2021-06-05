@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d"
       xmlns:loc="clr-namespace:HospitalApp"
       Title="Home" Height="720" Width="1280">
@@ -26,14 +27,8 @@
             <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
 
             <Button  Command="{Binding Path=ChangeToScheduleAppointmentCommand}" Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
-            <ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
-                <ComboBoxItem>
-                    English
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Srpski
-                </ComboBoxItem>
-            </ComboBox>
+            <Button Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
+
             <Button Command="{Binding Path=LogoutCommand}" Content="{loc:Loc LogoutButton}" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
             <Button Command="{Binding Path=ChangeToSettingsCommand}" HorizontalAlignment="Left" Background="DimGray" Margin="730,0,0,0" VerticalAlignment="Top" Width="23" Height="26">
                 <Image Source="/Images/settingsIcon.png" />
@@ -41,8 +36,18 @@
             </Button>
             <Button Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
         </Grid>
-        <Grid Margin="200,180,200,0">
-            <Grid Margin="0,350,0,0">
+        <Grid Margin="200,180,200,0" Background="#303030">
+            <Grid Margin="0,0,0,340">
+                <Rectangle Fill="#303004" HorizontalAlignment="Center" Height="167" Stroke="Black" VerticalAlignment="Bottom" Width="800"/>
+                <Image Source="/Images/Male_Doctor.jpg" Stretch="Fill" HorizontalAlignment="Left" Height="105"  VerticalAlignment="Center" Width="110" Margin="70,66,0,29"/>
+                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="234,100,0,0" TextWrapping="Wrap" 
+                           Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release " 
+                           VerticalAlignment="Top" Height="71" Width="559"/>
+                <TextBlock FontWeight="DemiBold" Foreground="White" HorizontalAlignment="Left" Margin="234,66,0,0" TextWrapping="Wrap" FontSize="20" Text="Doctor Jung Huan:"
+                    VerticalAlignment="Top" Height="29" Width="559"/>
+
+            </Grid>
+            <Grid Margin="0,200,0,0">
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="220" />
                     <ColumnDefinition Width="220" />
@@ -51,16 +56,61 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    
+                    <Border Margin="10,45,10,50" Background="#5A5A5A">
+                    </Border>
+                    <Label Content="{loc:Loc ScheduledAppointments}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Width="188" Margin="20,45,12,0" />
+                    <DataGrid x:Name="dataGridScheduledAppointmentsAppointments" AutoGenerateColumns="False" ItemsSource="{Binding ScheduledAppointments}"
+                        SelectionMode="Single" IsReadOnly="True"
+                        Height="170" VerticalAlignment="Top" HorizontalAlignment="Center" Width="180" Canvas.Left="10" Canvas.Top="61" Margin="20,80,20,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{loc:Loc Date}" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="110" />
+                            <DataGridTextColumn Header="{loc:Loc Doctor}" Binding="{Binding Doctor.Employee.User.FirstName}" Width="70"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Command="{Binding Path=AppointmentsAndTherapyMenu}" Content="{loc:Loc ViewDetailsButton}" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="90" Margin="0,0,20,58"/>
                 </Grid>
                 <Grid Grid.Column="1">
-
+                    <Border Margin="-5,45,-5,50" Background="#5A5A5A">
+                    </Border>
+                    <Label Content="{loc:Loc CompletedAppointments}" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="15" Width="188" Margin="0,45,32,0" />
+                    <DataGrid x:Name="CompletedAppointmentsNotReviewed" AutoGenerateColumns="False" ItemsSource="{Binding CompletedAppointments}"
+                        SelectionMode="Single" IsReadOnly="True"
+                        Height="170" VerticalAlignment="Top" HorizontalAlignment="Center" Width="220" Canvas.Left="10" Margin="0,80,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{loc:Loc Date}" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="90" />
+                            <DataGridTextColumn Header="{loc:Loc Doctor}" Binding="{Binding Doctor.Employee.User.FirstName}" Width="80"/>
+                            <DataGridTemplateColumn Width="50" Header="{loc:Loc RateDoctor}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Command="{Binding Path=ChangeToDoctorsCommand}" Content="{loc:Loc RateDoctor}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
                 <Grid Grid.Column="2">
-
+                    <Border Margin="10,45,0,50" Background="#5A5A5A">
+                    </Border>
+                    <Label Content="{loc:Loc Prescriptions}" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="15" Width="198" Margin="16,45,6,0" />
+                    <DataGrid x:Name="list_Copy" AutoGenerateColumns="False" ItemsSource="{Binding Prescriptions}"
+                            SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center"  Margin="10,80,0,0"
+                            Height="170" VerticalAlignment="Top" Width="auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{loc:Loc Drug}" Binding="{Binding Drug.Name}" Width="70"/>
+                            <DataGridTextColumn Header="{loc:Loc Time}" Binding="{Binding Date, StringFormat=hh:mm}" />
+                            <DataGridTextColumn Header="{loc:Loc Usage}" Binding="{Binding Period}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
                 <Grid Grid.Column="3">
+                    <Border Margin="10,45,10,50" Background="#5A5A5A">
+                        <TextBox Margin="10,35,10,40">
 
+                        </TextBox>
+                    </Border>
+                    <Label Content="{loc:Loc Notes}" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="15" Width="180" Margin="20,45,20,0" Height="30" />
+                    <Button Command="{Binding Path=AppointmentsAndTherapyMenu}" Content="{loc:Loc Save}" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="90" Margin="0,0,20,58"/>
                 </Grid>
             </Grid>
         </Grid>

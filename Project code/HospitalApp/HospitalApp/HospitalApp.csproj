@@ -394,6 +394,9 @@
   <ItemGroup>
     <Resource Include="Images\IM-Clinic-scaled.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Male_Doctor.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

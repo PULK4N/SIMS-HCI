@@ -26,6 +26,7 @@
             <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
 
             <Button Command="{Binding Path=ChangeToScheduleAppointmentCommand}"  Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
+            <Button Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
             <!--<ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
                 <ComboBoxItem>
                     English
@@ -34,6 +35,7 @@
                     Srpski
                 </ComboBoxItem>
             </ComboBox>-->
+            
             <Button Command="{Binding Path=LogoutCommand}" Content="{loc:Loc LogoutButton}" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
             <Button Command="{Binding Path=ChangeToSettingsCommand}" HorizontalAlignment="Left" Background="DimGray" Margin="730,0,0,0" VerticalAlignment="Top" Width="23" Height="26">
                 <Image Source="/Images/settingsIcon.png" />
