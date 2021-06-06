@@ -1,0 +1,89 @@
+﻿<Window x:Class="DoctorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Doctor" Height="776" Width="1032">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="109*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#E5FFE5" HorizontalAlignment="Left" Height="737" Stroke="#E5FFE5" StrokeThickness="3" VerticalAlignment="Top" Width="1016" Grid.ColumnSpan="2"/>
+        <Frame x:Name="MainFrame" HorizontalAlignment="Left" Height="737" VerticalAlignment="Top" Width="1024" Grid.ColumnSpan="2" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden" Margin="0,0,-8,0"/>
+        <Rectangle Grid.Column="1" Fill="#9be5aa" HorizontalAlignment="Left" Height="737" Margin="362,0,0,0" Stroke="#9be5aa" VerticalAlignment="Top" Width="197" StrokeThickness="3"/>
+        <Button x:Name="ScheduledAppointmentsButton" Grid.Column="1" HorizontalAlignment="Left" Margin="364,258,0,0" VerticalAlignment="Top" Width="193" Height="72" Click="Button_Click" FontSize="16" FontWeight="Thin" OpacityMask="#FF0078D7" BorderBrush="#FF3EAF76" BorderThickness="1" ClipToBounds="True" Background="#FFFFFFE1">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="47.8,0,0,0" Height="24" Width="94">Appointments</TextBlock>
+                <Image Source="output-onlinepngtools2.png" Stretch="Fill" Height="38" Width="38" HorizontalAlignment="Right" Margin="7,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="DrugValidation" Grid.Column="1" HorizontalAlignment="Left" Margin="364,329,0,0" VerticalAlignment="Top" Width="193" Height="72" Click="ValidateDrugs_Click" FontSize="16" FontWeight="Thin" OpacityMask="#FF0078D7" BorderBrush="#FF3EAF76" BorderThickness="1" Background="#FFFFFFE1">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="45,0,0,0" Height="24" Width="100">Validate Drugs</TextBlock>
+                <Image Source="output-onlinepngtools3.png" Stretch="Fill" Height="36" Width="36" HorizontalAlignment="Right" Margin="6,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Content="Logout" Grid.Column="1" HorizontalAlignment="Left" Margin="374,10,0,0" VerticalAlignment="Top" Width="174" Height="38" Click="LogoutButton_Click" FontSize="14" FontWeight="ExtraLight" BorderBrush="#FFDA8217">
+            <Button.Background>
+                <SolidColorBrush Color="#FFFFFFE1"/>
+            </Button.Background>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,187,0,0" VerticalAlignment="Top" Width="193" Height="72" Background="#FFFFFFE1" BorderBrush="#FF3EAF76" OpacityMask="#FF0078D7" FontSize="16" FontWeight="Thin" Click="Button_Click_1">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="62,0,0,0" Height="24">My Profile</TextBlock>
+                <Image Source="output-onlinepngtools4.png" Stretch="Fill" Height="37" Width="37" HorizontalAlignment="Right" Margin="21,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,400,0,0" VerticalAlignment="Top" Width="193" Height="72" Background="#FFFFFFE1" BorderBrush="#FF3EAF76" OpacityMask="#FF0078D7" FontSize="16" FontWeight="Thin" Click="Button_Click_1">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="56,0,0,0" Height="23" Width="79">My Patients</TextBlock>
+                <Image Source="output-onlinepngtools1.png" Stretch="Fill" Height="35" Width="35" HorizontalAlignment="Right" Margin="14,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,116,0,0" VerticalAlignment="Top" Width="193" Height="72" Background="#FFFFFFE1" BorderBrush="#FF3EAF76" OpacityMask="#FF0078D7" FontSize="16" FontWeight="Thin" Click="Button_Click_1">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="57,0,0,0">Homepage</TextBlock>
+                <Image Source="/HospitalApp;component/output-onlinepngtools.png" Stretch="Fill" Height="45" Width="45" HorizontalAlignment="Right" Margin="12,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,542,0,0" VerticalAlignment="Top" Width="193" Height="72" Background="#FFFFFFE1" BorderBrush="#FF3EAF76" OpacityMask="#FF0078D7" FontSize="16" FontWeight="Thin" Click="Button_Click_1">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="68,0,0,0">Settings</TextBlock>
+                <Image Source="output-onlinepngtools5.png" Stretch="Fill" Height="39" Width="39" HorizontalAlignment="Right" Margin="25,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,59,0,0" VerticalAlignment="Top" Width="97" Height="45" FontWeight="Thin" FontSize="14" Click="BackButton_Click" Background="#FFFFFFE1" BorderBrush="#FF3EAF76">
+            <StackPanel>
+                <Image Source="output-onlinepngtools6.png" Stretch="Fill" Height="41" Width="51"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="460,59,0,0" VerticalAlignment="Top" Width="97" Height="45" FontWeight="Thin" FontSize="14" Click="ForwardButton_Click" Background="#FFFFFFE1" BorderBrush="#FF3EAF76">
+            <Image Source="output-onlinepngtools6.png" Stretch="Fill" Width="51" Height="41" RenderTransformOrigin="0.5,0.5" OpacityMask="Black">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,471,0,0" VerticalAlignment="Top" Width="193" Height="72" Background="#FFFFFFE1" BorderBrush="#FF3EAF76" OpacityMask="#FF0078D7" FontSize="16" FontWeight="Thin" Click="Report_Click">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="71,0,0,0" Text="Report" Height="22"/>
+                <Image Source="output-onlinepngtools7.png" Stretch="Fill" Height="39" Width="39" HorizontalAlignment="Right" Margin="30,0,0,0"/>
+            </StackPanel>
+        </Button>
+        <Label Name="LiveTimeLabel" Content="%TIME%" HorizontalAlignment="Left" Margin="362,708,0,0" VerticalAlignment="Top" Height="30" Width="90" FontSize="16" FontWeight="Thin" Foreground="#FF343434" Grid.Column="1" />
+        <Label Content="07.06.2021." HorizontalAlignment="Left" Margin="478,708,0,0" VerticalAlignment="Top" Height="30" Width="80" FontSize="16" FontWeight="Thin" Foreground="#FF343434" Grid.Column="1" />
+        <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,613,0,0" VerticalAlignment="Top" Width="193" Height="72" Background="#FFFFFFE1" BorderBrush="#FF3EAF76" OpacityMask="#FF0078D7" FontSize="16" FontWeight="Thin" Click="Button_Click_1">
+            <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="79,0,0,0" Text="Help" Height="22" Padding="0"/>
+                <Image Source="output-onlinepngtools9.png" Stretch="Fill" Height="39" Width="39" HorizontalAlignment="Right" Margin="37,0,0,0"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

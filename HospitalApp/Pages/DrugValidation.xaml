@@ -1,0 +1,22 @@
+﻿<Page 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="DrugValidation" 
+      mc:Ignorable="d" 
+      d:DesignHeight="737" d:DesignWidth="1024"
+      Title="DrugValidation">
+
+    <Grid>
+        <DataGrid x:Name="dataGridValidateDrugs" IsReadOnly="True"  HorizontalAlignment="Left" AutoGenerateColumns="False" Height="508" Margin="63,88,0,0" VerticalAlignment="Top" Width="694" ItemsSource="{Binding Drugs}" SelectionChanged="DataGrid_SelectionChanged" RowHeight="64" VerticalContentAlignment="Center" Background="White" BorderBrush="#FF3EAF76">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Drug name" Binding="{Binding Name}" Width="100"/>
+                <DataGridTextColumn Header="Details" Binding="{Binding Details}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ApproveDrugButton" Content="Approve" HorizontalAlignment="Left" Margin="63,626,0,0" VerticalAlignment="Top" Width="316" Height="50" Click="ApproveDrug_Click" Background="#FFCCFFCC" BorderBrush="#FF3EAF76"/>
+        <Button x:Name="RejectDrugButton" Content="Reject" HorizontalAlignment="Left" Margin="441,626,0,0" VerticalAlignment="Top" Width="316" Height="50" Click="RejectDrug_Click" Background="#FFFFCCD1" BorderBrush="#FFFF4C56"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" FontWeight="Thin" Text="Drug Validation" Foreground="#FF343434"/>
+    </Grid>
+</Page>
