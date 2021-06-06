@@ -17,5 +17,6 @@ namespace HospitalApp.Repository
         bool IsMalicious(Patient patient);
         void BanPatient(Patient patient);
         List<Patient> GetWeekActivePatients();
+        Patient GetPatientByUsername(string username);
     }
 }

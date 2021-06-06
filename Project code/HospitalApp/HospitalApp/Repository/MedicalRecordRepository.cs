@@ -42,9 +42,6 @@ namespace HospitalApp.Repository
         {
             try
             {
-                MedicalRecord oldMedicalRecord = Get(medicalRecord.MedicalRecordId);
-                oldMedicalRecord.LastMesuredHeight = medicalRecord.LastMesuredHeight;
-                oldMedicalRecord.LastMesuredWeight = medicalRecord.LastMesuredWeight;
                 //oldMedicalRecord.Anamnesis = medicalRecord.Anamnesis; not gonna update this
                 HospitalDB.Instance.SaveChanges();
             }

@@ -15,10 +15,6 @@ namespace HospitalApp.Repository
 {
     public class PrescriptionRepository : IPrescriptionRepository
     {
-        public PrescriptionRepository()
-        {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<HospitalDB, HospitalApp.Migrations.Configuration>());
-        }
 
         public void Create(Prescription prescription)
         {
@@ -65,15 +61,7 @@ namespace HospitalApp.Repository
 
         public void Update(Prescription prescription)
         {
-            Prescription prescriptionToEdit = (from p in HospitalDB.Instance.Prescriptions where p.PrescriptionId == prescription.PrescriptionId select p).FirstOrDefault();
-            Drug prescriptionMedicine = (from m in HospitalDB.Instance.Drugs where m.DrugId == prescription.Drug.DrugId select m).FirstOrDefault();
-            if (prescriptionToEdit != null)
-            {
-                prescriptionToEdit.Drug = prescriptionMedicine;
-                prescriptionToEdit.Period = prescription.Period;
-                prescriptionToEdit.Usage = prescription.Usage;
-                HospitalDB.Instance.SaveChanges();
-            }
+            HospitalDB.Instance.SaveChanges();
         }
 
         public void DeleteAllByAnamnesis(Anamnesis anamnesis)
@@ -86,7 +74,7 @@ namespace HospitalApp.Repository
                 }
                 HospitalDB.Instance.SaveChanges();
             }
-            catch
+            catch (Exception)
             {
             }
         }

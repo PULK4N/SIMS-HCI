@@ -56,10 +56,10 @@ public partial class DrugValidation : Page
     {
         if (dataGridValidateDrugs.SelectedItem != null)
         {
-            Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
-            Map.DrugController.ApproveDrug(drug);
-            UpdateDrugs();
-        }
+        Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
+        Map.DrugController.ApproveDrug(drug);
+        UpdateDrugs();
+    }
         else
             MessageBox.Show("Drug was not selected");
     }
@@ -68,10 +68,10 @@ public partial class DrugValidation : Page
     {
         if (dataGridValidateDrugs.SelectedItem != null)
         {
-            Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
-            Map.DrugController.RejectDrug(drug);
-            UpdateDrugs();
-        }
+        Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
+        Map.DrugController.RejectDrug(drug);
+        UpdateDrugs();
+    }
         else
             MessageBox.Show("Drug was not selected");
     }

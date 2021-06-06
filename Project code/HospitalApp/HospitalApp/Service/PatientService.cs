@@ -38,6 +38,22 @@ namespace HospitalApp.Service
 
         public void Update(Patient patient)
         {
+            Patient oldPatient = _patientRepository.Get(patient.PatientId);
+            if (oldPatient != null)
+            {
+                patient.User.RegisteredUser.Username = oldPatient.User.RegisteredUser.Username;
+                patient.User.RegisteredUser.Password = oldPatient.User.RegisteredUser.Password;
+
+                patient.User.Address = oldPatient.User.Address;
+                patient.User.DateOfBirth = oldPatient.User.DateOfBirth;
+                patient.User.EMail = oldPatient.User.EMail;
+                patient.User.FirstName = oldPatient.User.FirstName;
+                patient.User.Jmbg = oldPatient.User.Jmbg;
+                patient.User.LastName = oldPatient.User.LastName;
+                patient.User.PhoneNumber = oldPatient.User.PhoneNumber;
+                patient.User.MaritalStatus = oldPatient.User.MaritalStatus;
+                patient.User.Sex = oldPatient.User.Sex;
+            }
             _patientRepository.Update(patient);
         }
 
@@ -86,6 +102,11 @@ namespace HospitalApp.Service
         private bool IsNotBanned(Patient patient)
         {
             return patient.User.RegisteredUser.UserType != UserType.BANNNED_USER;
+        }
+
+        public Patient GetPatientByUsername(string username)
+        {
+            return _patientRepository.GetPatientByUsername(username);
         }
     }
 }

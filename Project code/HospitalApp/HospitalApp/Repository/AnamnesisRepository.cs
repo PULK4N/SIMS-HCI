@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Windows;
 
 namespace HospitalApp.Repository
 {
@@ -37,11 +38,13 @@ namespace HospitalApp.Repository
 
         public void Update(Anamnesis anamnesis)
         {
-            Anamnesis oldAnamnesis = HospitalDB.Instance.Anamnesis.Find(anamnesis.AnamnesisId);
-            if (oldAnamnesis != null)
+            try
             {
-                oldAnamnesis.Description = anamnesis.Description;
-                oldAnamnesis.TimeOf = DateTime.Now;
+                HospitalDB.Instance.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
             }
         }
 

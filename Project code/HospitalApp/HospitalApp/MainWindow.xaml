@@ -27,19 +27,76 @@
                 <Label Content="password" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="12" Width="188" Margin="46,109,46,0" />
             </Grid>
         </Grid>
-        <Canvas x:Name="MainCanvas" Margin="0,0,-0.4,0" Visibility="Hidden" IsEnabled="False">
-            <Button Content="Patient" HorizontalAlignment="Left" Margin="505,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.816,-0.013" Click="PatientButton" Height="19"/>
-            <Button Content="Secretary" HorizontalAlignment="Left" Margin="377,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="SecretaryButton" Height="19"/>
-        </Canvas>
+
+        <Grid x:Name="RemindersGrid" Visibility="Visible">
+            <DataGrid x:Name="RemindersList" AutoGenerateColumns="False" ItemsSource="{Binding Reminders}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="234" VerticalAlignment="Top"  Canvas.Left="376" Canvas.Top="52" Margin="40,59,0,0" Width="310">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="50"/>
+                    <DataGridTextColumn Header="Triggering time" Binding="{Binding StartTime, StringFormat=hh:mm}" />
+                    <DataGridTextColumn Header="Triggering period" Binding="{Binding Period}" />
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <xctk:TimePicker x:Name="ReminderTimePicker" HorizontalAlignment="Left" Margin="238,312,443.6,88" Height="20" VerticalAlignment="Top" Width="112"/>
+            <TextBox x:Name="ReminderName" HorizontalAlignment="Left" Height="20" Margin="42,312,0,0"  Text="Name of a reminder" VerticalAlignment="Top" Width="38" />
+            <TextBox x:Name="ReminderInterval" HorizontalAlignment="Left" Height="20" Margin="168,312,0,0" TextWrapping="Wrap" Text="Period" VerticalAlignment="Top" Width="65"/>
+            <TextBox x:Name="ReminderDescription" HorizontalAlignment="Left" Height="45" Margin="42,337,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="308"/>
+            <Button Content="Submit" HorizontalAlignment="Left" Height="25" Margin="203,385,0,0" VerticalAlignment="Top" Width="147" Click="SubmitReminder"/>
+            <Button Content="Delete" HorizontalAlignment="Left" Height="25" Margin="40,385,0,0" VerticalAlignment="Top" Width="147" Click="DeleteReminder"/>
+            <DatePicker x:Name="ReminderPeriod" HorizontalAlignment="Left" Margin="85,312,0,0" VerticalAlignment="Top" Width="78" Height="20"/>
+        </Grid>
+
+        <Grid x:Name="MedicalRecordView" Visibility="Hidden">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Referals}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="131" VerticalAlignment="Top"  Canvas.Left="376" Canvas.Top="52" Margin="40,87,0,0" Width="320" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="50"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd MMM yyyy}" />
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBox x:Name="CurrentPatientAnamensis" IsReadOnly="True" HorizontalAlignment="Left" Height="60" Margin="417,87,0,0" TextWrapping="Wrap" Text="anamnesis" VerticalAlignment="Top" Width="329"/>
+            <TextBox x:Name="PatientsSex" IsReadOnly="True" HorizontalAlignment="Left" Height="20" Margin="417,152,0,0" TextWrapping="Wrap" Text="Sex" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="PatientsMaritalStatus" IsReadOnly="True" HorizontalAlignment="Left" Height="20" Margin="417,177,0,0" TextWrapping="Wrap" Text="Marital Status" VerticalAlignment="Top" Width="120"/>
+            <DataGrid x:Name="list_Copy" AutoGenerateColumns="False" ItemsSource="{Binding Prescriptions}"
+                SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                Height="113" VerticalAlignment="Top" Margin="417,266,0,0" Width="329">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Drug name" Binding="{Binding Drug.Name}" Width="70"/>
+                    <DataGridTextColumn Header="Dosage" Binding="{Binding Date, StringFormat=hh:mm}" />
+                    <DataGridTextColumn Header="Usage" Binding="{Binding Period}" />
+                    <DataGridTextColumn Header="Period" Binding="{Binding Usage}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="specialistAppointments" AutoGenerateColumns="False" ItemsSource="{Binding SpecialAppointments}"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
+                  Height="113" VerticalAlignment="Top" Width="320" Canvas.Left="376" Canvas.Top="52" Margin="40,266,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="status" Binding="{Binding AppointmentStatus}"/>
+                    <DataGridTextColumn Header="type" Binding="{Binding AppointmentType}" />
+                    <DataGridTextColumn Header="Date and Time" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="130" />
+                    <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Employee.User.FirstName}" Width="*"/>
+                    <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Specialization}" Width="*"/>
+                    <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 
         <Canvas x:Name="PatientSchedulingCanvas" Visibility="Hidden">
             <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
-                <Button Content="Schedule Appointment " Margin="5,10,0,0" Click="ScheduleAppointments" />
-                <Button Content="View Scheduled Appointments " Margin="5,10,0,0" Click="ViewScheduledAppointments" />
+                <Button Content="Schedule Appointment " Margin="5,10,0,-0.4" Click="ScheduleAppointments" Width="125" />
+                <Button Content="View Scheduled" Margin="5,10,0,-0.4" Click="ViewScheduledAppointments" Width="89" />
+                <Button Content="Reminders" Margin="5,10,0,-0.4" Click="ViewReminders" Width="64" />
                 <Button Content="E" Margin="5,10,0,0" Click="EndNotifications" />
-                <Button Content="R " Margin="5,10,0,0" Click="OpenReviews" />
+                <Button Content="R" Margin="5,10,0,0" Click="OpenReviews" />
+                <Button Content="M" Margin="5,10,0,0" Click="OpenMedicalRecords" />
             </StackPanel>
         </Canvas>
+
+
 
         <Canvas x:Name="PatientReviews" RenderTransformOrigin="0.585,-6.326" Visibility="Hidden" >
 

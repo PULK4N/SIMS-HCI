@@ -16,5 +16,6 @@ namespace HospitalApp.Service
         bool IsMalicious(Patient patient);
         void BanPatient(Patient patient);
         Task StartWeeklyAttemptsRestarting(CancellationToken cancellationToken);
+        Patient GetPatientByUsername(string username);
     }
 }

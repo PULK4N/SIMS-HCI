@@ -69,7 +69,7 @@ namespace Enums{
         BANNNED_USER
     }
 
-    public enum RelationshipStatus
+    public enum MaritalStatus
     {
         MARRIED,
         DIVORCED,

@@ -52,19 +52,11 @@ namespace HospitalApp.Repository
         {
             try
             {
-                Appointment oldAppointment = HospitalDB.Instance.Appointments.Find(appointment.AppointmentId);
-                oldAppointment.Beginning = appointment.Beginning;
-                oldAppointment.End = appointment.End;
-                oldAppointment.AppointmentType = appointment.AppointmentType;
-                oldAppointment.AppointmentStatus = appointment.AppointmentStatus;
-                oldAppointment.Doctor = appointment.Doctor;
-                oldAppointment.Patient = appointment.Patient;
-                oldAppointment.Room = appointment.Room;
                 HospitalDB.Instance.SaveChanges();
             }
-            catch
+            catch(Exception e)
             {
-
+                MessageBox.Show(e.ToString());
             }
         }
 
@@ -119,6 +111,25 @@ namespace HospitalApp.Repository
             try
             {//select appointments with the date, than select the ones of the patient
                 return (from pApp in HospitalDB.Instance.Appointments where pApp.Patient.PatientId == patientId && pApp.AppointmentStatus == Enums.AppointmentStatus.PENDING select pApp).Include(App => App.Doctor).ToList();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<Appointment> GetAllByPatientRefered(long patientId)
+        {
+            try
+            {//select appointments with the date, than select the ones of the patient
+                return (from pApp in HospitalDB.Instance.Appointments where pApp.Doctor.Specialization != Specialization.NONE && pApp.Patient.PatientId == patientId && pApp.AppointmentStatus == Enums.AppointmentStatus.PENDING select pApp).Include(App => App.Doctor).ToList();
             }
             catch (DbEntityValidationException ex)
             {

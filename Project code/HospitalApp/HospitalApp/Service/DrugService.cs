@@ -45,7 +45,14 @@ namespace HospitalApp.Service
 
         public void Update(Drug drug)
         {
-            _drugRepository.Update(drug);
+            var editedDrug = _drugRepository.Get(drug.DrugId);
+            if (editedDrug != null)
+            {
+                editedDrug.Details = drug.Details;
+                editedDrug.Name = drug.Name;
+                editedDrug.DrugStatus = drug.DrugStatus;
+                _drugRepository.Update(drug);
+            }
         }
 
         public List<Drug> GetDrugsForApproval()

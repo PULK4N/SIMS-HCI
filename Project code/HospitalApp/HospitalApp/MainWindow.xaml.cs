@@ -1,5 +1,6 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Service;
+using HospitalApp.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,10 @@ namespace Bolnica
         public ObservableCollection<Appointment> CompletedAppointmentsNotReviewed { get; set; }
         public ObservableCollection<Review> Reviews { get; set; }
         public ObservableCollection<string> ScoresOC { get; set; }
+        public ObservableCollection<Reminder> Reminders { get; set; }
+        public ObservableCollection<Prescription> Prescriptions { get; set; }
+        public ObservableCollection<Appointment> SpecialAppointments { get; set; }
+        public ObservableCollection<Referral> Referrals { get; set; }
         CancellationTokenSource CancellationTokenSource { get; set; }
         CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
@@ -38,14 +43,22 @@ namespace Bolnica
 
         private void InstantiateLists()
         {
+            //PatientWindow patientWindow = new PatientWindow();
+            //patientWindow.Show();
+
+
+            LoginGrid.Visibility = Visibility.Visible;
             AppointmentsToSchedule = new ObservableCollection<Appointment>();
             ScheduledAppointments = new ObservableCollection<Appointment>();
             Reviews = new ObservableCollection<Review>();
+            Reminders = new ObservableCollection<Reminder>();
             CompletedAppointmentsNotReviewed = new ObservableCollection<Appointment>();
             ReSchAppointments = new ObservableCollection<Appointment>();
             Doctors = new ObservableCollection<Doctor>();
+            Prescriptions = new ObservableCollection<Prescription>();
+            Referrals = new ObservableCollection<Referral>();
+            SpecialAppointments = new ObservableCollection<Appointment>();
             Room = Map.RoomController.Get(1);
-            Patient = Map.PatientController.Get(1);
             ScoresOC = new ObservableCollection<string>();
 
             foreach (Doctor doctor in Map.DoctorController.GetAllBySpecialization(Enums.Specialization.NONE))
@@ -58,13 +71,39 @@ namespace Bolnica
                 ScoresOC.Add(i.ToString());
             }
         }
-        #region MainCanvasReg
 
-        private void SecretaryButton(object sender, RoutedEventArgs e)
+        #region MedicalRecordReg
+
+        private void addMedicalRecordData()
         {
-            //var s = new HospitalApp.Pages.Secretary();
-            //s.Show();
+            Prescriptions.Clear();
+            Referrals.Clear();
+            SpecialAppointments.Clear();
+
+            CurrentPatientAnamensis.Text = Patient.MedicalRecord.Anamnesis.Description;
+            PatientsSex.Text = Patient.User.Sex.ToString();
+            PatientsMaritalStatus.Text = Patient.User.MaritalStatus.ToString();
+
+
+            foreach (Appointment appointment in Map.AppointmentController.GetAllByPatientRefered(Patient.PatientId))
+            {
+                SpecialAppointments.Add(appointment);
+            }
+
+            foreach(Prescription prescription in Map.PrescriptionController.GetAllByPatientId(Patient.PatientId))
+            {
+                Prescriptions.Add(prescription);
+            }
+
+            foreach(Referral referal in Map.ReferralController.GetAllByPatientId(Patient.PatientId))
+            {
+                Referrals.Add(referal);
+            }
         }
+
+        #endregion
+
+        #region MainCanvasReg
 
         private void LoginButton(object sender, RoutedEventArgs e)
         {
@@ -74,10 +113,13 @@ namespace Bolnica
                 switch (registeredUser.UserType)
                 {
                     case Enums.UserType.PATIENT:
-                        MainCanvas.Visibility = Visibility.Hidden;
+                        Patient = Map.PatientController.GetPatientByUsername(registeredUser.Username);
                         LoginGrid.Visibility = Visibility.Hidden;
                         PatientSchedulingCanvas.Visibility = Visibility.Visible;
+                        //PatientWindow patientWindow = new PatientWindow();
+                        //patientWindow.Show();
                         new NotificationService().StartTimer(cancellationToken);
+                        ScheduleReminders();
                         break;
                     case Enums.UserType.DOCTOR:
                         ActiveDoctor = Map.DoctorController.GetByUsername(registeredUser.Username);
@@ -89,7 +131,6 @@ namespace Bolnica
 
                 }
                 LoginGrid.Visibility = Visibility.Hidden;
-                MainCanvas.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -97,14 +138,13 @@ namespace Bolnica
             }
 
         }
-        private void PatientButton(object sender, RoutedEventArgs e)
+
+        private void ScheduleReminders()
         {
-            MainCanvas.Visibility = Visibility.Hidden;
-            this.LoginGrid.Visibility = Visibility.Hidden;
-            PatientSchedulingCanvas.Visibility = Visibility.Visible;
-            
-            new NotificationService().StartTimer(cancellationToken);
-            
+            foreach(Reminder reminder in Map.ReminderController.GetAllByPatientId(Patient.PatientId))
+            {
+                Map.ReminderSchedulingService.ScheduleReminder(reminder);
+            }
         }
         #endregion
 
@@ -116,15 +156,19 @@ namespace Bolnica
 
         private void ScheduleAppointments(object sender, RoutedEventArgs e)
         {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
             this.PatientSchedulingTime.Visibility = Visibility.Visible;
             this.PatientReviews.Visibility = Visibility.Hidden;
+            this.RemindersGrid.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Hidden;
         }
 
         private void ViewScheduledAppointments(object sender, RoutedEventArgs e)
         {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
             this.PatientSchedulingTime.Visibility = Visibility.Hidden;
             this.PatientReviews.Visibility = Visibility.Hidden;
+            this.RemindersGrid.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Visible;
             addPatientScheduledAppointments();
         }
@@ -140,12 +184,36 @@ namespace Bolnica
 
         private void OpenReviews(object sender, RoutedEventArgs e)
         {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
             this.PatientSchedulingTime.Visibility = Visibility.Hidden;
             this.PatientListAppointments.Visibility = Visibility.Hidden;
+            this.RemindersGrid.Visibility = Visibility.Hidden;
             this.PatientReviews.Visibility = Visibility.Visible;
             ShowReviewsAndAppointments();
 
         }
+        private void ViewReminders(object sender, RoutedEventArgs e)
+        {
+            this.MedicalRecordView.Visibility = Visibility.Hidden;
+            this.PatientSchedulingTime.Visibility = Visibility.Hidden;
+            this.PatientListAppointments.Visibility = Visibility.Hidden;
+            this.PatientReviews.Visibility = Visibility.Hidden;
+            this.RemindersGrid.Visibility = Visibility.Visible;
+
+            ListReminders();
+        }
+
+        private void OpenMedicalRecords(object sender, RoutedEventArgs e)
+        {
+            this.PatientSchedulingTime.Visibility = Visibility.Hidden;
+            this.PatientListAppointments.Visibility = Visibility.Hidden;
+            this.PatientReviews.Visibility = Visibility.Hidden;
+            this.RemindersGrid.Visibility = Visibility.Hidden;
+            this.MedicalRecordView.Visibility = Visibility.Visible;
+            
+            addMedicalRecordData();
+        }
+
         #endregion
 
         #region ReviewRegion
@@ -199,6 +267,50 @@ namespace Bolnica
                 Map.ReviewController.Update(review);
             }
         }
+        #endregion
+
+        #region RemindersReg
+
+        private void SubmitReminder(object sender, RoutedEventArgs e)
+        {
+            if(RemindersList.SelectedItem == null)
+            {
+                var RemindersTime = DateTime.Parse(DateTime.Now.Date.ToString().Split(' ')[0] + " " + ReminderTimePicker.Text);
+                Map.ReminderController.Create(new Reminder(ReminderName.Text, RemindersTime, Int16.Parse(ReminderInterval.Text), ReminderPeriod.SelectedDate.Value, ReminderDescription.Text,Patient));
+            }
+            else
+            {
+                Reminder reminder = RemindersList.SelectedItem as Reminder;
+                var RemindersTime = DateTime.Parse(DateTime.Now.Date.ToString().Split(' ')[0] + " " + ReminderTimePicker.Text);
+                reminder.Name = ReminderName.Text;
+                reminder.StartTime = RemindersTime;
+                reminder.TimeInterval = Int16.Parse(ReminderInterval.Text);
+                reminder.Description = ReminderDescription.Text;
+                Map.ReminderController.Update(reminder);
+
+            }
+            ListReminders();
+        }
+
+        private void DeleteReminder(object sender, RoutedEventArgs e)
+        {
+            if (RemindersList.SelectedItem != null)
+            {
+                Map.ReminderController.Delete((RemindersList.SelectedItem as Reminder).ReminderId);    
+            }
+            ListReminders();
+        }
+
+        private void ListReminders()
+        {
+            Reminders.Clear();
+
+            foreach (Reminder reminder in Map.ReminderController.GetAllByPatientId(Patient.PatientId))
+            {
+                Reminders.Add(reminder);
+            }
+        }
+
         #endregion
 
         #region ScheduleAppointmentReg
@@ -300,5 +412,6 @@ namespace Bolnica
             }    
         }
         #endregion
+
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32.TaskScheduler;
 
 
 public static class Map
@@ -28,6 +29,9 @@ public static class Map
     public static LoginController LoginController { get; set; }
     public static HospitalTreatmentController HospitalTreatmentController { get; set; }
     public static PatientAllergiesController PatientAllergiesController { get; set; }
+    public static ReminderController ReminderController { get; set; }
+    public static ReferralController ReferralController { get; set; }
+
 
     #endregion
 
@@ -51,6 +55,10 @@ public static class Map
     public static IHospitalTreatmentService HospitalTreatmentService { get; set; }
     public static IPatientAllergiesService PatientAllergiesService { get; set; }
 
+    public static IReminderService ReminderService { get; set; }
+    public static IReminderSchedulingService ReminderSchedulingService { get; set; }
+    public static TaskService TaskService { get; set; }
+    public static IReferralService ReferralService { get; set; }
     #endregion
 
     #region Repositories
@@ -71,6 +79,10 @@ public static class Map
     public static IHospitalTreatmentRepository HospitalTreatmentRepository { get; set; }
     public static IPatientAllergiesRepository PatientAllergiesRepository { get; set; }
 
+    public static IReminderRepository ReminderRepository { get; set; }
+    public static IReferralRepository ReferralRepository { get; set; }
+    
+
     #endregion
     public static void Instantiate()
     {
@@ -89,6 +101,8 @@ public static class Map
         StaticInventoryRepository = new StaticInventoryRepository();
         HospitalTreatmentRepository = new HospitalTreatmentRepository();
         PatientAllergiesRepository = new PatientAllergiesRepository();
+        ReminderRepository = new ReminderRepository();
+        ReferralRepository = new ReferralRepository();
 
         AnamnesisService = new AnamnesisService(AnamnesisRepository);
         AppointmentService = new AppointmentService(AppointmentRepository);
@@ -107,6 +121,10 @@ public static class Map
         LoginService = new LoginService();
         HospitalTreatmentService = new HospitalTreatmentService(HospitalTreatmentRepository);
         PatientAllergiesService = new PatientAllergiesService(PatientAllergiesRepository);
+        ReminderService = new ReminderService(ReminderRepository);
+        ReminderSchedulingService = new ReminderSchedulingService();
+        TaskService = new TaskService();
+        ReferralService = new ReferralService(ReferralRepository);
 
         AnamnesisController = new AnamnesisController(AnamnesisService);
         AppointmentController = new AppointmentController(AppointmentService);
@@ -124,6 +142,8 @@ public static class Map
         LoginController = new LoginController(LoginService);
         HospitalTreatmentController = new HospitalTreatmentController(HospitalTreatmentService);
         PatientAllergiesController = new PatientAllergiesController(PatientAllergiesService);
+        ReminderController = new ReminderController(ReminderService);
+        ReferralController = new ReferralController(ReferralService);
 
     }
 

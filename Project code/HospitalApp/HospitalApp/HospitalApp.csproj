@@ -44,9 +44,14 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.9.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
+      <HintPath>..\packages\TaskScheduler.2.9.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -165,7 +170,6 @@
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\GuestPatientRepository.cs" />
     <Compile Include="Controller\RegisteredUserController.cs" />
-    <Compile Include="Repository\GuestPatientContextDB.cs" />
     <Compile Include="Repository\IAnamnesisRepository.cs" />
     <Compile Include="Repository\IAppointmentRepository.cs" />
     <Compile Include="Repository\IDoctorRepository.cs" />
@@ -187,8 +191,9 @@
     <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\PrescriptionRepository.cs" />
     <Compile Include="Repository\RoomRepository.cs" />
+    <Compile Include="Service\ReminderSchedulingService.cs" />
+    <Compile Include="Service\ReminderService.cs" />
     <Compile Include="Service\SchedulingService.cs" />
-    <Compile Include="Repository\ISecretaryRepository.cs" />
     <Compile Include="Repository\RegisteredUserRepository.cs" />
     <Compile Include="Service\ILoginService.cs" />
     <Compile Include="Service\LoginService.cs" />
@@ -221,8 +226,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums.cs" />
-    <Compile Include="Functionalities\AppointmentManager.cs" />
-    <Compile Include="Functionalities\PatientAccountManager.cs" />
     <Compile Include="Repository\HospitalDB.cs" />
     <Compile Include="Repository\IHospitalDB.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -279,7 +282,7 @@
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Prescription.cs" />
     <Compile Include="Model\Question.cs" />
-    <Compile Include="Model\Referal.cs" />
+    <Compile Include="Model\Referral.cs" />
     <Compile Include="Model\RegisteredUser.cs" />
     <Compile Include="Model\Reminder.cs" />
     <Compile Include="Model\Review.cs" />

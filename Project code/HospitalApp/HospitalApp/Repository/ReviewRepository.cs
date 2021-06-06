@@ -96,8 +96,6 @@ namespace HospitalApp.Repository
             try
             {//we don't want to change appointment, it's unnecessary and should stay fixed, same applies to ReviewType
                 Review updatedReview = HospitalDB.Instance.Reviews.Find(review.ReviewId);
-                updatedReview.Score = review.Score;
-                updatedReview.Comment = review.Comment;
                 //updatedReview.Appointment = review.Appointment;
                 HospitalDB.Instance.SaveChanges();
             }
