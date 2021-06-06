@@ -51,8 +51,8 @@ namespace HospitalApp.Pages
                 else
                 {
                     Prescription newPrescription = new Prescription();
-                    Drug newMedicine = Map.DrugController.GetByName(Medicine.Text);
-                    newMedicine.Name = Medicine.Text;
+                    Drug newMedicine = Map.DrugController.GetByName(drug);
+                    newMedicine.Name = drug;
                     newPrescription.Drug = newMedicine;
                     newPrescription.Dosage = int.Parse(Dosage.Text);
                     newPrescription.Usage = Usage.Text;

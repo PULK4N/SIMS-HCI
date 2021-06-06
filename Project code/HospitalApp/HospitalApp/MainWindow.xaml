@@ -28,7 +28,7 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="RemindersGrid" Visibility="Visible">
+        <Grid x:Name="RemindersGrid" Visibility="Hidden">
             <DataGrid x:Name="RemindersList" AutoGenerateColumns="False" ItemsSource="{Binding Reminders}"
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Left" 
                   Height="234" VerticalAlignment="Top"  Canvas.Left="376" Canvas.Top="52" Margin="40,59,0,0" Width="310">

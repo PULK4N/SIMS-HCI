@@ -54,7 +54,6 @@ public static class Map
     public static ILoginService LoginService { get; set; }
     public static IHospitalTreatmentService HospitalTreatmentService { get; set; }
     public static IPatientAllergiesService PatientAllergiesService { get; set; }
-
     public static IReminderService ReminderService { get; set; }
     public static IReminderSchedulingService ReminderSchedulingService { get; set; }
     public static TaskService TaskService { get; set; }
@@ -78,7 +77,6 @@ public static class Map
     public static IStaticInventoryRepository StaticInventoryRepository { get; set; }
     public static IHospitalTreatmentRepository HospitalTreatmentRepository { get; set; }
     public static IPatientAllergiesRepository PatientAllergiesRepository { get; set; }
-
     public static IReminderRepository ReminderRepository { get; set; }
     public static IReferralRepository ReferralRepository { get; set; }
     

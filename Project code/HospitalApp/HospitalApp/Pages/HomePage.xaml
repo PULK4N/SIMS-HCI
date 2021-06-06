@@ -14,6 +14,10 @@
         <Image Margin="613,78,250,498" Source="output-onlinepngtools8.png" Stretch="Fill"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" FontWeight="Thin" Text="Home Page" Foreground="#FF343434"/>
         <TextBlock HorizontalAlignment="Left" Margin="44,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="88" FontWeight="Thin" Text="Welcome" Foreground="#FF535353" Height="102" Width="443"/>
+        <TextBlock HorizontalAlignment="Left" Margin="74,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontWeight="Thin" Text="Reminders:" Foreground="#FF535353" Height="68" Width="242"/>
+        <TextBlock HorizontalAlignment="Left" Margin="107,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Thin" Foreground="Black" Height="297" Width="582"><Run Text="Drug Validation - No drugs to validate at current time"/><LineBreak/><Run FontSize="8" Text=""/><LineBreak/><Run Text="Monthly Report - "/></TextBlock>
+        <TextBlock Name="NotYetSubmitted" HorizontalAlignment="Left" Margin="259,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Thin" Foreground="#FFCD1010"><Run Text="Not yet "/><Run Text="submitted"/></TextBlock>
+        <TextBlock Name="Submitted" Visibility="Hidden" HorizontalAlignment="Left" Margin="259,382,0,0" TextWrapping="Wrap" Text="Submitted" VerticalAlignment="Top" FontSize="20" FontWeight="Thin"/>
 
     </Grid>
 </Page>

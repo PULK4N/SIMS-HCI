@@ -20,9 +20,14 @@ namespace HospitalApp.Pages
     /// </summary>
     public partial class HomePage : Page
     {
-        public HomePage()
+        public HomePage(bool isReportSubmitted)
         {
             InitializeComponent();
+            if (isReportSubmitted)
+            {
+                Submitted.Visibility = Visibility.Visible;
+                NotYetSubmitted.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

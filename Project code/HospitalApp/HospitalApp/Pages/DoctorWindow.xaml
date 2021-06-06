@@ -77,8 +77,8 @@
                 <Image Source="output-onlinepngtools7.png" Stretch="Fill" Height="39" Width="39" HorizontalAlignment="Right" Margin="30,0,0,0"/>
             </StackPanel>
         </Button>
-        <Label Name="LiveTimeLabel" Content="%TIME%" HorizontalAlignment="Left" Margin="362,708,0,0" VerticalAlignment="Top" Height="30" Width="90" FontSize="16" FontWeight="Thin" Foreground="#FF343434" Grid.Column="1" />
-        <Label Content="07.06.2021." HorizontalAlignment="Left" Margin="478,708,0,0" VerticalAlignment="Top" Height="30" Width="80" FontSize="16" FontWeight="Thin" Foreground="#FF343434" Grid.Column="1" />
+        <Label Name="LiveTimeLabel" Content="%TIME%" HorizontalAlignment="Left" Margin="362,708,0,0" VerticalAlignment="Top" Height="30" Width="90" FontSize="18" FontWeight="Thin" Foreground="#FF343434" Grid.Column="1" />
+        <Label Content="07.06.2021." HorizontalAlignment="Left" Margin="468,708,0,0" VerticalAlignment="Top" Height="30" Width="93" FontSize="18" FontWeight="Thin" Foreground="#FF343434" Grid.Column="1" HorizontalContentAlignment="Right" />
         <Button Grid.Column="1" HorizontalAlignment="Left" Margin="364,613,0,0" VerticalAlignment="Top" Width="193" Height="72" Background="#FFFFFFE1" BorderBrush="#FF3EAF76" OpacityMask="#FF0078D7" FontSize="16" FontWeight="Thin" Click="Button_Click_1">
             <StackPanel Orientation="Horizontal" Width="189" VerticalAlignment="Center">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="79,0,0,0" Text="Help" Height="22" Padding="0"/>
