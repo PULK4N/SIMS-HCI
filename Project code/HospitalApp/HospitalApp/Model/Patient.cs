@@ -30,7 +30,9 @@ namespace HospitalApp.Model
 
         [Key]
         public long PatientId { get; set; }
+
         public int SchedulingAttempts { get; set; }
+        public string alergies { get; set; }
 
         public List<Appointment> appointments;
         public MedicalRecord MedicalRecord { get; set; }
@@ -84,6 +86,9 @@ namespace HospitalApp.Model
                 appointments.Clear();
         }
 
-
+        public override string ToString()
+        {
+            return User.FirstName + " " + User.LastName;
+        }
     }
 }

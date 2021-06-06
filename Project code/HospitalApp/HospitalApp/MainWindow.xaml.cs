@@ -24,6 +24,7 @@ namespace Bolnica
         CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
         public Room Room { get; set; }
+        public Doctor ActiveDoctor { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -58,11 +59,6 @@ namespace Bolnica
             }
         }
         #region MainCanvasReg
-        private void DoctorButton(object sender, RoutedEventArgs e)
-        {
-            var s = new DoctorWindow();
-            s.Show();
-        }
 
         private void SecretaryButton(object sender, RoutedEventArgs e)
         {
@@ -81,11 +77,14 @@ namespace Bolnica
                         MainCanvas.Visibility = Visibility.Hidden;
                         LoginGrid.Visibility = Visibility.Hidden;
                         PatientSchedulingCanvas.Visibility = Visibility.Visible;
-                        new NotificationManager().StartTimer(cancellationToken);
+                        new NotificationService().StartTimer(cancellationToken);
                         break;
                     case Enums.UserType.DOCTOR:
-                        var s = new DoctorWindow();
+                        ActiveDoctor = Map.DoctorController.GetByUsername(registeredUser.Username);
+                        long docId = ActiveDoctor.DoctorId;
+                        var s = new DoctorWindow(docId);
                         s.Show();
+                        this.Close();
                         break;
 
                 }

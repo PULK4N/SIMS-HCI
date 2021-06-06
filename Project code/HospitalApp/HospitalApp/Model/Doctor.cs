@@ -111,5 +111,9 @@ namespace HospitalApp.Model
                 appointment.Clear();
         }
 
+        public override string ToString()
+        {
+            return Employee.User.FirstName + ' ' + Employee.User.LastName;
+        }
     }
 }

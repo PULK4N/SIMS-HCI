@@ -14,6 +14,7 @@ public static class Map
     #region controllers
     public static AnamnesisController AnamnesisController { get; set; }
     public static AppointmentController AppointmentController { get; set; }
+    public static BedController BedController { get; set; }
     public static DoctorController DoctorController { get; set; }
     public static GuestPatientController GuestPatientController { get; set; }
     public static MedicalRecordController MedicalRecordController { get; set; }
@@ -23,7 +24,10 @@ public static class Map
     public static RoomController RoomController { get; set; }
     public static ReviewController ReviewController { get; set; }
     public static RegisteredUserController RegisteredUserController { get; set; }
+    public static StaticInventoryController StaticInventoryController { get; set; }
     public static LoginController LoginController { get; set; }
+    public static HospitalTreatmentController HospitalTreatmentController { get; set; }
+    public static PatientAllergiesController PatientAllergiesController { get; set; }
 
     #endregion
 
@@ -31,6 +35,7 @@ public static class Map
 
     public static IAnamnesisService AnamnesisService { get; set; }
     public static IAppointmentService AppointmentService { get; set; }
+    public static IBedService BedService { get; set; }
     public static IDoctorService DoctorService { get; set; }
     public static IGuestPatientService GuestPatientService { get; set; }
     public static IMedicalRecordService MedicalRecordService { get; set; }
@@ -41,8 +46,10 @@ public static class Map
     public static IReviewService ReviewService { get; set; }
     public static ISchedulingService SchedulingService { get; private set; }
     public static IRegisteredUserService RegisteredUserService { get; set; }
+    public static IStaticInventoryService StaticInventoryService { get; set; }
     public static ILoginService LoginService { get; set; }
-
+    public static IHospitalTreatmentService HospitalTreatmentService { get; set; }
+    public static IPatientAllergiesService PatientAllergiesService { get; set; }
 
     #endregion
 
@@ -50,6 +57,7 @@ public static class Map
 
     public static IAnamnesisRepository AnamnesisRepository { get; set; }
     public static IAppointmentRepository AppointmentRepository { get; set; }
+    public static IBedRepository BedRepository { get; set; }
     public static IDoctorRepository DoctorRepository { get; set; }
     public static IGuestPatientRepository GuestPatientRepository { get; set; }
     public static IMedicalRecordRepository MedicalRecordRepository { get; set; }
@@ -59,25 +67,33 @@ public static class Map
     public static IRoomRepository RoomRepository { get; set; }
     public static IReviewRepository ReviewRepository { get; set; }
     public static IRegisteredUserRepository RegisteredUserRepository { get; set; }
+    public static IStaticInventoryRepository StaticInventoryRepository { get; set; }
+    public static IHospitalTreatmentRepository HospitalTreatmentRepository { get; set; }
+    public static IPatientAllergiesRepository PatientAllergiesRepository { get; set; }
 
     #endregion
     public static void Instantiate()
     {
         AnamnesisRepository = new AnamnesisRepository();
         AppointmentRepository = new AppointmentRepository();
+        BedRepository = new BedRepository();
         DoctorRepository = new DoctorRepository();
         GuestPatientRepository = new GuestPatientRepository();
         MedicalRecordRepository = new MedicalRecordRepository();
         DrugRepository = new DrugRepository();
-        PatientRepository = new PatientContextDB();
-        PrescriptionRepository = new PrescriptionContextDB();
-        RoomRepository = new RoomContextDB();
-        ReviewRepository = new ReviewContextDB();
+        PatientRepository = new PatientRepository();
+        PrescriptionRepository = new PrescriptionRepository();
+        RoomRepository = new RoomRepository();
+        ReviewRepository = new ReviewRepository();
         RegisteredUserRepository = new RegisteredUserRepository();
+        StaticInventoryRepository = new StaticInventoryRepository();
+        HospitalTreatmentRepository = new HospitalTreatmentRepository();
+        PatientAllergiesRepository = new PatientAllergiesRepository();
 
         AnamnesisService = new AnamnesisService(AnamnesisRepository);
         AppointmentService = new AppointmentService(AppointmentRepository);
         DoctorService = new DoctorService(DoctorRepository);
+        BedService = new BedService(BedRepository);
         GuestPatientService = new GuestPatientService(GuestPatientRepository);
         MedicalRecordService = new MedicalRecordService(MedicalRecordRepository);
         DrugService = new DrugService(DrugRepository);
@@ -87,10 +103,14 @@ public static class Map
         ReviewService = new ReviewService(ReviewRepository);
         SchedulingService = new SchedulingService();
         RegisteredUserService = new RegisteredUserService(RegisteredUserRepository);
+        StaticInventoryService = new StaticInventoryService(StaticInventoryRepository);
         LoginService = new LoginService();
+        HospitalTreatmentService = new HospitalTreatmentService(HospitalTreatmentRepository);
+        PatientAllergiesService = new PatientAllergiesService(PatientAllergiesRepository);
 
         AnamnesisController = new AnamnesisController(AnamnesisService);
         AppointmentController = new AppointmentController(AppointmentService);
+        BedController = new BedController(BedService);
         DoctorController = new DoctorController(DoctorService);
         GuestPatientController = new GuestPatientController(GuestPatientService);
         MedicalRecordController = new MedicalRecordController(MedicalRecordService);
@@ -100,7 +120,10 @@ public static class Map
         RoomController = new RoomController(RoomService);
         ReviewController = new ReviewController(ReviewService);
         RegisteredUserController = new RegisteredUserController(RegisteredUserService);
+        StaticInventoryController = new StaticInventoryController(StaticInventoryService);
         LoginController = new LoginController(LoginService);
+        HospitalTreatmentController = new HospitalTreatmentController(HospitalTreatmentService);
+        PatientAllergiesController = new PatientAllergiesController(PatientAllergiesService);
 
     }
 

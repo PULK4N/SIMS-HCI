@@ -18,17 +18,21 @@ namespace HospitalApp.Repository
         #region DbSets
         private static HospitalDB instance = null;
         private static readonly object padlock = new object();
+        public DbSet<Allergies> Allergies { get; set; }
         public DbSet<Anamnesis> Anamnesis { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Bed> Bed { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<DoctorsReferral> DoctorsReferrals { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<GuestPatient> GuestPatients { get; set; }
+        public DbSet<HospitalTreatment> HospitalTreatments { get; set; }
         public DbSet<HospitalClinic> HospitalClinics { get; set; }
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
         public DbSet<Drug> Drugs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Patient> Patients { get; set; }
+        public DbSet<PatientAllergies> PatientsAllergies { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Referal> Referals { get; set; }
@@ -38,6 +42,7 @@ namespace HospitalApp.Repository
         public DbSet<Room> Rooms { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Secretary> Secretaries { get; set; }
+        public DbSet<StaticInventory> StaticInventories { get; set; }
         public static HospitalDB Instance
         {
             get

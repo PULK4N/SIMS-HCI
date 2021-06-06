@@ -27,8 +27,6 @@ namespace HospitalApp.Model
             Room = room;
         }
 
-
-
         [Key]
         public long AppointmentId { get; set; }
         public DateTime Beginning { get; set; }

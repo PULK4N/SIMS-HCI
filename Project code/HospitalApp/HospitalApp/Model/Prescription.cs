@@ -17,13 +17,17 @@ namespace HospitalApp.Model
         public string Usage { get; set; }
         public string Period { get; set; }
         public DateTime Date { get; set; }
-
         public Drug Drug { get; set; }
+        public Doctor Doctor { get; set; }
+        public DateTime HandoutDate { get; set; }
 
 
-        public Prescription() { }
+        public Prescription()
+        {
+            HandoutDate = DateTime.Now;
+        }
 
-        public Prescription(/*long prescriptionId,*/ int dosage, string usage, string period, DateTime date, Drug drug)
+        public Prescription(/*long prescriptionId,*/ int dosage, string usage, string period, DateTime date, Drug drug, Doctor doctor)
         {
             //PrescriptionId = prescriptionId;
             Dosage = dosage;
@@ -31,6 +35,8 @@ namespace HospitalApp.Model
             Period = period;
             Date = date;
             Drug = drug;
+            Doctor = doctor;
+            HandoutDate = DateTime.Now;
         }
     }
 }

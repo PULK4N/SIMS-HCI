@@ -63,6 +63,9 @@ namespace HospitalApp.Model
                 appointment.Clear();
         }
 
-
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalApp.Model;
+using System;
 
 public class RegisteredUserController
 {

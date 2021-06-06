@@ -92,11 +92,11 @@ namespace HospitalApp.Repository
             List<Appointment> appointments = (from app in HospitalDB.Instance.Appointments where app.Doctor.DoctorId == doctorId select app)
                 .Include(a => a.Room)
                 .Include(a => a.Patient)
-                    .Include(a => a.Patient.User)
-                    .Include(a => a.Patient.User.RegisteredUser)
-                    .Include(a => a.Patient.MedicalRecord)
-                    .Include(a => a.Patient.MedicalRecord.Anamnesis)
-                    .Include(a => a.Patient.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug)).ToList();
+                .Include(a => a.Patient.User)
+                .Include(a => a.Patient.User.RegisteredUser)
+                .Include(a => a.Patient.MedicalRecord)
+                .Include(a => a.Patient.MedicalRecord.Anamnesis)
+                .Include(a => a.Patient.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug)).ToList();
             return appointments;
         }
 

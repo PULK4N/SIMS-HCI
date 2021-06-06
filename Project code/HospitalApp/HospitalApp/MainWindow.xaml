@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Rectangle Fill="#FFE5FFE5"/>
         <Grid x:Name="LoginGrid">
             <Grid VerticalAlignment="Center" Height="240" HorizontalAlignment="Center"  >
                 <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" RadiusY="10" RadiusX="0" Fill="White">
@@ -27,7 +28,6 @@
             </Grid>
         </Grid>
         <Canvas x:Name="MainCanvas" Margin="0,0,-0.4,0" Visibility="Hidden" IsEnabled="False">
-            <Button Content="Doctor" HorizontalAlignment="Left" Margin="269,374,0,0" VerticalAlignment="Top" Width="75" Click="DoctorButton" Height="19"/>
             <Button Content="Patient" HorizontalAlignment="Left" Margin="505,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.816,-0.013" Click="PatientButton" Height="19"/>
             <Button Content="Secretary" HorizontalAlignment="Left" Margin="377,374,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="SecretaryButton" Height="19"/>
         </Canvas>

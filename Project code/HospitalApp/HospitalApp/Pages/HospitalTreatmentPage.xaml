@@ -1,0 +1,36 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HospitalApp.Pages"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="HospitalApp.Pages.HospitalTreatmentPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="737" d:DesignWidth="1024"
+      Title="HospitalTreatmentPage">
+
+    <Grid>
+        <Rectangle Fill="#F0FFF0" HorizontalAlignment="Left" Height="417" Margin="50,130,0,0" Stroke="#CCFFCC" StrokeThickness="3" VerticalAlignment="Top" Width="715"/>
+        <DatePicker Name="BeginDate" HorizontalAlignment="Left" Margin="202,371,0,0" VerticalAlignment="Top" Width="233" Background="White" BorderBrush="#FF3EAF76"/>
+        <DatePicker Name="EndDate" HorizontalAlignment="Left" Margin="202,400,0,0" VerticalAlignment="Top" Width="233" Background="White" BorderBrush="#FF3EAF76"/>
+        <ComboBox Name="RoomsView" ItemsSource="{Binding TreatmentRoomsView}" HorizontalAlignment="Left" Margin="202,429,0,0" VerticalAlignment="Top" Width="233" Height="30" SelectionChanged="RoomsView_SelectionChanged" Background="White" BorderBrush="#FF3EAF76"/>
+        <ComboBox Name="BedsView" ItemsSource="{Binding BedsFromRoomView}" HorizontalAlignment="Left" Margin="202,464,0,0" VerticalAlignment="Top" Width="233" Height="30" Background="White" BorderBrush="#FF3EAF76"/>
+        <TextBox Name="BeginInfo" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="202,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" VerticalContentAlignment="Center" Background="White" BorderBrush="#FF3EAF76"/>
+        <TextBox Name="EndInfo" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="202,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" VerticalContentAlignment="Center" Background="White" BorderBrush="#FF3EAF76"/>
+        <TextBox Name="RoomInfo" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="202,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" VerticalContentAlignment="Center" Background="White" BorderBrush="#FF3EAF76"/>
+        <TextBox Name="BedInfo" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="202,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="233" VerticalContentAlignment="Center" Background="White" BorderBrush="#FF3EAF76"/>
+        <Button Content="Extend treatment" Name="ExtendTreatmentButton" HorizontalAlignment="Left" Margin="459,258,0,0" VerticalAlignment="Top" Width="206" Height="56" Background="White" BorderBrush="#FF3EAF76" Click="ExtendTreatment_Click"/>
+        <Button Content="Schedule treatment" Name="ScheduleButton" HorizontalAlignment="Left" Margin="459,440,0,0" VerticalAlignment="Top" Width="206" Height="54" Click="ScheduleTreatment_Click" Background="#FFCCFFCC" BorderBrush="#FF3EAF76"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,186,0,0" TextWrapping="Wrap" Text="Begin date:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,221,0,0" TextWrapping="Wrap" Text="End date:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,256,0,0" TextWrapping="Wrap" Text="Room:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,291,0,0" TextWrapping="Wrap" Text="Bed:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,374,0,0" TextWrapping="Wrap" Text="Begin date:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,404,0,0" TextWrapping="Wrap" Text="End date:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,436,0,0" TextWrapping="Wrap" Text="Room:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,471,0,0" TextWrapping="Wrap" Text="Bed:" VerticalAlignment="Top" Width="119" TextAlignment="Right"/>
+        <TextBlock HorizontalAlignment="Left" Margin="459,195,0,0" TextWrapping="Wrap" Text="Choose a new end date:" VerticalAlignment="Top" Width="170"/>
+        <DatePicker Name="NewEndDatePicker" HorizontalAlignment="Left" Margin="459,219,0,0" VerticalAlignment="Top" Width="206" Background="White" BorderBrush="#FF3EAF76"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" FontWeight="Thin" Text="Hospital Treatment" Foreground="#FF343434"/>
+    </Grid>
+</Page>

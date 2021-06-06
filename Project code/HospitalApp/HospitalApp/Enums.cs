@@ -33,6 +33,12 @@ namespace Enums{
         DATE_TIME
     }
 
+    public enum ReferalSchedulingPriority
+    {
+        SPECIFIC_DOCTOR,
+        SPECIALIST
+    }
+
     public enum Sex
     {
         MAN,
@@ -83,6 +89,15 @@ namespace Enums{
     {
         DOCTOR,
         CLINIC
+    }
+
+    public enum HospitalTreatmentStatus
+    {
+        PENDING,
+        ACTIVE,
+        COMPLETED,
+        CANCELED,
+        REVIEWED
     }
 
 }

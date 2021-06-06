@@ -2,6 +2,7 @@ using HospitalApp.Model;
 using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HospitalApp.Controller
 {
@@ -39,5 +40,9 @@ namespace HospitalApp.Controller
             return _roomService.GetAll();
         }
 
+        public List<Room> GetAllAvailableForTreatment()
+        {
+            return _roomService.GetAllAvailableForTreatment();
+        }
     }
 }

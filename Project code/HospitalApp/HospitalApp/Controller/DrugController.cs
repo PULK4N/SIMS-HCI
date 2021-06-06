@@ -49,5 +49,24 @@ namespace HospitalApp.Controller
             return _drugService.GetAll();
         }
 
+        public List<Drug> GetDrugsForApproval()
+        {
+            return _drugService.GetDrugsForApproval();
+        }
+
+        public bool ApproveDrug(Drug drug)
+        {
+            return _drugService.ApproveDrug(drug);
+        }
+
+        public bool RejectDrug(Drug drug)
+        {
+            return _drugService.RejectDrug(drug);
+        }
+        
+        public Drug GetByName(string name)
+        {
+            return _drugService.GetByName(name);
+        }
     }
 }

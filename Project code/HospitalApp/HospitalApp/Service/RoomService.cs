@@ -8,6 +8,7 @@ using HospitalApp.Model;
 using HospitalApp.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HospitalApp.Service
 {
@@ -46,6 +47,16 @@ namespace HospitalApp.Service
             _roomRepository.Update(room);
         }
 
-
+        public List<Room> GetAllAvailableForTreatment()
+        {
+            List<Bed> AllBeds = (from r in HospitalDB.Instance.Bed where r.IsAvailable select r).ToList();
+            List<Room> filteredRooms = new List<Room>();
+            foreach(Bed b in AllBeds)
+            {
+                if (!filteredRooms.Contains(_roomRepository.Get(b.RoomId))) 
+                    filteredRooms.Add(_roomRepository.Get(b.RoomId));
+            }
+            return filteredRooms;
+        }
     }
 }

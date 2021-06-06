@@ -13,6 +13,6 @@ namespace HospitalApp.Repository
     {
 
         List<Drug> GetAllByPatient(Patient patient);
-
+        Drug GetByName(string name);
     }
 }

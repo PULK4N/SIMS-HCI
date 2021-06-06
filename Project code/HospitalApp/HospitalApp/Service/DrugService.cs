@@ -47,5 +47,51 @@ namespace HospitalApp.Service
         {
             _drugRepository.Update(drug);
         }
+
+        public List<Drug> GetDrugsForApproval()
+        {
+            List<Drug> allDrugs = _drugRepository.GetAll();
+            return GetPendingDrugs(allDrugs);
+        }
+
+        private static List<Drug> GetPendingDrugs(List<Drug> allDrugs)
+        {
+            List<Drug> drugsForApproval = new List<Drug>();
+            foreach (Drug d in allDrugs)
+            {
+                if (d.DrugStatus.Equals(Enums.DrugStatus.PENDING))
+                    drugsForApproval.Add(d);
+            }
+            return drugsForApproval;
+        }
+
+        public bool ApproveDrug(Drug drug)
+        {
+            Drug selectedDrug = _drugRepository.Get(drug.DrugId);
+            if (selectedDrug != null)
+            {
+                selectedDrug.DrugStatus = Enums.DrugStatus.APPROVED; //izvuci u f-ju
+                HospitalDB.Instance.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool RejectDrug(Drug drug)
+        {
+            Drug selectedDrug = _drugRepository.Get(drug.DrugId);
+            if (selectedDrug != null)
+            {
+                selectedDrug.DrugStatus = Enums.DrugStatus.REJECTED; //izvuci u f-ju
+                HospitalDB.Instance.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public Drug GetByName(string name)
+        {
+            return _drugRepository.GetByName(name);
+        }
     }
 }

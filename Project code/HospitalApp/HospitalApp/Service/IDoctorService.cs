@@ -12,5 +12,6 @@ namespace HospitalApp.Service
     public interface IDoctorService : IEntityService<Doctor>
     {
         List<Doctor> GetAllBySpecialization(Enums.Specialization specialization);
+        Doctor GetByUsername(string Username);
     }
 }

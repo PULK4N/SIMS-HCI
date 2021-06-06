@@ -11,8 +11,10 @@ namespace HospitalApp.Service
 {
     public interface IDrugService : IEntityService<Drug>
     {
-
         List<Drug> GetAllByPatient(Patient patient);
-
+        List<Drug> GetDrugsForApproval();
+        bool ApproveDrug(Drug drug);
+        bool RejectDrug(Drug drug);
+        Drug GetByName(string name);
     }
 }

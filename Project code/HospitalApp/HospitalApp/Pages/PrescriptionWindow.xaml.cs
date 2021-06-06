@@ -21,22 +21,38 @@ using System.Windows.Shapes;
 public partial class PrescriptionWindow : Window
 {
     private PrescriptionController _prescriptionController;
-    public PrescriptionWindow()
+    public Patient thisPatient { get; set; }
+    public PrescriptionWindow(Patient patient)
     {
         InitializeComponent();
-
+        thisPatient = patient;
     }
 
     private void CreatePrescriptionButton_Click(object sender, RoutedEventArgs e)
     {
-        Prescription newPrescription = new Prescription();
-        Drug newMedicine = new Drug();
-        newMedicine.Name = Medicine.Text;
-        newPrescription.Drug = newMedicine;
-        newPrescription.Dosage = int.Parse(Dosage.Text);
-        newPrescription.Usage = Usage.Text;
-        newPrescription.Date = SelectPrescriptionTime.Value.Value;
-        newPrescription.Period = Period.Text;
-        Map.PrescriptionController.Create(newPrescription);
+        if (isAlergicTo(Medicine.Text))
+        {
+            MessageBox.Show("This drug is not safe for the patient");
+        }
+        else
+        {
+            Prescription newPrescription = new Prescription();
+            Drug newMedicine = new Drug();
+            newMedicine.Name = Medicine.Text;
+            newPrescription.Drug = newMedicine;
+            newPrescription.Dosage = int.Parse(Dosage.Text);
+            newPrescription.Usage = Usage.Text;
+            newPrescription.Date = SelectPrescriptionTime.Value.Value;
+            newPrescription.Period = Period.Text;
+            thisPatient.MedicalRecord.Anamnesis.AddPrescription(newPrescription);
+            Map.PrescriptionController.Create(newPrescription);
+        }
+    }
+
+    public bool isAlergicTo(string drug)
+    {
+        if (thisPatient.alergies.Equals(drug))
+            return true;
+        return false;
     }
 }

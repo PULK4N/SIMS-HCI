@@ -9,6 +9,7 @@ using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 
@@ -82,6 +83,23 @@ namespace HospitalApp.Repository
             {
                 MessageBox.Show("Doctor repository updating error");
             }
+        }
+
+        public Doctor GetByUsername(string username)
+        {
+            try
+            {
+                return (from doc in HospitalDB.Instance.Doctors where doc.Employee.User.RegisteredUser.Username == username select doc)
+                    .Include(doc => doc.Employee)
+                    .Include(doc => doc.Employee.User)
+                    .Include(doc => doc.Employee.User.RegisteredUser)
+                    .First();
+            }
+            catch (InvalidOperationException op)
+            {
+                MessageBox.Show(op.ToString());
+            }
+            return null;
         }
     }
 }

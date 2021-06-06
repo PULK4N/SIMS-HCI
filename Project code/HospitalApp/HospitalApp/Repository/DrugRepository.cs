@@ -62,6 +62,11 @@ namespace HospitalApp.Repository
             return DrugsUsedByPatient.ToList();
         }
 
+        public Drug GetByName(string name)
+        {
+            return (from d in HospitalDB.Instance.Drugs where d.Name == name select d).FirstOrDefault();
+        }
+
         public void Update(Drug drug)
         {
             var editedDrug = HospitalDB.Instance.Drugs.Find(drug.DrugId);

@@ -6,11 +6,12 @@
 using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HospitalApp.Service
 {
     public interface IRoomService : IEntityService<Room>
     {
-
+        List<Room> GetAllAvailableForTreatment();
     }
 }

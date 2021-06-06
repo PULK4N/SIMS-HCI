@@ -93,7 +93,10 @@ namespace HospitalApp.Repository
 
         public List<Prescription> GetAll()
         {
-            throw new NotImplementedException();
+            return (from p in HospitalDB.Instance.Prescriptions select p)
+                .Include(d => d.Drug)
+                .Include(d => d.Doctor)
+                .ToList();
         }
 
     }

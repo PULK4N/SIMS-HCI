@@ -50,5 +50,10 @@ namespace HospitalApp.Service
         {
             _doctorRepository.Update(doctor);
         }
+
+        public Doctor GetByUsername(string username)
+        {
+            return _doctorRepository.GetByUsername(username);
+        }
     }
 }
