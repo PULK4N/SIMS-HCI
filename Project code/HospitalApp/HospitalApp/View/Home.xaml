@@ -77,9 +77,9 @@
                         SelectionMode="Single" IsReadOnly="True"
                         Height="170" VerticalAlignment="Top" HorizontalAlignment="Center" Width="220" Canvas.Left="10" Margin="0,80,0,0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="{loc:Loc Date}" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="90" />
+                            <DataGridTextColumn Header="{loc:Loc Date}" Binding="{Binding Beginning, StringFormat=dd MMM yyyy}" Width="80" />
                             <DataGridTextColumn Header="{loc:Loc Doctor}" Binding="{Binding Doctor.Employee.User.FirstName}" Width="80"/>
-                            <DataGridTemplateColumn Width="50" Header="{loc:Loc RateDoctor}">
+                            <DataGridTemplateColumn Width="60" Header="{loc:Loc RateDoctor}">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Command="{Binding Path=ChangeToDoctorsCommand}" Content="{loc:Loc RateDoctor}"/>

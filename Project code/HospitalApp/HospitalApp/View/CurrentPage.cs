@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace HospitalApp.View
@@ -23,7 +18,7 @@ namespace HospitalApp.View
                 }
                 else
                 {
-                    MessageBox.Show("You should change frame refference");
+                    MessageBox.Show("You should not change frame refference");
                 }
             } 
         }

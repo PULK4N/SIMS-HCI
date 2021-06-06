@@ -42,5 +42,42 @@
             </Button>
             <Button Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
         </Grid>
+        <Grid Margin="200,180,200,0" Background="#bababa">
+            <Grid Margin="0,0,620,0">
+                <Rectangle Fill="#303004" HorizontalAlignment="Center" Height="397" Stroke="Black" VerticalAlignment="Center" Width="189" />
+                <Image Source="/Images/Profile.png" Stretch="Fill" HorizontalAlignment="Center" Height="111"  VerticalAlignment="Top" Width="150" Margin="55,100,54,0"/>
+                <DataGrid x:Name="CompletedAppointmentsNotReviewed" AutoGenerateColumns="False" ItemsSource="{Binding CompletedAppointments}"
+                        SelectionMode="Single" IsReadOnly="True"
+                        Height="130" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150" Canvas.Left="10" Margin="0,310,0,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{loc:Loc Date}" Binding="{Binding Beginning, StringFormat=dd MMM yyyy}" Width="70"/>
+                        <DataGridTextColumn Header="{loc:Loc Doctor}" Binding="{Binding Doctor.Employee.User.FirstName}" Width="79"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Label FontWeight="Light" FontSize="9" Content="{loc:Loc FullName}" HorizontalAlignment="Left" Margin="51,216,0,0" VerticalAlignment="Top" Height="23"/>
+                <Label FontWeight="Light" FontSize="9" Content="{loc:Loc Sex}" HorizontalAlignment="Left" Margin="51,244,0,0" VerticalAlignment="Top" Height="23"/>
+                <Label FontWeight="Light" FontSize="9" Content="{loc:Loc MaritalStatus}" HorizontalAlignment="Left" Margin="51,277,0,0" VerticalAlignment="Top" Height="23"/>
+
+                <TextBlock TextAlignment="Left" HorizontalAlignment="Right" Height="18" Margin="0,231,120,0" TextWrapping="Wrap" Text="{Binding FullName}" VerticalAlignment="Top" Width="84" RenderTransformOrigin="-0.063,1.189"/>
+                <TextBlock TextAlignment="Left" HorizontalAlignment="Right" Height="18" Margin="0,259,121,0" TextWrapping="Wrap" Text="{Binding Sex}" VerticalAlignment="Top" Width="84"/>
+                <TextBlock TextAlignment="Left" HorizontalAlignment="Right" Height="18" Margin="0,292,136,0" TextWrapping="Wrap" Text="{Binding MaritalStatus}" VerticalAlignment="Top" Width="69"/>
+            </Grid>
+            <Grid Margin="265,0,0,0">
+                <Grid Margin="0,0,0,0" Height="240" VerticalAlignment="Top">
+                    <Rectangle Fill="#303004" HorizontalAlignment="Center" Height="160" Stroke="Black" VerticalAlignment="Center" Width="590" Margin="13,72,12.2,10" />
+                    <Label FontWeight="Bold" FontSize="20" Content="{loc:Loc Anamnesis}" HorizontalAlignment="Left" Margin="34,78,0,0" VerticalAlignment="Top" Height="36" Width="184"/>
+                    <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="100" Margin="34,114,0,0" TextWrapping="Wrap" Text="{Binding AnamnesisDescription}" VerticalAlignment="Top" Width="380"/>
+                    <Label FontWeight="Light" FontSize="12" Content="{loc:Loc Weight}" HorizontalAlignment="Left" Margin="458,91,0,0" VerticalAlignment="Top" Height="28" Width="120"/>
+                    <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="458,114,0,0" TextWrapping="Wrap" Text="{Binding Weight}" VerticalAlignment="Top" Width="120"/>
+                    <Label FontWeight="Light" FontSize="12" Content="{loc:Loc Height}" HorizontalAlignment="Left" Margin="458,165,0,0" VerticalAlignment="Top" Height="28" Width="120"/>
+                    <TextBox IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="458,188,0,0" TextWrapping="Wrap" Text="{Binding Height}" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+                <Grid Margin="0,240,0,60">
+                    <Rectangle Fill="#303004" HorizontalAlignment="Center" Height="220" Stroke="Black" VerticalAlignment="Center" Width="590" />
+                    <Label FontWeight="Bold" FontSize="20" Content="Anamneza" HorizontalAlignment="Left" Margin="34,24,0,0" VerticalAlignment="Top" Height="36" Width="184"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

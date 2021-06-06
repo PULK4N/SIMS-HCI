@@ -63,6 +63,15 @@ namespace HospitalApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Anamnesis.
         /// </summary>
+        internal static string Anamnesis {
+            get {
+                return ResourceManager.GetString("Anamnesis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anamnesis.
+        /// </summary>
         internal static string AnamnesisMenu {
             get {
                 return ResourceManager.GetString("AnamnesisMenu", resourceCulture);
@@ -133,6 +142,24 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full name.
+        /// </summary>
+        internal static string FullName {
+            get {
+                return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Height.
+        /// </summary>
+        internal static string Height {
+            get {
+                return ResourceManager.GetString("Height", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         internal static string HelpMenu {
@@ -165,6 +192,15 @@ namespace HospitalApp.Properties {
         internal static string LogoutButton {
             get {
                 return ResourceManager.GetString("LogoutButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marital status.
+        /// </summary>
+        internal static string MaritalStatus {
+            get {
+                return ResourceManager.GetString("MaritalStatus", resourceCulture);
             }
         }
         
@@ -250,6 +286,15 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gender.
+        /// </summary>
+        internal static string Sex {
+            get {
+                return ResourceManager.GetString("Sex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time.
         /// </summary>
         internal static string Time {
@@ -273,6 +318,15 @@ namespace HospitalApp.Properties {
         internal static string ViewDetailsButton {
             get {
                 return ResourceManager.GetString("ViewDetailsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        internal static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
             }
         }
     }

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Anamnesis" xml:space="preserve">
+    <value>Anamnesis</value>
+  </data>
   <data name="AnamnesisMenu" xml:space="preserve">
     <value>Anamnesis</value>
   </data>
@@ -141,6 +144,12 @@
   <data name="Drug" xml:space="preserve">
     <value>Drug</value>
   </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
   <data name="HelpMenu" xml:space="preserve">
     <value>Help</value>
   </data>
@@ -152,6 +161,9 @@
   </data>
   <data name="LogoutButton" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="MaritalStatus" xml:space="preserve">
+    <value>Marital status</value>
   </data>
   <data name="MedicalClinicsMenu" xml:space="preserve">
     <value>Clinics</value>
@@ -180,6 +192,9 @@
   <data name="ScheduledAppointments" xml:space="preserve">
     <value>Scheduled appointments</value>
   </data>
+  <data name="Sex" xml:space="preserve">
+    <value>Gender</value>
+  </data>
   <data name="Time" xml:space="preserve">
     <value>Time</value>
   </data>
@@ -188,5 +203,8 @@
   </data>
   <data name="ViewDetailsButton" xml:space="preserve">
     <value>More details</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
   </data>
 </root>
