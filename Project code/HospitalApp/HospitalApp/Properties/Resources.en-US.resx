@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>Additional info</value>
+  </data>
   <data name="Anamnesis" xml:space="preserve">
     <value>Anamnesis</value>
   </data>
   <data name="AnamnesisMenu" xml:space="preserve">
-    <value>Anamnesis</value>
+    <value>Anamnesis and prescribed medicine</value>
   </data>
   <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
     <value>Appointments and therapy</value>
@@ -129,8 +132,14 @@
   <data name="CompletedAppointments" xml:space="preserve">
     <value>Completed appointments</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
   </data>
   <data name="Doctor" xml:space="preserve">
     <value>Doctor</value>
@@ -144,8 +153,14 @@
   <data name="Drug" xml:space="preserve">
     <value>Drug</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
   <data name="FullName" xml:space="preserve">
     <value>Full name</value>
+  </data>
+  <data name="GenerateAppointments" xml:space="preserve">
+    <value>Generate appointments</value>
   </data>
   <data name="Height" xml:space="preserve">
     <value>Height</value>
@@ -168,8 +183,14 @@
   <data name="MedicalClinicsMenu" xml:space="preserve">
     <value>Clinics</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Notes</value>
+  </data>
+  <data name="PrescribedMedicine" xml:space="preserve">
+    <value>Prescribed medicine</value>
   </data>
   <data name="Prescriptions" xml:space="preserve">
     <value>Prescriptions</value>
@@ -177,8 +198,17 @@
   <data name="PrescriptionsMenu" xml:space="preserve">
     <value>Prescriptions</value>
   </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="PriorityTooltip" xml:space="preserve">
+    <value>If there are no available appointments based on your choosing criteria, the program will automatically generate appointments by your priority choice</value>
+  </data>
   <data name="RateDoctor" xml:space="preserve">
     <value>Rate</value>
+  </data>
+  <data name="Recommendations" xml:space="preserve">
+    <value>Recommendations</value>
   </data>
   <data name="RemindersMenu" xml:space="preserve">
     <value>Reminders</value>
@@ -186,17 +216,29 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
   <data name="ScheduleAppointmentButton" xml:space="preserve">
     <value>Schedule appointment</value>
   </data>
   <data name="ScheduledAppointments" xml:space="preserve">
     <value>Scheduled appointments</value>
   </data>
+  <data name="ScheduleFailed" xml:space="preserve">
+    <value>Already taken</value>
+  </data>
+  <data name="ScheduleSucceded" xml:space="preserve">
+    <value>Your appointment has been scheduled</value>
+  </data>
   <data name="Sex" xml:space="preserve">
     <value>Gender</value>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Time</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Usage</value>

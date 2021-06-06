@@ -1,34 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HospitalApp.Model;
+using HospitalApp.Service;
+using System.Collections.ObjectModel;
 
 namespace HospitalApp.ViewModel
 {
     class ScheduleAppointment : ViewModel 
     {
+
         public ScheduleAppointment() : base()
         {
+            Initialize();
         }
 
-        public void Language_selectionChanged(object sender, EventArgs e)
+        private void Initialize()
         {
-            if (TranslationSource.Instance.CurrentCulture != null)
+            Doctors = new ObservableCollection<Doctor>(Map.DoctorController.GetAll());
+            RecommendedAppointments = new ObservableCollection<Appointment>();
+        }
+
+        public ObservableCollection<Doctor> Doctors { get; set; }
+        private ObservableCollection<Appointment> recommendedAppointments;
+        public ObservableCollection<Appointment> RecommendedAppointments
+        {
+            get
             {
-                if (TranslationSource.Instance.CurrentCulture.Name.Equals("sr-Latn"))
-                {
-                    TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-                }
-                else
-                {
-                    TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("sr-LATN");
-                }
+                return recommendedAppointments;
             }
-            else
+
+            set
             {
-                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+                recommendedAppointments = value;
+                OnPropertyChanged();
             }
         }
+
+
+        public void GetMyAppointments(SchedulingInformation schedulingInformation)
+        {
+            var (appointmentList, priorityUsed) = Map.SchedulingService.GetAppointments(schedulingInformation);
+            foreach (Appointment appointment in appointmentList)
+            {
+                RecommendedAppointments.Add(appointment);
+            }
+        }
+
+        public void confirmSchedule(Appointment appointment)
+        {
+            Map.AppointmentController.PatientScheduleAppointment(appointment);
+            RecommendedAppointments.Clear();
+        }
+
     }
 }

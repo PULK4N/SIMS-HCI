@@ -18,7 +18,7 @@
                 <MenuItem Background="Gray" Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc AnamnesisMenu}" Command="{Binding Path=ChangeToAnamnesisCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>
+                <!--<MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>-->
                 <MenuItem Header="{loc:Loc RemindersMenu}" Command="{Binding Path=ChangeToRemindersCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc DoctorsMenu}" Command="{Binding Path=ChangeToDoctorsCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc MedicalClinicsMenu}" Command="{Binding Path=ChangeToMedicalClinicsCommand}"></MenuItem>
@@ -36,9 +36,14 @@
             </Button>
             <Button Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
         </Grid>
-        <Grid Margin="200,180,200,0" Background="#303030">
+        <Grid Margin="200,180,200,0" Background="#bababa">
             <Grid Margin="0,0,0,340">
-                <Rectangle Fill="#303004" HorizontalAlignment="Center" Height="167" Stroke="Black" VerticalAlignment="Bottom" Width="800"/>
+                <Grid HorizontalAlignment="Left" Height="167" Margin="36,33,0,0" VerticalAlignment="Top" Width="804">
+                    <Border CornerRadius="50,50,50,50" BorderThickness="0" Background="Black" Visibility="Visible">
+                        <Rectangle Fill="#2F4F4F" HorizontalAlignment="Center" Height="167" Stroke="Black" VerticalAlignment="Bottom" Width="804" ClipToBounds="True"
+                                   RadiusX="10" RadiusY="10"/>
+                    </Border>
+                </Grid>
                 <Image Source="/Images/Male_Doctor.jpg" Stretch="Fill" HorizontalAlignment="Left" Height="105"  VerticalAlignment="Center" Width="110" Margin="70,66,0,29"/>
                 <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="234,100,0,0" TextWrapping="Wrap" 
                            Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release " 
@@ -56,7 +61,10 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Border Margin="10,45,10,50" Background="#5A5A5A">
+                    <Border Margin="10,45,10,50">
+                        <Rectangle RadiusX="10" Fill="#2F4F4F" RadiusY="10">
+
+                        </Rectangle>
                     </Border>
                     <Label Content="{loc:Loc ScheduledAppointments}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" Width="188" Margin="20,45,12,0" />
                     <DataGrid x:Name="dataGridScheduledAppointmentsAppointments" AutoGenerateColumns="False" ItemsSource="{Binding ScheduledAppointments}"
@@ -70,7 +78,10 @@
                     <Button Command="{Binding Path=AppointmentsAndTherapyMenu}" Content="{loc:Loc ViewDetailsButton}" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="90" Margin="0,0,20,58"/>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <Border Margin="-5,45,-5,50" Background="#5A5A5A">
+                    <Border Margin="-5,45,-5,50">
+                        <Rectangle RadiusX="10" Fill="#2F4F4F" RadiusY="10">
+
+                        </Rectangle>
                     </Border>
                     <Label Content="{loc:Loc CompletedAppointments}" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="15" Width="188" Margin="0,45,32,0" />
                     <DataGrid x:Name="CompletedAppointmentsNotReviewed" AutoGenerateColumns="False" ItemsSource="{Binding CompletedAppointments}"
@@ -90,10 +101,13 @@
                     </DataGrid>
                 </Grid>
                 <Grid Grid.Column="2">
-                    <Border Margin="10,45,0,50" Background="#5A5A5A">
+                    <Border Margin="10,45,0,50" >
+                        <Rectangle RadiusX="10" Fill="#2F4F4F" RadiusY="10">
+
+                        </Rectangle>
                     </Border>
                     <Label Content="{loc:Loc Prescriptions}" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="15" Width="198" Margin="16,45,6,0" />
-                    <DataGrid x:Name="list_Copy" AutoGenerateColumns="False" ItemsSource="{Binding Prescriptions}"
+                    <DataGrid x:Name="Prescribed" AutoGenerateColumns="False" ItemsSource="{Binding Prescriptions}"
                             SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center"  Margin="10,80,0,0"
                             Height="170" VerticalAlignment="Top" Width="auto">
                         <DataGrid.Columns>
@@ -104,11 +118,14 @@
                     </DataGrid>
                 </Grid>
                 <Grid Grid.Column="3">
-                    <Border Margin="10,45,10,50" Background="#5A5A5A">
-                        <TextBox Margin="10,35,10,40">
+                    <Border Margin="10,45,10,50"  >
+                        <Rectangle RadiusX="10" Fill="#2F4F4F" RadiusY="10">
+                            
+                        </Rectangle>
+                    </Border>
+                        <TextBox Margin="20,80,20,90">
 
                         </TextBox>
-                    </Border>
                     <Label Content="{loc:Loc Notes}" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="15" Width="180" Margin="20,45,20,0" Height="30" />
                     <Button Command="{Binding Path=AppointmentsAndTherapyMenu}" Content="{loc:Loc Save}" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Width="90" Margin="0,0,20,58"/>
                 </Grid>

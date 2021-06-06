@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>Dodatne informacije</value>
+  </data>
   <data name="Anamnesis" xml:space="preserve">
     <value>Anamneza</value>
   </data>
   <data name="AnamnesisMenu" xml:space="preserve">
-    <value>Anamneze</value>
+    <value>Anamneze i propisani lekovi</value>
   </data>
   <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
     <value>Pregledi i terapije</value>
@@ -129,8 +132,14 @@
   <data name="CompletedAppointments" xml:space="preserve">
     <value>Istorija pregleda</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Potvrdi</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Datum</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalji</value>
   </data>
   <data name="Doctor" xml:space="preserve">
     <value>Doktor</value>
@@ -144,8 +153,14 @@
   <data name="Drug" xml:space="preserve">
     <value>Lek</value>
   </data>
+  <data name="From" xml:space="preserve">
+    <value>Od</value>
+  </data>
   <data name="FullName" xml:space="preserve">
     <value>Ime i prezime</value>
+  </data>
+  <data name="GenerateAppointments" xml:space="preserve">
+    <value>Prikaži termine</value>
   </data>
   <data name="Height" xml:space="preserve">
     <value>Visina</value>
@@ -168,17 +183,32 @@
   <data name="MedicalClinicsMenu" xml:space="preserve">
     <value>Klinike</value>
   </data>
+  <data name="Name" xml:space="preserve">
+    <value>Naziv</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Beleške</value>
   </data>
+  <data name="PrescribedMedicine" xml:space="preserve">
+    <value>Propisani lekovi</value>
+  </data>
   <data name="Prescriptions" xml:space="preserve">
-    <value>Recepti</value>
+    <value>Propisani lekovi</value>
   </data>
   <data name="PrescriptionsMenu" xml:space="preserve">
     <value>Recepti</value>
   </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Prioritet</value>
+  </data>
+  <data name="PriorityTooltip" xml:space="preserve">
+    <value>Ako nema slobodnih termina za preglede na osnovu kriterijuma koga ste izabrali, program će sam generisati termine na osnovu izabranog prioriteta.</value>
+  </data>
   <data name="RateDoctor" xml:space="preserve">
     <value>Oceni</value>
+  </data>
+  <data name="Recommendations" xml:space="preserve">
+    <value>Preporučeni termini</value>
   </data>
   <data name="RemindersMenu" xml:space="preserve">
     <value>Podsetnik</value>
@@ -186,17 +216,29 @@
   <data name="Save" xml:space="preserve">
     <value>Sačuvaj</value>
   </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Zakaži</value>
+  </data>
   <data name="ScheduleAppointmentButton" xml:space="preserve">
     <value>Zakaži pregled</value>
   </data>
   <data name="ScheduledAppointments" xml:space="preserve">
     <value>Zakazani pregledi</value>
   </data>
+  <data name="ScheduleFailed" xml:space="preserve">
+    <value>Već zauzet</value>
+  </data>
+  <data name="ScheduleSucceded" xml:space="preserve">
+    <value>Termin je uspešno zakazan!</value>
+  </data>
   <data name="Sex" xml:space="preserve">
     <value>Pol</value>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Vreme</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Do</value>
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Period</value>

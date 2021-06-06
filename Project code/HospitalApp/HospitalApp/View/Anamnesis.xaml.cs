@@ -13,5 +13,6 @@ namespace HospitalApp.View
             AnamnesisViewModel = new ViewModel.Anamnesis();
             this.DataContext = AnamnesisViewModel;
         }
+
     }
 }

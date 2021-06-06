@@ -109,6 +109,7 @@
       <DependentUpon>202106021613107_mig2.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\MedicalTreatment.cs" />
+    <Compile Include="ObjectConverter.cs" />
     <Compile Include="Properties\Resources.en-US.Designer.cs">
       <DependentUpon>Resources.en-US.resx</DependentUpon>
       <AutoGen>True</AutoGen>

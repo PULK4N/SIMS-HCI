@@ -61,6 +61,15 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional info.
+        /// </summary>
+        internal static string AdditionalInfo {
+            get {
+                return ResourceManager.GetString("AdditionalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Anamnesis.
         /// </summary>
         internal static string Anamnesis {
@@ -70,7 +79,7 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Anamnesis.
+        ///   Looks up a localized string similar to Anamnesis and prescribed medicine.
         /// </summary>
         internal static string AnamnesisMenu {
             get {
@@ -97,11 +106,29 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         internal static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
             }
         }
         
@@ -142,11 +169,29 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        internal static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full name.
         /// </summary>
         internal static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generate appointments.
+        /// </summary>
+        internal static string GenerateAppointments {
+            get {
+                return ResourceManager.GetString("GenerateAppointments", resourceCulture);
             }
         }
         
@@ -214,11 +259,29 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
         internal static string Notes {
             get {
                 return ResourceManager.GetString("Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prescribed medicine.
+        /// </summary>
+        internal static string PrescribedMedicine {
+            get {
+                return ResourceManager.GetString("PrescribedMedicine", resourceCulture);
             }
         }
         
@@ -241,11 +304,38 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Priority.
+        /// </summary>
+        internal static string Priority {
+            get {
+                return ResourceManager.GetString("Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If there are no available appointments based on your choosing criteria, the program will automatically generate appointments by your priority choice.
+        /// </summary>
+        internal static string PriorityTooltip {
+            get {
+                return ResourceManager.GetString("PriorityTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rate.
         /// </summary>
         internal static string RateDoctor {
             get {
                 return ResourceManager.GetString("RateDoctor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recommendations.
+        /// </summary>
+        internal static string Recommendations {
+            get {
+                return ResourceManager.GetString("Recommendations", resourceCulture);
             }
         }
         
@@ -268,6 +358,15 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Schedule.
+        /// </summary>
+        internal static string Schedule {
+            get {
+                return ResourceManager.GetString("Schedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Schedule appointment.
         /// </summary>
         internal static string ScheduleAppointmentButton {
@@ -286,6 +385,24 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Already taken.
+        /// </summary>
+        internal static string ScheduleFailed {
+            get {
+                return ResourceManager.GetString("ScheduleFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your appointment has been scheduled.
+        /// </summary>
+        internal static string ScheduleSucceded {
+            get {
+                return ResourceManager.GetString("ScheduleSucceded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gender.
         /// </summary>
         internal static string Sex {
@@ -300,6 +417,15 @@ namespace HospitalApp.Properties {
         internal static string Time {
             get {
                 return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
             }
         }
         

@@ -3,7 +3,6 @@ using HospitalApp.View;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
 
 namespace HospitalApp.ViewModel
 {

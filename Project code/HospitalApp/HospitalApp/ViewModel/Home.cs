@@ -7,11 +7,12 @@ namespace HospitalApp.ViewModel
 {
     class Home : ViewModel
     {
+        public static EventHandler RefreshAppointmentEventHandler;
         public Home() : base()
         {
             InstantiateAppointments();
             //CurrentPage.Frame.LayoutUpdated += (obj,sender) => refreshLists();
-
+            RefreshAppointmentEventHandler += (a,b) => refreshLists();
         }
 
         private void InstantiateAppointments()
@@ -40,7 +41,6 @@ namespace HospitalApp.ViewModel
             {
                 Prescriptions.Add(p);
             }
-
         }
 
         public ObservableCollection<Appointment> ScheduledAppointments { get; set; }

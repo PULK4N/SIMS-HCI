@@ -103,7 +103,7 @@ namespace Bolnica
 
         private void LoginButton(object sender, RoutedEventArgs e)
         {
-            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Text);
+            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Password);
             if(registeredUser != null)
             {
                 switch (registeredUser.UserType)
@@ -339,11 +339,14 @@ namespace Bolnica
                 AppointmentsToSchedule.Add(appointment);
             }
         }
+
         private void confirmSchedule(object sender, RoutedEventArgs e)
         {
-            Appointment appointment = ((Appointment)dataGridAppointments.SelectedItem);
-            Map.AppointmentController.PatientScheduleAppointment(appointment);
-            AppointmentsToSchedule.Clear();
+            if (dataGridAppointments.SelectedItem is Appointment appointment)
+            {
+                Map.AppointmentController.PatientScheduleAppointment(appointment);
+                AppointmentsToSchedule.Clear();
+            }
         }
         #endregion
 
