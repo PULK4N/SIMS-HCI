@@ -21,5 +21,6 @@ namespace HospitalApp.Service
 
         List<Appointment> GetAllCompletedByPatientId(long patientId);
         List<Appointment> GetAllByPatientRefered(long patientId);
+        List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId);
     }
 }

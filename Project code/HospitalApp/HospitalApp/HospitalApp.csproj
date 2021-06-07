@@ -85,13 +85,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controller\BedController.cs" />
-    <Compile Include="Controller\PatientAllergiesController.cs" />
-    <Compile Include="Controller\HospitalTreatmentController.cs" />
     <Compile Include="Controller\IEntityController.cs" />
-    <Compile Include="Controller\ReferralController.cs" />
-    <Compile Include="Controller\ReminderController.cs" />
-    <Compile Include="Controller\StaticInventoryController.cs" />
+    <Compile Include="Controller\Impl\AnamnesisController.cs" />
+    <Compile Include="Controller\Impl\AppointmentController.cs" />
+    <Compile Include="Controller\Impl\BedController.cs" />
+    <Compile Include="Controller\Impl\DoctorController.cs" />
+    <Compile Include="Controller\Impl\GuestPatientController.cs" />
+    <Compile Include="Controller\Impl\LoginController.cs" />
+    <Compile Include="Controller\Impl\MedicalRecordController.cs" />
+    <Compile Include="Controller\Impl\PatientAllergiesController.cs" />
+    <Compile Include="Controller\Impl\HospitalTreatmentController.cs" />
+    <Compile Include="Controller\Impl\PatientController.cs" />
+    <Compile Include="Controller\Impl\PrescriptionController.cs" />
+    <Compile Include="Controller\Impl\ReferralController.cs" />
+    <Compile Include="Controller\Impl\RegisteredUserController.cs" />
+    <Compile Include="Controller\Impl\ReminderController.cs" />
+    <Compile Include="Controller\Impl\ReviewController.cs" />
+    <Compile Include="Controller\Impl\StaticInventoryController.cs" />
     <Compile Include="Model\Allergies.cs" />
     <Compile Include="Model\Bed.cs" />
     <Compile Include="Model\HospitalTreatment.cs" />
@@ -140,22 +150,13 @@
     <Compile Include="Service\IPatientAllergiesService.cs" />
     <Compile Include="Service\IHospitalTreatmentService.cs" />
     <Compile Include="Service\ISchedulingService.cs" />
-    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Service\IStaticInventoryService.cs" />
     <Compile Include="Service\ReferralService.cs" />
     <Compile Include="Service\RegisteredUserService.cs" />
     <Compile Include="Service\IRegisteredUserService.cs" />
     <Compile Include="Map.cs" />
-    <Compile Include="Controller\AnamnesisController.cs" />
-    <Compile Include="Controller\AppointmentController.cs" />
-    <Compile Include="Controller\DoctorController.cs" />
-    <Compile Include="Controller\GuestPatientController.cs" />
-    <Compile Include="Controller\MedicalRecordController.cs" />
-    <Compile Include="Controller\DrugController.cs" />
-    <Compile Include="Controller\PatientController.cs" />
-    <Compile Include="Controller\PrescriptionController.cs" />
-    <Compile Include="Controller\ReviewController.cs" />
-    <Compile Include="Controller\RoomController.cs" />
+    <Compile Include="Controller\Impl\DrugController.cs" />
+    <Compile Include="Controller\Impl\RoomController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Anamnesis.cs" />
     <Compile Include="Model\Employee.cs" />
@@ -175,7 +176,6 @@
     <Compile Include="Repository\AppointmentRepository.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\GuestPatientRepository.cs" />
-    <Compile Include="Controller\RegisteredUserController.cs" />
     <Compile Include="Repository\IAnamnesisRepository.cs" />
     <Compile Include="Repository\IAppointmentRepository.cs" />
     <Compile Include="Repository\IDoctorRepository.cs" />
