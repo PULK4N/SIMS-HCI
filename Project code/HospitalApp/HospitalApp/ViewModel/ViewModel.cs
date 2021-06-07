@@ -21,10 +21,7 @@ namespace HospitalApp.ViewModel
             changeToHomeCommand = new RelayCommand(Executed_changeToHomeCommand, CanExecute_changeToHomeCommand);
             changeToAnamnesisCommand = new RelayCommand(Executed_changeToAnamnesisCommand, CanExecute_changeToAnamnesisCommand);
             changeToAppointmentsAndTherapyCommand = new RelayCommand(Executed_changeToAppointmentsAndTherapyCommand, CanExecute_changeToAppointmentsAndTherapyCommand);
-            changeToPrescriptionsCommand = new RelayCommand(Executed_changeToPrescriptionsCommand, CanExecute_changeToPrescriptionsCommand);
             changeToRemindersCommand = new RelayCommand(Executed_changeToRemindersCommand, CanExecute_changeToRemindersCommand);
-            changeToMedicalClinicsCommand = new RelayCommand(Executed_changeToMedicalClinicsCommand, CanExecute_changeToMedicalClinicsCommand);
-            changeToDoctorsCommand = new RelayCommand(Executed_changeToDoctorsCommand, CanExecute_changeToDoctorsCommand);
             changeToHelpCommand = new RelayCommand(Executed_changeToHelpCommand, CanExecute_changeToHelpCommand);
             changeToSettingsCommand = new RelayCommand(Executed_changeToSettingsCommand, CanExecute_changeToSettingsCommand);
             changeToScheduleAppointmentCommand = new RelayCommand(Executed_changeToScheduleAppointmentCommand, CanExecute_changeToScheduleAppointmentCommand);
@@ -46,17 +43,8 @@ namespace HospitalApp.ViewModel
         protected RelayCommand changeToAppointmentsAndTherapyCommand;
         public RelayCommand ChangeToAppointmentsAndTherapyCommand { get => changeToAppointmentsAndTherapyCommand; set => changeToAppointmentsAndTherapyCommand = value; }
 
-        protected RelayCommand changeToPrescriptionsCommand;
-        public RelayCommand ChangeToPrescriptionsCommand { get => changeToPrescriptionsCommand; set => changeToPrescriptionsCommand = value; }
-
         protected RelayCommand changeToRemindersCommand;
         public RelayCommand ChangeToRemindersCommand { get => changeToRemindersCommand; set => changeToRemindersCommand = value; }
-
-        protected RelayCommand changeToMedicalClinicsCommand;
-        public RelayCommand ChangeToMedicalClinicsCommand { get => changeToMedicalClinicsCommand; set => changeToMedicalClinicsCommand = value; }
-
-        protected RelayCommand changeToDoctorsCommand;
-        public RelayCommand ChangeToDoctorsCommand { get => changeToDoctorsCommand; set => changeToDoctorsCommand = value; }
 
         protected RelayCommand changeToHelpCommand;
         public RelayCommand ChangeToHelpCommand { get => changeToHelpCommand; set => changeToHelpCommand = value; }
@@ -113,38 +101,11 @@ namespace HospitalApp.ViewModel
             return true;
         }
         //--------------------------------------------------------------
-        public void Executed_changeToPrescriptionsCommand(object obj)
-        {
-            //CurrentPage.SetToPrescriptions();
-        }
-        public bool CanExecute_changeToPrescriptionsCommand(object obj)
-        {
-            return true;
-        }
-        //--------------------------------------------------------------
         public void Executed_changeToRemindersCommand(object obj)
         {
             //CurrentPage.SetToReminders();
         }
         public bool CanExecute_changeToRemindersCommand(object obj)
-        {
-            return true;
-        }
-        //--------------------------------------------------------------
-        public void Executed_changeToMedicalClinicsCommand(object obj)
-        {
-            //CurrentPage.SetToMedicalClinics();
-        }
-        public bool CanExecute_changeToMedicalClinicsCommand(object obj)
-        {
-            return true;
-        }
-        //--------------------------------------------------------------
-        public void Executed_changeToDoctorsCommand(object obj)
-        {
-            //CurrentPage.SetToDoctors();
-        }
-        public bool CanExecute_changeToDoctorsCommand(object obj)
         {
             return true;
         }

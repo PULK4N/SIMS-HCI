@@ -1,5 +1,6 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Service;
+using HospitalApp.View;
 using System.Threading;
 using System.Windows;
 
@@ -35,8 +36,8 @@ namespace HospitalApp
                     case Enums.UserType.PATIENT:
                         Patient = Map.PatientController.GetPatientByUsername(registeredUser.Username);
                         LoginGrid.Visibility = Visibility.Hidden;
-                        //PatientWindow patientWindow = new PatientWindow();
-                        //patientWindow.Show();
+                        PatientWindow patientWindow = new PatientWindow(Patient);
+                        patientWindow.Show();
                         new NotificationService().StartTimer(cancellationToken);
                         ScheduleReminders();
                         break;

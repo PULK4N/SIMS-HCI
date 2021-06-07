@@ -20,9 +20,12 @@ namespace HospitalApp.View
     /// </summary>
     public partial class MedicalClinics : Page
     {
-        public MedicalClinics(Frame load_frame)
+        public MedicalClinics()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.MedicalClinics();
         }
+
+
     }
 }

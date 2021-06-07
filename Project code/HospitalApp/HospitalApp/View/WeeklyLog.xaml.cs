@@ -1,7 +1,5 @@
-﻿using HospitalApp.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,25 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HospitalApp.View
 {
     /// <summary>
-    /// Interaction logic for PatientWindow.xaml
+    /// Interaction logic for WeeklyLog.xaml
     /// </summary>
-    public partial class PatientWindow : Window
+    public partial class WeeklyLog : Page
     {
-        public static PatientWindow Instance;
-        public static Patient Patient;
-
-        public PatientWindow(Patient patient)
+        private ViewModel.AppointmentsAndTherapy AppointmentsAndTherapyViewModel;
+        public WeeklyLog()
         {
-            Patient = patient;
-            Instance = this;
             InitializeComponent();
-            //CurrentPage.Frame = this.load_frame;
+            AppointmentsAndTherapyViewModel = new ViewModel.AppointmentsAndTherapy();
+            this.DataContext = AppointmentsAndTherapyViewModel;
         }
-
     }
 }
