@@ -43,20 +43,13 @@ namespace HospitalApp.Repository
 
         public List<Prescription> GetAllByPatient(long patientId)
         {
-            try
-            {
-                Patient patient = (from p in HospitalDB.Instance.Patients where p.PatientId == patientId select p)
-                    .Include(p => p.MedicalRecord).Include(p => p.MedicalRecord.Anamnesis)
-                    .Include(p => p.MedicalRecord.Anamnesis)
-                    .Include(p => p.MedicalRecord.Anamnesis.Prescriptions.Select(pre => pre.Drug))
-                    .FirstOrDefault();
+            Patient patient = (from p in HospitalDB.Instance.Patients where p.PatientId == patientId select p)
+                .Include(p => p.MedicalRecord).Include(p => p.MedicalRecord.Anamnesis)
+                .Include(p => p.MedicalRecord.Anamnesis)
+                .Include(p => p.MedicalRecord.Anamnesis.Prescriptions.Select(pre => pre.Drug))
+                .FirstOrDefault();
 
-                return patient.MedicalRecord.Anamnesis.Prescriptions;
-            }catch(Exception e)
-            {
-                MessageBox.Show("Error while trying to get patient from the database");
-            }
-            return null;
+            return patient.MedicalRecord.Anamnesis.Prescriptions;
         }
 
         public Prescription Get(long prescriptionId)

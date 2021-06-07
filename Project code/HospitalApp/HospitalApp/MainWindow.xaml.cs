@@ -1,7 +1,6 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Service;
 using HospitalApp.View;
-using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +11,7 @@ using System.Windows;
 namespace Bolnica
 {
 
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow : Window
     {
         private Appointment appointmentToBeRescheduled { get; set; }
         public ObservableCollection<Appointment> AppointmentsToSchedule { get; set; }
@@ -44,6 +43,10 @@ namespace Bolnica
 
         private void InstantiateLists()
         {
+            //PatientWindow patientWindow = new PatientWindow();
+            //patientWindow.Show();
+
+
             LoginGrid.Visibility = Visibility.Visible;
             AppointmentsToSchedule = new ObservableCollection<Appointment>();
             ScheduledAppointments = new ObservableCollection<Appointment>();
@@ -104,7 +107,7 @@ namespace Bolnica
 
         private void LoginButton(object sender, RoutedEventArgs e)
         {
-            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Password);
+            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Text);
             if(registeredUser != null)
             {
                 switch (registeredUser.UserType)
@@ -113,11 +116,10 @@ namespace Bolnica
                         Patient = Map.PatientController.GetPatientByUsername(registeredUser.Username);
                         LoginGrid.Visibility = Visibility.Hidden;
                         PatientSchedulingCanvas.Visibility = Visibility.Visible;
-                        PatientWindow patientWindow = new PatientWindow(Patient);
-                        patientWindow.Show();
+                        //PatientWindow patientWindow = new PatientWindow();
+                        //patientWindow.Show();
                         new NotificationService().StartTimer(cancellationToken);
                         ScheduleReminders();
-                        Close();
                         break;
                     case Enums.UserType.DOCTOR:
                         ActiveDoctor = Map.DoctorController.GetByUsername(registeredUser.Username);
@@ -343,14 +345,11 @@ namespace Bolnica
                 AppointmentsToSchedule.Add(appointment);
             }
         }
-
         private void confirmSchedule(object sender, RoutedEventArgs e)
         {
-            if (dataGridAppointments.SelectedItem is Appointment appointment)
-            {
-                Map.AppointmentController.PatientScheduleAppointment(appointment);
-                AppointmentsToSchedule.Clear();
-            }
+            Appointment appointment = ((Appointment)dataGridAppointments.SelectedItem);
+            Map.AppointmentController.PatientScheduleAppointment(appointment);
+            AppointmentsToSchedule.Clear();
         }
         #endregion
 

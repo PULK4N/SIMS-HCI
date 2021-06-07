@@ -3,113 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d"
-      xmlns:loc="clr-namespace:HospitalApp" 
-      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-      xmlns:sys="clr-namespace:System;assembly=mscorlib"
-      Title="Home" Height="720" Width="1280">
+      xmlns:local="clr-namespace:HospitalApp.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Reminders">
+
     <Grid>
-        <Grid Margin="200,0,200,540" Background="#f7f7f7">
-            <Menu x:Name="MenuBar" VerticalAlignment="Bottom" Height="32">
-                <Menu.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <DockPanel HorizontalAlignment="Stretch"></DockPanel>
-                    </ItemsPanelTemplate>
-                </Menu.ItemsPanel>
-                <MenuItem Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc AnamnesisMenu}" Command="{Binding Path=ChangeToAnamnesisCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
-                <!--<MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>-->
-                <MenuItem Header="{loc:Loc RemindersMenu}" Command="{Binding Path=ChangeToRemindersCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc HelpMenu}" Command="{Binding Path=ChangeToHelpCommand}" HorizontalAlignment="Left"></MenuItem>
-            </Menu>
-            <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
-
-            <Button  Command="{Binding Path=ChangeToScheduleAppointmentCommand}" Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
-            <Button ToolTip="{loc:Loc ChangeLanguage}" Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
-            <!--<ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
-                <ComboBoxItem>
-                    English
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Srpski
-                </ComboBoxItem>
-            </ComboBox>-->
-            <Button Command="{Binding Path=LogoutCommand}" Content="{loc:Loc LogoutButton}" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
-            <Button Command="{Binding Path=ChangeToSettingsCommand}" HorizontalAlignment="Left" Background="DimGray" Margin="730,0,0,0" VerticalAlignment="Top" Width="23" Height="26">
-                <Image Source="/Images/settingsIcon.png" />
-
-            </Button>
-            <Button ToolTip="{loc:Loc ChangeTheme}" Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
-        </Grid>
-        <Grid Margin="200,180,200,0" Background="#bababa">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid Margin="33,33,33,70">
-                <Rectangle RadiusX="10" RadiusY="10" Width="374" Height="437" Fill="#2F4F4F" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center"  />
-                <Label Content="{loc:Loc Reminders}" FontSize="30" FontWeight="DemiBold" Height="60" Width="364" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                <Grid Margin="30,75,30,10">
-                    <DataGrid x:Name="RemindersList" AutoGenerateColumns="False" ItemsSource="{Binding RemindersOC}"
-                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" 
-                  Height="167" VerticalAlignment="Top"  Canvas.Left="376" Canvas.Top="52" Width="315" Margin="0,0,0,0">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="{loc:Loc Name}" Binding="{Binding Name}" Width="90"/>
-                            <DataGridTextColumn Header="{loc:Loc Time}" Binding="{Binding StartTime, StringFormat=hh:mm}" Width="90"/>
-                            <DataGridTextColumn Header="{loc:Loc Period}" Binding="{Binding TimeInterval}" Width="*" />
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <xctk:TimePicker x:Name="ReminderTimePicker" HorizontalAlignment="Left" Margin="133,234,0,0" Height="26" VerticalAlignment="Top" Width="100"/>
-                    <TextBox x:Name="ReminderName" HorizontalAlignment="Left" Height="20" Margin="0,312,0,0"  Text="{loc:Loc ReminderName}" VerticalAlignment="Top" Width="163" />
-                    <TextBox x:Name="ReminderInterval" Text="" ToolTip="{loc:Loc ReminderPeriodTooltip}" HorizontalAlignment="Left" Height="20" Margin="247,234,-0.6,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="68"/>
-                    <TextBlock x:Name="ReminderIntervalWatermark" Foreground="Gray" Text="Period" HorizontalAlignment="Left" Height="21" Margin="253,239,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="59">
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
-                                        <Setter Property="Visibility" Value="Visible"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-
-
-                    <TextBox x:Name="ReminderDescription"  HorizontalAlignment="Left" Height="42" Margin="0,265,0,0" TextWrapping="Wrap" Text="{loc:Loc ReminderDesc}" VerticalAlignment="Top" Width="315"/>
-                    <Button Background="#2F4F8F" Click="SubmitReminder" ToolTip="{loc:Loc CreateChangeReminderTooltip}" Content="Submit" HorizontalAlignment="Left" Height="25" Margin="168,312,-0.6,0" VerticalAlignment="Top" Width="147" />
-                    <Button Background="#a83e32" Click="DeleteReminder" Content="{loc:Loc DeleteSelected}" HorizontalAlignment="Left" Height="25" Margin="168,172,-0.6,0" VerticalAlignment="Top" Width="147" />
-                    <DatePicker x:Name="ReminderPeriod" ToolTip="{loc:Loc ReminderDatePickerTooltip}" HorizontalAlignment="Left" Margin="0,234,0,0" VerticalAlignment="Top" Width="117" Height="20"/>
-                    <Label Content="Period" HorizontalAlignment="Left" Margin="247,208,0,0" VerticalAlignment="Top" Width="65"/>
-                    <Label Content="{loc:Loc Time}" HorizontalAlignment="Left" Margin="133,208,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Label Content="{loc:Loc Date}" HorizontalAlignment="Left" Margin="0,208,0,0" VerticalAlignment="Top" Width="100"/>
-                </Grid>
-            </Grid>
-            <Grid Margin="33,33,33,70" Grid.Column="1">
-                <Rectangle RadiusX="10" RadiusY="10" Width="374" Height="437" Fill="#2F4F4F" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center"  />
-                <Label Content="{loc:Loc Reviews}" FontSize="30" FontWeight="DemiBold" Height="60" Width="354" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                <Grid Margin="10,75,10,10">
-                    <DataGrid x:Name="dataGridCompletedAppointments" AutoGenerateColumns="False" ItemsSource="{Binding CompletedAppointmentsNotReviewed}"
-                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" 
-                  Height="296" VerticalAlignment="Top" Width="329" Canvas.Left="10" Canvas.Top="65" Margin="13,0,12.4,0">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="status" Binding="{Binding AppointmentStatus}" Width="90"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Beginning, StringFormat=dd MMM yyyy}" Width="80" />
-                            <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Employee.User.FirstName}" Width="*"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Button Click="reviewAppointment" Content="{loc:Loc Send}" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" 
-                  Width="134" Background="#2F4F8F" Foreground="#FF707070" Canvas.Left="205" Canvas.Top="388" Margin="208,311,0,0"/>
-                    <ComboBox x:Name="ReviewScore"  Canvas.Left="68" Canvas.Top="388" Width="120" SelectedIndex="0" Height="20"  Cursor="None" Margin="13,310,221.4,15.8">
-                        <sys:Int32>1</sys:Int32>
-                        <sys:Int32>2</sys:Int32>
-                        <sys:Int32>3</sys:Int32>
-                        <sys:Int32>4</sys:Int32>
-                        <sys:Int32>5</sys:Int32>
-                    </ComboBox>
-                </Grid>
-            </Grid>
-        </Grid>
+        
     </Grid>
 </Page>

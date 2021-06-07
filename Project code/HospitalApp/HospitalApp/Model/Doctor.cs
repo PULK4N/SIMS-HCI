@@ -113,7 +113,7 @@ namespace HospitalApp.Model
 
         public override string ToString()
         {
-            return "Dr. " + Employee.User.LastName + ' ' + Employee.User.FirstName;
+            return Employee.User.FirstName + ' ' + Employee.User.LastName;
         }
     }
 }

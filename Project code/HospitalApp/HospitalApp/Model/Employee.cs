@@ -37,8 +37,6 @@ namespace HospitalApp.Model
         public int AnnualLeave { get; set; }
         public int SickLeave { get; set; }
         [Required, Index("uniqueUserEmp", IsUnique = true)]
-
-        //public HospitalClinic HospitalClinic { get; set; }
         public User User { get; set; }
 
     }

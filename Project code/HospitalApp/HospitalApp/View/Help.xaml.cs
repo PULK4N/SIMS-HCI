@@ -20,11 +20,9 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Help : Page
     {
-        public Help()
+        public Help(Frame load_frame)
         {
             InitializeComponent();
-            ViewModel.Help help = new ViewModel.Help();
-            this.DataContext = help;
         }
     }
 }
