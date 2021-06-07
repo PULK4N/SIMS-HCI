@@ -3,82 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d"
-      xmlns:loc="clr-namespace:HospitalApp"
-      Title="Home" Height="720" Width="1280">
+      xmlns:local="clr-namespace:HospitalApp.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Help">
+
     <Grid>
-        <Grid Margin="200,0,200,540" Background="#f7f7f7">
-            <Menu x:Name="MenuBar" VerticalAlignment="Bottom" Height="32">
-                <Menu.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <DockPanel HorizontalAlignment="Stretch"></DockPanel>
-                    </ItemsPanelTemplate>
-                </Menu.ItemsPanel>
-                <MenuItem Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc AnamnesisMenu}" Command="{Binding Path=ChangeToAnamnesisCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
-                <!--<MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>-->
-                <MenuItem Header="{loc:Loc RemindersMenu}" Command="{Binding Path=ChangeToRemindersCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc HelpMenu}" Command="{Binding Path=ChangeToHelpCommand}" HorizontalAlignment="Left"></MenuItem>
-            </Menu>
-            <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
-
-            <Button  Command="{Binding Path=ChangeToScheduleAppointmentCommand}" Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
-            <Button ToolTip="{loc:Loc ChangeLanguage}" Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
-            <!--<ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
-                <ComboBoxItem>
-                    English
-                </ComboBoxItem>
-                <ComboBoxItem>
-                    Srpski
-                </ComboBoxItem>
-            </ComboBox>-->
-            <Button Command="{Binding Path=LogoutCommand}" Content="{loc:Loc LogoutButton}" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
-            <Button Command="{Binding Path=ChangeToSettingsCommand}" HorizontalAlignment="Left" Background="DimGray" Margin="730,0,0,0" VerticalAlignment="Top" Width="23" Height="26">
-                <Image Source="/Images/settingsIcon.png" />
-
-            </Button>
-            <Button ToolTip="{loc:Loc ChangeTheme}" Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
-        </Grid>
-        <Grid Margin="200,180,200,0" Background="#bababa">
-            <Grid Margin="33,33,33,70">
-                <Rectangle RadiusX="10" RadiusY="10" Width="814" Height="437" Fill="#2F4F4F" HorizontalAlignment="Center" Stroke="Black" VerticalAlignment="Center"  />
-                <Label Content="{loc:Loc Help}" FontSize="40" FontWeight="DemiBold" Height="208" Width="612" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                <Grid Margin="10,75,10,10">
-                    <TreeView Grid.Row="1">
-                        <TreeViewItem FontSize="24" Header="{loc:Loc Question1}" Width="Auto">
-                            <TextBlock  TextWrapping="Wrap" MaxWidth="750" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
-                        </TreeViewItem>
-                        <TreeViewItem FontSize="24" Header="{loc:Loc Question2}"  Width="Auto">
-                            <TextBlock TextWrapping="Wrap" MaxWidth="750">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
-                        </TreeViewItem>
-                        <TreeViewItem FontSize="24" Header="{loc:Loc Question3}" Width="Auto">
-                            <TextBlock TextWrapping="Wrap" MaxWidth="750">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
-                        </TreeViewItem>
-                        <TreeViewItem FontSize="24" Header="{loc:Loc Question4}" Width="Auto">
-                            <TextBlock TextWrapping="Wrap" MaxWidth="750">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
-                        </TreeViewItem>
-                        <TreeViewItem FontSize="24" Header="{loc:Loc Question5}" Width="Auto">
-                            <TextBlock TextWrapping="Wrap" MaxWidth="750">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                            sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
-                        </TreeViewItem>
-                    </TreeView>
-                </Grid>
-            </Grid>
-        </Grid>
+        
     </Grid>
 </Page>

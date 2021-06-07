@@ -106,7 +106,7 @@ namespace HospitalApp.Repository
             return null;
         }
 
-        public List<Appointment> GetAllByPatientId(long patientId)
+        public List<Appointment> GetAllByPatient(long patientId)
         {
             try
             {//select appointments with the date, than select the ones of the patient
@@ -170,33 +170,7 @@ namespace HospitalApp.Repository
             {//select appointments with the date, than select the ones of the patient
                 return (from pApp in HospitalDB.Instance.Appointments
                         where pApp.Patient.PatientId == patientId
-                        && pApp.AppointmentStatus == Enums.AppointmentStatus.COMPLETED 
-                        //|| pApp.AppointmentStatus == Enums.AppointmentStatus.REVIEWED
-                        select pApp)
-                        .Include(App => App.Doctor)
-                        .ToList();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in entityValidationErrors.ValidationErrors)
-                    {
-                        MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
-                    }
-                }
-            }
-            return null;
-        }
-
-        public List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId)
-        {
-            try
-            {//select appointments with the date, than select the ones of the patient
-                return (from pApp in HospitalDB.Instance.Appointments
-                        where pApp.Patient.PatientId == patientId
                         && pApp.AppointmentStatus == Enums.AppointmentStatus.COMPLETED
-                        || pApp.AppointmentStatus == Enums.AppointmentStatus.REVIEWED
                         select pApp)
                         .Include(App => App.Doctor)
                         .ToList();

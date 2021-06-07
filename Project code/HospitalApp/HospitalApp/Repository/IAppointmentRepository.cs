@@ -14,11 +14,10 @@ namespace HospitalApp.Repository
 
         List<Appointment> GetAllByDoctor(long doctorId);
 
-        List<Appointment> GetAllByPatientId(long patientId);
+        List<Appointment> GetAllByPatient(long patientId);
 
         List<Appointment> PatientListApointmentsByDay(long patientID, DateTime dateOfAppointment);
         List<Appointment> GetAllCompletedByPatient(long patientId);
-        List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId);
         List<Appointment> GetAllByPatientRefered(long patientId);
     }
 }

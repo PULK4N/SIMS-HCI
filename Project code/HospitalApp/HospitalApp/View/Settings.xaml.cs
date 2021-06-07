@@ -20,28 +20,9 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Settings : Page
     {
-        private ViewModel.Settings ViewModelSettings;
-        public Settings()
+        public Settings(Frame load_frame)
         {
             InitializeComponent();
-            ViewModelSettings = new ViewModel.Settings();
-            this.DataContext = ViewModelSettings;
-        }
-
-        private void CheckPassword(object sender, RoutedEventArgs e)
-        {
-            if(NewPassword.Password.Equals(RepeatPassword.Password) == false)
-            {
-                ViewModelSettings.PasswordError = "Passwords are different!";
-            }
-            else if (NewPassword.Password.Length < 8)
-            {
-                ViewModelSettings.PasswordError = "Passwords must have at least 8 chars!";
-            }
-            else
-            {
-                ViewModelSettings.PasswordError = "";
-            }
         }
     }
 }

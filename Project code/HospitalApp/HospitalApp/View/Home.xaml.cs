@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 
@@ -12,11 +9,16 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Home : Page
     {
-        public Home()
+        private Frame mainFrame;
+        public Home(Frame frame)
         {
+            mainFrame = frame;
             InitializeComponent();
-            this.DataContext = new ViewModel.Home();
         }
 
+        private void AnamnesisClick(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = PatientWindow.Home;
+        }
     }
 }
