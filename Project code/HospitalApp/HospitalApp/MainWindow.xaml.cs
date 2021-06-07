@@ -1,13 +1,14 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Service;
 using HospitalApp.View;
+using MahApps.Metro.Controls;
 using System.Threading;
 using System.Windows;
 
 namespace HospitalApp
 {
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         Doctor ActiveDoctor;
         CancellationTokenSource CancellationTokenSource { get; set; }
@@ -28,7 +29,7 @@ namespace HospitalApp
 
         private void LoginButton(object sender, RoutedEventArgs e)
         {
-            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Text);
+            RegisteredUser registeredUser = Map.LoginController.Login(LoginUsername.Text, LoginPassword.Password);
             if(registeredUser != null)
             {
                 switch (registeredUser.UserType)
@@ -46,11 +47,10 @@ namespace HospitalApp
                         long docId = ActiveDoctor.DoctorId;
                         var s = new DoctorWindow(docId);
                         s.Show();
-                        this.Close();
                         break;
 
                 }
-                LoginGrid.Visibility = Visibility.Hidden;
+                this.Close();
             }
             else
             {
