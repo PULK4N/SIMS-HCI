@@ -29,7 +29,7 @@ namespace HospitalApp.View
             Patient = patient;
             Instance = this;
             InitializeComponent();
-            //CurrentPage.Frame = this.load_frame;
+            CurrentPage.Frame = load_frame;
         }
 
     }
