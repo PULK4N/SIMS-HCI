@@ -1,4 +1,5 @@
 ﻿using HospitalApp.Model;
+using HospitalApp.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace HospitalApp.Service
                 while (true)
                 {
                     prescriptions.Clear();
-                    foreach (Prescription prescription in Map.PrescriptionController.GetAllByPatientId(1))
+                    foreach (Prescription prescription in Map.PrescriptionController.GetAllByPatientId(1/*PatientWindow.Patient.PatientId*/))
                     {
                         prescriptions.Add(prescription);
                     }

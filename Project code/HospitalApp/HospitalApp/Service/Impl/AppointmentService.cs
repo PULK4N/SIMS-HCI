@@ -55,13 +55,13 @@ namespace HospitalApp.Service
 
         public List<Appointment> GetAllByPatientId(long patientId)
         {
-            return _appointmentRepository.GetAllByPatient(patientId);
+            return _appointmentRepository.GetAllByPatientId(patientId);
         }
 
         public bool PatientReScheduleAppointment(Appointment appointment)
         {
             if (new PatientService(new PatientRepository()).IsMalicious(appointment.Patient) == false)
-                _appointmentRepository.Update(appointment);//TO DO: edit this function, change the location maybe
+                Update(appointment);//TO DO: edit this function, change the location maybe
             else
             {
                 return false;
@@ -98,7 +98,7 @@ namespace HospitalApp.Service
 
         public List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId)
         {
-            throw new NotImplementedException();
+            return _appointmentRepository.GetAllCompletedOrReviewedByPatient(patientId);
         }
     }
 }
