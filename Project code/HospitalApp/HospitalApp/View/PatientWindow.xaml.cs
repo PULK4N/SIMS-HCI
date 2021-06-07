@@ -20,16 +20,16 @@ namespace HospitalApp.View
     /// </summary>
     public partial class PatientWindow : Window
     {
-        public static Home Home { get; set; }
-        public static AppointmentsAndTherapy AppointmentsAndTherapy { get; set; }
-        public static Anamnesis Anamnesis { get; set; }
-        public static Prescriptions Prescriptions { get; set; }
-        public static Reminders Reminders { get; set; }
-        public static MedicalClinics MedicalClinics { get; set; }
-        public static Doctors Doctors { get; set; }
-        public static Help Help { get; set; }
-        public static ScheduleAppointment ScheduleAppointment { get; set; }
-        public static Settings Settings { get; set; }
+        //public static Home Home { get; set; }
+        //public static AppointmentsAndTherapy AppointmentsAndTherapy { get; set; }
+        //public static Anamnesis Anamnesis { get; set; }
+        //public static Prescriptions Prescriptions { get; set; }
+        //public static Reminders Reminders { get; set; }
+        //public static MedicalClinics MedicalClinics { get; set; }
+        //public static Doctors Doctors { get; set; }
+        //public static Help Help { get; set; }
+        //public static ScheduleAppointment ScheduleAppointment { get; set; }
+        //public static Settings Settings { get; set; }
 
         public PatientWindow()
         {
@@ -39,24 +39,16 @@ namespace HospitalApp.View
 
         private void Initialize()
         {
-            Home = new Home(load_frame);
-            AppointmentsAndTherapy = new AppointmentsAndTherapy(load_frame);
-            Anamnesis = new Anamnesis(load_frame);
-            Prescriptions = new Prescriptions(load_frame);
-            Reminders = new Reminders(load_frame);
-            MedicalClinics = new MedicalClinics(load_frame);
-            Doctors = new Doctors(load_frame);
-            Help = new Help(load_frame);
-            ScheduleAppointment = new ScheduleAppointment(load_frame);
-            Settings = new Settings(load_frame);
+            //Home = new Home(load_frame);
+            //AppointmentsAndTherapy = new AppointmentsAndTherapy(load_frame);
+            //Anamnesis = new Anamnesis(load_frame);
+            //Prescriptions = new Prescriptions(load_frame);
+            //Reminders = new Reminders(load_frame);
+            //MedicalClinics = new MedicalClinics(load_frame);
+            //Doctors = new Doctors(load_frame);
+            //Help = new Help(load_frame);
+            //ScheduleAppointment = new ScheduleAppointment(load_frame);
+            //Settings = new Settings(load_frame);
         }
-
-        private void InitializeImages()
-        {
-            //load_frame.Content = new Home();
-            //load_frame.Content = new Home();
-            //HeaderImage.Source = Directory.GetCurrentDirectory();
-        }
-
     }
 }
