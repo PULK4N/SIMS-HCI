@@ -118,216 +118,216 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AdditionalInfo" xml:space="preserve">
-    <value>Additional info</value>
+    <value>Dodatne informacije</value>
   </data>
   <data name="Anamnesis" xml:space="preserve">
-    <value>Anamnesis</value>
+    <value>Anamneza</value>
   </data>
   <data name="AnamnesisMenu" xml:space="preserve">
-    <value>Anamnesis &amp; prescriptions</value>
+    <value>Anamneze i propisani lekovi</value>
   </data>
   <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
-    <value>Appointments and therapy</value>
+    <value>Pregledi i terapije</value>
   </data>
   <data name="ChangeLanguage" xml:space="preserve">
-    <value>Change language</value>
+    <value>Promeni jezik</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>Change password</value>
+    <value>Promeni šifru</value>
   </data>
   <data name="ChangeSelected" xml:space="preserve">
-    <value>Change selected</value>
+    <value>Promeni obeležen</value>
   </data>
   <data name="ChangeTheme" xml:space="preserve">
-    <value>Change theme</value>
+    <value>Promeni temu</value>
   </data>
   <data name="CompletedAppointments" xml:space="preserve">
-    <value>Completed appointments</value>
+    <value>Istorija pregleda</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Potvrdi</value>
   </data>
   <data name="ConfirmChangePassword" xml:space="preserve">
     <value>Confirm password change</value>
   </data>
   <data name="CreateChangeReminderTooltip" xml:space="preserve">
-    <value>If reminder is selected, it will change it, else it will create a new reminder</value>
+    <value>Ako je podsetnik selektovan, promeniće ga, u suprotnom će kreirati novi podsetnik</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Datum</value>
   </data>
   <data name="DeleteSelected" xml:space="preserve">
-    <value>Delete selected</value>
+    <value>Obriši obeležen</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Details</value>
+    <value>Detalji</value>
   </data>
   <data name="Doctor" xml:space="preserve">
-    <value>Doctor</value>
+    <value>Doktor</value>
   </data>
   <data name="DoctorsMenu" xml:space="preserve">
-    <value>Doctors &amp; Clinics</value>
+    <value>Doktori i klinike</value>
   </data>
   <data name="Dosage" xml:space="preserve">
-    <value>Dosage</value>
+    <value>Doza</value>
   </data>
   <data name="Drug" xml:space="preserve">
-    <value>Drug</value>
+    <value>Lek</value>
   </data>
   <data name="FAQ" xml:space="preserve">
-    <value>Frequently asked questions</value>
+    <value>Često postavljena pitanja</value>
   </data>
   <data name="From" xml:space="preserve">
-    <value>From</value>
+    <value>Od</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>Full name</value>
+    <value>Ime i prezime</value>
   </data>
   <data name="GenerateAppointments" xml:space="preserve">
-    <value>Generate appointments</value>
+    <value>Prikaži termine</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>Height</value>
+    <value>Visina</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Help</value>
+    <value>Pomoć</value>
   </data>
   <data name="HelpMenu" xml:space="preserve">
-    <value>Help</value>
+    <value>Pomoć</value>
   </data>
   <data name="HomeMenu" xml:space="preserve">
-    <value>Home</value>
+    <value>Početna</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>English</value>
+    <value>Srpski</value>
   </data>
   <data name="LogoutButton" xml:space="preserve">
-    <value>Logout</value>
+    <value>Odjavi se</value>
   </data>
   <data name="MaritalStatus" xml:space="preserve">
-    <value>Marital status</value>
+    <value>Bračni status</value>
   </data>
   <data name="MedicalClinicsMenu" xml:space="preserve">
-    <value>Clinics</value>
+    <value>Klinike</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Naziv</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New password</value>
+    <value>Nova lozinka</value>
   </data>
   <data name="Notes" xml:space="preserve">
-    <value>Notes</value>
+    <value>Beleške</value>
   </data>
   <data name="Period" xml:space="preserve">
     <value>Period</value>
   </data>
   <data name="PrescribedMedicine" xml:space="preserve">
-    <value>Prescribed medicine</value>
+    <value>Propisani lekovi</value>
   </data>
   <data name="Prescriptions" xml:space="preserve">
-    <value>Prescriptions</value>
+    <value>Propisani lekovi</value>
   </data>
   <data name="PrescriptionsMenu" xml:space="preserve">
-    <value>Prescriptions</value>
+    <value>Recepti</value>
   </data>
   <data name="Priority" xml:space="preserve">
-    <value>Priority</value>
+    <value>Prioritet</value>
   </data>
   <data name="PriorityTooltip" xml:space="preserve">
-    <value>If there are no available appointments based on your choosing criteria, the program will automatically generate appointments by your priority choice</value>
+    <value>Ako nema slobodnih termina za preglede na osnovu kriterijuma koga ste izabrali, program će sam generisati termine na osnovu izabranog prioriteta.</value>
   </data>
   <data name="Question1" xml:space="preserve">
-    <value>Question 1</value>
+    <value>Pitanje 1</value>
   </data>
   <data name="Question2" xml:space="preserve">
-    <value>Question 2</value>
+    <value>Pitanje 2</value>
   </data>
   <data name="Question3" xml:space="preserve">
-    <value>Question 3</value>
+    <value>Pitanje 3</value>
   </data>
   <data name="Question4" xml:space="preserve">
-    <value>Question 4</value>
+    <value>Pitanje 4</value>
   </data>
   <data name="Question5" xml:space="preserve">
-    <value>Question 5</value>
+    <value>Pitanje 5</value>
   </data>
   <data name="RateDoctor" xml:space="preserve">
-    <value>Rate</value>
+    <value>Oceni</value>
   </data>
   <data name="Recommendations" xml:space="preserve">
-    <value>Recommendations</value>
+    <value>Preporučeni termini</value>
   </data>
   <data name="ReminderDatePickerTooltip" xml:space="preserve">
-    <value>When do you want a reminder to pop up first</value>
+    <value>Nakon koliko dana  želite da se podsetnik ugasi</value>
   </data>
   <data name="ReminderDesc" xml:space="preserve">
-    <value>Description of a reminder</value>
+    <value>Opis podcetnika</value>
   </data>
   <data name="ReminderName" xml:space="preserve">
-    <value>Name of a reminder</value>
+    <value>Ime podcetnika</value>
   </data>
   <data name="ReminderPeriodTooltip" xml:space="preserve">
-    <value>Date when reminder stops poping up</value>
+    <value>Nakon koliko dana želite da se potsetnik pokrene ponovo</value>
   </data>
   <data name="Reminders" xml:space="preserve">
-    <value>Reminders</value>
+    <value>Podsetnici</value>
   </data>
   <data name="RemindersMenu" xml:space="preserve">
-    <value>Reminders &amp; Reviews</value>
+    <value>Podsetnici &amp; Recenzije</value>
   </data>
   <data name="RepeatPassword" xml:space="preserve">
-    <value>Repeat password</value>
+    <value>Ponovi lozinku</value>
   </data>
   <data name="Reviews" xml:space="preserve">
-    <value>Reviews</value>
+    <value>Recenzije</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Sačuvaj</value>
   </data>
   <data name="Schedule" xml:space="preserve">
-    <value>Schedule</value>
+    <value>Zakaži</value>
   </data>
   <data name="ScheduleAppointmentButton" xml:space="preserve">
-    <value>Schedule appointment</value>
+    <value>Zakaži pregled</value>
   </data>
   <data name="ScheduledAppointments" xml:space="preserve">
-    <value>Scheduled appointments</value>
+    <value>Zakazani pregledi</value>
   </data>
   <data name="ScheduleFailed" xml:space="preserve">
-    <value>Already taken</value>
+    <value>Već zauzet</value>
   </data>
   <data name="ScheduleSucceded" xml:space="preserve">
-    <value>Your appointment has been scheduled</value>
+    <value>Termin je uspešno zakazan!</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Send</value>
+    <value>Pošalji</value>
   </data>
   <data name="SendFeedback" xml:space="preserve">
-    <value>Send feedback</value>
+    <value>Pošalji povratnu informaciju</value>
   </data>
   <data name="Sex" xml:space="preserve">
-    <value>Gender</value>
+    <value>Pol</value>
   </data>
   <data name="ShowWeeklyLog" xml:space="preserve">
-    <value>Weekly log</value>
+    <value>Nedeljni izveštaj</value>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>Time</value>
+    <value>Vreme</value>
   </data>
   <data name="To" xml:space="preserve">
-    <value>To</value>
+    <value>Do</value>
   </data>
   <data name="TooltipHomeSchApp" xml:space="preserve">
-    <value>Click to see more details</value>
+    <value>Klikni da vidiš više detalja</value>
   </data>
   <data name="Usage" xml:space="preserve">
-    <value>Usage</value>
+    <value>Period</value>
   </data>
   <data name="ViewDetailsButton" xml:space="preserve">
-    <value>More details</value>
+    <value>Više detalja</value>
   </data>
   <data name="Weight" xml:space="preserve">
-    <value>Weight</value>
+    <value>Težina</value>
   </data>
 </root>

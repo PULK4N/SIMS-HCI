@@ -259,7 +259,7 @@
     <value>Recommendations</value>
   </data>
   <data name="ReminderDatePickerTooltip" xml:space="preserve">
-    <value>When do you want a reminder to pop up first</value>
+    <value>Date when reminder stops poping up</value>
   </data>
   <data name="ReminderDesc" xml:space="preserve">
     <value>Description of a reminder</value>
@@ -268,7 +268,7 @@
     <value>Name of a reminder</value>
   </data>
   <data name="ReminderPeriodTooltip" xml:space="preserve">
-    <value>Date when reminder stops poping up</value>
+    <value>In how many days you want the reminder to trigger again</value>
   </data>
   <data name="Reminders" xml:space="preserve">
     <value>Reminders</value>
