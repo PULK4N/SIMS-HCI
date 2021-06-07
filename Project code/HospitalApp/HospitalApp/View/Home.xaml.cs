@@ -16,9 +16,5 @@ namespace HospitalApp.View
             InitializeComponent();
         }
 
-        private void AnamnesisClick(object sender, RoutedEventArgs e)
-        {
-            mainFrame.Content = PatientWindow.Home;
-        }
     }
 }

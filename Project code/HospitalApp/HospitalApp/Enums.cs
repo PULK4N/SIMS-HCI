@@ -100,4 +100,13 @@ namespace Enums{
         REVIEWED
     }
 
+    public enum MedicalTreatementPeriod
+    {
+        EVERY_DAY,
+        ONCE_A_WEEK,
+        TWICE_A_WEEK,
+        THREE_TIMES_A_WEEK,
+        EVERY_MONTH
+    }
+
 }
