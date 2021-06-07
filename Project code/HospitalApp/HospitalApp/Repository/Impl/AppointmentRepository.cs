@@ -84,11 +84,11 @@ namespace HospitalApp.Repository
             List<Appointment> appointments = (from app in HospitalDB.Instance.Appointments where app.Doctor.DoctorId == doctorId select app)
                 .Include(a => a.Room)
                 .Include(a => a.Patient)
-                .Include(a => a.Patient.User)
-                .Include(a => a.Patient.User.RegisteredUser)
-                .Include(a => a.Patient.MedicalRecord)
-                .Include(a => a.Patient.MedicalRecord.Anamnesis)
-                .Include(a => a.Patient.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug)).ToList();
+                    .Include(a => a.Patient.User)
+                    .Include(a => a.Patient.User.RegisteredUser)
+                    .Include(a => a.Patient.MedicalRecord)
+                    .Include(a => a.Patient.MedicalRecord.Anamnesis)
+                    .Include(a => a.Patient.MedicalRecord.Anamnesis.Prescriptions.Select(prsc => prsc.Drug)).ToList();
             return appointments;
         }
 
@@ -106,7 +106,7 @@ namespace HospitalApp.Repository
             return null;
         }
 
-        public List<Appointment> GetAllByPatient(long patientId)
+        public List<Appointment> GetAllByPatientId(long patientId)
         {
             try
             {//select appointments with the date, than select the ones of the patient
@@ -170,7 +170,33 @@ namespace HospitalApp.Repository
             {//select appointments with the date, than select the ones of the patient
                 return (from pApp in HospitalDB.Instance.Appointments
                         where pApp.Patient.PatientId == patientId
+                        && pApp.AppointmentStatus == Enums.AppointmentStatus.COMPLETED 
+                        //|| pApp.AppointmentStatus == Enums.AppointmentStatus.REVIEWED
+                        select pApp)
+                        .Include(App => App.Doctor)
+                        .ToList();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId)
+        {
+            try
+            {//select appointments with the date, than select the ones of the patient
+                return (from pApp in HospitalDB.Instance.Appointments
+                        where pApp.Patient.PatientId == patientId
                         && pApp.AppointmentStatus == Enums.AppointmentStatus.COMPLETED
+                        || pApp.AppointmentStatus == Enums.AppointmentStatus.REVIEWED
                         select pApp)
                         .Include(App => App.Doctor)
                         .ToList();
@@ -195,16 +221,6 @@ namespace HospitalApp.Repository
                 .Include(a => a.Patient)
                 .Include(a => a.Room)
                 .ToList();
-        }
-
-        public List<Appointment> GetAllByPatientId(long patientId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

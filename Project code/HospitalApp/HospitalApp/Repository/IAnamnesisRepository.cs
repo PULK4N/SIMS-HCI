@@ -12,5 +12,6 @@ namespace HospitalApp.Repository
     public interface IAnamnesisRepository : IEntityRepository<Anamnesis>
     {
         Anamnesis GetByPatient(long patientId);
+
     }
 }

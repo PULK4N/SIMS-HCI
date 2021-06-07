@@ -12,6 +12,7 @@ namespace HospitalApp.Repository
     public interface IDoctorRepository : IEntityRepository<Doctor>
     {
         List<Doctor> GetAllBySpecialization(Enums.Specialization specialization);
+
         Doctor GetByUsername(string username);
     }
 }
