@@ -89,11 +89,9 @@
     <Compile Include="Controller\PatientAllergiesController.cs" />
     <Compile Include="Controller\HospitalTreatmentController.cs" />
     <Compile Include="Controller\IEntityController.cs" />
+    <Compile Include="Controller\ReferralController.cs" />
+    <Compile Include="Controller\ReminderController.cs" />
     <Compile Include="Controller\StaticInventoryController.cs" />
-    <Compile Include="Migrations\202106051554113_added_doctor_to_prescription.cs" />
-    <Compile Include="Migrations\202106051554113_added_doctor_to_prescription.designer.cs">
-      <DependentUpon>202106051554113_added_doctor_to_prescription.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\Allergies.cs" />
     <Compile Include="Model\Bed.cs" />
     <Compile Include="Model\HospitalTreatment.cs" />
@@ -122,14 +120,21 @@
     </Compile>
     <Compile Include="Repository\BedRepository.cs" />
     <Compile Include="Repository\IBedRepository.cs" />
+    <Compile Include="Repository\IReferralRepository.cs" />
+    <Compile Include="Repository\IReminderRepository.cs" />
     <Compile Include="Repository\PatientAllergiesRepository.cs" />
     <Compile Include="Repository\HospitalTreatmentRepository.cs" />
     <Compile Include="Repository\IPatientAllergiesRepository.cs" />
     <Compile Include="Repository\IHospitalTreatmentRepository.cs" />
     <Compile Include="Repository\IStaticInventoryRepository.cs" />
+    <Compile Include="Repository\ReferralRepository.cs" />
+    <Compile Include="Repository\ReminderRepository.cs" />
     <Compile Include="Repository\StaticInventoryRepository.cs" />
     <Compile Include="Service\BedService.cs" />
     <Compile Include="Service\IBedService.cs" />
+    <Compile Include="Service\IReferralService.cs" />
+    <Compile Include="Service\IReminderSchedulingService.cs" />
+    <Compile Include="Service\IReminderService.cs" />
     <Compile Include="Service\PatientAllergiesService.cs" />
     <Compile Include="Service\HospitalTreatmentService.cs" />
     <Compile Include="Service\IPatientAllergiesService.cs" />
@@ -137,6 +142,7 @@
     <Compile Include="Service\ISchedulingService.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Service\IStaticInventoryService.cs" />
+    <Compile Include="Service\ReferralService.cs" />
     <Compile Include="Service\RegisteredUserService.cs" />
     <Compile Include="Service\IRegisteredUserService.cs" />
     <Compile Include="Map.cs" />
@@ -217,6 +223,39 @@
     <Compile Include="Service\ReviewService.cs" />
     <Compile Include="Service\RoomService.cs" />
     <Compile Include="Service\StaticInventoryService.cs" />
+    <Compile Include="View\Anamnesis.xaml.cs">
+      <DependentUpon>Anamnesis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AppointmentsAndTherapy.xaml.cs">
+      <DependentUpon>AppointmentsAndTherapy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctors.xaml.cs">
+      <DependentUpon>Doctors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedicalClinics.xaml.cs">
+      <DependentUpon>MedicalClinics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientWindow.xaml.cs">
+      <DependentUpon>PatientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Prescriptions.xaml.cs">
+      <DependentUpon>Prescriptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Reminders.xaml.cs">
+      <DependentUpon>Reminders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ScheduleAppointment.xaml.cs">
+      <DependentUpon>ScheduleAppointment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -272,6 +311,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Anamnesis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\AppointmentsAndTherapy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Doctors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Help.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Home.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MedicalClinics.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PatientWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Prescriptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Reminders.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ScheduleAppointment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Appointment.cs" />
@@ -302,9 +385,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202106051554113_added_doctor_to_prescription.resx">
-      <DependentUpon>202106051554113_added_doctor_to_prescription.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

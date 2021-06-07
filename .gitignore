@@ -15,7 +15,6 @@
 *.userosscache
 *.sln.docstates
 App.config
-HospitalApp.exe.config
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
