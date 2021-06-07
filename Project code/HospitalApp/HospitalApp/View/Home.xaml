@@ -17,7 +17,7 @@
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
                 <MenuItem Header="Home"></MenuItem>
-                <MenuItem Header="Anamesis" Click="AnamnesisClick"></MenuItem>
+                <MenuItem Header="Anamesis" ></MenuItem>
                 <MenuItem Header="Appointments and therapy"></MenuItem>
                 <MenuItem Header="Prescriptions"></MenuItem>
                 <MenuItem Header="Reminders"></MenuItem>
