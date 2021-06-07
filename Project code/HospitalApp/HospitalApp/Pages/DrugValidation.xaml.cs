@@ -57,7 +57,7 @@ public partial class DrugValidation : Page
         if (dataGridValidateDrugs.SelectedItem != null)
         {
         Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
-        Map.DrugController.ApproveDrug(drug);
+        Map.DrugController.ValidateDrug(drug, Enums.DrugStatus.APPROVED);
         UpdateDrugs();
     }
         else
@@ -69,7 +69,7 @@ public partial class DrugValidation : Page
         if (dataGridValidateDrugs.SelectedItem != null)
         {
         Drug drug = dataGridValidateDrugs.SelectedItem as Drug;
-        Map.DrugController.RejectDrug(drug);
+        Map.DrugController.ValidateDrug(drug, Enums.DrugStatus.REJECTED);
         UpdateDrugs();
     }
         else

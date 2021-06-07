@@ -3,6 +3,7 @@
 // Created: Thursday, April 15, 2021 4:44:59 PM
 // Purpose: Definition of Class MedicineService
 
+using Enums;
 using HospitalApp.Model;
 using HospitalApp.Repository;
 using System.Collections.Generic;
@@ -45,51 +46,20 @@ namespace HospitalApp.Service
 
         public void Update(Drug drug)
         {
-            var editedDrug = _drugRepository.Get(drug.DrugId);
-            if (editedDrug != null)
-            {
-                editedDrug.Details = drug.Details;
-                editedDrug.Name = drug.Name;
-                editedDrug.DrugStatus = drug.DrugStatus;
-                _drugRepository.Update(drug);
-            }
+            _drugRepository.Update(drug);
         }
 
         public List<Drug> GetDrugsForApproval()
         {
-            List<Drug> allDrugs = _drugRepository.GetAll();
-            return GetPendingDrugs(allDrugs);
+            return _drugRepository.GetDrugsForApproval();
         }
 
-        private static List<Drug> GetPendingDrugs(List<Drug> allDrugs)
-        {
-            List<Drug> drugsForApproval = new List<Drug>();
-            foreach (Drug d in allDrugs)
-            {
-                if (d.DrugStatus.Equals(Enums.DrugStatus.PENDING))
-                    drugsForApproval.Add(d);
-            }
-            return drugsForApproval;
-        }
-
-        public bool ApproveDrug(Drug drug)
+        public bool ValidateDrug(Drug drug, DrugStatus drugStatus)
         {
             Drug selectedDrug = _drugRepository.Get(drug.DrugId);
             if (selectedDrug != null)
             {
-                selectedDrug.DrugStatus = Enums.DrugStatus.APPROVED; //izvuci u f-ju
-                HospitalDB.Instance.SaveChanges();
-                return true;
-            }
-            return false;
-        }
-
-        public bool RejectDrug(Drug drug)
-        {
-            Drug selectedDrug = _drugRepository.Get(drug.DrugId);
-            if (selectedDrug != null)
-            {
-                selectedDrug.DrugStatus = Enums.DrugStatus.REJECTED; //izvuci u f-ju
+                selectedDrug.DrugStatus = drugStatus;
                 HospitalDB.Instance.SaveChanges();
                 return true;
             }

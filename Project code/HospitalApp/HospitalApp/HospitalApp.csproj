@@ -407,73 +407,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Pages\1604074907832.jpg" />
+    <Folder Include="Factory\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="1604074907832.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="outline_home_white_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="outline_person_white_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="outline_rule_white_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="outline_settings_white_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="outline_event_note_white_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="outline_groups_white_24dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="output-onlinepngtools.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="logogreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="output-onlinepngtools8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="output-onlinepngtools10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\output-onlinepngtools11.png" />
+    <Resource Include="wojak_laugh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
