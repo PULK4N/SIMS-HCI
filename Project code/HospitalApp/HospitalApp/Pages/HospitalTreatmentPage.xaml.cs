@@ -132,7 +132,10 @@ namespace HospitalApp.Pages
                 MessageBox.Show("Hospital treatment successfully extended");
                 UpdateHospitalTreatmentInfo();
             }
-            MessageBox.Show("New date not selected");
+            else
+            {
+                MessageBox.Show("New date not selected");
+            }
         }
     }
 }

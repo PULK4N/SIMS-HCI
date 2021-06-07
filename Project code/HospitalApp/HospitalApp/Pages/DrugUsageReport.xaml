@@ -43,7 +43,7 @@
                 <DataGridTextColumn Header="Handout date" Binding="{Binding HandoutDate}" Width="130"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name="Save" IsEnabled="False" Content="Save Report" HorizontalAlignment="Left" Margin="63,429,0,0" VerticalAlignment="Top" Width="162" Height="40" BorderBrush="#FF3EAF76" Background="#FFCCFFCC" Click="Save_Click"/>
+        <Button Name="Save" IsEnabled="False" Content="Submit Report" HorizontalAlignment="Left" Margin="63,429,0,0" VerticalAlignment="Top" Width="162" Height="40" BorderBrush="#FF3EAF76" Background="#FFCCFFCC" Click="Save_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" FontWeight="Thin" Text="Report" Foreground="#FF343434"/>
     </Grid>
 </Page>
