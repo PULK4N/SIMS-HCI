@@ -34,7 +34,11 @@ namespace HospitalApp.Repository
 
         public List<Doctor> GetAll()
         {
-            return HospitalDB.Instance.Doctors.ToList();
+            return (from doctor in HospitalDB.Instance.Doctors
+                    select doctor)
+                    .Include(d => d.Employee)
+                    .Include(d => d.Employee.User)
+                    .ToList();
         }
         //doesn't get doctors "RegisterUser" (username and pw information)
         public List<Doctor> GetAllBySpecialization(Specialization specialization)

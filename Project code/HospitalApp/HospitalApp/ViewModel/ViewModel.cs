@@ -1,4 +1,5 @@
-﻿using HospitalApp.View;
+﻿using ControlzEx.Theming;
+using HospitalApp.View;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -76,7 +77,7 @@ namespace HospitalApp.ViewModel
         #region Executed and canExecute methods
         public void Executed_changeToHomeCommand(object obj)
         {
-            ////CurrentPage.SetToHome();
+            CurrentPage.SetToHome();
         }
         public bool CanExecute_changeToHomeCommand(object obj)
         {
@@ -85,7 +86,7 @@ namespace HospitalApp.ViewModel
         //--------------------------------------------------------------
         public void Executed_changeToAnamnesisCommand(object obj)
         {
-            //CurrentPage.SetToAnamnesis();
+            CurrentPage.SetToAnamnesis();
         }
         public bool CanExecute_changeToAnamnesisCommand(object obj)
         {
@@ -94,7 +95,7 @@ namespace HospitalApp.ViewModel
         //--------------------------------------------------------------
         public void Executed_changeToAppointmentsAndTherapyCommand(object obj)
         {
-            //CurrentPage.SetToAppointmentsAndTherapy();
+            CurrentPage.SetToAppointmentsAndTherapy();
         }
         public bool CanExecute_changeToAppointmentsAndTherapyCommand(object obj)
         {
@@ -103,7 +104,7 @@ namespace HospitalApp.ViewModel
         //--------------------------------------------------------------
         public void Executed_changeToRemindersCommand(object obj)
         {
-            //CurrentPage.SetToReminders();
+            CurrentPage.SetToReminders();
         }
         public bool CanExecute_changeToRemindersCommand(object obj)
         {
@@ -112,7 +113,7 @@ namespace HospitalApp.ViewModel
         //--------------------------------------------------------------
         public void Executed_changeToHelpCommand(object obj)
         {
-            //CurrentPage.SetToHelp();
+            CurrentPage.SetToHelp();
         }
         public bool CanExecute_changeToHelpCommand(object obj)
         {
@@ -121,7 +122,7 @@ namespace HospitalApp.ViewModel
         //--------------------------------------------------------------
         public void Executed_changeToScheduleAppointmentCommand(object obj)
         {
-            //CurrentPage.SetToScheduleAppointment();
+            CurrentPage.SetToScheduleAppointment();
         }
         public bool CanExecute_changeToScheduleAppointmentCommand(object obj)
         {
@@ -130,7 +131,7 @@ namespace HospitalApp.ViewModel
         //--------------------------------------------------------------
         public void Executed_changeToSettingsCommand(object obj)
         {
-            //CurrentPage.SetToSettings();
+            CurrentPage.SetToSettings();
         }
         public bool CanExecute_changeToSettingsCommand(object obj)
         {
@@ -139,7 +140,7 @@ namespace HospitalApp.ViewModel
         //--------------------------------------------------------------
         public void Executed_ChangeToWeeklyLogCommand(object obj)
         {
-            //CurrentPage.SetToWeeklyLog();
+            CurrentPage.SetToWeeklyLog();
         }
         public bool CanExecute_changeToWeeklyLogCommand(object obj)
         {
@@ -160,14 +161,14 @@ namespace HospitalApp.ViewModel
 
         public void Executed_ChangeStyleCommand(object obj)
         {
-            //if (ThemeManager.Current.DetectTheme().Name.Equals("Dark.Blue"))
-            //{
-            //    ThemeManager.Current.ChangeTheme(HospitalApp.App.Current, "Light.Blue");
-            //}
-            //else
-            //{
-            //    ThemeManager.Current.ChangeTheme(HospitalApp.App.Current, "Dark.Blue");
-            //}
+            if (ThemeManager.Current.DetectTheme().Name.Equals("Dark.Blue"))
+            {
+                ThemeManager.Current.ChangeTheme(HospitalApp.App.Current, "Light.Blue");
+            }
+            else
+            {
+                ThemeManager.Current.ChangeTheme(HospitalApp.App.Current, "Dark.Blue");
+            }
         }
         public bool CanExecute_ChangeStyleCommand(object obj)
         {
@@ -197,6 +198,6 @@ namespace HospitalApp.ViewModel
             return true;
         }
         #endregion
-        
+
     }
 }
