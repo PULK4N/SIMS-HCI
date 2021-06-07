@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HospitalApp.Repository
 {
@@ -54,11 +55,18 @@ namespace HospitalApp.Repository
 
         public List<Reminder> GetAllByPatientId(long patientId)
         {
-            return (from r in HospitalDB.Instance.Reminders where r.Patient.PatientId == patientId select r).Include(r => r.Patient).ToList();
+            try
+            {
+                return (from r in HospitalDB.Instance.Reminders where r.Patient.PatientId == patientId select r).Include(r => r.Patient).ToList();
+            }catch(Exception e)
+            {
+                MessageBox.Show("We have encountered an error with loading the patient from the database");
+            }
+            return null;
         }
 
         public void Update(Reminder reminder)
-        { 
+        {
             HospitalDB.Instance.SaveChanges();
         }
     }

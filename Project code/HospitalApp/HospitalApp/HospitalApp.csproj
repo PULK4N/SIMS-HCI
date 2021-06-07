@@ -128,18 +128,39 @@
     <Compile Include="Pages\ReferalSchedulingPage.xaml.cs">
       <DependentUpon>ReferalSchedulingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Repository\BedRepository.cs" />
+    <Compile Include="Repository\IAnamnesisRepository.cs" />
+    <Compile Include="Repository\IAppointmentRepository.cs" />
+    <Compile Include="Repository\IDoctorRepository.cs" />
+    <Compile Include="Repository\IEntityRepository.cs" />
+    <Compile Include="Repository\IGuestPatientRepository.cs" />
+    <Compile Include="Repository\IHospitalDB.cs" />
+    <Compile Include="Repository\IMedicalRecordRepository.cs" />
+    <Compile Include="Repository\Impl\AnamnesisRepository.cs" />
+    <Compile Include="Repository\Impl\AppointmentRepository.cs" />
+    <Compile Include="Repository\Impl\BedRepository.cs" />
     <Compile Include="Repository\IBedRepository.cs" />
-    <Compile Include="Repository\IReferralRepository.cs" />
-    <Compile Include="Repository\IReminderRepository.cs" />
-    <Compile Include="Repository\PatientAllergiesRepository.cs" />
-    <Compile Include="Repository\HospitalTreatmentRepository.cs" />
+    <Compile Include="Repository\Impl\DoctorRepository.cs" />
+    <Compile Include="Repository\Impl\GuestPatientRepository.cs" />
+    <Compile Include="Repository\Impl\HospitalDB.cs" />
+    <Compile Include="Repository\Impl\MedicalRecordRepository.cs" />
+    <Compile Include="Repository\Impl\PatientAllergiesRepository.cs" />
+    <Compile Include="Repository\Impl\HospitalTreatmentRepository.cs" />
+    <Compile Include="Repository\Impl\PatientRepository.cs" />
+    <Compile Include="Repository\Impl\PrescriptionRepository.cs" />
+    <Compile Include="Repository\Impl\ReferralRepository.cs" />
+    <Compile Include="Repository\Impl\RegisteredUserRepository.cs" />
+    <Compile Include="Repository\Impl\ReminderRepository.cs" />
+    <Compile Include="Repository\Impl\ReviewRepository.cs" />
     <Compile Include="Repository\IPatientAllergiesRepository.cs" />
     <Compile Include="Repository\IHospitalTreatmentRepository.cs" />
+    <Compile Include="Repository\IPatientRepository.cs" />
+    <Compile Include="Repository\IPrescriptionRepository.cs" />
+    <Compile Include="Repository\IReferralRepository.cs" />
+    <Compile Include="Repository\IRegisteredUserRepository.cs" />
+    <Compile Include="Repository\IReminderRepository.cs" />
+    <Compile Include="Repository\IReviewRepository.cs" />
     <Compile Include="Repository\IStaticInventoryRepository.cs" />
-    <Compile Include="Repository\ReferralRepository.cs" />
-    <Compile Include="Repository\ReminderRepository.cs" />
-    <Compile Include="Repository\StaticInventoryRepository.cs" />
+    <Compile Include="Repository\Impl\StaticInventoryRepository.cs" />
     <Compile Include="Service\IAnamnesisService.cs" />
     <Compile Include="Service\IAppointmentService.cs" />
     <Compile Include="Service\IDoctorService.cs" />
@@ -195,29 +216,10 @@
     <Compile Include="Pages\ScheduledAppointments.xaml.cs">
       <DependentUpon>ScheduledAppointments.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Repository\AnamnesisRepository.cs" />
-    <Compile Include="Repository\AppointmentRepository.cs" />
-    <Compile Include="Repository\DoctorRepository.cs" />
-    <Compile Include="Repository\GuestPatientRepository.cs" />
-    <Compile Include="Repository\IAnamnesisRepository.cs" />
-    <Compile Include="Repository\IAppointmentRepository.cs" />
-    <Compile Include="Repository\IDoctorRepository.cs" />
-    <Compile Include="Repository\IGuestPatientRepository.cs" />
-    <Compile Include="Repository\IMedicalRecordRepository.cs" />
     <Compile Include="Repository\IDrugRepository.cs" />
-    <Compile Include="Repository\IEntityRepository.cs" />
-    <Compile Include="Repository\IPatientRepository.cs" />
-    <Compile Include="Repository\IPrescriptionRepository.cs" />
-    <Compile Include="Repository\IRegisteredUserRepository.cs" />
-    <Compile Include="Repository\IReviewRepository.cs" />
     <Compile Include="Repository\IRoomRepository.cs" />
-    <Compile Include="Repository\MedicalRecordRepository.cs" />
-    <Compile Include="Repository\DrugRepository.cs" />
-    <Compile Include="Repository\ReviewRepository.cs" />
-    <Compile Include="Repository\PatientRepository.cs" />
-    <Compile Include="Repository\PrescriptionRepository.cs" />
-    <Compile Include="Repository\RoomRepository.cs" />
-    <Compile Include="Repository\RegisteredUserRepository.cs" />
+    <Compile Include="Repository\Impl\DrugRepository.cs" />
+    <Compile Include="Repository\Impl\RoomRepository.cs" />
     <Compile Include="Service\IDrugService.cs" />
     <Compile Include="Service\IRoomService.cs" />
     <Compile Include="Service\Impl\DrugService.cs" />
@@ -265,8 +267,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Enums.cs" />
-    <Compile Include="Repository\HospitalDB.cs" />
-    <Compile Include="Repository\IHospitalDB.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
