@@ -1,4 +1,4 @@
-﻿using Bolnica;
+﻿using HospitalApp;
 using HospitalApp.Model;
 using HospitalApp.Pages;
 using System;

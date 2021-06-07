@@ -1,14 +1,9 @@
 ﻿using HospitalApp.Model;
 using HospitalApp.Service;
-using HospitalApp.View;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 
-namespace Bolnica
+namespace HospitalApp
 {
 
     public partial class MainWindow : Window
