@@ -196,5 +196,15 @@ namespace HospitalApp.Repository
                 .Include(a => a.Room)
                 .ToList();
         }
+
+        public List<Appointment> GetAllByPatientId(long patientId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
