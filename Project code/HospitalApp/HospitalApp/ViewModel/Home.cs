@@ -11,7 +11,6 @@ namespace HospitalApp.ViewModel
         public Home() : base()
         {
             InstantiateAppointments();
-            //CurrentPage.Frame.LayoutUpdated += (obj,sender) => refreshLists();
             RefreshAppointmentEventHandler += (a,b) => refreshLists();
         }
 

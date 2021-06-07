@@ -3,12 +3,108 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HospitalApp.View"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AppointmentsAndTherapy">
-
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d"
+      xmlns:loc="clr-namespace:HospitalApp"
+      Title="Home" Height="720" Width="1280">
     <Grid>
-        
+        <Grid Margin="200,0,200,540" Background="#f7f7f7">
+            <Menu x:Name="MenuBar" VerticalAlignment="Bottom" Height="32">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"></DockPanel>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc AnamnesisMenu}" Command="{Binding Path=ChangeToAnamnesisCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
+                <!--<MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>-->
+                <MenuItem Header="{loc:Loc RemindersMenu}" Command="{Binding Path=ChangeToRemindersCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc HelpMenu}" Command="{Binding Path=ChangeToHelpCommand}" HorizontalAlignment="Left"></MenuItem>
+            </Menu>
+            <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
+
+            <Button  Command="{Binding Path=ChangeToScheduleAppointmentCommand}" Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
+            <Button ToolTip="{loc:Loc ChangeLanguage}" Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
+            <!--<ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
+                <ComboBoxItem>
+                    English
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Srpski
+                </ComboBoxItem>
+            </ComboBox>-->
+            <Button Command="{Binding Path=LogoutCommand}" Content="{loc:Loc LogoutButton}" HorizontalAlignment="Left" Margin="758,0,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+            <Button Command="{Binding Path=ChangeToSettingsCommand}" HorizontalAlignment="Left" Background="DimGray" Margin="730,0,0,0" VerticalAlignment="Top" Width="23" Height="26">
+                <Image Source="/Images/settingsIcon.png" />
+
+            </Button>
+            <Button ToolTip="{loc:Loc ChangeTheme}" Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
+        </Grid>
+        <Grid Margin="200,180,200,0" Background="#bababa">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Rectangle RadiusX="10" RadiusY="10" Margin="45,33,10,0" Fill="#2F4F4F" HorizontalAlignment="Center" Height="440" Stroke="Black" VerticalAlignment="Top" Width="385" />
+                <DataGrid x:Name="AppointmentsDataGrid" VerticalAlignment="Center" HorizontalAlignment="Center" AutoGenerateColumns="False" ItemsSource="{Binding Appointments}"
+                  SelectionMode="Single" IsReadOnly="True"
+                  Height="125" Width="336" Margin="71,54,33,361" SelectedIndex="0" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date and Time" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
+                        <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Employee.User.LastName}"  Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="buttonDeleteApp" Content="{loc:Loc DeleteSelected}" HorizontalAlignment="Right" Height="28" VerticalAlignment="Bottom" 
+                  Width="118" Background="#a83e32" Canvas.Left="235" Canvas.Top="329" Margin="0,0,33,322" Click="buttonDeleteApp_Click"/>
+                <Grid Margin="71,190,33,183">
+                    <Label Content="{loc:Loc Priority}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="73"></Label>
+                    <ComboBox x:Name="Priority" ToolTip="{loc:Loc PriorityTooltip}" Height="28" Width="108" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,0,0,0" SelectedIndex="0">
+                        <ComboBoxItem Content="{loc:Loc Doctor}">
+                        </ComboBoxItem>
+                        <ComboBoxItem Content="{loc:Loc Time}">
+                        </ComboBoxItem>
+                    </ComboBox>
+
+                    <Label Content="{loc:Loc Date}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="73" Margin="0,31,0,0"></Label>
+                    <DatePicker x:Name="DateDate" HorizontalAlignment="Left"  VerticalAlignment="Top" SelectedDate="07/06/2021" Width="108" Margin="93,33,0,0"/>
+
+                    <xctk:TimePicker x:Name="StartTime" Background="Gray" TimeInterval="00:15"  AllowTextInput="False" DefaultValue="08:30" Minimum="08:00" Maximum="16:00" Margin="128,64,135,80"/>
+                    <Label Content="{loc:Loc From}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="73" Margin="0,64,0,0"/>
+                    <Label Content="{loc:Loc To}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="73" Margin="0,95,0,0"/>
+                    <xctk:TimePicker x:Name="EndTime" Background="Gray" TimeInterval="00:15" Margin="128,95,135,49"  AllowTextInput="False" DefaultValue="08:30" Minimum="08:00" Maximum="16:00"/>
+                    <ComboBox x:Name="DoctorPicker" ItemsSource="{Binding Doctors}" Height="20" Width="108" HorizontalAlignment="Right" VerticalAlignment="Top"  SelectedIndex="0" Margin="0,126,135,0"/>
+                    <Label Content="{loc:Loc Doctor}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="73" Margin="0,126,0,0"/>
+
+                </Grid>
+                <Button x:Name="buttonDeleteApp_Copy" Content="{loc:Loc ChangeSelected}" HorizontalAlignment="Right" Height="28" VerticalAlignment="Bottom" 
+                    Width="118" Background="#2F4F8F" Margin="0,0,33,196" Click="confirmIntervalReSchedule"/>
+                <DataGrid x:Name="ReScheduledAppointmentsDG" VerticalAlignment="Center" HorizontalAlignment="Center" AutoGenerateColumns="False" ItemsSource="{Binding AppointmentsToBeRescheduled}"
+                    SelectionMode="Single" IsReadOnly="True"
+                    Height="64" Width="336" Margin="71,357,33,119" SelectedIndex="0" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date and Time" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
+                        <DataGridTextColumn Header="Doctor" Binding="{Binding Doctor.Employee.User.FirstName}"  Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="buttonDeleteApp_Copy1" Content="{loc:Loc Confirm}" HorizontalAlignment="Right" Height="28" VerticalAlignment="Bottom" 
+                    Width="111" Background="#a83e32" Margin="0,0,33,80" Click="Confirm_Reschedule_button"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Rectangle RadiusX="10" RadiusY="10" Margin="10,33,45,0" Fill="#2F4F4F" HorizontalAlignment="Center" Height="440" Stroke="Black" VerticalAlignment="Top" Width="385" />
+                <DataGrid x:Name="TherapyDataGrid" VerticalAlignment="Center" HorizontalAlignment="Center" AutoGenerateColumns="False" ItemsSource="{Binding Therapy}"
+                  SelectionMode="Single" IsReadOnly="True"
+                  Height="365" Width="336" Margin="30,56,74,119" SelectedIndex="0" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{loc:Loc Date}" Binding="{Binding Beginning, StringFormat=dd MMM yyyy hh:mm}" Width="*" />
+                        <DataGridTextColumn Header="Period" Binding="{Binding Period}"  Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="ShowWeeklyLogButton" Content="{loc:Loc ShowWeeklyLog}" HorizontalAlignment="Right" Height="28" VerticalAlignment="Bottom" 
+                    Width="136" Background="#2F4F8F" Margin="0,0,74,78"  Command="{Binding ChangeToWeeklyLogCommand}"/>
+            </Grid>
+        </Grid>
     </Grid>
+
 </Page>
