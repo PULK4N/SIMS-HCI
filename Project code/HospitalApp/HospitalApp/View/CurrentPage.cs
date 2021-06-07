@@ -33,20 +33,21 @@ namespace HospitalApp.View
         private static ScheduleAppointment ScheduleAppointment { get; set; }
         private static Settings Settings { get; set; }
 
-        
+        private static WeeklyLog WeeklyLog { get; set; }
 
         public static void Initialize()
         {
             Home = new Home();
             AppointmentsAndTherapy = new AppointmentsAndTherapy();
             Anamnesis = new Anamnesis();
-            Prescriptions = new Prescriptions();
+            //Prescriptions = new Prescriptions();
             Reminders = new Reminders();
-            MedicalClinics = new MedicalClinics();
+            //MedicalClinics = new MedicalClinics();
             Doctors = new Doctors();
             Help = new Help();
             ScheduleAppointment = new ScheduleAppointment();
             Settings = new Settings();
+            WeeklyLog = new WeeklyLog();
 
             SetToHome();
         }
@@ -128,6 +129,14 @@ namespace HospitalApp.View
             if (frame != null && Settings != null)
             {
                 frame.Content = Settings;
+            }
+        }
+
+        public static void SetToWeeklyLog()
+        {
+            if (frame != null && Home != null)
+            {
+                frame.Content = WeeklyLog;
             }
         }
     }

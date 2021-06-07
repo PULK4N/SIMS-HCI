@@ -61,7 +61,7 @@ namespace HospitalApp.Service
         public bool PatientReScheduleAppointment(Appointment appointment)
         {
             if (new PatientService(new PatientRepository()).IsMalicious(appointment.Patient) == false)
-                _appointmentRepository.Update(appointment);//TO DO: edit this function, change the location maybe
+                Update(appointment);//TO DO: edit this function, change the location maybe
             else
             {
                 return false;

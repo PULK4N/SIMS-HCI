@@ -95,4 +95,12 @@ namespace Enums{
         Saturday,
         Sunday
     }
+
+    public enum MedicalTreatementPeriod
+    {
+        EVERY_DAY,
+        EVERY_OTHER_DAY,
+        THREE_TIMES_A_WEEK,
+        ONCE_A_WEEK
+    }
 }

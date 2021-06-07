@@ -1,34 +1,22 @@
-﻿using System;
+﻿using HospitalApp.Model;
+using HospitalApp.View;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HospitalApp.ViewModel
 {
-    class Reminders : ViewModel
+    public class Reminders : ViewModel
     {
+        public ObservableCollection<Reminder> RemindersOC { get; set; }
+        public ObservableCollection<Appointment> CompletedAppointmentsNotReviewed { get; set; }
         public Reminders() : base()
         {
-
-        }
-        public void Language_selectionChanged(object sender, EventArgs e)
-        {
-            if (TranslationSource.Instance.CurrentCulture != null)
-            {
-                if (TranslationSource.Instance.CurrentCulture.Name.Equals("sr-Latn"))
-                {
-                    TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-                }
-                else
-                {
-                    TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("sr-LATN");
-                }
-            }
-            else
-            {
-                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            }
+            RemindersOC = new ObservableCollection<Reminder>(Map.ReminderController.GetAllByPatientId(PatientWindow.Patient.PatientId));
+            CompletedAppointmentsNotReviewed = new ObservableCollection<Appointment>(Map.AppointmentController.GetAllCompletedByPatientId(PatientWindow.Patient.PatientId));
         }
     }
 }

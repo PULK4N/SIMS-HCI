@@ -124,10 +124,22 @@
     <value>Anamnesis</value>
   </data>
   <data name="AnamnesisMenu" xml:space="preserve">
-    <value>Anamnesis and prescribed medicine</value>
+    <value>Anamnesis &amp; prescriptions</value>
   </data>
   <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
     <value>Appointments and therapy</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="ChangeSelected" xml:space="preserve">
+    <value>Change selected</value>
+  </data>
+  <data name="ChangeTheme" xml:space="preserve">
+    <value>Change theme</value>
   </data>
   <data name="CompletedAppointments" xml:space="preserve">
     <value>Completed appointments</value>
@@ -135,8 +147,17 @@
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="ConfirmChangePassword" xml:space="preserve">
+    <value>Confirm password change</value>
+  </data>
+  <data name="CreateChangeReminderTooltip" xml:space="preserve">
+    <value>If reminder is selected, it will change it, else it will create a new reminder</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
+  </data>
+  <data name="DeleteSelected" xml:space="preserve">
+    <value>Delete selected</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Details</value>
@@ -145,13 +166,16 @@
     <value>Doctor</value>
   </data>
   <data name="DoctorsMenu" xml:space="preserve">
-    <value>Doctors</value>
+    <value>Doctors &amp; Clinics</value>
   </data>
   <data name="Dosage" xml:space="preserve">
     <value>Dosage</value>
   </data>
   <data name="Drug" xml:space="preserve">
     <value>Drug</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Frequently asked questions</value>
   </data>
   <data name="From" xml:space="preserve">
     <value>From</value>
@@ -164,6 +188,9 @@
   </data>
   <data name="Height" xml:space="preserve">
     <value>Height</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
   </data>
   <data name="HelpMenu" xml:space="preserve">
     <value>Help</value>
@@ -186,8 +213,14 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Notes</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
   </data>
   <data name="PrescribedMedicine" xml:space="preserve">
     <value>Prescribed medicine</value>
@@ -204,14 +237,50 @@
   <data name="PriorityTooltip" xml:space="preserve">
     <value>If there are no available appointments based on your choosing criteria, the program will automatically generate appointments by your priority choice</value>
   </data>
+  <data name="Question1" xml:space="preserve">
+    <value>Question 1</value>
+  </data>
+  <data name="Question2" xml:space="preserve">
+    <value>Question 2</value>
+  </data>
+  <data name="Question3" xml:space="preserve">
+    <value>Question 3</value>
+  </data>
+  <data name="Question4" xml:space="preserve">
+    <value>Question 4</value>
+  </data>
+  <data name="Question5" xml:space="preserve">
+    <value>Question 5</value>
+  </data>
   <data name="RateDoctor" xml:space="preserve">
     <value>Rate</value>
   </data>
   <data name="Recommendations" xml:space="preserve">
     <value>Recommendations</value>
   </data>
-  <data name="RemindersMenu" xml:space="preserve">
+  <data name="ReminderDatePickerTooltip" xml:space="preserve">
+    <value>When do you want a reminder to pop up first</value>
+  </data>
+  <data name="ReminderDesc" xml:space="preserve">
+    <value>Description of a reminder</value>
+  </data>
+  <data name="ReminderName" xml:space="preserve">
+    <value>Name of a reminder</value>
+  </data>
+  <data name="ReminderPeriodTooltip" xml:space="preserve">
+    <value>Date when reminder stops poping up</value>
+  </data>
+  <data name="Reminders" xml:space="preserve">
     <value>Reminders</value>
+  </data>
+  <data name="RemindersMenu" xml:space="preserve">
+    <value>Reminders &amp; Reviews</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>Reviews</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
@@ -231,14 +300,26 @@
   <data name="ScheduleSucceded" xml:space="preserve">
     <value>Your appointment has been scheduled</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Send feedback</value>
+  </data>
   <data name="Sex" xml:space="preserve">
     <value>Gender</value>
+  </data>
+  <data name="ShowWeeklyLog" xml:space="preserve">
+    <value>Weekly log</value>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Time</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
+  </data>
+  <data name="TooltipHomeSchApp" xml:space="preserve">
+    <value>Click to see more details</value>
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Usage</value>

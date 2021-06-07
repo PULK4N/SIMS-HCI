@@ -19,14 +19,12 @@
                 <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
                 <!--<MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>-->
                 <MenuItem Header="{loc:Loc RemindersMenu}" Command="{Binding Path=ChangeToRemindersCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc DoctorsMenu}" Command="{Binding Path=ChangeToDoctorsCommand}"></MenuItem>
-                <MenuItem Background="Gray" Header="{loc:Loc MedicalClinicsMenu}" Command="{Binding Path=ChangeToMedicalClinicsCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc HelpMenu}" Command="{Binding Path=ChangeToHelpCommand}" HorizontalAlignment="Left"></MenuItem>
             </Menu>
             <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
 
             <Button  Command="{Binding Path=ChangeToScheduleAppointmentCommand}" Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
-            <Button Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
+            <Button ToolTip="{loc:Loc ChangeLanguage}" Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
             <!--<ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
                 <ComboBoxItem>
                     English
@@ -40,7 +38,7 @@
                 <Image Source="/Images/settingsIcon.png" />
 
             </Button>
-            <Button Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
+            <Button ToolTip="{loc:Loc ChangeTheme}" Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
         </Grid>
     </Grid>
 </Page>

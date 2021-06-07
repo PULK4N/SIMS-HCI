@@ -116,6 +116,7 @@ namespace Bolnica
                         patientWindow.Show();
                         new NotificationService().StartTimer(cancellationToken);
                         ScheduleReminders();
+                        Close();
                         break;
                     case Enums.UserType.DOCTOR:
                         var d = Map.DoctorController.GetByUsername(registeredUser.Username);

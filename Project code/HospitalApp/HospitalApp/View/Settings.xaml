@@ -14,19 +14,17 @@
                         <DockPanel HorizontalAlignment="Stretch"></DockPanel>
                     </ItemsPanelTemplate>
                 </Menu.ItemsPanel>
-                <MenuItem Background="Gray" Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
+                <MenuItem Header="{loc:Loc HomeMenu}" Command="{Binding Path=ChangeToHomeCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc AnamnesisMenu}" Command="{Binding Path=ChangeToAnamnesisCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc AppointmentsAndTherapyMenu}" Command="{Binding Path=ChangeToAppointmentsAndTherapyCommand}"></MenuItem>
                 <!--<MenuItem Header="{loc:Loc PrescriptionsMenu}" Command="{Binding Path=ChangeToPrescriptionsCommand}"></MenuItem>-->
                 <MenuItem Header="{loc:Loc RemindersMenu}" Command="{Binding Path=ChangeToRemindersCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc DoctorsMenu}" Command="{Binding Path=ChangeToDoctorsCommand}"></MenuItem>
-                <MenuItem Header="{loc:Loc MedicalClinicsMenu}" Command="{Binding Path=ChangeToMedicalClinicsCommand}"></MenuItem>
                 <MenuItem Header="{loc:Loc HelpMenu}" Command="{Binding Path=ChangeToHelpCommand}" HorizontalAlignment="Left"></MenuItem>
             </Menu>
             <Image Source="/Images/IM-Clinic-scaled.jpg" Stretch="Fill" Width="880" VerticalAlignment="Top" Height="148"></Image>
 
             <Button  Command="{Binding Path=ChangeToScheduleAppointmentCommand}" Content="{loc:Loc ScheduleAppointmentButton}" Background="#a83e32" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,2,1,1" Width="143" Height="30"/>
-            <Button Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
+            <Button ToolTip="{loc:Loc ChangeLanguage}" Command="{Binding Path=ChangeLanguageCommand}" Content="{loc:Loc Language}" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" Height="25"/>
             <!--<ComboBox SelectionChanged="Language_selectionChanged" HorizontalAlignment="Left" Margin="536,1,0,0" VerticalAlignment="Top" Width="109" SelectedIndex="0" Height="25">
                 <ComboBoxItem>
                     English
@@ -40,7 +38,44 @@
                 <Image Source="/Images/settingsIcon.png" />
 
             </Button>
-            <Button Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
+            <Button ToolTip="{loc:Loc ChangeTheme}" Command="{Binding Path=ChangeStyleCommand}" Content="Dark" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Height="20" Margin="0,1,155,0"/>
+        </Grid>
+        <Grid Margin="200,180,200,0" Background="#bababa">
+            <Grid Margin="0,0,540,0">
+                <Rectangle RadiusX="10" RadiusY="10" Margin="36,33,36,70" Fill="#2F4F4F" HorizontalAlignment="Center" Height="225" Stroke="Black" VerticalAlignment="Top" Width="250" />
+                <Label Content="{loc:Loc NewPassword}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,83,0,0" Height="26" Width="203"></Label>
+
+                <Label Content="{loc:Loc RepeatPassword}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,140,0,0" Height="26" Width="203"></Label>
+                <TextBlock Text="{Binding PasswordError}" Visibility="Visible" Foreground="#a83e32" Margin="72,192,65,318" TextWrapping="Wrap"/>
+                <Button Content="{loc:Loc Confirm}"  Click="CheckPassword"
+                        ToolTip="{loc:Loc ConfirmChangePassword}" Height="30" Width="80" Margin="195,209,65,301" Background="#a83e32" >
+                    <!--Command="{Binding ChangePasswordCommand}"-->
+                </Button>
+                <Label Content="{loc:Loc ChangePassword}" FontSize="18" FontWeight="DemiBold" Height="39" Width="203" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,46,0,0"/>
+                <!--{loc:Loc ChangePassword}-->
+                <PasswordBox x:Name="NewPassword"    HorizontalAlignment="Left" Height="23" Margin="72,109,0,0" VerticalAlignment="Top" Width="203"/>
+                <PasswordBox x:Name="RepeatPassword" HorizontalAlignment="Left" Height="23" Margin="72,166,0,0" VerticalAlignment="Top" Width="203"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="219" Margin="0,272,0,0" VerticalAlignment="Top" Width="880" Grid.ColumnSpan="2">
+                <Rectangle RadiusX="10" RadiusY="10" Fill="#2F4F4F" HorizontalAlignment="Center" Height="200" Stroke="Black" VerticalAlignment="Center" Width="790" />
+                <Label Content="{loc:Loc FAQ}" FontSize="18" FontWeight="DemiBold" Height="39" Width="273" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,37,0,0"/>
+                <TextBox FontFamily="Times" HorizontalAlignment="Left" Margin="96,81,0,0" TextWrapping="Wrap"
+                           Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et ex justo. Duis lorem sapien, rutrum id magna ut, placerat aliquet justo. "
+                           VerticalAlignment="Top" Height="43" Width="715"/>
+                <TextBox FontFamily="Times" FontSize="12" HorizontalAlignment="Left" Margin="96,139,0,0" TextWrapping="Wrap"
+                    Text="In hac habitasse platea dictumst. Aliquam erat volutpat. Etiam diam elit, elementum in sapien a, pretium venenatis elit. Aliquam erat volutpat. Sed luctus erat a velit varius, non placerat metus rhoncus. "
+                           VerticalAlignment="Top" Height="38" Width="715"/>
+                <Label Content="1." FontSize="15" FontWeight="Medium" Height="39" Width="273" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,85,0,0"/>
+                <Label Content="2." FontSize="15" FontWeight="Medium" Height="39" Width="273" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="72,139,0,0"/>
+            </Grid>
+            <Grid Margin="345,0,0,273">
+                <Rectangle RadiusX="10" RadiusY="10"  Fill="#2F4F4F" HorizontalAlignment="Left" Height="222" Stroke="Black" VerticalAlignment="Top" Width="490" Margin="0,33,0,10" />
+                <TextBox HorizontalAlignment="Left" Text="{Binding Feedback}" Height="101" Margin="25,93,0,0" VerticalAlignment="Top" Width="440"/>
+                <Label Content="{loc:Loc SendFeedback}" FontSize="18" FontWeight="DemiBold" Height="39" Width="203" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,54,0,0"/>
+                <Button Content="{loc:Loc Send}" 
+                        Height="30" Width="80" Background="#a83e32" Command="{Binding SendFeedbackCommand}" Margin="385,210,70,27">
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

@@ -9,9 +9,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="LoginGrid" Visibility="Visible">
-            <Grid VerticalAlignment="Center" Height="240" HorizontalAlignment="Center"  >
-                <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" RadiusY="10" RadiusX="0" Fill="White">
+        <Grid x:Name="LoginGrid" Visibility="Hidden">
+            <Grid VerticalAlignment="Center" Height="240" HorizontalAlignment="Center">
+                <Rectangle Width="280" Height="240" VerticalAlignment="Bottom" RadiusY="10" RadiusX="10" Fill="White">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1" Color="#FFBBBBBB"/>
                     </Rectangle.Effect>
@@ -19,8 +19,8 @@
                 <Label Content="ACCOUNT LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="15" Width="188" Margin="46,29,46,0" />
                 <Label Content="username" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="12" Width="188" Margin="46,64,46,0" />
 
-                <TextBox x:Name="LoginUsername" Margin="46,90,46,130" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="188"/>
-                <PasswordBox x:Name="LoginPassword" Margin="46,135,46,85"  FontFamily="Champagne &amp; Limousines" FontSize="18" Height="20" Width="188"/>
+                <TextBox x:Name="LoginUsername" Margin="46,85,46,125" FontFamily="Champagne &amp; Limousines" FontSize="18" Width="188"/>
+                <PasswordBox x:Name="LoginPassword" Margin="46,131,46,79"  FontFamily="Champagne &amp; Limousines" FontSize="18" Width="188"/>
                 <Button Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="134,0,46,45" Content="LOGIN" Click="LoginButton"/>
 
                 <Label Content="password" HorizontalAlignment="Center" VerticalAlignment="Top"  Foreground="Gray" FontSize="12" Width="188" Margin="46,109,46,0" />
@@ -94,8 +94,6 @@
                 <Button Content="M" Margin="5,10,0,0" Click="OpenMedicalRecords" />
             </StackPanel>
         </Canvas>
-
-
 
         <Canvas x:Name="PatientReviews" RenderTransformOrigin="0.585,-6.326" Visibility="Hidden" >
 

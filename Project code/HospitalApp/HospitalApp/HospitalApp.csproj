@@ -104,9 +104,9 @@
     <Compile Include="Controller\IEntityController.cs" />
     <Compile Include="Controller\Impl\ReferralController.cs" />
     <Compile Include="Controller\Impl\ReminderController.cs" />
-    <Compile Include="Migrations\202106021613107_mig2.cs" />
-    <Compile Include="Migrations\202106021613107_mig2.designer.cs">
-      <DependentUpon>202106021613107_mig2.cs</DependentUpon>
+    <Compile Include="Migrations\202106061925505_migration3.cs" />
+    <Compile Include="Migrations\202106061925505_migration3.designer.cs">
+      <DependentUpon>202106061925505_migration3.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\MedicalTreatment.cs" />
     <Compile Include="ObjectConverter.cs" />
@@ -213,6 +213,7 @@
     <Compile Include="Service\Impl\PrescriptionService.cs" />
     <Compile Include="Service\Impl\ReviewService.cs" />
     <Compile Include="Service\Impl\RoomService.cs" />
+    <Compile Include="TextInputToVisibilityConverter.cs" />
     <Compile Include="TranslationSource.cs" />
     <Compile Include="ViewModel\Anamnesis.cs" />
     <Compile Include="ViewModel\AppointmentsAndTherapy.cs" />
@@ -258,6 +259,9 @@
     </Compile>
     <Compile Include="View\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WeeklyLog.xaml.cs">
+      <DependentUpon>WeeklyLog.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -334,6 +338,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\WeeklyLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Appointment.cs" />
@@ -364,8 +372,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202106021613107_mig2.resx">
-      <DependentUpon>202106021613107_mig2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106061925505_migration3.resx">
+      <DependentUpon>202106061925505_migration3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.en-US.resx">
       <Generator>ResXFileCodeGenerator</Generator>

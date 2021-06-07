@@ -129,14 +129,35 @@
   <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
     <value>Pregledi i terapije</value>
   </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Promeni jezik</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Promeni šifru</value>
+  </data>
+  <data name="ChangeSelected" xml:space="preserve">
+    <value>Promeni obeležen</value>
+  </data>
+  <data name="ChangeTheme" xml:space="preserve">
+    <value>Promeni temu</value>
+  </data>
   <data name="CompletedAppointments" xml:space="preserve">
     <value>Istorija pregleda</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Potvrdi</value>
   </data>
+  <data name="ConfirmChangePassword" xml:space="preserve">
+    <value>Confirm password change</value>
+  </data>
+  <data name="CreateChangeReminderTooltip" xml:space="preserve">
+    <value>Ako je podsetnik selektovan, promeniće ga, u suprotnom će kreirati novi podsetnik</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Datum</value>
+  </data>
+  <data name="DeleteSelected" xml:space="preserve">
+    <value>Obriši obeležen</value>
   </data>
   <data name="Details" xml:space="preserve">
     <value>Detalji</value>
@@ -145,13 +166,16 @@
     <value>Doktor</value>
   </data>
   <data name="DoctorsMenu" xml:space="preserve">
-    <value>Doktori</value>
+    <value>Doktori i klinike</value>
   </data>
   <data name="Dosage" xml:space="preserve">
     <value>Doza</value>
   </data>
   <data name="Drug" xml:space="preserve">
     <value>Lek</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Često postavljena pitanja</value>
   </data>
   <data name="From" xml:space="preserve">
     <value>Od</value>
@@ -164,6 +188,9 @@
   </data>
   <data name="Height" xml:space="preserve">
     <value>Visina</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Pomoć</value>
   </data>
   <data name="HelpMenu" xml:space="preserve">
     <value>Pomoć</value>
@@ -186,8 +213,14 @@
   <data name="Name" xml:space="preserve">
     <value>Naziv</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nova lozinka</value>
+  </data>
   <data name="Notes" xml:space="preserve">
     <value>Beleške</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
   </data>
   <data name="PrescribedMedicine" xml:space="preserve">
     <value>Propisani lekovi</value>
@@ -204,14 +237,50 @@
   <data name="PriorityTooltip" xml:space="preserve">
     <value>Ako nema slobodnih termina za preglede na osnovu kriterijuma koga ste izabrali, program će sam generisati termine na osnovu izabranog prioriteta.</value>
   </data>
+  <data name="Question1" xml:space="preserve">
+    <value>Pitanje 1</value>
+  </data>
+  <data name="Question2" xml:space="preserve">
+    <value>Pitanje 2</value>
+  </data>
+  <data name="Question3" xml:space="preserve">
+    <value>Pitanje 3</value>
+  </data>
+  <data name="Question4" xml:space="preserve">
+    <value>Pitanje 4</value>
+  </data>
+  <data name="Question5" xml:space="preserve">
+    <value>Pitanje 5</value>
+  </data>
   <data name="RateDoctor" xml:space="preserve">
     <value>Oceni</value>
   </data>
   <data name="Recommendations" xml:space="preserve">
     <value>Preporučeni termini</value>
   </data>
+  <data name="ReminderDatePickerTooltip" xml:space="preserve">
+    <value>Nakon koliko dana  želite da se podsetnik ugasi</value>
+  </data>
+  <data name="ReminderDesc" xml:space="preserve">
+    <value>Opis podcetnika</value>
+  </data>
+  <data name="ReminderName" xml:space="preserve">
+    <value>Ime podcetnika</value>
+  </data>
+  <data name="ReminderPeriodTooltip" xml:space="preserve">
+    <value>Nakon koliko dana želite da se potsetnik pokrene ponovo</value>
+  </data>
+  <data name="Reminders" xml:space="preserve">
+    <value>Podsetnici</value>
+  </data>
   <data name="RemindersMenu" xml:space="preserve">
-    <value>Podsetnik</value>
+    <value>Podsetnici &amp; Recenzije</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Ponovi lozinku</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>Recenzije</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Sačuvaj</value>
@@ -231,14 +300,26 @@
   <data name="ScheduleSucceded" xml:space="preserve">
     <value>Termin je uspešno zakazan!</value>
   </data>
+  <data name="Send" xml:space="preserve">
+    <value>Pošalji</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Pošalji povratnu informaciju</value>
+  </data>
   <data name="Sex" xml:space="preserve">
     <value>Pol</value>
+  </data>
+  <data name="ShowWeeklyLog" xml:space="preserve">
+    <value>Nedeljni izveštaj</value>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Vreme</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>Do</value>
+  </data>
+  <data name="TooltipHomeSchApp" xml:space="preserve">
+    <value>Klikni da vidiš više detalja</value>
   </data>
   <data name="Usage" xml:space="preserve">
     <value>Period</value>

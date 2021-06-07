@@ -79,7 +79,7 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Anamnesis and prescribed medicine.
+        ///   Looks up a localized string similar to Anamnesis &amp; prescriptions.
         /// </summary>
         internal static string AnamnesisMenu {
             get {
@@ -93,6 +93,42 @@ namespace HospitalApp.Properties {
         internal static string AppointmentsAndTherapyMenu {
             get {
                 return ResourceManager.GetString("AppointmentsAndTherapyMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change language.
+        /// </summary>
+        internal static string ChangeLanguage {
+            get {
+                return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        internal static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change selected.
+        /// </summary>
+        internal static string ChangeSelected {
+            get {
+                return ResourceManager.GetString("ChangeSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change theme.
+        /// </summary>
+        internal static string ChangeTheme {
+            get {
+                return ResourceManager.GetString("ChangeTheme", resourceCulture);
             }
         }
         
@@ -115,11 +151,38 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm password change.
+        /// </summary>
+        internal static string ConfirmChangePassword {
+            get {
+                return ResourceManager.GetString("ConfirmChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If reminder is selected, it will change it, else it will create a new reminder.
+        /// </summary>
+        internal static string CreateChangeReminderTooltip {
+            get {
+                return ResourceManager.GetString("CreateChangeReminderTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         internal static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete selected.
+        /// </summary>
+        internal static string DeleteSelected {
+            get {
+                return ResourceManager.GetString("DeleteSelected", resourceCulture);
             }
         }
         
@@ -142,7 +205,7 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Doctors.
+        ///   Looks up a localized string similar to Doctors &amp; Clinics.
         /// </summary>
         internal static string DoctorsMenu {
             get {
@@ -165,6 +228,15 @@ namespace HospitalApp.Properties {
         internal static string Drug {
             get {
                 return ResourceManager.GetString("Drug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequently asked questions.
+        /// </summary>
+        internal static string FAQ {
+            get {
+                return ResourceManager.GetString("FAQ", resourceCulture);
             }
         }
         
@@ -201,6 +273,15 @@ namespace HospitalApp.Properties {
         internal static string Height {
             get {
                 return ResourceManager.GetString("Height", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         
@@ -268,11 +349,29 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        internal static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
         internal static string Notes {
             get {
                 return ResourceManager.GetString("Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Period.
+        /// </summary>
+        internal static string Period {
+            get {
+                return ResourceManager.GetString("Period", resourceCulture);
             }
         }
         
@@ -322,6 +421,51 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Question 1.
+        /// </summary>
+        internal static string Question1 {
+            get {
+                return ResourceManager.GetString("Question1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question 2.
+        /// </summary>
+        internal static string Question2 {
+            get {
+                return ResourceManager.GetString("Question2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question 3.
+        /// </summary>
+        internal static string Question3 {
+            get {
+                return ResourceManager.GetString("Question3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question 4.
+        /// </summary>
+        internal static string Question4 {
+            get {
+                return ResourceManager.GetString("Question4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question 5.
+        /// </summary>
+        internal static string Question5 {
+            get {
+                return ResourceManager.GetString("Question5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rate.
         /// </summary>
         internal static string RateDoctor {
@@ -340,11 +484,74 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When do you want a reminder to pop up first.
+        /// </summary>
+        internal static string ReminderDatePickerTooltip {
+            get {
+                return ResourceManager.GetString("ReminderDatePickerTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description of a reminder.
+        /// </summary>
+        internal static string ReminderDesc {
+            get {
+                return ResourceManager.GetString("ReminderDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name of a reminder.
+        /// </summary>
+        internal static string ReminderName {
+            get {
+                return ResourceManager.GetString("ReminderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date when reminder stops poping up.
+        /// </summary>
+        internal static string ReminderPeriodTooltip {
+            get {
+                return ResourceManager.GetString("ReminderPeriodTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reminders.
+        /// </summary>
+        internal static string Reminders {
+            get {
+                return ResourceManager.GetString("Reminders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reminders &amp; Reviews.
         /// </summary>
         internal static string RemindersMenu {
             get {
                 return ResourceManager.GetString("RemindersMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat password.
+        /// </summary>
+        internal static string RepeatPassword {
+            get {
+                return ResourceManager.GetString("RepeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews.
+        /// </summary>
+        internal static string Reviews {
+            get {
+                return ResourceManager.GetString("Reviews", resourceCulture);
             }
         }
         
@@ -403,11 +610,38 @@ namespace HospitalApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        internal static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send feedback.
+        /// </summary>
+        internal static string SendFeedback {
+            get {
+                return ResourceManager.GetString("SendFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gender.
         /// </summary>
         internal static string Sex {
             get {
                 return ResourceManager.GetString("Sex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly log.
+        /// </summary>
+        internal static string ShowWeeklyLog {
+            get {
+                return ResourceManager.GetString("ShowWeeklyLog", resourceCulture);
             }
         }
         
@@ -426,6 +660,15 @@ namespace HospitalApp.Properties {
         internal static string To {
             get {
                 return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to see more details.
+        /// </summary>
+        internal static string TooltipHomeSchApp {
+            get {
+                return ResourceManager.GetString("TooltipHomeSchApp", resourceCulture);
             }
         }
         

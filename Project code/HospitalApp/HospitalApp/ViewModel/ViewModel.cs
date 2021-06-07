@@ -1,4 +1,5 @@
-﻿using ControlzEx.Theming;
+﻿using Bolnica;
+using ControlzEx.Theming;
 using HospitalApp.View;
 using System;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace HospitalApp.ViewModel
 
         public ViewModel()
         {
+            changeToWeeklyLogCommand = new RelayCommand(Executed_ChangeToWeeklyLogCommand, CanExecute_changeToWeeklyLogCommand);
             changeToHomeCommand = new RelayCommand(Executed_changeToHomeCommand, CanExecute_changeToHomeCommand);
             changeToAnamnesisCommand = new RelayCommand(Executed_changeToAnamnesisCommand, CanExecute_changeToAnamnesisCommand);
             changeToAppointmentsAndTherapyCommand = new RelayCommand(Executed_changeToAppointmentsAndTherapyCommand, CanExecute_changeToAppointmentsAndTherapyCommand);
@@ -64,6 +66,9 @@ namespace HospitalApp.ViewModel
         protected RelayCommand changeToScheduleAppointmentCommand;
         public RelayCommand ChangeToScheduleAppointmentCommand { get => changeToScheduleAppointmentCommand; set => changeToScheduleAppointmentCommand = value; }
 
+        protected RelayCommand changeToWeeklyLogCommand;
+        public RelayCommand ChangeToWeeklyLogCommand { get => changeToWeeklyLogCommand; set => changeToWeeklyLogCommand = value; }
+
         #endregion
 
         protected RelayCommand logoutCommand;
@@ -77,6 +82,7 @@ namespace HospitalApp.ViewModel
 
         protected RelayCommand changeLanguageCommand;
         public RelayCommand ChangeLanguageCommand { get => changeLanguageCommand; set => changeLanguageCommand = value; }
+
 
 
         #endregion
@@ -95,7 +101,7 @@ namespace HospitalApp.ViewModel
         {
             CurrentPage.SetToAnamnesis();
         }
-        public bool CanExecute_changeToSettingsCommand(object obj)
+        public bool CanExecute_changeToAnamnesisCommand(object obj)
         {
             return true;
         }
@@ -167,7 +173,16 @@ namespace HospitalApp.ViewModel
         {
             CurrentPage.SetToSettings();
         }
-        public bool CanExecute_changeToAnamnesisCommand(object obj)
+        public bool CanExecute_changeToSettingsCommand(object obj)
+        {
+            return true;
+        }
+        //--------------------------------------------------------------
+        public void Executed_ChangeToWeeklyLogCommand(object obj)
+        {
+            CurrentPage.SetToWeeklyLog();
+        }
+        public bool CanExecute_changeToWeeklyLogCommand(object obj)
         {
             return true;
         }
@@ -175,7 +190,8 @@ namespace HospitalApp.ViewModel
         //TO DO:
         public void Executed_LogoutCommand(object obj)
         {
-            //CurrentPage.SetToSettings();
+            new MainWindow().Show();
+            PatientWindow.Instance.Close();
         }
         public bool CanExecute_LogoutCommand(object obj)
         {

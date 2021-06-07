@@ -38,6 +38,7 @@ namespace HospitalApp.ViewModel
         public void GetMyAppointments(SchedulingInformation schedulingInformation)
         {
             var (appointmentList, priorityUsed) = Map.SchedulingService.GetAppointments(schedulingInformation);
+            RecommendedAppointments.Clear();
             foreach (Appointment appointment in appointmentList)
             {
                 RecommendedAppointments.Add(appointment);

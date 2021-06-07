@@ -9,9 +9,11 @@ namespace HospitalApp.View
     public partial class PatientWindow : MetroWindow
     {
         public static Patient Patient;
+        public static PatientWindow Instance;
         public PatientWindow(Patient patient)
         {
             InitializeComponent();
+            Instance = this;
             Patient = patient;
             CurrentPage.Frame = load_frame;
         }
