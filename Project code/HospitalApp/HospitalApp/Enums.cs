@@ -100,4 +100,22 @@ namespace Enums{
         REVIEWED
     }
 
+    public enum Days
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
+    public enum MedicalTreatementPeriod
+    {
+        EVERY_DAY,
+        EVERY_OTHER_DAY,
+        THREE_TIMES_A_WEEK,
+        ONCE_A_WEEK
+    }
 }

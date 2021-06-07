@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,222 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdditionalInfo" xml:space="preserve">
+    <value>Additional info</value>
+  </data>
+  <data name="Anamnesis" xml:space="preserve">
+    <value>Anamnesis</value>
+  </data>
+  <data name="AnamnesisMenu" xml:space="preserve">
+    <value>Anamnesis &amp; prescriptions</value>
+  </data>
+  <data name="AppointmentsAndTherapyMenu" xml:space="preserve">
+    <value>Appointments and therapy</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="ChangeSelected" xml:space="preserve">
+    <value>Change selected</value>
+  </data>
+  <data name="ChangeTheme" xml:space="preserve">
+    <value>Change theme</value>
+  </data>
+  <data name="CompletedAppointments" xml:space="preserve">
+    <value>Completed appointments</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ConfirmChangePassword" xml:space="preserve">
+    <value>Confirm password change</value>
+  </data>
+  <data name="CreateChangeReminderTooltip" xml:space="preserve">
+    <value>If reminder is selected, it will change it, else it will create a new reminder</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DeleteSelected" xml:space="preserve">
+    <value>Delete selected</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="DoctorsMenu" xml:space="preserve">
+    <value>Doctors &amp; Clinics</value>
+  </data>
+  <data name="Dosage" xml:space="preserve">
+    <value>Dosage</value>
+  </data>
+  <data name="Drug" xml:space="preserve">
+    <value>Drug</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>Frequently asked questions</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="GenerateAppointments" xml:space="preserve">
+    <value>Generate appointments</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="HelpMenu" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="HomeMenu" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="MaritalStatus" xml:space="preserve">
+    <value>Marital status</value>
+  </data>
+  <data name="MedicalClinicsMenu" xml:space="preserve">
+    <value>Clinics</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="PrescribedMedicine" xml:space="preserve">
+    <value>Prescribed medicine</value>
+  </data>
+  <data name="Prescriptions" xml:space="preserve">
+    <value>Prescriptions</value>
+  </data>
+  <data name="PrescriptionsMenu" xml:space="preserve">
+    <value>Prescriptions</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="PriorityTooltip" xml:space="preserve">
+    <value>If there are no available appointments based on your choosing criteria, the program will automatically generate appointments by your priority choice</value>
+  </data>
+  <data name="Question1" xml:space="preserve">
+    <value>Question 1</value>
+  </data>
+  <data name="Question2" xml:space="preserve">
+    <value>Question 2</value>
+  </data>
+  <data name="Question3" xml:space="preserve">
+    <value>Question 3</value>
+  </data>
+  <data name="Question4" xml:space="preserve">
+    <value>Question 4</value>
+  </data>
+  <data name="Question5" xml:space="preserve">
+    <value>Question 5</value>
+  </data>
+  <data name="RateDoctor" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="Recommendations" xml:space="preserve">
+    <value>Recommendations</value>
+  </data>
+  <data name="ReminderDatePickerTooltip" xml:space="preserve">
+    <value>When do you want a reminder to pop up first</value>
+  </data>
+  <data name="ReminderDesc" xml:space="preserve">
+    <value>Description of a reminder</value>
+  </data>
+  <data name="ReminderName" xml:space="preserve">
+    <value>Name of a reminder</value>
+  </data>
+  <data name="ReminderPeriodTooltip" xml:space="preserve">
+    <value>Date when reminder stops poping up</value>
+  </data>
+  <data name="Reminders" xml:space="preserve">
+    <value>Reminders</value>
+  </data>
+  <data name="RemindersMenu" xml:space="preserve">
+    <value>Reminders &amp; Reviews</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="Reviews" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
+  <data name="ScheduleAppointmentButton" xml:space="preserve">
+    <value>Schedule appointment</value>
+  </data>
+  <data name="ScheduledAppointments" xml:space="preserve">
+    <value>Scheduled appointments</value>
+  </data>
+  <data name="ScheduleFailed" xml:space="preserve">
+    <value>Already taken</value>
+  </data>
+  <data name="ScheduleSucceded" xml:space="preserve">
+    <value>Your appointment has been scheduled</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Send feedback</value>
+  </data>
+  <data name="Sex" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="ShowWeeklyLog" xml:space="preserve">
+    <value>Weekly log</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TooltipHomeSchApp" xml:space="preserve">
+    <value>Click to see more details</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Usage</value>
+  </data>
+  <data name="ViewDetailsButton" xml:space="preserve">
+    <value>More details</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
 </root>
