@@ -95,5 +95,10 @@ namespace HospitalApp.Service
         {
             return _appointmentRepository.GetAllByPatientRefered(patientId);
         }
+
+        public List<Appointment> GetAllCompletedOrReviewedByPatient(long patientId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

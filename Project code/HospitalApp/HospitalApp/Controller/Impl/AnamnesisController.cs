@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace HospitalApp.Controller
 {
-    public class AnamnesisController : IEntityController<Anamnesis>
+    public class AnamnesisController
     {
         private readonly IAnamnesisService _anamnesisService;
 
@@ -44,9 +44,5 @@ namespace HospitalApp.Controller
             return _anamnesisService.GetByPatientId(patientId);
         }
 
-        public List<Anamnesis> GetAll()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
