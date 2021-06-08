@@ -57,8 +57,8 @@ namespace HospitalApp.Model
             {
                 try
                 {
-                Map.TaskService.RootFolder.DeleteTask($"{Patient.User.RegisteredUser.Username}{ReminderId}");
-                Task.Dispose();
+                    Map.TaskService.RootFolder.DeleteTask($"{Patient.User.RegisteredUser.Username}{ReminderId}");
+                    Task.Dispose();
                 }catch(Exception E)
                 {
                     MessageBox.Show(E.ToString());
