@@ -16,7 +16,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="63,251,0,0" TextWrapping="Wrap" Text="To:" VerticalAlignment="Top"/>
         <Button Content="Generate Report" HorizontalAlignment="Left" Margin="63,340,0,0" VerticalAlignment="Top" Width="162" Height="40" Background="White" BorderBrush="#FF3EAF76" Click="GenerateReport_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="433,79,0,0" TextWrapping="Wrap" Text="Drug Handout Report" VerticalAlignment="Top" FontSize="18"/>
-        <Image Margin="642,60,302,597" Source="/HospitalApp;component/logogreen.png" Stretch="Fill"/>
+        <Image Margin="642,60,302,597" Stretch="Fill"/>
         <TextBlock HorizontalAlignment="Left" Margin="651,145,0,0" TextWrapping="Wrap" Text="Korporacija" VerticalAlignment="Top" FontStyle="Italic"/>
         <!--<DataGrid x:Name="dataGridPrescriptions" AutoGenerateColumns="False" ItemsSource="{Binding Prescriptions}" HorizontalAlignment="Left" Height="322" VerticalAlignment="Top" Width="379" Background="White" Margin="312,335,0,0">
             <DataGrid.Columns>
@@ -45,5 +45,20 @@
         </DataGrid>
         <Button Name="Save" IsEnabled="False" Content="Submit Report" HorizontalAlignment="Left" Margin="63,429,0,0" VerticalAlignment="Top" Width="162" Height="40" BorderBrush="#FF3EAF76" Background="#FFCCFFCC" Click="Save_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" FontWeight="Thin" Text="Report" Foreground="#FF343434"/>
+
+        <Button Click="CreateDocument_Click" Margin="0,0,799,41" VerticalAlignment="Bottom" Height="30" BorderBrush="LightBlue" HorizontalAlignment="Right" Width="162">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,-0.04" StartPoint="0.5,1.04">
+                    <GradientStop Color="#FFD9E9F7" Offset="0"/>
+                    <GradientStop Color="#FFEFF8FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal" Height="23" Margin="0,0,0,-2.52" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100">
+                <Image Name="image2" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock Text="Create Document" Height="15.96" Width="126" Margin="0,4,0,3" />
+            </StackPanel>
+        </Button>
+        <TextBox Name="DocumentInput" HorizontalAlignment="Left" Height="146" Margin="63,491,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"/>
+
     </Grid>
 </Page>
