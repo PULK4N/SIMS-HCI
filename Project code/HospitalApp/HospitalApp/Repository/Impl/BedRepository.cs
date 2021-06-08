@@ -41,8 +41,6 @@ namespace HospitalApp.Repository
 
         public void OccupyBed(long bedId)
         {
-            Bed BedToOccupy = Get(bedId);
-            BedToOccupy.IsAvailable = false;
             HospitalDB.Instance.SaveChanges();
         }
     }

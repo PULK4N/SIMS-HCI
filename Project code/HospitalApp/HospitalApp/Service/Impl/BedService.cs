@@ -34,7 +34,7 @@ namespace HospitalApp.Service
 
         public Bed Get(long id)
         {
-            throw new NotImplementedException();
+            return _bedRepository.Get(id);
         }
 
         public List<Bed> GetAll()
@@ -49,6 +49,8 @@ namespace HospitalApp.Service
 
         public void OccupyBed(long bedId)
         {
+            Bed BedToOccupy = Get(bedId);
+            BedToOccupy.IsAvailable = false;
             _bedRepository.OccupyBed(bedId);
         }
     }
