@@ -104,6 +104,7 @@ namespace HospitalApp.Pages
                 EndInfo.Text = ht.End.Date.ToString().Split(' ')[0];
                 RoomInfo.Text = ht.Room.ToString();
                 BedInfo.Text = ht.Bed.ToString();
+                #region WPF alteration...
                 ScheduleButton.IsEnabled = false;
 
                 BeginDate.IsEnabled = false;
@@ -113,11 +114,14 @@ namespace HospitalApp.Pages
 
                 NewEndDatePicker.IsEnabled = true;
                 ExtendTreatmentButton.IsEnabled = true;
+                #endregion
             }
             else
             {
+                #region WPF alteration...
                 NewEndDatePicker.IsEnabled = false;
                 ExtendTreatmentButton.IsEnabled = false;
+                #endregion
             }
         }
 
@@ -132,7 +136,10 @@ namespace HospitalApp.Pages
                 MessageBox.Show("Hospital treatment successfully extended");
                 UpdateHospitalTreatmentInfo();
             }
-            MessageBox.Show("New date not selected");
+            else
+            {
+                MessageBox.Show("New date not selected");
+            }
         }
     }
 }

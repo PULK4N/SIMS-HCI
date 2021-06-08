@@ -103,12 +103,6 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Image HorizontalAlignment="Left" Height="106" Margin="292,160,0,0" VerticalAlignment="Top" Width="106">
-            <Image.OpacityMask>
-                <ImageBrush ImageSource="1604074907832.jpg" Stretch="UniformToFill"/>
-            </Image.OpacityMask>
-        </Image>
-        <Image Margin="292,160,626,471" Source="/HospitalApp;component/1604074907832.jpg" Stretch="Fill" OpacityMask="#FF3EAF76"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" FontWeight="Thin" Text="Patient Profile" Foreground="#FF343434"/>
     </Grid>
 </Page>

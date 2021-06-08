@@ -22,11 +22,14 @@ namespace HospitalApp.Pages
     /// </summary>
     public partial class DrugUsageReport : Page
     {
+        public DoctorWindow doctorWindow { get; set; }
         public long activeDoctorId;
         public ObservableCollection<Prescription> Prescriptions { get; set; }
-        public DrugUsageReport(long doctorId)
+        public DrugUsageReport(long doctorId, DoctorWindow doctorWindow)
         {
             InitializeComponent();
+
+            this.doctorWindow = doctorWindow;
 
             activeDoctorId = doctorId;
 
@@ -73,6 +76,7 @@ namespace HospitalApp.Pages
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            doctorWindow.isSubmitted = true;
             MessageBox.Show("Report successfully saved");
             Save.IsEnabled = false;
         }

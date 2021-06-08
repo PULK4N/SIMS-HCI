@@ -40,6 +40,6 @@
         </Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="32" FontWeight="Thin" Text="Prescription" Foreground="#FF343434"/>
         <TextBlock Name="DemoPlayingText" Visibility="Hidden" HorizontalAlignment="Left" Margin="226,598,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Thin" Text="Demo is playing" Foreground="Black" FontSize="18"/>
-        <TextBlock Name="DemoStoppingText" Visibility="Hidden" HorizontalAlignment="Left" Margin="226,598,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Thin" Text="Stopping.." Foreground="Black" FontSize="18"/>
+        <TextBlock Name="DemoStoppingText" Visibility="Hidden" HorizontalAlignment="Left" Margin="226,598,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Thin" Text="Stopping..." Foreground="Black" FontSize="18"/>
     </Grid>
 </Page>

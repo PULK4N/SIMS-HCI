@@ -25,7 +25,7 @@ namespace HospitalApp.Repository
                 HospitalDB.Instance.Drugs.Add(drug);
                 HospitalDB.Instance.SaveChanges();
             }
-            catch
+            catch (Exception)
             {
             }
         }
@@ -37,7 +37,7 @@ namespace HospitalApp.Repository
                 HospitalDB.Instance.Drugs.Remove(Get(drugId));
                 HospitalDB.Instance.SaveChanges();
             }
-            catch
+            catch (Exception)
             {
             }
         }
@@ -67,10 +67,34 @@ namespace HospitalApp.Repository
             return (from d in HospitalDB.Instance.Drugs where d.Name == name select d).FirstOrDefault();
         }
 
+        public List<Drug> GetDrugsForApproval()
+        {
+            List<Drug> allDrugs = GetAll();
+            return GetPendingDrugs(allDrugs);
+        }
+
+        private List<Drug> GetPendingDrugs(List<Drug> allDrugs)
+        {
+            List<Drug> drugsForApproval = new List<Drug>();
+            foreach (Drug d in allDrugs)
+            {
+                if (d.DrugStatus.Equals(Enums.DrugStatus.PENDING))
+                    drugsForApproval.Add(d);
+            }
+            return drugsForApproval;
+        }
+
         public void Update(Drug drug)
         {
             try
             {
+                var editedDrug = Get(drug.DrugId);
+                if (editedDrug != null)
+                {
+                    editedDrug.Details = drug.Details;
+                    editedDrug.Name = drug.Name;
+                    editedDrug.DrugStatus = drug.DrugStatus;
+                }
                 HospitalDB.Instance.SaveChanges();
             }
             catch (Exception)

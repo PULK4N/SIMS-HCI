@@ -23,13 +23,17 @@ public partial class DoctorWindow : Window
     public static Frame mainFrame;
 
     public static long activeDoctorId;
+
+    public bool isSubmitted = false;
+
+
     public DoctorWindow(long doctorId)
     {
         InitializeComponent();
         activeDoctorId = doctorId;
         mainFrame = MainFrame;
 
-        mainFrame.Content = new HomePage();
+        mainFrame.Content = new HomePage(isSubmitted);
 
         DispatcherTimer LiveTime = new DispatcherTimer();
         LiveTime.Interval = TimeSpan.FromSeconds(1);
@@ -80,7 +84,7 @@ public partial class DoctorWindow : Window
 
     private void Button_Click_1(object sender, RoutedEventArgs e)
     {
-        mainFrame.Content = new HomePage();
+        mainFrame.Content = new HomePage(isSubmitted);
     }
 
     private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -97,7 +101,7 @@ public partial class DoctorWindow : Window
 
     private void Report_Click(object sender, RoutedEventArgs e)
     {
-        DrugUsageReport drugUsageReport = new DrugUsageReport(activeDoctorId);
+        DrugUsageReport drugUsageReport = new DrugUsageReport(activeDoctorId, this);
         mainFrame.Content = drugUsageReport;
     }
 }

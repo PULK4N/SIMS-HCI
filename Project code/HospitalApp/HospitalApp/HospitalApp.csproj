@@ -438,32 +438,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\1x\outline_arrow_back_ios_white_24dp.png" />
-    <Resource Include="Images\1x\outline_description_white_24dp.png" />
-    <Resource Include="Images\1x\outline_event_note_white_24dp.png" />
-    <Resource Include="Images\1x\outline_groups_white_24dp.png" />
-    <Resource Include="Images\1x\outline_help_center_black_24dp.png" />
-    <Resource Include="Images\1x\outline_help_outline_white_24dp.png" />
-    <Resource Include="Images\1x\outline_home_white_24dp.png" />
-    <Resource Include="Images\1x\outline_person_white_24dp.png" />
-    <Resource Include="Images\1x\outline_play_arrow_white_24dp.png" />
-    <Resource Include="Images\1x\outline_rule_white_24dp.png" />
-    <Resource Include="Images\1x\outline_settings_white_24dp.png" />
-    <Resource Include="Images\1x\outline_stop_white_24dp.png" />
-    <Resource Include="Images\2x\outline_arrow_back_ios_white_24dp.png" />
-    <Resource Include="Images\2x\outline_description_white_24dp.png" />
-    <Resource Include="Images\2x\outline_event_note_white_24dp.png" />
-    <Resource Include="Images\2x\outline_groups_white_24dp.png" />
-    <Resource Include="Images\2x\outline_help_center_black_24dp.png" />
-    <Resource Include="Images\2x\outline_help_outline_white_24dp.png" />
-    <Resource Include="Images\2x\outline_home_white_24dp.png" />
-    <Resource Include="Images\2x\outline_people_alt_black_24dp.png" />
-    <Resource Include="Images\2x\outline_people_alt_black_24dp2.png" />
-    <Resource Include="Images\2x\outline_person_white_24dp.png" />
-    <Resource Include="Images\2x\outline_play_arrow_white_24dp.png" />
-    <Resource Include="Images\2x\outline_rule_white_24dp.png" />
-    <Resource Include="Images\2x\outline_settings_white_24dp.png" />
-    <Resource Include="Images\2x\outline_stop_white_24dp.png" />
     <Resource Include="Images\back_forward.png" />
     <Resource Include="Images\calendar.png" />
     <Resource Include="Images\date.png" />

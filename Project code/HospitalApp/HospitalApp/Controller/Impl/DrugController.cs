@@ -3,6 +3,7 @@
 // Created: Thursday, April 15, 2021 4:30:55 PM
 // Purpose: Definition of Class MedicineController
 
+using Enums;
 using HospitalApp.Model;
 using HospitalApp.Service;
 using System;
@@ -54,14 +55,9 @@ namespace HospitalApp.Controller
             return _drugService.GetDrugsForApproval();
         }
 
-        public bool ApproveDrug(Drug drug)
+        public bool ValidateDrug(Drug drug, DrugStatus drugStatus)
         {
-            return _drugService.ApproveDrug(drug);
-        }
-
-        public bool RejectDrug(Drug drug)
-        {
-            return _drugService.RejectDrug(drug);
+            return _drugService.ValidateDrug(drug, drugStatus);
         }
         
         public Drug GetByName(string name)
