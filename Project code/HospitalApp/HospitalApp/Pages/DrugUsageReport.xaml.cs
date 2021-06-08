@@ -1,4 +1,5 @@
-﻿using HospitalApp.Model;
+﻿using HospitalApp.Adapter;
+using HospitalApp.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -79,6 +80,19 @@ namespace HospitalApp.Pages
             doctorWindow.isSubmitted = true;
             MessageBox.Show("Report successfully saved");
             Save.IsEnabled = false;
+        }
+
+        private void CreateDocument_Click(object sender, RoutedEventArgs e)
+        {
+            SyncfusionPdfAdapter s = new SyncfusionPdfAdapter();
+            //SyncfusionWordAdapter s = new SyncfusionWordAdapter();
+
+            DocumentTypePicker(s);
+        }
+
+        void DocumentTypePicker(DocumentGeneratorInterface x)
+        {
+            x.CreateDocument(DocumentInput.Text);
         }
     }
 }
