@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace HospitalApp.Service
 {
-    class NotificationService
+    public class NotificationService
     {
         public async Task StartTimer(CancellationToken cancellationToken)
         {

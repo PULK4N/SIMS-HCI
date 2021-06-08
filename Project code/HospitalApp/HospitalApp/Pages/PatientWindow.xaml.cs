@@ -1,9 +1,11 @@
 ﻿using HospitalApp.Model;
+using HospitalApp.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +25,9 @@ namespace HospitalApp.View
     {
         public static PatientWindow Instance;
         public static Patient Patient;
+        public static NotificationService notificationService { get; set; }
+        public CancellationTokenSource CancellationTokenSource { get; set; }
+        CancellationToken cancellationToken { get; set; }
 
         public PatientWindow(Patient patient)
         {
@@ -30,6 +35,11 @@ namespace HospitalApp.View
             Instance = this;
             InitializeComponent();
             CurrentPage.Frame = load_frame;
+            CancellationTokenSource = new CancellationTokenSource();
+            cancellationToken = CancellationTokenSource.Token;
+            notificationService = new NotificationService();
+            notificationService.StartTimer(cancellationToken);
+            Map.PatientController.StartWeeklyAttemptsRestarting(cancellationToken);
         }
 
     }

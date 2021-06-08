@@ -1,17 +1,20 @@
-﻿using HospitalApp.Model;
+﻿using Enums;
+using HospitalApp.Model;
+using HospitalApp.Observers;
 using HospitalApp.View;
 using System;
 using System.Collections.ObjectModel;
 
 namespace HospitalApp.ViewModel
 {
-    class Home : ViewModel
+    public class Home : ViewModel, IObserveAppointments
     {
-        public static EventHandler RefreshAppointmentEventHandler;
+        public ObservableCollection<Appointment> ScheduledAppointments { get; set; }
+        public ObservableCollection<Appointment> CompletedAppointments { get; set; }
+        public ObservableCollection<Prescription> Prescriptions { get; set; }
         public Home() : base()
         {
             InstantiateAppointments();
-            RefreshAppointmentEventHandler += (a,b) => refreshLists();
         }
 
         private void InstantiateAppointments()
@@ -21,12 +24,12 @@ namespace HospitalApp.ViewModel
             Prescriptions = new ObservableCollection<Prescription>(Map.PrescriptionController.GetAllByPatientId(PatientWindow.Patient.PatientId));
         }
 
-        private void refreshLists()
+        public void UpdateAppointmentsView()
         {
             ScheduledAppointments.Clear();
             CompletedAppointments.Clear();
-            Prescriptions.Clear();
-            foreach(Appointment a in Map.AppointmentController.GetAllByPatientId(PatientWindow.Patient.PatientId))
+
+            foreach (Appointment a in Map.AppointmentController.GetAllByPatientId(PatientWindow.Patient.PatientId))
             {
                 ScheduledAppointments.Add(a);
             }
@@ -35,17 +38,6 @@ namespace HospitalApp.ViewModel
             {
                 CompletedAppointments.Add(a);
             }
-
-            foreach (Prescription p in Map.PrescriptionController.GetAllByPatientId(PatientWindow.Patient.PatientId))
-            {
-                Prescriptions.Add(p);
-            }
         }
-
-        public ObservableCollection<Appointment> ScheduledAppointments { get; set; }
-        public ObservableCollection<Appointment> CompletedAppointments { get; set; }
-        public ObservableCollection<Prescription> Prescriptions { get; set; }
-
-
     }
 }

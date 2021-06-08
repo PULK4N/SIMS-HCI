@@ -12,10 +12,10 @@ namespace HospitalApp.View
     /// </summary>
     public partial class Home : Page
     {
-        public Home()
+        public Home(ViewModel.Home home)
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.Home();
+            this.DataContext = home;
         }
 
     }

@@ -151,6 +151,7 @@ namespace HospitalApp.ViewModel
         public void Executed_LogoutCommand(object obj)
         {
             new MainWindow().Show();
+            PatientWindow.Instance.CancellationTokenSource.Cancel();
             PatientWindow.Instance.Close();
         }
         public bool CanExecute_LogoutCommand(object obj)

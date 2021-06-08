@@ -58,7 +58,7 @@ namespace HospitalApp.View
             {
                 ScheduleAppointmentViewModel.confirmSchedule(appointment);
             }
-            ViewModel.Home.RefreshAppointmentEventHandler.Invoke(null, null);
+            CurrentPage.AppointmentObservable.NotifyObserver();
         }
     }
 }
