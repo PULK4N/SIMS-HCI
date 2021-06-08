@@ -24,10 +24,10 @@ namespace HospitalApp.View
     {
         private ViewModel.AppointmentsAndTherapy AppointmentsAndTherapyViewModel;
         Appointment appointmentToBeRescheduled;
-        public AppointmentsAndTherapy()
+        public AppointmentsAndTherapy(ViewModel.AppointmentsAndTherapy appointmentsAndTherapy)
         {
             InitializeComponent();
-            AppointmentsAndTherapyViewModel = new ViewModel.AppointmentsAndTherapy();
+            AppointmentsAndTherapyViewModel = appointmentsAndTherapy;
             this.DataContext = AppointmentsAndTherapyViewModel;
         }
 
@@ -37,7 +37,7 @@ namespace HospitalApp.View
             {
                 Appointment appointment = AppointmentsDataGrid.SelectedItem as Appointment;
                 Map.AppointmentController.Delete(appointment.AppointmentId);
-                ViewModel.Home.RefreshAppointmentEventHandler(null, null);
+                CurrentPage.AppointmentObservable.NotifyObserver();
             }
             catch (Exception)
             {
@@ -52,7 +52,7 @@ namespace HospitalApp.View
             {
                 appointment.AppointmentId = appointmentToBeRescheduled.AppointmentId;
                 Map.AppointmentController.PatientReScheduleAppointment(appointment);
-                ViewModel.Home.RefreshAppointmentEventHandler(null, null);
+                CurrentPage.AppointmentObservable.NotifyObserver();
                 AppointmentsAndTherapyViewModel.AppointmentsToBeRescheduled.Clear();
             }
         }

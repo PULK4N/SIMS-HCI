@@ -22,13 +22,13 @@ namespace HospitalApp.View
     public partial class Reminders : Page
     {
         private ViewModel.Reminders RemindersVM;
-        public Reminders()
+        public Reminders(ViewModel.Reminders remindersViewModel)
         {
             InitializeComponent();
-            RemindersVM = new ViewModel.Reminders();
+            RemindersVM = remindersViewModel;
             this.DataContext = RemindersVM;
             ListReminders();
-            ShowReviewsAndAppointments();
+            //ShowReviewsAndAppointments();
         }
 
         private void SubmitReminder(object sender, RoutedEventArgs e)
@@ -71,19 +71,6 @@ namespace HospitalApp.View
             }
         }
 
-        private void ShowReviewsAndAppointments()
-        {
-            List<Appointment> appointments = Map.AppointmentController.GetAllCompletedByPatientId(1);
-            List<Review> reviews = Map.ReviewController.GetAllByPatientId(1);
-
-            RemindersVM.CompletedAppointmentsNotReviewed.Clear();
-            foreach (Appointment appointment in appointments)
-            {
-                RemindersVM.CompletedAppointmentsNotReviewed.Add(appointment);
-            }
-
-        }
-
         private void reviewAppointment(object sender, RoutedEventArgs e)
         {
             var appointment = dataGridCompletedAppointments.SelectedItem as Appointment;
@@ -91,7 +78,7 @@ namespace HospitalApp.View
 
             Review review = new Review((int)ReviewScore.SelectedItem, "no description", Enums.ReviewType.DOCTOR, appointment);//(int score, string comment, ReviewType reviewType, Appointment appointment)
             Map.ReviewController.Create(review);
-            ShowReviewsAndAppointments();
+            CurrentPage.AppointmentObservable.NotifyObserver();
         }
     }
 }

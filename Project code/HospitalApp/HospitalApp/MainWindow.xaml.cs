@@ -11,17 +11,12 @@ namespace HospitalApp
     public partial class MainWindow : MetroWindow
     {
         Doctor ActiveDoctor;
-        CancellationTokenSource CancellationTokenSource { get; set; }
-        CancellationToken cancellationToken { get; set; }
         public Patient Patient { get; set; }
         public MainWindow()
         {
             InitializeComponent();
             Map.Instantiate();
             this.DataContext = this;
-            CancellationTokenSource = new CancellationTokenSource();
-            cancellationToken = CancellationTokenSource.Token;
-            Map.PatientController.StartWeeklyAttemptsRestarting(cancellationToken);
         }
 
 
@@ -39,7 +34,6 @@ namespace HospitalApp
                         LoginGrid.Visibility = Visibility.Hidden;
                         PatientWindow patientWindow = new PatientWindow(Patient);
                         patientWindow.Show();
-                        new NotificationService().StartTimer(cancellationToken);
                         ScheduleReminders();
                         break;
                     case Enums.UserType.DOCTOR:

@@ -12,15 +12,8 @@ namespace HospitalApp
             get { return frame; }
             set
             {
-                if (frame == null)
-                {
-                    frame = value;
-                    Initialize();
-                }
-                else
-                {
-                    MessageBox.Show("You should not change frame refference");
-                }
+                frame = value;
+                Initialize();
             } 
         }
         private static Home Home { get; set; }
@@ -30,15 +23,25 @@ namespace HospitalApp
         private static Help Help { get; set; }
         private static ScheduleAppointment ScheduleAppointment { get; set; }
         private static Settings Settings { get; set; }
-
+        public static AppointmentObservable AppointmentObservable { get; set; }
         private static WeeklyLog WeeklyLog { get; set; }
 
         public static void Initialize()
         {
-            Home = new Home();
-            AppointmentsAndTherapy = new AppointmentsAndTherapy();
+            AppointmentObservable = new AppointmentObservable();
+            //instantiating classes that implement IUpdateAppointmentsView
+            ViewModel.Home ViewModelHome = new ViewModel.Home();
+            ViewModel.AppointmentsAndTherapy ViewModelppointmentsAndTherapy = new ViewModel.AppointmentsAndTherapy();
+            ViewModel.Reminders ViewModelReminders = new ViewModel.Reminders();
+            //Adding observers
+            AppointmentObservable.AddObserver(ViewModelHome);
+            AppointmentObservable.AddObserver(ViewModelppointmentsAndTherapy);
+            AppointmentObservable.AddObserver(ViewModelReminders);
+
+            Home = new Home(ViewModelHome);
+            AppointmentsAndTherapy = new AppointmentsAndTherapy(ViewModelppointmentsAndTherapy);
             Anamnesis = new Anamnesis();
-            Reminders = new Reminders();
+            Reminders = new Reminders(ViewModelReminders);
             Help = new Help();
             ScheduleAppointment = new ScheduleAppointment();
             Settings = new Settings();

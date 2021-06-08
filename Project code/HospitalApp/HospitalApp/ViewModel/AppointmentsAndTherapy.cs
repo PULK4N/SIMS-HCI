@@ -1,16 +1,17 @@
-﻿using HospitalApp.Model;
+﻿using Enums;
+using HospitalApp.Model;
+using HospitalApp.Observers;
 using HospitalApp.View;
 using System;
 using System.Collections.ObjectModel;
 
 namespace HospitalApp.ViewModel
 {
-    class AppointmentsAndTherapy : ViewModel
+    public class AppointmentsAndTherapy : ViewModel, IObserveAppointments
     {
         public AppointmentsAndTherapy() : base()
         {
             InstantiateAppointments();
-            Home.RefreshAppointmentEventHandler += (a, e) => RefreshAppointments();
         }
         private void InstantiateAppointments()
         {
@@ -53,12 +54,16 @@ namespace HospitalApp.ViewModel
 
         public void RefreshAppointments()
         {
+
+        }
+
+        public void UpdateAppointmentsView()
+        {
             Appointments.Clear();
             foreach (Appointment appointment in Map.AppointmentController.GetAllByPatientId(PatientWindow.Patient.PatientId))
             {
                 Appointments.Add(appointment);
             }
         }
-
     }
 }

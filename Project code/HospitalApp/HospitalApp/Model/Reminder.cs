@@ -6,6 +6,7 @@
 using Microsoft.Win32.TaskScheduler;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Windows;
 
 namespace HospitalApp.Model
 {
@@ -54,8 +55,14 @@ namespace HospitalApp.Model
         {
             if (Task != null && Patient != null)
             {
+                try
+                {
                 Map.TaskService.RootFolder.DeleteTask($"{Patient.User.RegisteredUser.Username}{ReminderId}");
                 Task.Dispose();
+                }catch(Exception E)
+                {
+                    MessageBox.Show(E.ToString());
+                }
             }
         }
 

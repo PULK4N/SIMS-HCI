@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalApp.Model
 {
-    class MedicalTreatment
+    public class MedicalTreatment
     {
         public MedicalTreatment(long medicalTreatmentId, Enums.MedicalTreatementPeriod period, DateTime beginning, DateTime end, string description)
         {

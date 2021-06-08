@@ -121,6 +121,8 @@
     <Compile Include="Model\MedicalTreatment.cs" />
     <Compile Include="Model\PatientAllergies.cs" />
     <Compile Include="Model\StaticInventory.cs" />
+    <Compile Include="Observers\AppointmentObservable.cs" />
+    <Compile Include="Observers\IObserveAppointments.cs" />
     <Compile Include="Pages\DrugUsageReport.xaml.cs">
       <DependentUpon>DrugUsageReport.xaml</DependentUpon>
     </Compile>
