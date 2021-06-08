@@ -11,21 +11,21 @@ namespace HospitalApp
     public class AppointmentObservable
     {
         public delegate void VoidFuncNoParams();
-        public event VoidFuncNoParams RefreshAppointmentEventHandler;
+        public event VoidFuncNoParams RefreshAppointmentEvent;
 
         public void AddObserver(IObserveAppointments updateAppointments)
         {
-            RefreshAppointmentEventHandler += updateAppointments.UpdateAppointmentsView;
+            RefreshAppointmentEvent += updateAppointments.UpdateAppointmentsView;
         }
 
         public void RemoveObserver(IObserveAppointments updateAppointments)
         {
-            RefreshAppointmentEventHandler -= updateAppointments.UpdateAppointmentsView;
+            RefreshAppointmentEvent -= updateAppointments.UpdateAppointmentsView;
         }
 
         public void NotifyObserver()
         {
-            RefreshAppointmentEventHandler();
+            RefreshAppointmentEvent();
         }
     }
 }
