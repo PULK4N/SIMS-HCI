@@ -36,7 +36,8 @@ namespace HospitalApp.View
             if (RemindersList.SelectedItem == null)
             {
                 var RemindersTime = DateTime.Parse(DateTime.Now.Date.ToString().Split(' ')[0] + " " + ReminderTimePicker.Text);
-                Map.ReminderController.Create(new Reminder(ReminderName.Text, RemindersTime, Int16.Parse(ReminderInterval.Text), ReminderPeriod.SelectedDate.Value, ReminderDescription.Text, PatientWindow.Patient));
+                var PeriodTime = DateTime.Parse(ReminderPeriod.SelectedDate.Value.ToString().Split(' ')[0] + " " + ReminderTimePicker.Text);
+                Map.ReminderController.Create(new Reminder(ReminderName.Text, RemindersTime, Int16.Parse(ReminderInterval.Text), PeriodTime, ReminderDescription.Text, PatientWindow.Patient));
             }
             else
             {
