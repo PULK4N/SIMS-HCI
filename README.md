@@ -1,5 +1,5 @@
-### Hospital Clinic application 
-## by Mateja Miletic & Nikola Pupovac
+## Hospital Clinic application 
+### by Mateja Miletic & Nikola Pupovac
 
 ## Project description
 Hospital clinic application is made as an assigment for 2 classes
