@@ -49,9 +49,19 @@ namespace HospitalApp.Service
             return _hospitalTreatmentRepository.GetByPatientId(patientId);
         }
 
-        public void Update(HospitalTreatment tObject)
+        public void Update(HospitalTreatment extendedHospitalTreatmnet)
         {
-            throw new NotImplementedException();
+            HospitalTreatment oldHospitalTreatment = Get(extendedHospitalTreatmnet.TreatmentId);
+            if (oldHospitalTreatment != null)
+            {
+                oldHospitalTreatment.Beginning = extendedHospitalTreatmnet.Beginning;
+                oldHospitalTreatment.End = extendedHospitalTreatmnet.End;
+                oldHospitalTreatment.HospitalTreatmentStatus = extendedHospitalTreatmnet.HospitalTreatmentStatus;
+                oldHospitalTreatment.Patient = extendedHospitalTreatmnet.Patient;
+                oldHospitalTreatment.Room = extendedHospitalTreatmnet.Room;
+                oldHospitalTreatment.Bed = extendedHospitalTreatmnet.Bed;
+                _hospitalTreatmentRepository.Update(oldHospitalTreatment);
+            }
         }
     }
 }

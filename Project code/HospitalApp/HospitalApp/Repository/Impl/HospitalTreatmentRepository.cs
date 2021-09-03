@@ -18,13 +18,6 @@ namespace HospitalApp.Repository
 
         public void Update(HospitalTreatment extendedHospitalTreatmnet)
         {
-            HospitalTreatment oldHospitalTreatment = Get(extendedHospitalTreatmnet.TreatmentId);
-            oldHospitalTreatment.Beginning = extendedHospitalTreatmnet.Beginning;
-            oldHospitalTreatment.End = extendedHospitalTreatmnet.End;
-            oldHospitalTreatment.HospitalTreatmentStatus = extendedHospitalTreatmnet.HospitalTreatmentStatus;
-            oldHospitalTreatment.Patient = extendedHospitalTreatmnet.Patient;
-            oldHospitalTreatment.Room = extendedHospitalTreatmnet.Room;
-            oldHospitalTreatment.Bed = extendedHospitalTreatmnet.Bed;
             HospitalDB.Instance.SaveChanges();
         }
 
@@ -46,7 +39,7 @@ namespace HospitalApp.Repository
         public HospitalTreatment GetByPatientId(long patientId)
         {
             return (from h in HospitalDB.Instance.HospitalTreatments where h.Patient.PatientId == patientId select h)
-                .Include(b=>b.Bed)
+                .Include(b => b.Bed)
                 .FirstOrDefault();
         }
     }

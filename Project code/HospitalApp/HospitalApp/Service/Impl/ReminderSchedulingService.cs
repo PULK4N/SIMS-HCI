@@ -44,6 +44,7 @@ namespace HospitalApp.Service
             TimeTrigger timeTrigger = new TimeTrigger(reminder.StartTime);
             timeTrigger.Repetition.Duration = TimeSpan.Zero;
             timeTrigger.Repetition.Interval = TimeSpan.FromDays(reminder.TimeInterval);
+            timeTrigger.EndBoundary = reminder.Period;
             task.Triggers.Add(timeTrigger);
             ShowMessageAction msg = new ShowMessageAction(reminder.Description, "Notification");
             task.Actions.Clear();

@@ -17,8 +17,7 @@ namespace HospitalApp.Service
         public void Create(Reminder reminder)
         {
             _reminderRepository.Create(reminder);
-            if (reminder.Period.CompareTo(DateTime.Now) < 0)
-                Map.ReminderSchedulingService.ScheduleReminder(reminder);
+            Map.ReminderSchedulingService.ScheduleReminder(reminder);
         }
 
         public void Delete(long reminderId)
@@ -50,10 +49,10 @@ namespace HospitalApp.Service
             oldReminder.TimeInterval = reminder.TimeInterval;
             oldReminder.StartTime = reminder.StartTime;
             oldReminder.Description = reminder.Description;
-            _reminderRepository.Update(reminder);
-            if (reminder.Period.CompareTo(DateTime.Now) < 0)
+            _reminderRepository.Update(oldReminder);
+            if (reminder.Period.CompareTo(DateTime.Now) > 0)
             {
-                Map.ReminderSchedulingService.ReScheduleReminder(reminder);
+                Map.ReminderSchedulingService.ReScheduleReminder(oldReminder);
             }
             else
             {
